@@ -1,0 +1,74 @@
+body {
+  background: blue;
+  margin: 0;
+  font: 18px Helvetica;
+  text-align: center;
+}
+
+#title_bar {
+  background: black;
+  color: white;
+  height: 25px;
+  padding: 10px 5%;
+  width: 90%;
+}
+
+.app_button {
+  background: gold;
+  border: khaki;
+  margin: 15px auto;
+  padding: 5px;
+  width: 200px;
+  -webkit-border-radius: 5px;
+}
+
+#back_button {
+  background: grey;
+}
+
+/**
+ * Since all of the views are the same, we'll set them to static widths and heights to match our device.
+ **/
+ 
+.view {
+	width: 320px;
+	/* on the iPhone, we have to account for the 20px status bar at the top */
+	/* 480 - 20 = 460 */
+	/* then 460 - 40 to account for our title bar */
+	height: 420px;
+	
+	/*  only one view is displayed at a time
+	    so we'll set the views to default to be un-displayed
+	    and then override this based on the element id */
+	display: none;
+}
+/* our three views */
+#welcome {
+  display: block;  
+}
+#settings {
+  background: white;
+}
+#map {
+  background: black;
+  color: white;
+}
+
+.map_image {
+  margin: auto;
+  height: 250px;
+  padding-top: 35px;
+  width: 250px;
+}
+
+#settings_form {
+  display: block;
+  padding: 20px;
+}
+
+button {
+  font: 18px Helvetica;
+  height: 30px;
+  width: 100px;
+  -webkit-appearance:push-button;
+}

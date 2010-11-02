@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+		xmlns:gap	= "http://phonegap.com/ns/1.0"
+		id			= "com.phonegap.training"
+		version 	= "0.7.0">
+
+	<name>PhoneGap Training App</name>
+
+	<description>
+		A training app showing how to implement basic PhoneGap functionality 
+	</description>
+
+	<author href="http://alunny.github.com"
+			email="andrew.lunny@nitobi.com">
+		Andrew Lunny
+	</author>
+
+	<gap:platforms>
+		<gap:platform name="android" minVersion="2.1" />
+		<gap:platform name="webos" />
+		<gap:platform name="symbian.wrt" />
+	</gap:platforms>
+
+	<icon src="icon.png" gap:role="default" />
+
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+	<!-- sample preference specification -->
+	<!-- <preference name="autorotate" value="false" readonly="true"/> -->
+</widget>
