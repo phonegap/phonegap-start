@@ -1,42 +1,54 @@
 body {
-  background: blue;
+  background: #fff;
+  background: -webkit-gradient(linear, 100% 0%, 0% 0%, from(#C8C8C8), color-stop(0.47, white), to(#C8C8C8));
   margin: 0;
   font: 18px Helvetica;
   text-align: center;
 }
 
 #title_bar {
-  background: black;
-  color: white;
-  height: 25px;
-  padding: 10px 5%;
-  width: 90%;
+  /* need a position set to something for z-index to take effect */
+  position: relative;
+  z-index: 1;
+  background: #ccc;
+  background: -webkit-gradient(linear, 0 0, 0 70%, from(#fff), to(#ccc));
+  background: linear-gradient(#fff, #ccc 70%);
+  color: #444;
+  text-shadow: 0 1px 0 #fff;
+  border-bottom: 1px solid #999;
+  height: 44px;
+  line-height: 44px;
+  padding: 0;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
 }
 
-.app_button {
-  background: gold;
-  border: khaki;
-  margin: 15px auto;
-  padding: 5px;
+.app_button, button {
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
   width: 200px;
-  -webkit-border-radius: 5px;
+  background:#F7941E;
+  background: -webkit-gradient(linear, 0 0, 0 70%, from(#F7941E), to(#D37F18));
+  background: linear-gradient(#F7941E, #D37F18 70%);
+  border: 1px solid #C97917;
+  font-weight: 200;
+  text-shadow: 0 -1px 0 #7E4B0D;
+  height: 40px;
+  line-height: 40px;
+  color:#fff;
+  text-align: center;
 }
 
 #back_button {
   background: grey;
 }
-
-/**
- * Since all of the views are the same, we'll set them to static widths and heights to match our device.
- **/
  
 .view {
-	width: 320px;
-	/* on the iPhone, we have to account for the 20px status bar at the top */
-	/* 480 - 20 = 460 */
-	/* then 460 - 40 to account for our title bar */
-	height: 420px;
-	
+  padding: 35px;
 	/*  only one view is displayed at a time
 	    so we'll set the views to default to be un-displayed
 	    and then override this based on the element id */
@@ -46,29 +58,32 @@ body {
 #welcome {
   display: block;  
 }
+
+#map { 
+  text-shadow: 0 1px 0 #fff;
+}
+
+  .map_image {
+    margin: auto;
+    height: 250px;
+    width: 250px;
+    border: 1px solid #aaa;
+  }
+
 #settings {
-  background: white;
-}
-#map {
-  background: black;
-  color: white;
 }
 
-.map_image {
-  margin: auto;
-  height: 250px;
-  padding-top: 35px;
-  width: 250px;
-}
+  legend {
+    font-weight: bold;
+    text-shadow: 0 1px 0 #fff;
+  }
 
-#settings_form {
-  display: block;
-  padding: 20px;
-}
-
-button {
-  font: 18px Helvetica;
-  height: 30px;
-  width: 100px;
-  -webkit-appearance:push-button;
-}
+  fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  input {
+    margin-bottom: 8px;
+  }
