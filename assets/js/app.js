@@ -43,6 +43,8 @@ run(function () {
                 path += location + "&sensor=false";
 
                 x$('img#static_map').attr('src', path);
+            }, function () {
+                x$('img#static_map').attr('src', "assets/img/gpsfailed.png");
             });
         });
     });
