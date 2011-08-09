@@ -434,7 +434,7 @@ function changetime(){
 		{
 			
 						Audio = document.createElement('audio');
-						Audio.setAttribute('src', '/assets/'+srcAud);
+						Audio.setAttribute('src', 'assets/'+srcAud);
 						Audio.setAttribute('id', 'normalAzans1');
 						Audio.volume= ($('#slider').val()/100);
 						

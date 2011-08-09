@@ -5,16 +5,16 @@
 	<head> 
 	<title>Namaz Reminder!</title> 
 	
-	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-	<link rel="stylesheet" href="jquery.mobile-1.0b1.css" />
+	<script type="text/javascript" charset="utf-8" src="assets/phonegap.js"></script>
+	<link rel="stylesheet" href="assets/jquery.mobile-1.0b1.css" />
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-	<script type="text/javascript" src="PrayTime.js"></script>
-	<script type="text/javascript" src="jquery-1.6.1.min.js"></script>
-	<script type="text/javascript" src="jquery.mobile-1.0b1.min.js"></script>
-	<script type="text/javascript" src="coolclock.js"></script>
-	<script type="text/javascript" src="hijri.js"></script>
-	<script type="text/javascript" src="Data.js"></script>
+	<script type="text/javascript" src="assets/PrayTime.js"></script>
+	<script type="text/javascript" src="assets/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="assets/jquery.mobile-1.0b1.min.js"></script>
+	<script type="text/javascript" src="assets/coolclock.js"></script>
+	<script type="text/javascript" src="assets/hijri.js"></script>
+	<script type="text/javascript" src="assets/Data.js"></script>
 	
 	<script type="text/javascript">
 	
@@ -244,7 +244,7 @@
 						
 						
 						AudioNormalAzan = document.createElement('audio');
-						AudioNormalAzan.setAttribute('src', '/assets/'+srcAud);
+						AudioNormalAzan.setAttribute('src', 'assets/'+srcAud);
 						AudioNormalAzan.setAttribute('id', 'normalplay');	
 						AudioNormalAzan.volume= ($('#slider').val()/100);
 						AudioNormalAzan.play();
@@ -278,7 +278,7 @@
 						
 						
 						AudioRemAzan = document.createElement('audio');
-						AudioRemAzan.setAttribute('src', '/assets/'+remAzan);
+						AudioRemAzan.setAttribute('src', 'assets/'+remAzan);
 						AudioRemAzan.setAttribute('id', 'remainderAzan');
 						AudioRemAzan.volume= ($('#slider').val()/100);
 						AudioRemAzan.play();
@@ -306,7 +306,7 @@
 						
 					
 						AudioFajrAzan = document.createElement('audio');
-						AudioFajrAzan.setAttribute('src', '/assets/'+fajrAzan);
+						AudioFajrAzan.setAttribute('src', 'assets/'+fajrAzan);
 						AudioFajrAzan.setAttribute('id', 'fajrAzan');
 						AudioFajrAzan.volume= ($('#slider').val()/100);
 						AudioFajrAzan.play();
