@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.phonegap.getting.started"
-	version 	= "1.0.0">
+	id		= "com.telenor.namazreminder"
+	version 	= "99.999">
 
-	<name>PhoneGap: Getting Started</name>
+	<name>Namaz Reminder!</name>
 
 	<description>
-		A template for getting started with PhoneGap development and build.phonegap.com
+		The Namaz Reminder Application indicates Namaz Times of all 7551 Cities of the world. The latitudes and longitudes of the all the cities are maintained in an offline database. The application also has the feature to detect your current location (online) and calculate Namaz Timing for your current location.
 	</description>
 
 	<author href="http://alunny.github.com"
@@ -23,6 +23,7 @@
 	</gap:platforms>
 
 	<icon src="icon.png" gap:role="default" />
+	<gap:splash src="splash.png"/>
 
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
