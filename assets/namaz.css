@@ -1,0 +1,95 @@
+ 
+
+	
+
+.startimage {
+    width:100%;
+    height:auto;
+	
+}
+
+
+
+#background {
+    background-attachment:fixed;
+	background-image: url("../images/name.png");
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    margin-left: 0px; 
+    margin-top: 0px; 
+    z-index: 0;
+	background-repeat:no-repeat;
+}
+
+
+@media screen and (max-device-width: 480px) {
+  .wrapper  {
+    height:420px;
+	width:320px;
+  }
+  
+  
+.mainbg {
+    background-image: url("../images/name.png");
+    background-attachment:fixed;
+	background-repeat: repeat-x;
+	}
+	
+.normalbg{
+	background-image: url("../images/linearbg.png");
+    background-attachment:fixed;
+	background-repeat: repeat-x;
+	}
+   
+
+  
+}
+
+
+@media screen and (max-width: 600px) {
+.wrapper  {
+    height:320px;
+	width:321px;
+  }
+  
+  
+.normalbg{
+	background-image: url("../images/linearbg5.png");
+    background-attachment:fixed;
+	background-repeat: no-repeat;
+	}
+   
+  
+.mainbg {
+    background-image: url("../images/name.png");
+    background-attachment:fixed;
+	background-repeat: no-repeat;
+	}
+	
+	
+.aboutbg {
+    background-image: url("../images/about.png");
+    background-attachment:fixed;
+	background-repeat: no-repeat;
+	}
+	
+.reportbg {
+    background-image: url("../images/name2.png");
+    background-attachment:fixed;
+	background-repeat: no-repeat;
+	}
+	
+	
+	
+
+}
+
+
+
+
+
+
+
+
+
