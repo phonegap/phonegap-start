@@ -2,7 +2,7 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		= "com.goaheadspace.joomlapp"
-	version 	= "0.99.9999">
+	version 	= "99.9999">
 
 	<name>Joomlapp: A client for the companion Joomla component - Joomlapp API</name>
 
