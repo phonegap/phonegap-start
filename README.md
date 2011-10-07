@@ -1,6 +1,6 @@
-PhoneGap-Start
+joomlapp
 ---
 
-A starting point for PhoneGap apps.
+A companion client to the Joomla component, Joomlapp API.
 
-To get started: fork this repo, modify the config.xml to match your details, and get building!
+To get started: read the documentation!
