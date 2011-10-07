@@ -4,7 +4,7 @@
 	id		= "com.phonegap.getting.started"
 	version 	= "1.0.0">
 
-	<name>Jomlapp: A client for the companion Joomla component - Joomlapp API</name>
+	<name>Joomlapp: A client for the companion Joomla component - Joomlapp API</name>
 
 	<description>
 		An app that will act as a client for the Joomla component, which provides an API for a Joomla website
