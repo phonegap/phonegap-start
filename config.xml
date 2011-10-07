@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.phonegap.getting.started"
-	version 	= "1.0.0">
+	id		= "com.goaheadspace.joomlapp"
+	version 	= "0.99.9999">
 
 	<name>Joomlapp: A client for the companion Joomla component - Joomlapp API</name>
 
@@ -22,7 +22,7 @@
 		<gap:platform name="blackberry" project="widgets"/>
 	</gap:platforms>
 
-	<icon src="icon.png" gap:role="default" />
+	<icon src="http://www.goaheadspace.net/joomlapp/images/Joomlapp_logo.png" gap:role="default" />
 
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
