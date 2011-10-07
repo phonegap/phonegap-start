@@ -4,14 +4,14 @@
 	id		= "com.phonegap.getting.started"
 	version 	= "1.0.0">
 
-	<name>PhoneGap: Getting Started</name>
+	<name>Jomlapp: A client for the companion Joomla component - Joomlapp API</name>
 
 	<description>
-		A template for getting started with PhoneGap development and build.phonegap.com
+		An app that will act as a client for the Joomla component, which provides an API for a Joomla website
 	</description>
 
-	<author href="http://alunny.github.com"
-		email="andrew.lunny@nitobi.com">
+	<author href="http://www.goaheadspace.net/web/en.html"
+		email="support@goaheadspace.com">
 		Andrew Lunny
 	</author>
 
