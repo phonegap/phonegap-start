@@ -1,0 +1,217 @@
+<!DOCTYPE html> 
+
+
+<html> 
+	<head> 
+	<meta charset="utf-8"/>
+	<title>Educationg Dreams -Be a Saviour!</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="assets/jquery.mobile-1.0rc1.min.css" />
+	<link rel="stylesheet" href="assets/educate.css" />
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
+	
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	
+	<script type="text/javascript" src="assets/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="assets/jquery.mobile-1.0rc1.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	
+	deviceReady=false; 
+	$(function()
+		{
+			
+		alert("Loadedasd");
+		$('#childimage').click(function() 
+				{
+			
+			
+			takePicture();
+				});
+			
+		function takePicture() {
+	        navigator.camera.getPicture(
+	            function(uri) {
+	                var img = document.getElementById('childimage1');
+	                img.style.visibility = "visible";
+	                img.style.display = "block";
+	                img.src = uri;
+	                
+	                //document.getElementById('camera_status').innerHTML = "Success";
+	            },
+	            function(e) {
+	                console.log("Error getting picture: " + e);
+	                document.getElementById('camera_status').innerHTML = "Error getting picture.";
+	            },
+	            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
+	    };
+	    
+	    
+	    
+			
+		});
+	
+	 
+	function init() {
+	        document.addEventListener("deviceready", function() {deviceReady = true;}, false);
+	        window.setTimeout(function() {
+	            if (!deviceReady) {
+	                alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+	            }
+				else
+				{
+				alert('phonegap loaded');
+				}
+	        },2000);
+	    }
+	
+	</script>
+</head>
+<body onload="init();"> 
+
+<!-- Start of first page
+<!-- <div data-role="page" id="main" data-theme="e"> -->
+<div data-role="page" id="main">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams -Be a Saviour!</h1>
+		<div data-role="navbar">
+			<ul>
+				<li><a class="HomeTab ui-btn-active ui-state-persist" href="#main" data-icon="home">Child's Wish</a></li>
+				<li><a href="#location" data-icon="gear">Lend a Hand</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="mainbg" data-role="content">	
+	
+		<br/><br/>
+			<img class="startimage" src="images\namaz.png">
+		
+		
+		
+		<br /><br />
+	
+		<a href="#location" data-transition="slide" id="moverightmain"></a>
+		<br /><br />
+		
+	<br/><br/>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#dbreport" data-icon="star" data-theme="e">Education Statistics</a></li>
+				</ul>
+			</div>
+
+		<h4>OuzelSoft</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+<!-- Start of Location -->
+<div data-role="page" class="normalbg" id="location">
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams -Be a Saviour!</h1>
+		<div data-role="navbar">
+			<ul>
+				<li><a class="HomeTab" href="#main" data-icon="home">Child's Wish</a></li>
+				<li><a href="#location"  class="ui-btn-active ui-state-persist"  data-icon="gear">Lend a Hand</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" data-role="content">
+		<h1>Child's Wish</h1>
+		<a href="#settings" data-transition="slide" id="moveleftloc"></a>
+		<a href="#main" data-direction="reverse" data-transition="slide" id="moverightloc"></a>
+			
+			<div data-role="fieldcontain">
+
+					<div id="top">
+					
+						<div id="childimage" align="left" style="width:5em;height:5em;background-color:red;">
+						
+						<img id="childimage1" src="" width="80px" height="80px" style="display:none;"/>
+						
+						</div>
+						
+					
+					</div>
+					<form action="get_location.php" method="post" data-ajax="false">
+					<label for="childname"><strong>Name: </strong></label>
+					<input type="text" name="childname" id="childname" value=""  />
+					
+					<label for="childage" class="select"><strong>Age: </strong></label>
+					<select name="childage" id="childage" data-native-menu="false">	
+						<option value="1">234</option>
+						<option value="2">234</option>
+						<option value="3">23</option>
+						<option value="4">123</option>
+						<option value="5">122</option>
+						<option value="6">23</option>
+										
+					</select>
+					
+					
+					<label for="thiscountry"><strong>Country: </strong></label>
+					<input type="text" name="thiscountry" id="thiscountry"  value="Pakistan"  />
+
+					<label for="thiscity" class="select"><strong>City: </strong></label>
+					<select name="thiscity" id="thiscity" data-native-menu="false">	
+						<option value="Hanafi">Dera Ismail Khan</option>
+						<option value="Standard">Faisalabad</option>
+						<option value="">Gilgit</option>
+						<option value="">Gwadar</option>
+						<option value="">Islamabad</option>
+						<option value="">Jocobabad</option>
+						<option value="">Jiwani</option>
+						<option value="">Karachi</option>
+						<option value="">Lahore</option>
+						<option value="">Mardan</option>
+						<option value="">Mianwali</option>
+						<option value="">Multan</option>
+						<option value="">Murree</option>
+						<option value="">Muzaffarabad</option>
+						<option value="">Nawabshah</option>
+						<option value="">Panjgur</option>
+						<option value="">Peshawar</option>
+						<option value="">Quetta</option>
+						<option value="">Sargodha</option>
+						<option value="">Sibi</option>
+						<option value="">Sukkur</option>						
+					</select>
+									
+					<label for="loc"><strong>Address: </strong></label>
+					<input type="text" name="loc" id="loc" value=""  />
+							
+					
+			<input type='submit' id="getloc" name="submit" value="Detect Location Online" />
+                        </form>
+                            </div>
+
+	<p><a href="#main" data-direction="reverse" data-transition="slide">Back</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#location" class="ui-btn-active ui-state-persist" data-icon="search">Location</a></li>
+				<li><a href="#settings"  data-icon="gear">Settings</a></li>
+				<li><a href="#adjust" data-icon="grid">Adjust</a></li>
+				<li><a href="#audio" data-icon="star">Audio</a></li>
+				<li><a href="#about" data-icon="info">About</a></li>
+			</ul>						
+		</div>
+		<h4>OuzelSoft</h4>
+	</div><!-- /footer -->
+</div><!-- / End of Location page -->
+
+
+
+</body>
+</html>

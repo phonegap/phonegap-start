@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.telenor.namazreminder"
-	version 	= "1.5">
+	id		= "com.sony.educatingdreams"
+	version 	= "99.999">
 
-	<name>Namaz Reminder!</name>
+	<name>Educating Dreams</name>
 
 	<description>
-		The Namaz Reminder Application indicates Namaz Times of all 7551 Cities of the world. The latitudes and longitudes of the all the cities are maintained in an offline database. The application also has the feature to detect your current location (online) and calculate Namaz Timing for your current location.
+		The Youth needs you..
 	</description>
 
-	<author href="http://ouzelsoft.webuda.com"
-		email="sameerkhan80@hotmai.com">
+	<author href="http://alunny.github.com"
+		email="andrew.lunny@nitobi.com">
 		Andrew Lunny
 	</author>
 
