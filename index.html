@@ -3,213 +3,640 @@
 
 <html> 
 	<head> 
-	<meta charset="utf-8"/>
-	<title>Educationg Dreams -Be a Saviour!</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="assets/jquery.mobile-1.0rc1.min.css" />
-	<link rel="stylesheet" href="assets/educate.css" />
+	<meta charset="utf-8">
+	<title>iPersonality -Know Yourself!</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript" charset="utf-8" src="assets/phonegap.js"></script>
-	
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	
-	<script type="text/javascript" src="assets/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="assets/jquery.mobile-1.0rc1.min.js"></script>
+	<script type="text/javascript" src="assets/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="assets/jquery.mobile-1.0rc2.min.js"></script>
+	<script type="text/javascript" src="assets/idata.js"></script>
+	<link rel="stylesheet" href="assets/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="assets/istyle.css" />
 	
 	
 	<script type="text/javascript">
 	
-	deviceReady=false; 
-	$(function()
-		{
-			
-		alert("Loadedasd");
-		$('#childimage').click(function() 
-				{
-			
-			
-			takePicture();
-				});
-			
-		function takePicture() {
-	        navigator.camera.getPicture(
-	            function(uri) {
-	                var img = document.getElementById('childimage1');
-	                img.style.visibility = "visible";
-	                img.style.display = "block";
-	                img.src = uri;
-	                
-	                //document.getElementById('camera_status').innerHTML = "Success";
-	            },
-	            function(e) {
-	                console.log("Error getting picture: " + e);
-	                document.getElementById('camera_status').innerHTML = "Error getting picture.";
-	            },
-	            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI});
-	    };
-	    
-	    
-	    
+$(function()
+	{
+		
+		var path = window.location.pathname;
+		var q1="e",q2="s",q3="t",q4="j";
+		var check=0;
+		var type="";
+		
+		
+		
+		
+		//var q2 = $("#b").val();
+		//var q3 = $("#c").val();
+		//var q4 = $("#d").val();
+		
+		
+		//Storing answers on change
+		
+		$("#a").change(function(){
+			q1 = $("#a").val();
+			if(check===1){generatetype()};
 			
 		});
+		
+		$("#b").change(function(){
+			q2 = $("#b").val();
+			if(check===1){generatetype()};
+		});
+		
+		$("#c").change(function(){
+			q3 = $("#c").val();
+			if(check===1){generatetype()};
+		});
+		
+		$("#d").change(function(){
+			q4 = $("#d").val();
+			if(check===1){generatetype()};
+		});
+		
+		$("#evaluate").live("click",function(){
+			//alert("Your type is  "+q1+q2+q3+q4);
+			generatetype();
+			check=1;
+			
+		});
+		
+		function generatetype(){
+			$("#mytype").html('<h3>Your type is</h3><h1 id="typestyle">'+q1+q2+q3+q4+'</h1>').append();
+			type=q1+q2+q3+q4;
+			
+		}
+		
+		
+		$('.geninfo').live("click",function()
+		{
+			
+			$.mobile.showPageLoadingMsg ();
+			var tag = $(this).attr('id');
+			//alert(tag);
+			
+			$.ajax({
+				type: "GET",
+				url: "assets/data.xml",
+				dataType: "xml",
+				success: function(xml) {
+					//alert('In success');
+					$(xml).find(tag).each(function(){
+					
+					//alert($(this).find('desc').text());
+					var title = $(this).find('title').text();
+					var desc = $(this).find('desc').text();
+					var smalltitle = $(this).find('smalltitle').text();
+					var detail = $(this).find('detail').text();
+					var character = $(this).find('character').text();
+					var types = $(this).find('types').text();
+					
+					$("#generatedate").html('<h1>'+title+'</h1><h4>'+desc+'</h4><h3>'+smalltitle+'</h3><p>'+detail+'</p><br/> <h3>Characteristics:</h3><p>'+character+'</p><h3>Types:</h3><p>'+types+'</p>').append();			
+ 
+					});
+			 
+				},
+				error: function (err) {
+										alert(err.code);
+		                                }
+			});
+			
+		$.mobile.hidePageLoadingMsg ();
+				
+		}); //click ends
+				
+		$('#mytype').live("click",function(){
+		
+			$.mobile.showPageLoadingMsg ();
+			
+			
+			//alert(type);
+			
+			$.ajax({
+				type: "GET",
+				url: "assets/nature.xml",
+				dataType: "xml",
+				success: function(xml) {
+					//alert('In success');
+					$(xml).find(type).each(function(){
+					
+					//alert($(this).find('title').text());	
+					var title = $(this).find('title').text();
+					var overview = $(this).find('overview').text();
+					var temper = $(this).find('temper').text();
+					var population = $(this).find('population').text();
+					var people = $(this).find('people').text();
+					var careerdetail = $(this).find('careerdetail').text();
+					var brief = $(this).find('brief').text();
+					var living = $(this).find('living').text();
+					var learning = $(this).find('learning').text();
+					var working = $(this).find('working').text();
+					var leading = $(this).find('leading').text();
+					var loving = $(this).find('loving').text();
+					var career = $(this).find('career').text();
+					var home = $(this).find('home').text();
+					var midlife = $(this).find('midlife').text();
+					var mates = $(this).find('mates').text();
+					var strengths = $(this).find('strengths').text();
+					var weakness = $(this).find('weakness').text();
+					
+					
+					$("#generatepowerups").html('<h1>'+title+'</h1><h3>Your Powerups</h3><p>'+strengths+'</p>').append();			
+					$("#generateweakness").html('<h1>'+title+'</h1><h3>Your Weaknesses</h3><p>'+weakness+'</p>').append();								
+					$("#typeheading").html(title).append();			
+					$("#generatenature").html('<h1>'+title+'</h1><h4>'+overview+'</h4><h3>Population</h3><p>'+population+'</p><h3>People</h3><p>'+people+'</p><h3>Overview</h3><p>'+brief+'</p><h3>Living</h3><p>'+living+'</p><h3>Learning</h3><p>'+learning+'</p><h3>Working</h3><p>'+working+'</p><h3>Leading</h3><p>'+leading+'</p><h3>Loving</h3><p>'+loving+'</p><h3>Career</h3><p>'+career+'</p><h3>Home</h3><p>'+home+'</p><h3>Midlife</h3><p>'+midlife+'</p><h3>Mates</h3><p>'+mates+'</p>').append();			
+					$("#generatetemperament").html('<h1>'+title+'</h1><h3>Temperament</h3><p>'+temper+'</p>').append();								
+					$("#generatecareer").html('<h1>'+title+'</h1><h3>Career</h3><p>'+careerdetail+'</p><h3>Preferred Careers</h3><p>'+career+'</p>').append();			
+					
+					
+					
+					});
+			 
+				},
+				error: function (err) {
+										alert(err.code);
+		                                }
+			});
+			
+		$.mobile.changePage('#userpersonality');	
+		$.mobile.hidePageLoadingMsg ();	
+		
+		});	
+			
+		
+		
+		
+		$(".personalitytypesall").live("click",function(){
+		
+		$.mobile.showPageLoadingMsg ();
+			var infoperson = $(this).text();
+			//alert(infoperson);
+			
+			
+			
+			//alert(type);
+			
+			$.ajax({
+				type: "GET",
+				url: "assets/nature.xml",
+				dataType: "xml",
+				success: function(xml) {
+					//alert('In success');
+					$(xml).find(infoperson).each(function(){
+					
+				//	alert($(this).find('title').text());	
+					var title = $(this).find('title').text();
+					var overview = $(this).find('overview').text();
+					var population = $(this).find('population').text();			
+					var brief = $(this).find('brief').text();
+									
+					
+					$("#generatenature").html('<h1>'+title+'</h1><h3>Population</h3><p>'+population+'</p><h3>Overview</h3><p>'+overview+'</p><br/><p>'+brief+'</p><div id="readmore"><p>Take Personality Test to Generate your Personality Profile</p><h3 class="now">Now!</h3></div>').append();								
+					
+					});
+			 
+				},
+				error: function (err) {
+										alert(err.code);
+		                                }
+			});
+			
+		$.mobile.hidePageLoadingMsg ();	
+		$.mobile.changePage('#nature');	
+		
+		});	
+		
+		$('#readmore').live("click",function(){
 	
-	 
-	function init() {
-	        document.addEventListener("deviceready", function() {deviceReady = true;}, false);
-	        window.setTimeout(function() {
-	            if (!deviceReady) {
-	                alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
-	            }
-				else
-				{
-				alert('phonegap loaded');
-				}
-	        },2000);
-	    }
-	
+		$.mobile.changePage('#knowyourself');
+		
+		});
+			
+			
+			
+			
+			
+			
+			
+});
+			
 	</script>
 </head>
-<body onload="init();"> 
+<body> 
 
 <!-- Start of first page
 <!-- <div data-role="page" id="main" data-theme="e"> -->
 <div data-role="page" id="main">
 
 	<div data-role="header" data-id="myheader">
-		<h1>Educationg Dreams -Be a Saviour!</h1>
+		<h1>iPersonality</h1>
+		<a href="#main" class="ui-btn-active ui-state-persist" data-icon="home">Home</a>
 		<div data-role="navbar">
 			<ul>
-				<li><a class="HomeTab ui-btn-active ui-state-persist" href="#main" data-icon="home">Child's Wish</a></li>
-				<li><a href="#location" data-icon="gear">Lend a Hand</a></li>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-transition="slideup">Know Yourself</a></li>
 			</ul>
 		</div>
 	</div><!-- /header -->
 
-	<div align="center" class="mainbg" data-role="content">	
+	<div align="center" data-role="content" style="background-color:black;">	
 	
-		<br/><br/>
-			<img class="startimage" src="images\namaz.png">
-		
-		
-		
-		<br /><br />
-	
+		<img class="startimage" src="images\main2.png">
 		<a href="#location" data-transition="slide" id="moverightmain"></a>
-		<br /><br />
 		
-	<br/><br/>
-	
 	</div><!-- /content -->
 
 	<div data-role="footer"  >
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#dbreport" data-icon="star" data-theme="e">Education Statistics</a></li>
+					<li><a href="#about" data-theme="e">About</a></li>
 				</ul>
 			</div>
-
-		<h4>OuzelSoft</h4>
+		
+		<h1>OuzelSoft</h1>
+		
 	</div><!-- /footer -->
 </div><!-- /page -->
 
 
 
-<!-- Start of Location -->
-<div data-role="page" class="normalbg" id="location">
-	<div data-role="header" data-id="myheader">
-		<h1>Educationg Dreams -Be a Saviour!</h1>
+<!-- / Start of Know Yourself Page -->
+<div data-role="page" id="knowyourself">
+<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
 		<div data-role="navbar">
 			<ul>
-				<li><a class="HomeTab" href="#main" data-icon="home">Child's Wish</a></li>
-				<li><a href="#location"  class="ui-btn-active ui-state-persist"  data-icon="gear">Lend a Hand</a></li>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" class="ui-btn-active ui-state-persist"  href="#" data-transition="slideup">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+	<h1>Know Yourself</h1>
+	<p>Answer these four questions to find your nature, temperament, preferred career, strengths and weaknesses...</p>
+	
+		<label for="a"><h4>Q1) Are you Extraverted or Introverted?</h4></label>
+		<select name="a" id="a" data-role="slider" data-theme="a">
+			<option value="e">Extraverted</option>
+			<option value="i">Introverted</option>
+		</select> 
+		<div class="ui-grid-a">
+			<div align="left" class="ui-block-a"><a id="qi" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+			<div align="right" class="ui-block-b"><a id="qe" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+		</div><!-- /grid-a -->
+		
+		<label for="b"><h4>Q2) Are you Sensing or iNtuition?</h4></label>
+		<select name="b" id="b" data-role="slider" data-theme="a">
+			<option value="s">Sensing</option>
+			<option value="n">iNtuition</option>
+		</select> 
+		<div class="ui-grid-a">
+			<div align="left" class="ui-block-a"><a id="qn" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+			<div align="right" class="ui-block-b"><a id="qs" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+		</div><!-- /grid-a -->
+		
+		
+		
+		<label for="c"><h4>Q3) Are you Thinking or Feeling?</h4></label>
+		<select name="c" id="c" data-role="slider" data-theme="a">
+			<option value="t">Thinking</option>
+			<option value="f">Feeling</option>
+		</select> 
+		<div class="ui-grid-a">
+			<div align="left" class="ui-block-a"><a id="qf" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+			<div align="right" class="ui-block-b"><a id="qt" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+		</div><!-- /grid-a -->
+		
+		
+		<label for="d"><h4>Q4) Are you Judging or Perceiving?</h4></label>
+		<select name="d" id="d" data-role="slider" data-theme="a">
+			<option value="j">Judging</option>
+			<option value="p">Perceiving</option>
+		</select> 
+		<div class="ui-grid-a">
+			<div align="left" class="ui-block-a"><a id="qp" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+			<div align="right" class="ui-block-b"><a id="qj" class="geninfo" data-theme="e" href="#qinfo" data-role="button" data-icon="info" data-iconpos="notext">Info</a></div>
+		</div><!-- /grid-a -->
+		
+		<div id="mybox">
+			<a id="evaluate" href="#" data-role="button">Evaluate</a>
+			<div id="mytype">
+			</div>
+		</div>
+	
+			
+	</div><!-- /content -->
+
+	<div data-role="footer" align="center">
+	
+	<div id="questionmessage" >Remember there are no right or wrong answers or personality types. Your responses should reflect "the real you", not the way you want to be, think you should be, or are asked to be by someone else.</div>	
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Know Yourself Page -->
+
+
+
+
+<!-- Start of QuestionInfo -->
+<div data-role="page" class="normalbg" id="qinfo">
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
 			</ul>
 		</div>
 	</div><!-- /header -->
 
 	<div align="center" data-role="content">
-		<h1>Child's Wish</h1>
-		<a href="#settings" data-transition="slide" id="moveleftloc"></a>
-		<a href="#main" data-direction="reverse" data-transition="slide" id="moverightloc"></a>
-			
-			<div data-role="fieldcontain">
+		<div id="generatedate">
+		
+		</div>
+	
 
-					<div id="top">
-					
-						<div id="childimage" align="left" style="width:5em;height:5em;background-color:red;">
-						
-						<img id="childimage1" src="" width="80px" height="80px" style="display:none;"/>
-						
-						</div>
-						
-					
-					</div>
-					<form action="get_location.php" method="post" data-ajax="false">
-					<label for="childname"><strong>Name: </strong></label>
-					<input type="text" name="childname" id="childname" value=""  />
-					
-					<label for="childage" class="select"><strong>Age: </strong></label>
-					<select name="childage" id="childage" data-native-menu="false">	
-						<option value="1">234</option>
-						<option value="2">234</option>
-						<option value="3">23</option>
-						<option value="4">123</option>
-						<option value="5">122</option>
-						<option value="6">23</option>
-										
-					</select>
-					
-					
-					<label for="thiscountry"><strong>Country: </strong></label>
-					<input type="text" name="thiscountry" id="thiscountry"  value="Pakistan"  />
-
-					<label for="thiscity" class="select"><strong>City: </strong></label>
-					<select name="thiscity" id="thiscity" data-native-menu="false">	
-						<option value="Hanafi">Dera Ismail Khan</option>
-						<option value="Standard">Faisalabad</option>
-						<option value="">Gilgit</option>
-						<option value="">Gwadar</option>
-						<option value="">Islamabad</option>
-						<option value="">Jocobabad</option>
-						<option value="">Jiwani</option>
-						<option value="">Karachi</option>
-						<option value="">Lahore</option>
-						<option value="">Mardan</option>
-						<option value="">Mianwali</option>
-						<option value="">Multan</option>
-						<option value="">Murree</option>
-						<option value="">Muzaffarabad</option>
-						<option value="">Nawabshah</option>
-						<option value="">Panjgur</option>
-						<option value="">Peshawar</option>
-						<option value="">Quetta</option>
-						<option value="">Sargodha</option>
-						<option value="">Sibi</option>
-						<option value="">Sukkur</option>						
-					</select>
-									
-					<label for="loc"><strong>Address: </strong></label>
-					<input type="text" name="loc" id="loc" value=""  />
-							
-					
-			<input type='submit' id="getloc" name="submit" value="Detect Location Online" />
-                        </form>
-                            </div>
-
-	<p><a href="#main" data-direction="reverse" data-transition="slide">Back</a></p>	
+	<div align="right"><p><a href="#knowyourself" data-direction="reverse" data-transition="slide">Back</a></p>	</div>
 	</div><!-- /content -->
 
 	<div data-role="footer"  >
+		<h4> OuzelSoft</h4>
+	</div><!-- /footer -->
+</div><!-- / End of QuestionInfo page -->
+
+
+<!-- / Start of User Evaluated Personality page -->
+<div data-role="page" id="userpersonality">
+
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
 		<div data-role="navbar">
 			<ul>
-				<li><a href="#location" class="ui-btn-active ui-state-persist" data-icon="search">Location</a></li>
-				<li><a href="#settings"  data-icon="gear">Settings</a></li>
-				<li><a href="#adjust" data-icon="grid">Adjust</a></li>
-				<li><a href="#audio" data-icon="star">Audio</a></li>
-				<li><a href="#about" data-icon="info">About</a></li>
-			</ul>						
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
 		</div>
-		<h4>OuzelSoft</h4>
+	</div><!-- /header -->
+
+	<div align="center" class="horibg" data-role="content" >
+	<h1 id="typeheading"></h1>
+	<ul data-role="listview"><br/>
+		<li><a id="nature" href="#nature"><img src="images\p1.jpg">Nature</a></li>
+		<li><a id="temperament" href="#temperament"><img src="images\p2.jpg">Temperament</a></li>
+		<li><a id="career" href="#career"><img src="images\p5.png">Preferred Career</a></li>	
+		<li><a id="powerups" href="#powerups"><img src="images\p3.jpg">Strengths</a></li>
+		<li><a id="weakness" href="#weakness"><img src="images\p4.jpg">Weaknesses</a></li>	
+		
+	</ul>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1> OuzelSoft</h1>
 	</div><!-- /footer -->
-</div><!-- / End of Location page -->
+</div><!-- /End of User Evaluated Personality Page -->
+
+
+
+
+
+<!-- / Start of Nature page -->
+<div data-role="page" id="nature">
+	
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+	<div  id="generatenature">
+		
+	</div>
+	
+	
+
+	<div align="right"><p><a href="#userpersonality" data-direction="reverse" data-transition="slide">Back</a></p>	</div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Nature page-->
+
+
+
+<!-- / Start of Temperament page -->
+<div data-role="page" id="temperament">
+	
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+	<div  id="generatetemperament">
+		
+	</div>
+
+	<div align="right"><p><a href="#userpersonality" data-direction="reverse" data-transition="slide">Back</a></p>	</div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Temperament page-->
+
+
+<!-- / Start of Career page -->
+<div data-role="page" id="career">
+	
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+	<div  id="generatecareer">
+		
+	</div>
+
+	<div align="right"><p><a href="#userpersonality" data-direction="reverse" data-transition="slide">Back</a></p>	</div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Career page-->
+
+
+
+<!-- / Start of Powerups page -->
+<div data-role="page" id="powerups">
+	
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+	<div  id="generatepowerups">
+		
+	</div>
+
+	<div align="right"><p><a href="#userpersonality" data-direction="reverse" data-transition="slide">Back</a></p>	</div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Powerups page-->
+
+
+
+
+<!-- / Start of Weaknesses page -->
+<div data-role="page" id="weakness">
+	
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+	<div  id="generateweakness">
+		
+	</div>
+
+	<div align="right"><p><a href="#userpersonality" data-direction="reverse" data-transition="slide">Back</a></p>	</div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Weaknesses page-->
+
+
+
+
+
+
+
+
+<!-- / Start of Personality Types page -->
+<div data-role="page" id="persontypes">
+	
+	<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" class="ui-btn-active ui-state-persist" href="#">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">
+		<h1>MBTI</h1>
+		<h2>Introduction</h2>
+		<p>The Myers-Briggs Type Indicator (MBTI) assessment is a psychometric questionnaire designed to measure psychological preferences in how people perceive the world and make decisions. The original developers of the personality inventory were Katharine Cook Briggs and her daughter, Isabel Briggs Myers. They began creating the indicator during World War II, believing that a knowledge of personality preferences would help women who were entering the industrial workforce for the first time identify the sort of war-time jobs where they would be "most comfortable and effective". The initial questionnaire grew into the Myers-Briggs Type Indicator, which was first published in 1962. The MBTI focuses on normal populations and emphasizes the value of naturally occurring differences.</p>
+		<br />
+		
+		<h2>Total Personality Types</h2>
+		<div class="ui-grid-c">
+			<div class="ui-block-a"><a class="personalitytypesall" href="#" data-role="button" data-inline="true">enfj</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">esfj</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">infj</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">isfj</a></div>
+			<div class="ui-block-b"><a class="personalitytypesall" href="#" data-role="button" data-inline="true">enfp</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">esfp</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">infp</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">isfp</a></div>
+			<div class="ui-block-c"><a class="personalitytypesall" href="#" data-role="button" data-inline="true">entj</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">estj</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">intj</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">istj</a></div>
+			<div class="ui-block-d"><a class="personalitytypesall" href="#" data-role="button" data-inline="true">entp</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">estp</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">intp</a><a class="personalitytypesall" href="#" data-role="button" data-inline="true">istp</a></div>
+		</div><!-- /grid-c -->
+		
+		
+
+		<div align="right"><p><a href="#userpersonality" data-direction="reverse" data-transition="slide">Back</a></p>	</div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- /End of Personality Types page-->
+
+
+
+
+<!-- Start of About -->
+<div data-role="page" id="about">
+		<div data-role="header" data-id="myheader">
+		<h1>iPersonality</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a data-theme="e" href="#persontypes">Personality Types</a></li>
+				<li><a data-theme="e" href="#knowyourself" data-direction="reverse" data-transition="slide">Know Yourself</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div class="normalbg2" align="center" data-role="content">	
+		
+		<h1>About</h1>
+		<h2><span class="now">iPersonality v1.0</span></h2>
+		<h3 style="color:#ffffff">Copyright &copy 2011-20</h3><br/><br/>
+		<!--<h3>Deployed for ProBrain '11 Competition Only</h3> -->
+		<h1>Developer</h1><h4 class="now" style="font-size:25px;">Sameer Ahmed Khan</h4><h4 style="color:#ffffff">sameerkhan80@hotmail.com</br></br></h4>
+		
+
+	<p><a href="#main" data-direction="reverse" data-transition="slide">Back</a></p>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+		<h1>OuzelSoft</h1>
+	</div><!-- /footer -->
+</div><!-- / End of About page -->
+
+
+
+
+
+
+
+
+
+
 
 
 

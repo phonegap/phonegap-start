@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.telenor.educatingdreams"
-	version 	= "99.999">
+	id		= "com.telenor.ipersonality"
+	version 	= "1.0">
 
-	<name>Educating Dreams</name>
+	<name>iPersonality!</name>
 
 	<description>
-		The Youth needs you..
+		iPersonality is helps users to identify respective their nature, temperament, preferred career, strengths and weaknesses. The assessment is done using the concepts of MBTI, and asking 4 questions briefly and then generating a final report on each test. The Application also has a resource-center to have an overview of all different 16-types of Personalities.
 	</description>
 
-	<author href="http://alunny.github.com"
-		email="andrew.lunny@nitobi.com">
-		Andrew Lunny
+	<author href="http://ouzelsoft.webuda.com"
+		email="sameerkhan80@hotmail.com">
+		Sameer Ahmed Khan
 	</author>
 
 	<gap:platforms>
