@@ -1,0 +1,23 @@
+/* page styles */
+#bodychart { font-size:62.5%; }
+
+/*demo styles*/
+table {width: 500px; height: 200px; margin-left: 30px;position: absolute; left: -999999px; }
+table.accessHide { position: absolute; left: -999999px; }
+td, th {  font-size: 1.2em; }
+th { background-color:#f4f4f4; } 
+caption { font-size: 1.5em;  }
+
+/*visualize extension styles*/
+.visualize { margin: 60px 0 0 30px; padding: 70px 40px 90px; background: #ccc url(../images/chartbg-vanilla.png) top repeat-x; border: 1px solid #ddd; -moz-border-radius: 12px; -webkit-border-radius: 12px; border-radius: 12px; }
+.visualize canvas { border: 1px solid #aaa; margin: -1px; background: #fff; }
+.visualize-labels-x, .visualize-labels-y { top: 70px; left: 40px; z-index: 100; }
+.visualize-pie .visualize-labels { position: absolute; top: 70px; left: 40px; }
+.visualize-labels-x li span.label, .visualize-labels-y li span.label { color: #444; font-size: 1.3em; padding-right: 5px; }
+.visualize-labels-y li span.line { border-style: solid;  opacity: .7; }
+.visualize .visualize-info { border: 0; position: static;  opacity: 1; background: none; }
+.visualize .visualize-title { position: absolute; top: 20px; color: #333; margin-bottom: 0; left: 20px; font-size: 2.1em; font-weight: bold; }
+.visualize ul.visualize-key { position: absolute; bottom: 15px; background: #eee; z-index: 10; padding: 10px 0; color: #aaa; width: 100%; left: 0;  }
+.visualize ul.visualize-key li { font-size: 1.2em;  margin-left: 20px; padding-left: 18px; }
+.visualize ul.visualize-key .visualize-key-color { width: 10px; height: 10px;  margin-top: -4px; }
+.visualize ul.visualize-key .visualize-key-label { color: #333; }

@@ -1,0 +1,1772 @@
+<!DOCTYPE html> 
+
+
+<html> 
+	<head> 
+	<meta charset="utf-8">
+	<title>Educating Dreams -Be a Saviour!</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" charset="utf-8" src="assets/phonegap.js"></script>
+	
+	
+	<script type="text/javascript" src="assets/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="assets/jquery.mobile-1.0rc2.min.js"></script>
+	<script type="text/javascript" src="assets/Data.js"></script>
+	
+	
+	<script type="text/javascript" src="assets/graph/excanvas.js"></script>
+	<script type="text/javascript" src="assets/graph/visualize.jQuery.js"></script>
+	<link rel="stylesheet" href="assets/graph/visualize.css" />
+	<link rel="stylesheet" href="assets/graph/visualize-light.css" />
+	
+	
+	<link rel="stylesheet" href="assets/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="assets/educate.css" />
+	<script type="text/javascript">
+	
+	$(function()
+		{
+		
+		var path = "http://mystery-man.comxa.com/EducatingDreams/";
+		var childName="";
+		var childAge=5;
+		var childCity="Karachi";
+		var childAddress="";
+		var childNoStudy="No Financial Support";
+		var reason="";
+		var message="";
+		var db="";
+		var Ngos=new Array();
+		var Childs=new Array();
+		var NgoLogin=-1;
+		var childId=-1;
+		var PICTURE="";
+			//PageLoad
+			
+			$.ajax({
+
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_selectngo.php",
+		                                
+										data: {},
+										
+										dataType: "xml",
+		                                success: function (result) {
+										var list="";
+										var options="";
+										options+='<option value="Select Organization">Select Organization</option>';
+		                                        $(result).find('NgoInformation').each(function(index)
+												{
+													var Ngo=new Object();
+													Ngo.id=$(this).find('ngoid').text();
+													Ngo.name=$(this).find('name').text();
+													Ngo.address=$(this).find('address').text();
+													Ngo.mobile_no=$(this).find('mobile_no').text();
+													Ngo.telephone_no=$(this).find('telephone_no').text();
+													Ngo.description=$(this).find('description').text();
+													Ngo.motive=$(this).find('motive').text();
+													Ngo.location=$(this).find('location').text();
+													Ngo.area_work=$(this).find('area_work').text();
+													
+													list+='<li data-id="'+Ngo.id+'"><a href="#ngoinfo"><img src="images\ngo.jpg">'+Ngo.name+'</a></li>';
+													options+='<option value="'+Ngo.name+'">'+Ngo.name+'</option>';
+													Ngos[Ngo.id]=Ngo;
+													
+												});
+		                                        
+											CreateNgoList(list,options);
+											
+		                                },
+		                                error: function (err) {
+										alert(err.code);
+		                                }
+
+		                        });
+								
+								
+								
+			function CreateNgoList( list ,options)
+			{
+				$('#NgoListData	li').remove();
+						$(list).appendTo('#NgoListData');
+						$('#ngolist').page();
+						
+						$('#membership option').remove();
+						$(options).appendTo('#membership');
+						$('#membership').selectmenu('refresh');
+						
+			}
+			//PageLoad
+		
+		
+		//Take Picture
+		
+		$('#childimage').click(function() 
+				{
+			
+				takePicture();
+			
+				});
+			
+		function takePicture() {
+	        navigator.camera.getPicture(
+	            function(uri) {
+	                var img = document.getElementById('childimage1');
+	                img.style.visibility = "visible";
+	                img.style.display = "block";
+                        	
+						ImageData="data:image/jpeg;base64,"+ uri;
+	                img.src = ImageData;
+					PICTURE = ImageData;
+	                
+	               
+	            },
+	            function(e) {
+	                alert("Error getting picture: " + e);
+	               
+	            },
+	            { quality: 30, destinationType: navigator.camera.DestinationType.DATA_URL,allowEdit:true,encodingType:Camera.EncodingType.JPEG,targetWidth:202,targetHeight:247});
+	    };
+		
+		
+		//Take Picture
+		
+		
+		//Showing the information of Ngo
+		
+		$('#NgoListData li').live('click',function()
+		{ 
+		var ngoid=$(this).attr('data-id');
+			$('#NgoName').text(Ngos[ngoid].name);
+			$('#NgoDesc').text(Ngos[ngoid].description);
+			$('#NgoMotive').text(Ngos[ngoid].motive);
+			$('#NgoLoc').text(Ngos[ngoid].location);
+			$('#NgoWork').text(Ngos[ngoid].area_work);
+			
+				
+				
+		});
+		//Showing the information of Ngo
+		
+		
+			//Creating List Of Childs Needs Support
+			$('#SupportChild').click(function()
+			{
+			Childs="";
+			Childs=new Array();
+			$('#confirmyes').attr('data-check',1);
+				$.ajax({
+
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_selectuser.php",
+		                                
+										data: {},
+										
+										dataType: "xml",
+		                                success: function (result) {
+										var list="";
+		                                        $(result).find('UserInformation').each(function(index)
+												{
+													var Child=new Object();
+													Child.id=$(this).find('userid').text();
+													Child.name=$(this).find('name').text();
+													Child.age=$(this).find('age').text();
+													Child.city=$(this).find('city').text();
+													Child.address=$(this).find('address').text();
+													Child.wishes=$(this).find('wishes').text();
+													Child.reason=$(this).find('reason').text();
+												
+													
+													list+='<li data-id="'+Child.id+'"><a href="#"><img src="images/child1.jpg">'+Child.name+'<p><br/>'+Child.city+', Pakistan</p></a></li>';
+													
+													Childs[Child.id]=Child;
+													
+												});
+		                                        
+											CreateChildList(list);
+											
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+			});
+		
+		function CreateChildList( list )
+			{
+				$('#childlistdata li').remove();
+						$(list).appendTo('#childlistdata');
+						//$('#childlist').page();
+						//$('ul#childlistdata').listview();
+						
+						location.href="#childlist";
+						$('#childlistdata').listview('refresh');
+						
+			}
+			
+			
+			$('#childlistdata li').live('click',function()
+			{
+					childId=$(this).attr('data-id');
+					
+					location.href="#childinfo";
+					
+					$('#childData #childname').attr('value',Childs[childId].name);
+					$('#childData #address').attr('value',Childs[childId].address);
+					$('#childData #reasontext').attr('value',Childs[childId].reason);
+					
+					$('#childData #thiscountry').attr('value',Childs[childId].country);
+					$('#childage').val(Childs[childId].age);
+					
+				
+					
+					
+					$('#childData #childage').val(Childs[childId].age).selectmenu("refresh");
+					$('#childData #thiscity').val(Childs[childId].city).selectmenu("refresh");
+					
+					
+					
+			});
+			//Creating List Of Childs Needs Support
+			
+			//Creating List Of Childs whose support is in process
+			$('#SupportInProcess').click(function()
+			{
+			Childs="";
+			Childs=new Array();
+			//2 == Support in Progress
+			$('#confirmyes').attr('data-check',2);
+			
+				$.ajax({
+
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngosupport.php",
+		                                
+										data: {'status':'1','ngoid': NgoLogin },
+										
+										dataType: "xml",
+		                                success: function (result) {
+										var list="";
+		                                        $(result).find('UserInformation').each(function(index)
+												{
+													var Child=new Object();
+													Child.id=$(this).find('userid').text();
+													Child.name=$(this).find('name').text();
+													Child.age=$(this).find('age').text();
+													Child.city=$(this).find('city').text();
+													Child.address=$(this).find('address').text();
+													Child.wishes=$(this).find('wishes').text();
+													Child.reason=$(this).find('reason').text();
+												
+													
+													list+='<li data-id="'+Child.id+'"><a href="#"><img src="images/child1.jpg">'+Child.name+'<p><br/>'+Child.city+', Pakistan</p></a></li>';
+													
+													Childs[Child.id]=Child;
+													
+												});
+		                                        
+											CreateChildListSupport(list);
+											
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+			});
+		
+		function CreateChildListSupport( list )
+			{
+								$('#childlistdatasupport li').remove();
+						$(list).appendTo('#childlistdatasupport');
+						//$('#childlist').page();
+						//$('ul#childlistdata').listview();
+						
+						location.href="#supportprocess";
+						$('#childlistdatasupport').listview('refresh');
+						
+						
+			}
+			
+			$('#childlistdatasupport li').live('click',function()
+			{
+					childId=$(this).attr('data-id');
+					
+					location.href="#childinfo";
+					
+					$('#childData #childname').attr('value',Childs[childId].name);
+					$('#childData #address').attr('value',Childs[childId].address);
+					$('#childData #reasontext').attr('value',Childs[childId].reason);
+					
+					$('#childData #thiscountry').attr('value',Childs[childId].country);
+					$('#childage').val(Childs[childId].age);
+					
+			
+					
+					
+					$('#childData #childage').val(Childs[childId].age).selectmenu("refresh");
+					$('#childData #thiscity').val(Childs[childId].city).selectmenu("refresh");
+					
+					
+					
+			});
+			
+			//Creating List Of Childs whose support is in process
+			
+			
+			
+			//Creating List Of Childs Needs that are Helped
+			$('#HelpedChild').click(function()
+			{
+				Childs="";
+				Childs=new Array();
+				
+				$.ajax({
+
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngosupport.php",
+		                                
+										data: {'status':'2','ngoid': NgoLogin },
+										
+										dataType: "xml",
+		                                success: function (result) {
+										var list="";
+		                                        $(result).find('UserInformation').each(function(index)
+												{
+													var Child=new Object();
+													Child.id=$(this).find('userid').text();
+													Child.name=$(this).find('name').text();
+													Child.age=$(this).find('age').text();
+													Child.city=$(this).find('city').text();
+													Child.address=$(this).find('address').text();
+													Child.wishes=$(this).find('wishes').text();
+													Child.reason=$(this).find('reason').text();
+												
+													
+													list+='<li data-id="'+Child.id+'"><a href="#"><img src="images/child1.jpg">'+Child.name+'<p><br/>'+Child.city+', Pakistan</p></a></li>';
+													
+													Childs[Child.id]=Child;
+													
+												});
+		                                        
+											CreateChildListHelped(list);
+											
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+			});
+		
+		function CreateChildListHelped( list )
+			{
+				
+								$('#childlistdatahelped li').remove();
+						$(list).appendTo('#childlistdatahelped');
+						
+						location.href="#helpedyouth";
+						$('#childlistdatahelped').listview('refresh');
+						
+			}
+			
+			
+			$('#childlistdatahelped li').live('click',function()
+			{
+					childId=$(this).attr('data-id');
+					
+					location.href="#childinfo";
+					
+					$('#childData #childname').attr('value',Childs[childId].name);
+					$('#childData #address').attr('value',Childs[childId].address);
+					$('#childData #reasontext').attr('value',Childs[childId].reason);
+					
+					$('#childData #thiscountry').attr('value',Childs[childId].country);
+					$('#childage').val(Childs[childId].age);
+					
+					alert(Childs[childId].age);
+					
+					
+					$('#childData #childage').val(Childs[childId].age).selectmenu("refresh");
+					$('#childData #thiscity').val(Childs[childId].city).selectmenu("refresh");
+					
+					
+					
+			});
+			//Creating List Of Childs Needs that are Helped
+			
+		
+		
+		
+			//Submitting the Child Information
+			$('#childInfoOnline').click(function(){
+			
+				childName=$('#childname').val();
+				childAddress=$('#address').val();
+				reason=$('#reasontext').val();
+				pic=PICTURE;
+				message="";
+				
+				if(childName==="")
+				{
+					message+='Please Enter Child Name\n';
+				}
+				
+				if(childAge==="")
+				{
+					message+='Please Select Child Age\n';
+				}
+				
+				if(childAddress==="")
+				{
+					message+='Please Select Child Address\n';
+				}
+				
+				if(reason==="")
+				{
+					message+='Please Enter Reason\n';
+				}
+				
+				if(pic==="")
+				{
+					message+='Take Picture\n';
+				}
+				
+				if(message==="")
+				{
+					
+				
+
+				
+				
+					$.ajax({
+
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_insertuser.php",
+		                                
+										data: {'ChildName': childName ,'ChildAge': childAge ,'ChildCity': childCity ,'ChildPic' : pic ,'ChildAddress': childAddress ,'ChildNoStudy': childNoStudy ,'Reason': reason},
+										
+										dataType: "xml",
+		                                success: function (result) {
+		                                        alert($(result).find('status').text());
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+					
+					
+				}
+				else
+				{
+					alert(message);
+				}
+				
+			
+			});
+			
+			
+			
+			function submitOnlineInfo(childName,childAge,childCity,pic,childAddress,childNoStudy,reason)
+			{
+								$.ajax({
+
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_insertuser.php",
+		                                
+										data: {'ChildName': childName ,'ChildAge': childAge ,'ChildCity': childCity ,'ChildPic' : pic ,'ChildAddress': childAddress ,'ChildNoStudy': childNoStudy ,'Reason': reason},
+										
+										dataType: "xml",
+		                                success: function (result) {
+		                                        alert($(result).find('status').text());
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+			}
+			//Submitting the Child Information
+			
+			
+			
+			
+			
+			
+			
+			
+			//Check Login
+			var NgoUser="";
+			$('#membership').change(function()
+			{
+				NgoUser=$(this).attr('value');
+			});
+			
+			
+			$('#checkLogin').click(function()
+			{
+				
+				var password=$('#password').val();
+				$.ajax({
+
+										//alert(NgoUser);
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngologin.php",
+		                                
+										data: {'UserName': NgoUser ,'Password': password },
+										
+										dataType: "xml",
+		                                success: function (result) {
+		                                        if($(result).find('ngo').text()=== "True")
+												{
+													NgoLogin=$(result).find('ngoid').text();
+													$('#NgoLoggedName').text(Ngos[NgoLogin].name);
+													location.href='#ngologged';
+												}
+												else
+												{
+													alert("Authentication Failed");
+												}
+												
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+								
+								
+								
+			});
+			
+						//Check Login
+						
+						
+			//If Done Submit
+			$('#confirmyes').click(function()
+			{
+			alert('asd');
+					if($(this).attr('data-check')==='1')
+					{
+						
+						$.ajax({
+
+										//alert(NgoUser);
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngosubmit.php",
+		                                
+										data: {'status' : '1' ,'ngoid': NgoLogin ,'uid': childId },
+										
+										dataType: "xml",
+		                                success: function (result) {
+		                                        if($(result).find('status').text()=== "True")
+												{
+													alert('Information Submitted');
+													
+												}
+												else
+												{
+													alert("Not Submitted");
+												}
+												
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+					}
+					else if($(this).attr('data-check')==='2')
+					{
+					
+					
+						$.ajax({
+
+										
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngosubmit.php",
+		                                
+										data: {'status' : '2' ,'ngoid': NgoLogin ,'uid': childId },
+										
+										dataType: "xml",
+		                                success: function (result) {
+		                                        if($(result).find('status').text()=== "True")
+												{
+													alert('Information Submitted');
+													
+												}
+												else
+												{
+													alert("Not Submitted");
+												}
+												
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+						alert('Support Progress');
+					}
+			
+			});
+			
+			//If Done Submit
+			
+			
+			
+
+			
+			
+			$('#childage').change(function()
+			{
+				childAge=$(this).attr('value');
+			});
+			
+			$('#thiscity').change(function()
+			{
+				childCity=$(this).attr('value');
+			});
+			
+			$('#childstudybut').change(function()
+			{
+				childNoStudy=$(this).attr('value');
+			});
+			
+			
+			
+			//Store Locally Child Info...
+				function CreateOrOpenDB()
+				{
+					db = window.openDatabase("Database", "1.0", "EducatingChild", 200000);
+					
+					db.transaction(createTable, errorcreateTable);
+				}
+				function errorcreateTable(err)
+				{
+					alert('Couldnt create table');
+				}
+				
+				function createTable(tx)
+				{
+					//tx.executeSql('DROP TABLE IF EXISTS ChildsRecord');
+					
+					//tx.executeSql('CREATE TABLE IF NOT EXISTS NAMAZRECORD ( fajr,zuhr,asr,maghrib,isha,date unique)');
+					tx.executeSql('CREATE TABLE IF NOT EXISTS ChildsRecord ( name,age,city,address,pic,wishes,reason)');
+					
+					
+					
+				}
+				CreateOrOpenDB();
+				
+				function OpenDbInsert()
+				{
+					
+					db.transaction(InsertTable,ErrorInsertTable);
+					
+					
+				}
+				function InsertTable(tx)
+				{
+								
+					tx.executeSql('INSERT INTO ChildsRecord (name,age,city,address,pic,wishes,reason) VALUES ("'+childName+'","'+childAge+'","'+childCity+'","'+childAddress+'","'+PICTURE+'","'+childNoStudy+'","'+reason+'")');
+				}
+				
+				function ErrorInsertTable(err)
+				{
+					
+					alert('Error Inserting Record' + err.message);
+				}
+				
+				
+				//Submit All Data from Local Database
+				$('#childInfoSubmitOnline').click(function()
+				{
+					getRecord();
+				});
+				
+				function queryDB(tx) {
+					tx.executeSql('SELECT * FROM ChildsRecord', [], querySuccess, errorCB);
+				}
+
+				function querySuccess(tx, results) {
+					len=results.rows.length;
+					
+					for (var i=0; i<len; i++)
+					{
+						var s=results.rows.item(i);
+						
+						submitOnlineInfo(s.name,s.age,s.city,s.pic,s.address,s.wishes,s.reason);
+						
+					}
+					
+					delRecord();
+				}
+				
+				function delquerySuccess(tx, results) {
+					
+					
+					}
+				
+				function delqueryDB(tx) {
+					tx.executeSql('DELETE FROM ChildsRecord', [], delquerySuccess, errorCB);
+				}
+				
+				function delRecord()
+				{
+					db.transaction(delqueryDB, errorCB);
+				}
+				
+				function errorCB(err) {
+					alert("Error processing SQL: "+err.code);
+				}
+				
+				function getRecord()
+				{
+					//var db = window.openDatabase("Database", "1.0", "EducatingChild", 200000);
+					db.transaction(queryDB, errorCB);
+					
+				}
+
+
+
+				//Submit All Data from Local Database
+	
+	
+			$('#childInfoOffline').click(function()
+			{
+				
+				
+				childName=$('#childname').val();
+				childAddress=$('#address').val();
+				reason=$('#reasontext').val();
+				message="";
+				
+				if(childName==="")
+				{
+					message+='Please Enter Child Name\n';
+				}
+				
+				if(childAge==="")
+				{
+					message+='Please Select Child Age\n';
+				}
+				
+				if(childAddress==="")
+				{
+					message+='Please Select Child Address\n';
+				}
+				
+				if(reason==="")
+				{
+					message+='Please Enter Reason\n';
+				}
+				
+				
+				if(message==="")
+				{
+					
+					OpenDbInsert();
+				}
+				else
+				{
+					alert(message);
+				}
+				
+				
+			});
+			
+		
+			
+			$('#generatechart').live('click',function(){
+				
+				
+				$('#orgNames th').remove();
+				$('#orgHelped td').remove();
+				
+				$.ajax({
+
+										
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngoHelpedDetails.php",
+		                                
+										data: {},
+										
+										dataType: "xml",
+		                                success: function (result) {
+										
+										
+		                                        $(result).find('UserInformation').each(function()
+												{
+													$('#orgNames').append('<th scope="col">'+$(this).find('username').text()+'</th>');
+													$('#orgHelped').append('<td>'+$(this).find('usercount').text()+'</td>');
+												});
+												
+												
+												drawChart();
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+								
+								
+								
+				
+			});
+				
+				//Generating Live Pie Chart
+				var chart=0;
+				
+				function drawChart()
+				{
+					if(chart===0)
+					{
+						$('table').visualize({type: 'bar', width: '420px'}).appendTo('#barchart').trigger('visualizeRefresh');
+						chart=1;
+						alert("New Chart Generated");
+					}
+					else if(chart===1)
+					{
+						$('table').remove().visualize({type: 'bar', width: '420px'}).appendTo('#barchart').trigger('visualizeRefresh');
+						chart=0;
+						alert("Old Chart Removed & New then Appended");
+						
+					}
+				}
+			/*
+			
+			<h1 id="confirmh1">Are you sure?</h1>
+		<p id="confirmp">Are you sure you take the responsibility of Locating this Child and Providing him with his need to acquire Education?</p>
+		<a id="confirmyes" href="#childinfo" data-role="button" data-rel="back" data-theme="b">Yes I'll Help</a>       
+		<a id="confirmno" href="#" data-role="button" data-rel="back" data-theme="c">Let Me Rethink</a>
+		
+		*/
+			
+		
+		//Changing Dialogs When Clicked on LoggedOrg tab
+		
+		
+		
+		
+		
+		
+		
+		
+			$('#SupportChild').live('click',function(){
+			
+				$('#sendtodialg').attr('href','#confirmdialog');
+				$('#confirmp').text('Are you sure you take the responsibility of Locating this Child and Providing him with his needs to acquire Education?');
+				$('#confirmyes').text("Yes I'll Help");
+				$('#confirmno').text('Let Me Rethink');
+				
+
+			});
+			
+			$('#SupportInProcess').live('click',function(){
+			
+				$('#sendtodialg').attr('href','#confirmdialog');
+				$('#confirmp').text('So finally you have found the child?');
+				$('#confirmyes').text('Yes');
+				$('#confirmno').text('Oh Still Searching');
+				
+		
+			});
+			
+			
+			$('#HelpedChild').live('click',function(){
+				
+				$('#confirmdialog').attr('href','#');
+				//$('#confirmp').text('');
+				//$('#confirmyes').text('');
+				//$('confirmno').text('');
+			
+			});
+			
+			//Registration
+			
+			
+			$('#regorgsubmit').click(function()
+			{
+				var orgName=$('#regorgname').val();
+				var orgPass=$('#regorgpass').val();
+				var orgDesc=$('#regDesc').val();
+				var orgMotive=$('#regmotive').val();
+				var orgLocation=$('#regloc').val();
+				var orgArea=$('#regarea').val();
+				var orgWebsite=$('#regorgweb').val();
+				
+				message="";
+				
+				if(orgName==="")
+				{
+					message+='Please Enter Organization Name\n';
+				}
+				
+				if(orgPass==="")
+				{
+					message+='Please Enter Organization Password\n';
+				}
+				
+				if(orgDesc==="")
+				{
+					message+='Please Enter Organization Description\n';
+				}
+				
+				if(orgMotive==="")
+				{
+					message+='Please Enter Organization Motive\n';
+				}
+				
+				if(orgLocation==="")
+				{
+					message+='Please Enter Organization Location\n';
+				}
+				
+				if(orgArea==="")
+				{
+					message+='Please Enter Organization Area\n';
+				}
+				
+				if(orgWebsite==="")
+				{
+					message+='Please Enter Organization Website\n';
+				}
+				
+				
+				if(message==="")
+				{
+					
+					
+						$.ajax({
+
+										
+										
+
+		                                type: "POST",
+		                                url: path + "webservices/web_ngoregister.php",
+		                                
+										data: {'ngoName' : orgName ,'ngoPass': orgPass ,'ngoDescription': orgDesc ,'ngoMotive': orgMotive,'ngoLocation': orgLocation,'ngoArea': orgArea,'ngoImage': orgArea,'ngoWebsite': orgWebsite},
+										
+										dataType: "xml",
+		                                success: function (result) {
+		                                        if($(result).find('status').text()=== "True")
+												{
+													alert('Information Submitted');
+													
+												}
+												else
+												{
+													alert("Not Submitted");
+												}
+												
+		                                        
+
+		                                },
+		                                error: function () {
+										alert('error');
+		                                }
+
+		                        });
+				}
+				else
+				{
+					alert(message);
+				}
+			});
+			
+		});
+	
+	
+	
+	
+	</script>
+</head>
+<body> 
+
+<!-- Start of first page
+<!-- <div data-role="page" id="main" data-theme="e"> -->
+<div data-role="page" id="main">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" class="ui-btn-active ui-state-persist" data-icon="home">Home</a>
+		<a align="right" href="#login" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="mainbg" data-role="content" style="background-color:black;">	
+	
+		<img class="startimage" src="images\main.png">
+		<a href="#location" data-transition="slide" id="moverightmain"></a>
+		
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#dbreport" data-icon="star" data-theme="e">Education Statistics</a></li>
+				</ul>
+			</div>
+		
+		<h5> University of Karachi</h5>
+		<div data-role="navbar">
+				<ul>
+					<li><a data-role="button" align="right" href="#about">About</a></li>
+				</ul>
+			</div>
+		<div align="right">
+			
+		</div>
+		
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+<!-- / Start of Education Statistics Page -->
+<div data-role="page" id="dbreport">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<a align="right" href="#login" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1>Organizations Statistics</h1>
+	<a id="generatechart" href="#" data-role="button">Generate Chart</a>
+	
+	<div id="bodychart">
+	<div id="barchart" align="center" data-role="none" style="padding-top:-99px;">	
+		<table >
+			<caption>Education Statistics of Pakistan</caption>
+			<thead>
+				<tr id="orgNames">
+					<td></td>
+					<th scope="col">PeaceOrg</th>
+					<th scope="col">KarachiWelfare</th>
+					<th scope="col">BeingHuman</th>
+					<th scope="col">YouthPlan</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="orgHelped">
+					<th scope="row">Children Educated</th>
+					<td>17</td>
+					<td>10</td>
+					<td>4</td>
+					<td>23</td>
+				</tr>
+					
+			</tbody>
+		</table>
+	 
+	</div>
+	</div>
+	
+	
+	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	<div data-role="navbar">
+			<ul>
+				<li><p id="ngomailus" align="center">Are you a Welfare Organisation, <br/>Send us your details to approve your account <br/><a href="#ngoregister">Register Now!</a></p></li>
+			</ul>	
+	</div>
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of Education Statistics Page -->
+
+
+
+
+<!-- Start of Child Wish -->
+<div data-role="page" class="normalbg" id="childwish">
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<a align="right" href="#login" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" data-role="content" class="normalbg">
+		<h1>Child's Wish</h1>
+		
+	
+	
+				<div id="childimage" align="center">
+					<img id="childimage1" src="" width="202px" height="248px">
+				</div>
+				<br />	
+				
+				<label for="childname"><strong>Name: </strong></label>
+				<input type="text" name="childname" id="childname" value=""  />
+				<br />	
+				<label for="childage" class="select"><strong>Age: </strong></label>
+				<select name="childage" id="childage" data-native-menu="false">	
+					<option value="5">Below 5 Years Old</option>
+					<option value="10">5-10 Years Old</option>
+					<option value="15">10-15 Years Old</option>
+					<option value="20">15-20 Years Old</option>					
+				</select>
+				
+				<br />	
+				<label for="thiscountry"><strong>Country: </strong></label>
+				<input type="text" name="thiscountry" id="thiscountry" disabled="disabled" value="Pakistan"  />
+				<br />	
+				
+				<label for="thiscity" class="select"><strong>City: </strong></label>
+				<select name="thiscity" id="thiscity" data-native-menu="false">	
+					<option value="deraismail">Dera Ismail Khan</option>
+					<option value="faisalabad">Faisalabad</option>
+					<option value="gilgit">Gilgit</option>
+					<option value="gwadar">Gwadar</option>
+					<option value="islamabad">Islamabad</option>
+					<option value="jocobabad">Jocobabad</option>
+					<option value="jiwani">Jiwani</option>
+					<option value="karachi">Karachi</option>
+					<option value="lahore">Lahore</option>
+					<option value="mardan">Mardan</option>
+					<option value="mianwali">Mianwali</option>
+					<option value="multan">Multan</option>
+					<option value="murree">Murree</option>
+					<option value="muzaffarabad">Muzaffarabad</option>
+					<option value="nawabshah">Nawabshah</option>
+					<option value="panjgur">Panjgur</option>
+					<option value="peshawar">Peshawar</option>
+					<option value="quetta">Quetta</option>
+					<option value="sargodha">Sargodha</option>
+					<option value="sibi">Sibi</option>
+					<option value="sukkur">Sukkur</option>						
+				</select>
+				
+				<br />			
+				<label for="address"><strong>Address of Child: </strong></label>
+				<input type="text" name="address" id="address" value=""  />
+				<br />		
+						
+				<label for="childstudybut" class="select"><strong>Wishes to Study But: </strong></label>
+				<select name="childstudybut" id="childstudybut" data-native-menu="false">	
+					<option value="nofinancialsupport">No Financial Support</option>
+					<option value="parents">Parents Don't Allow</option>
+					<option value="noschools">No Schools Nearby</option>
+					<option value="aggressiveteacher">Have Aggressive Teachers</option>
+					<option value="why">Why Should I Study?</option>
+					<option value="other">Other</option>
+				</select>
+				<br />
+				<label for="reasontext"><strong>Reason:</strong></label>
+				<textarea cols="80" rows="3" name="reasontext" id="reasontext"></textarea>
+
+			<br/>	
+				
+
+			<div id="sendinfomail">
+			<hr />
+				<h2>If Internet Connection is</h2>
+				<h3>Present:</h3>
+				
+				<button id="childInfoOnline" type="submit">Submit Information Online</button>
+				<hr />
+				<h3>Not Present:</h3>
+				<p>To send the information later when internet connection becomes available, first store the information in memory, and later when Internet Connection is present press the "Submit Information from Mobile."</p>
+				<a id="childInfoOffline" href="#" data-role="button">Store Information In Mobile</a>
+				<a id="childInfoSubmitOnline" href="#" data-role="button">Submit Information from Mobile</a>
+				<hr />
+			</div>
+
+	<div align="right"><p><a href="#main" data-direction="reverse" data-transition="slide">Back</a></p>	</div>
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- / End of Child Wish page -->
+
+
+<!-- / Start of All NGO List page -->
+<div data-role="page" id="ngolist">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<a align="right" href="#login" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a class="ui-btn-active ui-state-persist" href="#ngolist">Lending Hands</a></li>
+			
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg" >
+	<h1>Organizations Supporting Youth</h1><br/>
+	<ul data-role="listview" id="NgoListData" data-filter="true" data-filter-placeholder="Search Organizations"><br/>
+		<li><a href="#ngoinfo"><img src="images\ngo.jpg">Peace Organization</a></li>
+		<li><a href="#ngoinfo"><img src="images\ngo2.jpg">Karachi Welfare Trust</a></li>
+		<li><a href="#ngoinfo"><img src="images\ngo3.jpg">Being Human</a></li>
+		<li><a href="#ngoinfo"><img src="images\ngo4.jpg">Youth Empowerment Plan</a></li>
+		
+		
+	</ul>
+			
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	<div data-role="navbar">
+			<ul>
+				<li><p id="ngomailus" align="center">Are you a Welfare Organisation, <br/>Send us your details to approve your account <br/><a href="#ngoregister">Register Now!</a></p></li>
+			</ul>	
+	</div>
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of All NGO List Data -->
+
+
+
+
+
+<!-- / Start of NGO Info page -->
+<div data-role="page" id="ngoinfo">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<a align="right" href="#login" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a class="ui-btn-active ui-state-persist" href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1 id="NgoName">Peace Organization</h1><br/>
+	<div align="center">
+		<div id="ngoinfoimg" >		
+		</div>	
+		
+	</div>
+
+	<h3><strong>Description:</strong></h3>
+	<p id="NgoDesc">Abra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabra</p>
+	
+	<h3><strong>Motive:</strong></h3>
+	<p id="NgoMotive">Abra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabra</p>
+	
+	<h3><strong>Location:</strong></h3>
+	<p id="NgoLoc">Abra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabra</p>
+	
+	<h3><strong>Area of Work:</strong></h3>
+	<p id="NgoWork">Abra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabraAbra cadabra</p>
+	
+	
+	<hr />
+	<div align="center">
+	
+		<div class="ui-grid-a">
+			<div class="ui-block-a"><label style="padding-top:7px;" for="ngohelped"><strong>Youth Helped </strong></label></div>
+			<div class="ui-block-b"><input type="text" name="ngohelped" id="ngohelped" disabled="disabled" value="13"/></div>
+		</div><!-- /grid-a -->
+
+	</div>
+	<hr />
+	
+	
+			
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	<div data-role="navbar">
+			<ul>
+				<li><p id="ngomailus" align="center">Are you a Welfare Organisation, <br/>Send us your details to approve your account <br/><a href="#ngoregister">Register Now!</a></p></li>
+			</ul>	
+	</div>
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of NGO info page-->
+
+
+
+<!-- / Start of Login page -->
+<div data-role="page" id="login">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<a align="right" href="#login" class="ui-btn-active ui-state-persist" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1>Organizations Login</h1><br/>
+	
+		<div align="center">
+		<label for="membership"><strong>Organizations Helping</strong> </label>
+		<select name="membership" id="membership" data-native-menu="false">
+			<option value="">Organizations Helping</option>
+			<option value="org1">Peace Organization</option>
+			<option value="org2">Karachi Welfare Trust</option>
+			<option value="org3">Being Human</option>
+			<option value="org4">Youth Empowerment Plan</option>		
+		</select>
+		
+		<br />
+		<label for="password"><strong>Password </strong><span style="color:#FF5252; font-size:16px;">*</span></label>
+		<input type="password" name="password" id="password" value=""/>
+	
+	<br />
+	<a id="checkLogin" href="#" data-role="button" data-theme="c">Login</a> 
+	<br /><br />
+	</div>
+		
+			
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	<div data-role="navbar">
+			<ul>
+				<li><p id="ngomailus" align="center">Are you a Welfare Organisation, <br/>Send us your details to approve your account <br/><a href="#ngoregister">Register Now!</a></p></li>
+			</ul>	
+	</div>
+
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of Login page-->
+
+
+
+<!-- / Start of NGO logged In Page -->
+<div data-role="page" id="ngologged">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#ngologged" data-icon="home">Home</a>
+		<a align="right" href="#main" data-icon="gear">Logout</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1 id="NgoLoggedName">Peace Organization</h1><br/>
+	
+	<div align="center">
+		<a id="SupportChild" href="#" data-role="button">Support Child</a>
+		<a id="SupportInProcess" href="#" data-role="button">Support In Process</a>
+		<a id="HelpedChild" href="#" data-role="button">Helped Youth</a>
+		
+		
+	</div>
+	
+	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of NGO logged in page -->
+
+
+
+
+
+<!-- / Start of ChildList Page -->
+<div data-role="page" id="childlist">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#ngologged" data-icon="home">Home</a>
+		<a align="right" href="#main" data-icon="gear">Logout</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1>Peace Organization</h1><br/>
+	<h3 align="center">The Wishing Youth List</h3>
+	<ul data-role="listview" id="childlistdata" data-filter="true" data-filter-placeholder="Search Specific Child"><br/>
+		<li><a href="#childinfo"><img src="images\child1.jpg">Ahmed <p><br/>Karachi, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child2.jpg">Sher Khan<p><br/>Lahore, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child1.jpg">Misbah<p><br/>Karachi, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child2.jpg">Amir<p><br/>Lahore, Pakistan</p></a></li>	
+	</ul>
+	
+<div align="right"><p><a href="#ngologged"  data-direction="reverse" data-transition="slide">Back</a></p></div>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of ChildList Page -->
+
+
+
+
+<!-- / Start of SupportInProcess Page -->
+<div data-role="page" id="supportprocess">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#ngologged" data-icon="home">Home</a>
+		<a align="right" href="#main" data-icon="gear">Logout</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1>Peace Organization</h1><br/>
+	<h3 align="center">Support In Process</h3>
+	<ul data-role="listview" id="childlistdatasupport" data-filter="true" data-filter-placeholder="Search Child"><br/>
+		<li><a href="#childinfo"><img src="images\child1.jpg">Ahmed <p><br/>Karachi, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child2.jpg">Sher Khan<p><br/>Lahore, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child1.jpg">Misbah<p><br/>Karachi, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child2.jpg">Amir<p><br/>Lahore, Pakistan</p></a></li>	
+	</ul>
+	
+	<div align="right"><p><a href="#ngologged"  data-direction="reverse" data-transition="slide">Back</a></p></div>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of SupportInProcess Page -->
+
+
+
+<!-- / Start of HelpedYouth Page -->
+<div data-role="page" id="helpedyouth">
+
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#ngologged" data-icon="home">Home</a>
+		<a align="right" href="#main" data-icon="gear">Logout</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class="normalbg">
+	<h1>Peace Organization</h1><br/>
+	<h3 align="center">Helped Youth</h3>
+	<ul data-role="listview" id="childlistdatahelped" data-filter="true" data-filter-placeholder="Search Already Helped Children"><br/>
+		<li><a href="#childinfo"><img src="images\child1.jpg">Ahmed <p><br/>Karachi, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child2.jpg">Sher Khan<p><br/>Lahore, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child1.jpg">Misbah<p><br/>Karachi, Pakistan</p></a></li>
+		<li><a href="#childinfo"><img src="images\child2.jpg">Amir<p><br/>Lahore, Pakistan</p></a></li>	
+	</ul>
+		
+	<div align="right"><p><a href="#ngologged"  data-direction="reverse" data-transition="slide">Back</a></p></div>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- /End of HelpedYouth Page -->
+
+
+
+
+<!-- Start of ChildInfo Page -->
+<div data-role="page" class="normalbg" id="childinfo">
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#ngologged" data-icon="home">Home</a>
+		<a align="right" href="#main" data-icon="gear">Logout</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" data-role="content" class="normalbg">
+		<h1>Child Details</h1>
+		
+	<div id="childData" data-role="fieldcontain">	
+					
+		<div id="specificchildimage" align="center">
+		</div>
+		<br />	
+		
+		<label for="childname"><strong>Name: </strong></label>
+		<input type="text" name="childname" id="childname" value="Ahmed" disabled="disabled" />
+		<br />	
+		<label for="childage" class="select"><strong>Age: </strong></label>
+		<select name="childage" id="childage" data-native-menu="false" disabled="disabled">	
+			<option value="5">Below 5 Years Old</option>
+			<option value="10">5-10 Years Old</option>
+			<option value="15">10-15 Years Old</option>
+			<option value="20">15-20 Years Old</option>					
+		</select>
+		
+		<br />	
+		<label for="thiscountry"><strong>Country: </strong></label>
+		<input type="text" name="thiscountry" id="thiscountry" disabled="disabled" value="Pakistan"  />
+		<br />	
+		
+		<label for="thiscity" class="select"><strong>City: </strong></label>
+		<select name="thiscity" id="thiscity" data-native-menu="false" disabled="disabled">	
+			<option value="deraismail">Dera Ismail Khan</option>
+			<option value="faisalabad">Faisalabad</option>
+			<option value="gilgit">Gilgit</option>
+			<option value="gwadar">Gwadar</option>
+			<option value="islamabad">Islamabad</option>
+			<option value="jocobabad">Jocobabad</option>
+			<option value="jiwani">Jiwani</option>
+			<option value="karachi">Karachi</option>
+			<option value="lahore">Lahore</option>
+			<option value="mardan">Mardan</option>
+			<option value="mianwali">Mianwali</option>
+			<option value="multan">Multan</option>
+			<option value="murree">Murree</option>
+			<option value="muzaffarabad">Muzaffarabad</option>
+			<option value="nawabshah">Nawabshah</option>
+			<option value="panjgur">Panjgur</option>
+			<option value="peshawar">Peshawar</option>
+			<option value="quetta">Quetta</option>
+			<option value="sargodha">Sargodha</option>
+			<option value="sibi">Sibi</option>
+			<option value="sukkur">Sukkur</option>						
+		</select>
+		
+		<br />			
+		<label for="address"><strong>Address of Child: </strong></label>
+		<input type="text" name="address" id="address" value="A-232,North Karachi"  disabled="disabled"/>
+		<br />		
+				
+		<label for="childstudybut" class="select"><strong>Wishes to Study But: </strong></label>
+		<select name="childstudybut" id="childstudybut" data-native-menu="false" disabled="disabled">	
+			<option value="nofinancialsupport">No Financial Support</option>
+			<option value="parents">Parents Don't Allow</option>
+			<option value="childlabour">Does Child Labour</option>
+			<option value="aggressiveteacher">Have Aggressive Teachers</option>
+			<option value="other">Other</option>
+		</select>
+		<br />
+		<label for="reasontext"><strong>Reason:</strong></label>
+		<textarea cols="80" rows="3" name="reasontext" id="reasontext" disabled="disabled">Parents aren't alive, lives alone with Uncle</textarea>
+
+	<br/>	
+		
+	</div>
+	
+	<a id="sendtodialg" href="#confirmdialog" data-role="button" data-transition="slidedown" data-rel="dialog">I Accept to Support this Child!</a>
+	<div align="right"><p><a href="#childlist" data-direction="reverse" data-transition="slide">Back</a></p>	</div>
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- / End of ChildInfo Page -->
+
+
+
+<!-- Start of ConfirmDialog Page -->
+<div data-role="page"  id="confirmdialog">
+	
+
+	<div data-role="header" data-theme="d">
+			<h1>Educating Dreams -Be a Saviour!</h1>
+	</div>
+
+	<div data-role="content" data-theme="c">
+		<h1 id="confirmh1">Are you sure?</h1>
+		<p id="confirmp">Are you sure you take the responsibility of Locating this Child and Providing him with his need to acquire Education?</p>
+		<a id="confirmyes" href="#childinfo" data-role="button" data-rel="back" data-theme="b">Yes I'll Help</a>       
+		<a id="confirmno" href="#" data-role="button" data-rel="back" data-theme="c">Let Me Rethink</a>
+	</div><!-- /content -->
+
+</div><!-- / End of ConfirmDialog page -->
+
+
+
+
+
+
+<!-- Start of About -->
+<div data-role="page" id="about">
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#ngologged" data-icon="home">Home</a>
+		<a align="right" href="#main" data-icon="gear">Logout</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div class="aboutbg" align="center" data-role="content">	
+		
+		<h1>About</h1>
+		<h2 id="aboutname">Educating Dreams <small>v1.0</small></span>-Beta</h2>
+		<h3 style="font-size:16px;">Copyright &copy 2011-20</h3>
+		<!--<h3>Deployed for ProBrain '11 Competition Only</h3> -->
+		<h4 style="color:white;"><span id="developers"><strong><span style="color:white">Team Members:<span></strong></br></br>Sameer Ahmed Khan</span></br>sameerkhan80@hotmail.com</br></br><span id="developers">Zohaib Ahmed Shakir</span></br>zohaib_shakir2009@hotmail.com</br></br><span id="developers">Noman Bin Rizwan</span></br>noman89@hotmail.com</h4>
+		
+
+	<p><a href="#main" data-direction="reverse" data-transition="slide">Back</a></p>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- / End of About page -->
+
+
+
+<!-- Start of Ngoregister Page -->
+<div data-role="page" id="ngoregister">
+	<div data-role="header" data-id="myheader">
+		<h1>Educationg Dreams</h1>
+		<a href="#main" data-icon="home">Home</a>
+		<a align="right" href="#login" data-icon="gear">Login</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#childwish">Child's Wish</a></li>
+				<li id="NgoList"><a href="#ngolist">Lending Hands</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div align="center" class="normalbg" data-role="content">	
+		
+		<h1>Register Now</h1>
+		<h4>Please fill details of your Organization and be a part of Saviours!</h4>
+		<hr/>
+		<h5>Your Account will be approved after reviewing your Organization's Details</h5>
+		<hr/>
+		
+		<div data-role="fieldcontain">
+		
+			<label for="regorgname"><h3>Organization Name</h3></label>
+			<input type="text" name="regorgname" id="regorgname" value=""  /><br />
+			
+			<label for="regorgpass"><h3>Password</h3></label>
+			<input type="password" name="regorgpass" id="regorgpass" value=""  /><br />
+			
+			<label for="regDesc"><h3>Description</h3></label>
+			<textarea name="regDesc" id="regDesc"></textarea><br />
+		
+			<label for="regmotive"><h3>Motive</h3></label>
+			<textarea name="regmotive" id="regmotive"></textarea><br />
+	
+			<label for="regloc"><h3>Location</h3></label>
+			<textarea name="regloc" id="regloc"></textarea><br />
+	
+			<label for="regarea"><h3>Area of Work</h3></label>
+			<textarea name="regarea" id="regarea"></textarea>
+			
+			<label for="regimage"><h3>Organization Image</h3></label>
+			<input type="button" name="regimage" id="regimage" />
+			
+			<label for="regorgweb"><h3>Website</h3></label>
+			<input type="text" name="regorgweb" id="regorgweb" value=""  /><br />
+	
+		</div>
+		<button id="regorgsubmit">Submit</button>
+		<hr/>
+		
+	<p><a href="#main" data-direction="reverse" data-transition="slide">Back</a></p>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer"  >
+		<h4> University of Karachi</h4>
+	</div><!-- /footer -->
+</div><!-- / End of Ngoregister page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
