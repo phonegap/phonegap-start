@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.telenor.ipersonality"
+	id		= "com.telenor.educatingdreams"
 	version 	= "1.0">
 
-	<name>iPersonality!</name>
+	<name>Educating Dreams</name>
 
 	<description>
-		iPersonality is helps users to identify respective their nature, temperament, preferred career, strengths and weaknesses. The assessment is done using the concepts of MBTI, and asking 4 questions briefly and then generating a final report on each test. The Application also has a resource-center to have an overview of all different 16-types of Personalities.
+	The Purpose of Educating Dreams –Be a Saviour is to increase the literacy rate of society and bring into notice the youth that desires to study and provide them with immediate help through registered Welfare Organizations.
 	</description>
 
 	<author href="http://ouzelsoft.webuda.com"
