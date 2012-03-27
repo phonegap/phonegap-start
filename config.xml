@@ -10,9 +10,9 @@
 		A template for getting started with PhoneGap development and build.phonegap.com
 	</description>
 
-	<author href="http://alunny.github.com"
-		email="andrew.lunny@nitobi.com">
-		Andrew Lunny
+	<author href="http://vinoba.github.com"
+		email="v.vinoba@gmail.com">
+		Vinoba Vinayagamoorthy
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
