@@ -21,6 +21,15 @@
 		
 		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 		
+		<script type="text/javascript">
+		window.addEventListener("batterystatus", onBatteryStatus, false);
+		
+		function onBatteryStatus(info) {
+		    // Handle the online event
+		    console.log("Level: " + info.level + " isPlugged: " + info.isPlugged); 
+		}
+		</script>
+		
 	</head>
 	<body>
  		<div id="title_bar">Phone<strong>Gap</strong> Training App - St. Dangerous</div>
