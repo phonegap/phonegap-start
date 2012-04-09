@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Power Spy' target in the 'Power Spy' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

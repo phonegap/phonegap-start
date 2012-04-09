@@ -1,0 +1,1 @@
+Put the .h and .m files of your plugin here. The .js files of your plugin belong in the www folder.
