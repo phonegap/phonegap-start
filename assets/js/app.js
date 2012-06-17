@@ -76,6 +76,7 @@ run(function () {
         // Called if something bad happens.
         //
         function captureError(error) {
+        	console.log(error);
             var msg = 'An error occurred during capture: ' + error.code;
             navigator.notification.alert(msg, null, 'Uh oh!');
     }
