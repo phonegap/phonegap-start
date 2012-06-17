@@ -60,9 +60,10 @@ run(function () {
 	    alert('video');
 	    //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 2});
 	    
-	    navigator.camera.getPicture(captureSuccess, captureError, { quality: 50, 
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
+	    //navigator.camera.getPicture(captureSuccess, captureError, { quality: 50, 
+        //destinationType: destinationType.FILE_URI,
+        //sourceType: source });
+        window.location='capture.html';
     
     });
     
