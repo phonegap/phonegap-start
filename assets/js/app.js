@@ -57,6 +57,7 @@ run(function () {
     when('#video', function () {
             // Launch device video recording application,
 	    // allowing user to capture up to 2 video clips
+	    alert('video');
 	    navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 2});
     
     });
