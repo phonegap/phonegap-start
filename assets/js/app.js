@@ -53,4 +53,43 @@ run(function () {
         });
         display('#welcome');
     });
+    
+    when('#video', function () {
+            // Launch device video recording application,
+	    // allowing user to capture up to 2 video clips
+	    alert('video');
+	    //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 2});
+	    
+	    //navigator.camera.getPicture(captureSuccess, captureError, { quality: 50, 
+        //destinationType: destinationType.FILE_URI,
+        //sourceType: source });
+        window.location='capture.html';
+        //window.location='camera.html';
+    
+    });
+    
+    
+    //================
+        // Called when capture operation is finished
+        //
+        function captureSuccess(mediaFiles) {
+            var i, len;
+            for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+                //uploadFile(mediaFiles[i]);
+            }
+        }
+    
+        // Called if something bad happens.
+        //
+        function captureError(error) {
+        	console.log(error);
+            var msg = 'An error occurred during capture: ' + error.code;
+            navigator.notification.alert(msg, null, 'Uh oh!');
+    }
+    
+    
+    
+   //============================== 
+    
+    
 });
