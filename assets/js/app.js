@@ -63,8 +63,8 @@ run(function () {
 	    //navigator.camera.getPicture(captureSuccess, captureError, { quality: 50, 
         //destinationType: destinationType.FILE_URI,
         //sourceType: source });
-       // window.location='capture.html';
-        window.location='camera.html';
+        window.location='capture.html';
+        //window.location='camera.html';
     
     });
     
