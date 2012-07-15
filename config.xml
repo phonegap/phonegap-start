@@ -4,15 +4,15 @@
 	id		= "com.phonegap.getting.started"
 	version 	= "1.0.0">
 
-	<name>PhoneGap: Getting Started</name>
+	<name>Eyelander</name>
 
 	<description>
-		A template for getting started with PhoneGap development and build.phonegap.com
+		Demo app for concept designed by MirkoLazovic.com. Landing eyes on the right places:  location aware, motion aware...
 	</description>
 
-	<author href="http://alunny.github.com"
-		email="andrew.lunny@nitobi.com">
-		Andrew Lunny
+	<author href="http://marnixdekker.github.com"
+		email="dekker.marnix@gmail.com">
+		Marnix
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
