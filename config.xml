@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.phonegap.getting.started"
+	id		= "com.vsgrp.vsbridge.gap.app"
 	version 	= "1.0.0">
 
-	<name>PhoneGap: Getting Started</name>
+	<name>Vector Sigma Bridge</name>
 
 	<description>
-		A template for getting started with PhoneGap development and build.phonegap.com
+		A bridge between the time and space of Noob and Master to Android Development
 	</description>
 
-	<author href="http://alunny.github.com"
-		email="andrew.lunny@nitobi.com">
-		Andrew Lunny
+	<author href="http://justlovejoy.github.com"
+		email="justlovejoy@gmail.com">
+		JoyRideAlpha VectorSigma
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
@@ -20,5 +20,5 @@
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
 
-	<preference name="orientation" value="portrait" />
+	<preference name="orientation" value="default" />
 </widget>
