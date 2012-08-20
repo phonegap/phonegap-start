@@ -8,6 +8,7 @@ The application is based on the Apache Cordova Hello World example.
 
     cp /incubator-cordova-app-hello-world/www www/
 
+Do not replace `www/config.xml`.
 Do not replace `www/img/logo.png`.
 
 ### Update the HTML
