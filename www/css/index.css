@@ -37,35 +37,37 @@ body {
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    margin:0px;
+    padding:0px;
     text-transform:uppercase;
 }
 
-/* portrait layout for the app (default) */
+/* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat;
-    position:absolute;
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
-    margin:-120px 0 0 -110px;       /* shift container to top-left by half its width and height */
-    background-position:center top;
-    height:100px;                   /* add enough room for text */
-    padding:180px 0px 0px 0px;      /* background-image height - image's shadow */
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
     text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
 }
 
-/* lanscape layout for the app (when wide enough) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:445px) {
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
         background-position:left center;
-        height:140px;             /* height + padding = background image size */
-        padding-left:170px;       /* background width */
-        padding-top:60px;         /* vertically center the text to background image */
-        margin:-90px 0 0 -200px;  /* shift container to top left by half its width and height */
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
     }
 }
 
 h1 {
-    font-size:36px;     /* @override increase font-size for "PhoneGap" text */
+    font-size:24px;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -79,8 +81,8 @@ h1 {
     -webkit-border-radius:4px;
     color:#FFFFFF;
     font-size:12px;
-    margin:0px 20px;
-    padding:2px 20px;
+    margin:0px 30px;
+    padding:2px 0px;
 }
 
 .status.complete {
