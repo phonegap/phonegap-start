@@ -17,9 +17,3 @@ Do not replace `www/img/logo.png`.
 
 Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 
-### Update the CSS
-
-    vim www/css/index.css
-
-Replace `h1 { font-size:24px; }` with `h1 { font-size:36px; }`.
-
