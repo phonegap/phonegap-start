@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-html,
-body {
-    height:100%;
-    font-size:12px;
-    width:100%;
+* {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
 body {
@@ -37,9 +37,12 @@ body {
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
     margin:0px;
     padding:0px;
     text-transform:uppercase;
+    width:100%;
 }
 
 /* Portrait layout (default) */
