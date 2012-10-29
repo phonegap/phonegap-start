@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Ref: https://build.phonegap.com/docs/config-xml -->
+
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.hello-world"
@@ -13,13 +16,36 @@
         PhoneGap Team
     </author>
 
+    <!-- to enable individual permissions use the following example -->
     <feature name="http://api.phonegap.com/1.0/device" />
-
-    <preference name="phonegap-version" value="2.0.0" />
-    <preference name="orientation"      value="default" />
-    <preference name="target-device"    value="universal" />
-    <preference name="fullscreen"       value="false" />
-
+  
+    <!-- If you do not want any permissions to be added to your app, add the
+      following tag to your config.xml; you will still have the INTERNET
+      permission on your app, which PhoneGap requires. -->
+    <preference name="permissions"                value="none"/>
+    <preference name="phonegap-version"           value="2.1.0" />          <!-- ALL: current version of phonegap -->
+    <preference name="orientation"                value="default" />        <!-- ALL: default means both landscape and portrait are enabled -->
+    <preference name="target-device"              value="universal" />      <!-- ALL: possible values handset, tablet, or universal -->
+    <preference name="fullscreen"                 value="true" />           <!-- ALL: hides the status bar at the top of the screen -->
+    <preference name="webviewbounce"              value="true" />           <!-- IOS: iOS control whether the screen "bounces" when scrolled beyond the top -->
+    <preference name="prerendered-icon"           value="true" />           <!-- IOS: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+    <preference name="stay-in-webview"            value="false" />          <!-- IOS: external links should open in the default browser, "true" would use the webview the app lives in -->
+    <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- IOS: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+    <preference name="detect-data-types"          value="true" />           <!-- IOS: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
+    <preference name="exit-on-suspend"            value="false" />          <!-- IOS: if set to true, app will terminate when home button is pressed -->
+    <preference name="show-splash-screen-spinner" value="true" />           <!-- IOS: if set to false, the spinner won't appear on the splash screen during app loading -->
+    <preference name="auto-hide-splash-screen"    value="true" />           <!-- IOS: if set to false, the splash screen must be hidden using a JavaScript API -->
+    <preference name="disable-cursor"             value="false" />          <!-- BLACKBERRY: prevents a mouse-icon/cursor from being displayed on the app -->
+    <preference name="android-minSdkVersion"      value="14" />             <!-- ANDROID: MIN SDK version supported on the target device. MAX version is blank by default. -->
+    <preference name="android-installLocation"    value="auto" />           <!-- ANDROID: where an app can be installed - defaults to internalOnly, with auto or preferExternal the app can go on an SD card -->
+  
+    <!--
+    <gap:plugin name="Example" />
+    At present, to include a plugin, you will to ensure:
+    - the plugin is supported by PhoneGap Build; and
+    - any JavaScript script tags are present in your index.html file.
+    More details, including a list of available plugins, are in our plugins documentation https://build.phonegap.com/docs/plugins. -->
+  
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
@@ -45,4 +71,15 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
+
+    <!--
+    A blank access tag - <access /> - denies access to any external resources.
+    A wildcard - <access origin="*" /> - allows access to any external resource.
+    Otherwise, you can specify allowed domains individually:  -->
+  
+    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+    <!-- <access origin="https://build.phonegap.com" />  allow any secure requests to build.phonegap.com -->-->
+    <!-- <access origin="http://phonegap.com" subdomains="true" />  such as above, but including subdomains, such as www -->
+    <!-- <access origin="http://phonegap.com" browserOnly="true" /> to ensure that links to this domain cannot take over the entire webview, use the browserOnly attribute -->
+
 </widget>
