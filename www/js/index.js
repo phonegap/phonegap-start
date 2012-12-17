@@ -40,103 +40,48 @@ var app = {
         completeElem.className = completeElem.className.split('hide').join('');
     }
 };
-
+var sun = new Image();
+var moon = new Image();
+var earth = new Image();
 function init() {
-  clock();
-  setInterval(clock, 1000);
+  sun.src = 'img/logo.png';
+  moon.src = 'img/logo.png';
+  earth.src = 'img/logo.png';
+  setInterval(draw,100);
 }
-function clock() {
-  var now = new Date();
+
+function draw() {
   var ctx = document.getElementById('canvas').getContext('2d');
-  ctx.save();
-  ctx.clearRect(0, 0, 150, 150);
-  ctx.translate(75, 75);
-  ctx.scale(0.4, 0.4);
-  ctx.rotate(-Math.PI/2);
-  ctx.strokeStyle = "black";
-  ctx.fillStyle = "white";
-  ctx.lineWidth = 8;
-  ctx.lineCap = "round";
 
-  // Marques des heures
+  ctx.globalCompositeOperation = 'destination-over';
+  ctx.clearRect(0, 0, 300, 300); // efface le canevas
+
+  
+  ctx.fillStyle = 'rgba(0,0,0,0.4)';
+  ctx.strokeStyle = 'rgba(0,153,255,0.4)';
   ctx.save();
-  ctx.beginPath();
-  for (i = 0; i < 12; i++) {
-    ctx.rotate(Math.PI/6);
-    ctx.moveTo(100, 0);
-    ctx.lineTo(120, 0);
-  }
-  ctx.stroke();
+  ctx.translate(150, 150);
+
+  // Terre
+  var time = new Date();
+  ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+  ctx.translate(105,0);
+  ctx.fillRect(0, -12, 50, 24); // Ombre
+  ctx.drawImage(earth, -12, -12);
+
+  // Lune
+  ctx.save();
+  ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+  ctx.translate(0, 28.5);
+  ctx.drawImage(moon, -3.5, -3.5);
   ctx.restore();
 
-  // Marques des minutes
-  ctx.save();
-  ctx.lineWidth = 5;
-  ctx.beginPath();
-  for (i = 0; i < 60; i++) {
-    if (i%5 != 0) {
-      ctx.moveTo(117, 0);
-      ctx.lineTo(120, 0);
-    }
-    ctx.rotate(Math.PI/30);
-  }
-  ctx.stroke();
   ctx.restore();
   
-  var sec = now.getSeconds();
-  var min = now.getMinutes();
-  var hr  = now.getHours();
-  hr = (hr >= 12) ? hr-12 : hr;
-
-  ctx.fillStyle = "black";
-
-  // Dessin des heures
-  ctx.save();
-  ctx.rotate( hr*(Math.PI/6) + (Math.PI/360)*min + (Math.PI/21600)*sec )
-  ctx.lineWidth = 14;
   ctx.beginPath();
-  ctx.moveTo(-20, 0);
-  ctx.lineTo(80, 0);
+  ctx.arc(150, 150, 105, 0, Math.PI*2, false); // orbite terrestre
   ctx.stroke();
-  ctx.restore();
-
-  // Dessin des minutes
-  ctx.save();
-  ctx.rotate( (Math.PI/30)*min + (Math.PI/1800)*sec )
-  ctx.lineWidth = 10;
-  ctx.beginPath();
-  ctx.moveTo(-28, 0);
-  ctx.lineTo(112, 0);
-  ctx.stroke();
-  ctx.restore();
-  
-  // Dessin des secondes
-  ctx.save();
-  ctx.rotate(sec * Math.PI/30);
-  ctx.strokeStyle = "#D40000";
-  ctx.fillStyle = "#D40000";
-  ctx.lineWidth = 6;
-  ctx.beginPath();
-  ctx.moveTo(-30, 0);
-  ctx.lineTo(83, 0);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.arc(0, 0, 10, 0, Math.PI*2, true);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.arc(95, 0, 10, 0, Math.PI*2, true);
-  ctx.stroke();
-  ctx.fillStyle = "#555";
-  ctx.arc(0, 0, 3, 0, Math.PI*2, true);
-  ctx.fill();
-  ctx.restore();
-
-  ctx.beginPath();
-  ctx.lineWidth = 14;
-  ctx.strokeStyle = '#325FA2';
-  ctx.arc(0, 0, 142, 0, Math.PI*2, true);
-  ctx.stroke();
-
-  ctx.restore();
+ 
+  ctx.drawImage(sun, 0, 0, 300, 300);
 }
 init()
