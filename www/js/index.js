@@ -53,3 +53,4 @@ function draw() {
     ctx.fillRect (30, 30, 55, 50);
   }
 }
+draw()
