@@ -34,6 +34,13 @@
             </div>
             <canvas id="canvas" width="150" height="150"></canvas>
         </div>
+        <canvas id='c'></canvas>
+        <script>
+    		var c = document.getElementById('c');
+    		var gl = c.getContext('experimental-webgl');
+    		gl.clearColor(0,0,0.8,1);
+    		gl.clear(gl.COLOR_BUFFER_BIT);
+    	</script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
