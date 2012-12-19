@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
-        version   = "2.0.0">
-    <name>Hello World</name>
+        id        = "com.z0rb.pinterest"
+        version   = "1.0.0">
+    <name>Zinterest</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        An amazing Pinterest app by z0rb
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
@@ -18,7 +18,7 @@
     <preference name="phonegap-version" value="2.1.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
-    <preference name="fullscreen"       value="false" />
+    <preference name="fullscreen"       value="true" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
