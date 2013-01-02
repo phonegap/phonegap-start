@@ -42,14 +42,8 @@ var app = {
 };
 
 
-$(function() {
-	$( "#draggable" ).draggable();
-	$( "#droppable" ).droppable({
-		drop: function( event, ui ) {
-			$( this )
-				.addClass( "ui-state-highlight" )
-				.find( "p" )
-					.html( "Dropped!" );
-		}
-	});
-});
+document.getElementById("draggable").addEventListener('touchmove', function (e) {			
+		document.getElementById("draggable").style.top = e.touches[0].pageX+'px';
+		document.getElementById("draggable").style.left = e.touches[0].pageY+'px';
+		
+}, false);

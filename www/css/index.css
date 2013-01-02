@@ -108,4 +108,4 @@ h1 {
 	border:1px solid #000;
 	height:100px;
 }
-.drag{position:absolute;}
+#draggable{position:absolute;}
