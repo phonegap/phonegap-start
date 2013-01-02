@@ -40,3 +40,10 @@ var app = {
         completeElem.className = completeElem.className.split('hide').join('');
     }
 };
+
+
+document.getElementById("draggable").addEventListener('touchmove', function (e) {			
+		document.getElementById("draggable").style.top = e.touches[0].pageX+'px';
+		document.getElementById("draggable").style.left = e.touches[0].pageY+'px';
+		
+}, false);
