@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
-        version   = "2.2.0">
-    <name>Hello World</name>
+        id        = "com.crendice.application"
+        version   = "1.0.0">
+    <name>My First Amazing App</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        This is an amazing app, just so you know.
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
