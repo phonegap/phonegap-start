@@ -3,10 +3,10 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.hello-world"
         version   = "2.2.0">
-    <name>Hello World</name>
+    <name>Alpesh</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Alpesh sample application that responds to the deviceready event.
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
