@@ -26,4 +26,4 @@ to the [Apache Cordova source code][1].
 For issues with __the PhoneGap Build integration__, please submit
 an issue or pull request to this project.
 
-[1]: http://github.com/apache/incubator-cordova-app-hello-world
+[1]: https://github.com/apache/cordova-app-hello-world
