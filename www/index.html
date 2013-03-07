@@ -18,25 +18,988 @@
     under the License.
 -->
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready">
-                <p class="status pending blink">Connecting to Device</p>
-                <p class="status complete blink hide">Device is Ready</p>
-            </div>
+<head>
+<meta charset="utf-8">
+<title>Aplic. Web de jQuery Mobile</title>
+<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+a:link {
+    color: #000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: none;
+	color: #000;
+}
+a:active {
+	text-decoration: none;
+	color: #000;
+}
+h1 {
+	color: #09F;
+}
+</style>
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head> 
+<body> 
+
+<div data-role="page" id="page">
+	<div data-role="header">
+		<h1><font color=#FFFF00>MiList</font><font color=#0099FF>App</font></h1>
+	</div>
+    <div data-role="header">
+		<h2>Listas VIP BCN</h2>
+	</div>
+	<div data-role="content">	
+		<ul data-role="listview">
+			<li><a href="#page2">Lunes</a></li>
+            <li><a href="#page3">Martes</a></li>
+			<li><a href="#page4">Miercoles</a></li>
+            <li><a href="#page5">Jueves</a></li>
+            <li><a href="#page6">Viernes</a></li>
+            <li><a href="#page7">Sábado</a></li>
+            <li><a href="#page8">Domingo</a></li>
+		</ul>		
+	</div>
+	<div data-role="footer">
+		<h4></h4>
+	</div>
+</div>
+
+<div data-role="page" id="page2">
+	<div data-role="header">
+		<h1>Lunes</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page10">Nick Havanna</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page3">
+	<div data-role="header">
+		<h1>Martes</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>Miercoles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page10">Nick Havanna</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page5">
+	<div data-role="header">
+		<h1>Jueves</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page10">Nick Havanna</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page6">
+	<div data-role="header">
+		<h1>Viernes</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page10">Nick Havanna</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page7">
+	<div data-role="header">
+		<h1>Sábado</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page10">Nick Havanna</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page8">
+	<div data-role="header">
+		<h1>Domingo</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page9">Opium</a></li>
+        <li><a href="#page11">Shoko</a></li>
+        <li><a href="#page12">Otto Sutz</a></li>
+        <li><a href="#page13">Sutton</a></li>
+        <li><a href="#page14">Bikini</a></li>
+        <li><a href="#page15">Costa Breve</a></li>
+        <li><a href="#page16">Razzmatazz</a></li>
+        <li><a href="#page17">Mary's Place</a></li>
+        <li><a href="#page18">Bucaro</a></li>
+        <li><a href="#page19">Sota Vento</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page9">
+	<div data-role="header">
+		<h1>Opium</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page20">Detalles</a></li>
+        <li><a href="#page21">Localización</a></li>
+        <li><a href="#page22">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page10">
+	<div data-role="header">
+		<h1>Nick Havanna</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page23">Detalles</a></li>
+        <li><a href="#page24">Localización</a></li>
+        <li><a href="#page25">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page11">
+	<div data-role="header">
+		<h1>Shoko</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page26">Detalles</a></li>
+        <li><a href="#page27">Localización</a></li>
+        <li><a href="#page28">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page12">
+	<div data-role="header">
+		<h1>Otto Sutz</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page29">Detalles</a></li>
+        <li><a href="#page30">Localización</a></li>
+        <li><a href="#page31">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page13">
+	<div data-role="header">
+		<h1>Sutton</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page32">Detalles</a></li>
+        <li><a href="#page33">Localización</a></li>
+        <li><a href="#page34">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page14">
+	<div data-role="header">
+		<h1>Bikini</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page35">Detalles</a></li>
+        <li><a href="#page36">Localización</a></li>
+        <li><a href="#page37">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page15">
+	<div data-role="header">
+		<h1>Costa Breve</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page38">Detalles</a></li>
+        <li><a href="#page39">Localización</a></li>
+        <li><a href="#page40">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page16">
+	<div data-role="header">
+		<h1>Razzmatazz</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page41">Detalles</a></li>
+        <li><a href="#page42">Localización</a></li>
+        <li><a href="#page43">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page17">
+	<div data-role="header">
+		<h1>Mary's Place</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page44">Detalles</a></li>
+        <li><a href="#page45">Localización</a></li>
+        <li><a href="#page46">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page18">
+	<div data-role="header">
+		<h1>Bucaro</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page47">Detalles</a></li>
+        <li><a href="#page48">Localización</a></li>
+        <li><a href="#page49">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page19">
+	<div data-role="header">
+		<h1>Sota Vento</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li><a href="#page50">Detalles</a></li>
+        <li><a href="#page51">Localización</a></li>
+        <li><a href="#page52">Apuntate</a></li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page20">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+	  <div data-role="collapsible-set">
+	    <div data-role="collapsible">
+	      <h3><font color="red">Precio</font></h3>
+	      <p>Gratis hasta la 01:00</p>
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+	    <div data-role="collapsible" data-collapsed="true">
+	      <h3>Dirección</h3>
+	      <p>Passeig Marítim (La Barceloneta), 34 - 08003</p>
+        </div>
+	    <div data-role="collapsible" data-collapsed="true">
+	      <h3>Cómo llegar</h3>
+	      <p>Metro: L4 Ciutadella Vila Olímpica</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+	      <h3>Estilo múscia</h3>
+	      <p>House Comercial</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+	      <h3>Público</h3>
+	      <p>Mayores de 21 años</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+	      <h3>Código de vestimenta</h3>
+	      <p>Elegante (chicos camisa y zapatos)</p>
+        </div>
+        </div>
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page21">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content"> 
+	  <p><img src="opium.png" width="300" height="265"></p><p><a href="https://maps.google.es/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=Passeig+Mar%C3%ADtim+(La+Barceloneta),+34+-+08003&amp;aq=&amp;sll=41.692152,1.746005&amp;sspn=3.375594,8.453979&amp;ie=UTF8&amp;hq=&amp;hnear=Passeig+Mar%C3%ADtim+de+la+Barceloneta,+34,+08003+Barcelona,+Catalunya&amp;ll=41.384034,2.195228&amp;spn=0.003329,0.008256&amp;t=m&amp;z=14" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small></p>
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page22">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">
+    
+     <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p><label>Nombre y Apellido<input name="nombre" type:"text" id="nombre" size"25" /></label></p>
+     <p>&nbsp;</p>
+       <p><label>Email<input name="email" type:"text" id="nombre" size"25" /></label></p>
+     <p>&nbsp;</p>
+    <p><label>Numero de acompañantes<select name="Número de acompañantes"></p>
+       <option value="0">Ninguno</option>
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       <option value="6">6</option>
+       <option value="7">7</option>
+     </select>
+     <p>&nbsp;</p>
+ 	<p><label>Día <select name="Día"></p>
+     <option value="Lunes">Lunes</option>
+     <option value="Martes">Martes</option>
+     <option value="Miercoles">Miercoles</option>
+     <option value="Jueves">Jueves</option>
+     <option value="Viernes">Viernes</option>
+     <option value="Sábado">Sábado</option>
+     <option value="Domingo">Domingo</option>
+     </select>
+          <p>&nbsp;</p>
+    <p><label>Discoteca<select name="Discoteca"></p>
+       <option value="Opium">Opium</option>
+       <option value="Nick Havanna">Nick Havanna</option>
+       <option value="Shoko">Shoko</option>
+       <option value="Otto Zutz">Otto Zutz</option>
+       <option value="Sutton">Sutton</option>
+       <option value="Bikini">Bikini</option>
+       <option value="Costa Breve">Costa Breve</option>
+       <option value="Razzmatazz">Razzmatazz</option>
+       <option value="Mary's Place">Mary's Place</option>
+       <option value="Bucaro">Bucaro</option>
+       <option value="SotaVento">SotaVento</option>
+     </select>
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+     <p><input name="Enviar" type="button" value="Enviar"> </p> 
+     <p>&nbsp;</p>
+     <p><label>No olvides decir tu Nombre y Apellido en la entrada,</label>
+     <label>el número de acompañantes y que vienes por MiListApp</label></p>
+     <p>&nbsp;</p>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page23">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+<div data-role="collapsible-set">
+	    <div data-role="collapsible">
+	      <h3><font color="red">Precio</font></h3>
+	      <p>Gratis hasta la 01:00</p>
+        </div>
+	    <div data-role="collapsible" data-collapsed="true">
+	      <h3>Dirección</h3>
+	      <p>Roselló, 208 - 08008, Barcelona</p>
+        </div>
+	    <div data-role="collapsible" data-collapsed="true">
+	      <h3>Cómo llegar</h3>
+	      <p>Metro L3 L5- Diagonal</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+	      <h3>Estilo múscia</h3>
+	      <p>House Comercial y Pachanga</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+	      <h3>Público</h3>
+	      <p>Universitario y gente de Barcelona</p>
+        </div>
+        <div data-role="collapsible" data-collapsed="true">
+	      <h3>Código de vestimenta</h3>
+	      <p>Arreglado</p>
+        </div>
+        </div>
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page24">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	
+<div data-role="content"> 
+	  <p><img src="nickhavanna.png" width="300" height="265" class="center"></p><p><a href="https://maps.google.es/maps?q=Rosell%C3%B3,+208+-+08008,+Barcelona&hl=es&ie=UTF8&ll=41.394067,2.160058&spn=0.014149,0.033023&sll=41.692248,1.745868&sspn=3.605267,8.453979&hnear=Carrer+Rosell%C3%B3n,+208,+08008+Barcelona&t=m&z=16" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small></p>
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page25">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page26">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: Paseo Marítimo Barceloneta, 36 - 08003, Barcelona</li>
+        <li>Cómo llegar: Metro: L4 Ciutadella Víla Olímpica</li>
+        <li>Música: House Comercial, R&B, Pop, Hits</li>
+        <li>Público: Gente fashion nacional e internacional</li>
+        <li>Código vestimenta: Arreglado</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page27">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page28">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page29">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: C/ Lincoln, 15 - 08006, Barcelona</li>
+        <li>Cómo llegar: FCGG Gracia</li>
+        <li>Música: House Comercial, Hip-Hop y R&B</li>
+        <li>Públic: Mayores de 21 años</li>
+        <li>Código vestimenta: Arreglado(chicos camisa y zapatos)</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page30">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page31">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page32">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: Tuset, 13 - 08006, Barcelona</li>
+        <li>Cómo llegar: Metro L3 - Diagonal o L5 - Hospital Clinic</li>
+        <li>Música: House Comercial, Hits</li>
+        <li>Públic: Mayores de 21 años</li>
+        <li>Código vestimenta: Elegante (chicos camisa y zapatos)</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page33">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page34">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page35">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: Diagonal, 547 - 08029, Barcelona</li>
+        <li>Cómo llegar: Metro L3 - La Illa</li>
+        <li>Música: House 80's y 90's y Salsa/Bachata</li>
+        <li>Públic: Gente local de Barcelona</li>
+        <li>Código vestimenta: Arreglado</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page36">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page37">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page38">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: C/ Aribau, 226 - 08006, Barcelona</li>
+        <li>Cómo llegar: Metro L3 - Diagonal o L5 - Hospital Clinica</li>
+        <li>Música: House Comercial & Exitos de Pop</li>
+        <li>Públic: Mayores de 20 años</li>
+        <li>Código vestimenta: Arreglado</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page39">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page40">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page41">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: Almogavers, 122 - Barcelona</li>
+        <li>Cómo llegar: Metro L1 - Marina</li>
+        <li>Música: House, Electro, Hip-Hop, R&B, Pop</li>
+        <li>Públic: Mayores de 18 años</li>
+        <li>Código vestimenta: Casual</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page42">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page43">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page44">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: C/ Casanova, 171 , Metro L5 Hospital Clinic</li>
+        <li>Cómo llegar: Metro L5 Hospital Clinic</li>
+        <li>Música: House Comercial y Pachanga</li>
+        <li>Públic: Mayores de 18 años</li>
+        <li>Código vestimenta: Arreglado</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page45">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page46">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page47">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: C/ Aribau,195 - 08021, Barcelona</li>
+        <li>Cómo llegar: En plena zona Aribau, Metro Diagonal o Hospital Clinic</li>
+        <li>Música: Exitos y Pachanga comercial</li>
+        <li>Públic: Mayores de 20 años</li>
+        <li>Código vestimenta: Casual-Smart</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page48">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page49">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page50">
+	<div data-role="header">
+		<h1>Detalles</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		<li>Dirección: Paseo Marítimo de la Barceloneta, 38 - 08003</li>
+        <li>Cómo llegar: Metro L4: Villa Olímpica</li>
+        <li>Música: House Comercial, R&B y Hits</li>
+        <li>Públic: Gente fashion nacional e internacional</li>
+        <li>Código vestimenta: Arreglado</li>
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page51">
+	<div data-role="header">
+		<h1>Localización</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		IMAGEN
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+<div data-role="page" id="page52">
+	<div data-role="header">
+		<h1>Apuntate</h1>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview">	
+		Click aquí
+      </ul>  		
+	</div>
+	<div data-role="footer">
+		<h4><a href="javascript:window.history.back();">Volver</a> </h4>
+	</div>
+</div>
+
+</body>
 </html>
