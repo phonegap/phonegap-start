@@ -1,65 +1,78 @@
-$( document ).delegate("#login-page", "pageshow", function() {
-  if (is_logged_in()){
-    $.mobile.changePage($("#user-page"));
-  }
-
-  $( "#login" ).on( "click", function( event ){
-    event.preventDefault();
-    request({
-      type: "POST",
-      url: login_url,
-      data: login_data,
-      success: Mochihua.prototype.login_success,
-      error: general_error
-    });
-    return false;
-  });
-});
-
 $( document ).delegate("#user-page", "pageshow", function() {
-  if (!is_logged_in()) {
-    $.mobile.changePage($("#login-page"));
-  }
 
-  set_description();
-  $('#collect').on('keypress', '#collect-description', function(e) {
-    submit_on_return(e);
-  });
+  if (is_not_set('_actual')){
+    $("#idea").addClass("hide");
+  }else{
+    description = JSON.parse(get(get("_actual"))).description;
+    $("#description").text(description);
+  }
+  if (is_not_set('_index')){
+    set("_index", 1);
+    set("_first", 1);
+  }
 
   $( "#collect-form" ).submit(function( event ){
-    request({
-      type: "POST",
-      url: JSON.parse(storage.getItem('collect')).href,
-      data: {description: $( "#collect-description" ).val()},
-      success: action_success,
-      error: general_error
-    });
+    description = $("#collect-description").val();
+    index = get("_index");
+
+    if (is_not_set("_actual")){
+      set("_actual", 1);
+      set("_last", 1);
+      $("#idea").removeClass("hide");
+      $("#description").text(description);
+    }else{
+      last = JSON.parse(get(get("_last")));
+      set(get("_last"), idea(last.description, index));
+      set("_last", index);
+    }
+
+    set(index, idea(description, get("_first")));
+    index++;
+    set("_index", index);
     $("#collect-description").val("");
+    popup(":)");
+    return false;
+  });
+
+  $( "#do" ).click(function( event ){
+    popup("do");
+    return false;
+  });
+
+  $( "#review" ).click(function( event ){
+    actual = JSON.parse(get(get("_actual")));
+    set("_previous", get("_actual"));
+    set("_actual", actual.next);
+    next = JSON.parse(get(actual.next));
+    $("#description").text(next.description);
     return false;
   });
 
   $( "#delete" ).click(function( event ){
-    $.ajax({
-      url: storage.getItem('delete'),
-      type: 'DELETE',
-      dataType: 'json',
-      success: function(data, options) {
-        storage.setItem('idea['+current_idea+']', "");
-        current_idea = storage.getItem('current-idea');
-        current_idea++;
-        storage.setItem('current-idea', current_idea);
-        idea         = JSON.parse(storage.getItem('idea['+current_idea+']'));
+    actual = JSON.parse(get(get("_actual")));
+    previous = JSON.parse(get(get("_previous")));
+    set(get("_previous"), idea(previous.description, actual.next));
+    if(get("_actual") == get("_last")){
+      set("_last", get("_previous"));
+    }
+    if(get("_actual") == get("_first")){
+      set("_first", actual.next);
+    }
+    remove(get("_actual"));
+    set("_actual", actual.next);
+    next = JSON.parse(get(actual.next));
+    if(next != null){
+      $("#description").text(next.description);
+    }else{
+      remove("_actual");
+      set("_first", 1);
+      remove("_last");
+      remove("_previous");
+      set("_index", 1);
+      $("#description").text("");
+      $("#idea").addClass("hide");
+    }
 
-        $('#description').text(idea.description);
-        storage.setItem('delete', idea._links.delete.href);
-        storage.setItem('review', idea._links.review.href);
-        popup(":)");
-      },
-      error: function() {
-        popup(":(");
-        console.log("error deleting idea");
-      }
-    });
     return false;
   });
 });
