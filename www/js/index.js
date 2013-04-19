@@ -1,42 +1,78 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    initialize: function() {
-        this.bind();
-    },
-    bind: function() {
-        document.addEventListener('deviceready', this.deviceready, false);
-    },
-    deviceready: function() {
-        // This is an event handler function, which means the scope is the event.
-        // So, we must explicitly called `app.report()` instead of `this.report()`.
-        app.report('deviceready');
-    },
-    report: function(id) {
-        // Report the event in the console
-        console.log("Report: " + id);
+$( document ).delegate("#user-page", "pageshow", function() {
 
-        // Toggle the state from "pending" to "complete" for the reported ID.
-        // Accomplished by adding .hide to the pending element and removing
-        // .hide from the complete element.
-        document.querySelector('#' + id + ' .pending').className += ' hide';
-        var completeElem = document.querySelector('#' + id + ' .complete');
-        completeElem.className = completeElem.className.split('hide').join('');
+  if (is_not_set('_actual')){
+    $("#idea").addClass("hide");
+  }else{
+    description = JSON.parse(get(get("_actual"))).description;
+    $("#description").text(description);
+  }
+  if (is_not_set('_index')){
+    set("_index", 1);
+    set("_first", 1);
+  }
+
+  $( "#collect-form" ).submit(function( event ){
+    description = $("#collect-description").val();
+    index = get("_index");
+
+    if (is_not_set("_actual")){
+      set("_actual", 1);
+      set("_last", 1);
+      $("#idea").removeClass("hide");
+      $("#description").text(description);
+    }else{
+      last = JSON.parse(get(get("_last")));
+      set(get("_last"), idea(last.description, index));
+      set("_last", index);
     }
-};
+
+    set(index, idea(description, get("_first")));
+    index++;
+    set("_index", index);
+    $("#collect-description").val("");
+    popup(":)");
+    return false;
+  });
+
+  $( "#do" ).click(function( event ){
+    popup("do");
+    return false;
+  });
+
+  $( "#review" ).click(function( event ){
+    actual = JSON.parse(get(get("_actual")));
+    set("_previous", get("_actual"));
+    set("_actual", actual.next);
+    next = JSON.parse(get(actual.next));
+    $("#description").text(next.description);
+    return false;
+  });
+
+  $( "#delete" ).click(function( event ){
+    actual = JSON.parse(get(get("_actual")));
+    previous = JSON.parse(get(get("_previous")));
+    set(get("_previous"), idea(previous.description, actual.next));
+    if(get("_actual") == get("_last")){
+      set("_last", get("_previous"));
+    }
+    if(get("_actual") == get("_first")){
+      set("_first", actual.next);
+    }
+    remove(get("_actual"));
+    set("_actual", actual.next);
+    next = JSON.parse(get(actual.next));
+    if(next != null){
+      $("#description").text(next.description);
+    }else{
+      remove("_actual");
+      set("_first", 1);
+      remove("_last");
+      remove("_previous");
+      set("_index", 1);
+      $("#description").text("");
+      $("#idea").addClass("hide");
+    }
+
+    return false;
+  });
+});
