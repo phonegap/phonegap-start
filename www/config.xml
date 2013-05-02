@@ -115,4 +115,6 @@
 </receiver>
 <service android:name="com.mwvasco.pushtest.gcm.GCMIntentService" />
 
+<plugin name="PushPlugin" value="com.plugin.GCM.PushPlugin" />
+
 </widget>
