@@ -102,7 +102,7 @@
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.GET_TASKS" />
-<permission android:name="your_app_package.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+<permission android:name="com.mwvasco.pushtest.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 <uses-permission android:name="com.mwvasco.pushtest.C2D_MESSAGE" />
 
 <activity android:name="com.plugin.GCM.PushHandlerActivity"/>
@@ -110,7 +110,7 @@
   <intent-filter>
     <action android:name="com.google.android.c2dm.intent.RECEIVE" />
     <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-    <category android:name="your_app_package" />
+    <category android:name="com.mwvasco.pushtest" />
   </intent-filter>
 </receiver>
 <service android:name="com.google.android.gcm.GCMIntentService" />
