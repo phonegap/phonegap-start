@@ -117,4 +117,6 @@
 
 <plugin name="PushPlugin" value="com.plugin.GCM.PushPlugin" />
 
+<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+
 </widget>
