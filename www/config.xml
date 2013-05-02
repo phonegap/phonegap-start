@@ -113,7 +113,7 @@
     <category android:name="your_app_package" />
   </intent-filter>
 </receiver>
-<service android:name="com.mwvasco.pushtest.gcm.GCMIntentService" />
+<service android:name="com.google.android.gcm.GCMIntentService" />
 
 <plugin name="PushPlugin" value="com.plugin.GCM.PushPlugin" />
 
