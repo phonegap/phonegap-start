@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
+        id        = "com.ndelacruz.new"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Nelson's New App</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        A new application created by N. Dela Cruz
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+        ACN Team
     </author>
 
     <!--
@@ -30,7 +30,7 @@
     <preference name="permissions"                value="none"/>
 
     <!-- Customize your app and platform with the preference element. -->
-    <preference name="phonegap-version"           value="2.5.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="2.7.0" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
