@@ -54,6 +54,8 @@
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
+    <icon src="pdf.jpg" />
+    <icon src="zeegroen.jpg" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
