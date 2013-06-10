@@ -1,11 +1,10 @@
 
-
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     baackground-color:#FFFFFF;
-    background-image:url('http://home.online.nl/timmermansh//zeegroen.jpg');
+    background-image:url('http://home.online.nl/timmermansh/zeegroen.jpg');
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:22px;
     height:100%;
