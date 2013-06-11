@@ -1,18 +1,23 @@
 <html>
 	<body>
-
-	<div class='header'><h1>Home</h1></div>
-	<div class='search-view'>
-	<input class='search-key' type="text"/>
-	<ul class='employee-list'></ul>
-	</div>
-
-	<script src="lib/jquery-1.8.2.min.js"></script>
-	<script src="js/storage/ls-store.js"></script>
-	<script src="js/main.js"></script>
-	<script src="phonegap.js"></script>
 	
+		<script id="home-tpl" type="text/x-handlebars-template">
+			<div class='header'><h1>Home</h1></div>
+			<div class='search-bar'><input class='search-key' type="text"/></div>
+			<ul class='employee-list'></ul>
+		</script>
+		<script id="employee-li-tpl" type="text/x-handlebars-template">
+			{{#.}}
+			<li><a href="#employees/{{this.id}}">{{this.firstName}} {{this.lastName}}<br/>{{this.title}}</a></li>
+			{{/.}}
+		</script>
 	
+		<script src="lib/jquery-1.8.2.min.js"></script>
+		<script src="js/storage/ls-store.js"></script>
+		<script src="js/main.js"></script>
+		<script src="phonegap.js"></script>
+		<script src="lib/handlebars.js"></script>
+		
 	
 	</body>
 </html>
