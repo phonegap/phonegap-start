@@ -1,3 +1,33 @@
+/* Portrait layout (default) */
+.title {
+	position:relative;
+}
+.center {
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+.wrapper {
+	position:absolute;
+	top: 20%;
+	left: 50%;
+	margin:0px 0px 0px -450px;
+	width: 900px;
+}
+.center_wrapper {
+	width:100%; 
+	text-align:center;
+}
+.login_form  *{
+	font-size:30px;
+}
+.login_form td{
+	padding: 12px;
+}
+.login_form .button {
+	width: 100%;
+}
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
