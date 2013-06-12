@@ -29,6 +29,15 @@ var LoginView = function(store) {
                 e = employees[i];
                 $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
             }
+			
+			if (self.iscroll) {
+				console.log('Refresh iScroll');
+				self.iscroll.refresh();
+			} else {
+				console.log('New iScroll');
+				self.iscroll = new iScroll($('.scroll', self.el)[0], {hScrollbar: false, vScrollbar: false });
+			}
+			
         });
     };
 
