@@ -3,6 +3,10 @@ var app = {
         this.store = new MemoryStore();
 		new LoginView(this.store);
     }
+	
+	
+
+	
 };
 
 app.initialize();
