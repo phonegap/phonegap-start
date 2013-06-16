@@ -27,29 +27,11 @@
 	<script src="views/detail.js"></script>
 	<script src="js/main.js"></script>
 
-	<script>
-		$(function() {
-			navigator.notification.alert("HI!", null, "sup", 'OK');
-			
-			$.ajax({
-				url:"views", // relative path to www folder
-				type:"get",
-				contentType:"application/text",
-				context:this,
-				success: function(text){
-					globals.nativeAlert(text);
-				}
-			});
-	
-		}
-		
-		
-
-	</script>
 	
 	
 	
 </head>
 <body>
+
 </body>
 </html>
