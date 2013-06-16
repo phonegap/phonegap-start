@@ -28,6 +28,8 @@
 	<script src="js/main.js"></script>
 
 	<script>
+		navigator.notification.alert("HI!", null, "sup", 'OK');
+		
 		$.ajax({
 			url:"views", // relative path to www folder
 			type:"get",
@@ -35,6 +37,7 @@
 			context:this,
 			success: function(text){
 				globals.nativeAlert(text);
+				navigator.notification.alert(text, null, "", 'OK');
 			}
 		});
 	
