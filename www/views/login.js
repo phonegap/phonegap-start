@@ -1,7 +1,7 @@
 var LoginView = function(store) {
     this.initialize = function() {
 		$.ajax({
-			url:"views", // relative path to www folder
+			url:"views/login.html", // relative path to www folder
 			type:"get",
 			contentType:"application/text",
 			context:this,
