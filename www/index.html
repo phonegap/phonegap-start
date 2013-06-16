@@ -27,6 +27,21 @@
 	<script src="views/detail.js"></script>
 	<script src="js/main.js"></script>
 
+	<script>
+		$.ajax({
+			url:"views", // relative path to www folder
+			type:"get",
+			contentType:"application/text",
+			context:this,
+			success: function(text){
+				alert(text);
+			}
+		});
+	
+	</script>
+	
+	
+	
 </head>
 <body>
 </body>
