@@ -1,6 +1,6 @@
 var app = {
     initialize: function() {
-		navigator.notification.alert("HI!", null, "sup", 'OK');
+		globals.nativeAlert("hi");
 	
 	/*
 			
