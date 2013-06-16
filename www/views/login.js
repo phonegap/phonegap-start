@@ -6,6 +6,16 @@ var LoginView = function(store) {
 			contentType:"application/text",
 			context:this,
 			success: function(text){
+				globals.nativeAlert(text);
+			}
+		});
+	
+		$.ajax({
+			url:"views/login.html", // relative path to www folder
+			type:"get",
+			contentType:"application/text",
+			context:this,
+			success: function(text){
 				
 				$("body").html(text);
 				
