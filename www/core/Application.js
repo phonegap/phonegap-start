@@ -1,8 +1,10 @@
 var App = {};
 
 App.initialize = function() {
-	this.store = new MemoryStore();
-	LoginView.initialize(this.store);
+	App.store = new MemoryStore();
+	Controller.initialize();
+	LoginView.initialize(App.store);
+
 }
 
 $(function () {

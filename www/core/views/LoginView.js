@@ -14,8 +14,13 @@ LoginView.findByName = function() {
 		$('.employee-list').empty();
 		for (var i=0; i<l; i++) {
 			e = employees[i];
-			$('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
+			//$('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
+			$('.employee-list').append('<li><a class="employee_'+e.id+'">' + e.firstName + ' ' + e.lastName + '</a></li>');
+			
+			Controller.routeAnchor(".employee_" + e.id, "DetailView", e);
+			
 		}
+		
 		
 		if (LoginView.iscroll) {
 			console.log('Refresh iScroll');
@@ -48,23 +53,7 @@ LoginView.registerEvents = function() {
 		});
 	}
 	
-	$(window).on('hashchange', $.proxy(LoginView.route, LoginView));
+
 }
 	
-LoginView.route = function() {
 
-	var detailsURL = /^#employees\/(\d{1,})/;
-
-	var hash = window.location.hash;
-	if (!hash) {
-		LoginView.initialize(store);
-		return;
-	}
-	var match = hash.match(detailsURL);
-	if (match) {
-		LoginView.store.findById(Number(match[1]), function(employee) {
-			DetailView.initialize(employee);
-		});
-	}
-}
-	

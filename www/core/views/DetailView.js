@@ -14,6 +14,6 @@ DetailView.initialize = function (employee) {
 	
 	$('.detail_image').attr("src", "images/"+employee.firstName+"_"+employee.lastName+".jpg");
 
-	
+	Controller.routeAnchor(".detail_back", "LoginView", App.store);
 }
 
