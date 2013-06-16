@@ -5,26 +5,35 @@
 
 	<!-- Adobe Edge Web Fonts - http://html.adobe.com/edge/webfonts/ -->
 	<script src="css/source-sans-pro.js"></script> 
+	
+	<!-- default styles -->
 	<link href="css/styles.css" rel="stylesheet">
 
 	<!-- ============================== PhoneGap ============================== -->
+	
+	<!-- phonegap essentials. note this file does not exist. -->
 	<script src="phonegap.js"></script>
+	
+	<!-- required jQuery -->
 	<script src="lib/jquery-1.8.2.min.js"></script>
+	
 	<script src="lib/handlebars.js"></script>
 	<script src="js/storage/memory-store.js"></script>
 
 	<!-- ============================== pluggins ============================== -->
-	<script src="plugins/json/json2.js"></script>
+	<!-- <script src="plugins/json/json2.js"></script> -->
 	<!-- iScroll http://cubiq.org/iscroll-4 -->
 	<script src="lib/iscroll.js"></script>
 
-	<!-- ============================== core ============================== -->
-	<script src="js/globals.js"></script>
-
 	<!-- ============================== views ============================== -->
-	<script src="views/login.js"></script>
-	<script src="views/detail.js"></script>
-	<script src="js/main.js"></script>
+	<script src="core/views/LoginView.js"></script>
+	<script src="core/views/DetailView.js"></script>
+
+	<!-- ============================== core ============================== -->
+	<script src="core/Model.js"></script>
+	<script src="core/View.js"></script>
+	<script src="core/Controller.js"></script>
+	<script src="core/Application.js"></script>
 
 </head>
 <body>
