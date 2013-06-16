@@ -5,7 +5,7 @@ var app = {
 
 			
 		$.ajax({
-			url:"views/", // relative path to www folder
+			url:"views/details.html", // relative path to www folder
 			type:"get",
 			contentType:"application/text",
 			context:this,
