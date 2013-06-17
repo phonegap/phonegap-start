@@ -5,6 +5,8 @@ LoginView.initialize = function(store) {
 	View.render("LoginView");
 	$('body').on('keyup', '.search-key', LoginView.findByName)
 	LoginView.registerEvents();
+	
+	Controller.routeAnchor(".login_linkToGroupingGame", "GroupingGameView", null);
 }
 
 LoginView.findByName = function() {
