@@ -17,20 +17,19 @@ GroupingGameView.initialize = function (employee) {
 	Controller.routeAnchor(".grouping_back", "LoginView", App.store);
 	
 	
-	var imageObj = new Image();
-    imageObj.onload = function() {
+	var imageObj1 = new Image();
+    imageObj1.onload = function() {
 	    drawImage(this);
    	};
-    imageObj.src = 'images/egg1.png';
-	
+    imageObj1.src = 'images/egg1.png';
 }
 
 function drawImage(imageObj) { 
 
         var stage = new Kinetic.Stage({
           container: "container",
-          width: 2048,
-          height: 1000
+          width: 1000,
+          height: 500
         });
         var layer = new Kinetic.Layer();
         // darth vader
