@@ -1,4 +1,3 @@
-
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -187,7 +186,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright 2012-2013 Adobe Systems Incorporated.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -200,97 +199,3 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
-==============================================================
-This product also include the following software:
-==============================================================
-
---------------------------------------------------------------
-jasmine from GitHub
-
-   https://github.com/pivotal/jasmine
-
-MIT-style license
-
-license available from:
-
-   https://github.com/pivotal/jasmine/blob/master/MIT.LICENSE
-   
------------------------------
-
-Copyright (c) 2008-2011 Pivotal Labs
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
---------------------------------------------------------------
-commonjs tests from the commonjs organization at GitHub
-
-   https://github.com/commonjs/commonjs
-
-MIT-style license
-
-license available from:
-
-   https://github.com/commonjs/commonjs/blob/master/docs/license.html.markdown
-
-contributor list available from:
-
-   https://github.com/commonjs/commonjs/blob/master/docs/contributors.html.markdown
-
------------------------------
-
-Copyright 2009 Kevin Dangoor
-Copyright 2009 Ihab Awad
-Copyright 2009 Ash Berlin
-Copyright 2009 Aristid Breitkreuz
-Copyright 2009 Kevin Dangoor
-Copyright 2009 Daniel Friesen
-Copyright 2009 Wes Garland
-Copyright 2009 Kris Kowal
-Copyright 2009 Dean Landolt
-Copyright 2009 Peter Michaux
-Copyright 2009 George Moschovitis
-Copyright 2009 Michael O'Brien
-Copyright 2009 Tom Robinson
-Copyright 2009 Hannes Wallnoefer
-Copyright 2009 Mike Wilson
-Copyright 2009 Ondrej Zara
-Copyright 2009 Chris Zumbrunn
-Copyright 2009 Kris Zyp
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
