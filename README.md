@@ -1,29 +1,50 @@
-# Hello World PhoneGap Application
+# PhoneGap Build Starter Application
 
-> A Hello World application built with PhoneGap
+> A Hello World application to get started with PhoneGap Build.
 
-## PhoneGap Build
+## Usage
+
+### Run Application
+
+    /www/index.html
+
+### Run Tests
+
+    /www/spec.html
+
+### PhoneGap/Build
 
 Create a new app with the following repository:
 
     https://github.com/phonegap/phonegap-start.git
 
-## Run Application
+## Updating the Application
 
-    /www/index.html
+The application is based on the [Apache Cordova Hello World][cordova-app] app.
 
-## Run Tests
+### 1. Update the Source
 
-    /www/spec.html
+    cp cordova-app-hello-world/www www/
 
-## Issues and Pull Requests
+__Do not replace `www/config.xml`.__
 
-This application is a modification of the [Apache Cordova Hello World][1].
+__Do not replace `www/img/logo.png`.__
 
-For issues with __the application__, please submit an issue or pull request
-to the [Apache Cordova source code][1].
+### 2. Update index.html
 
-For issues with __the PhoneGap Build integration__, please submit
-an issue or pull request to this project.
+Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 
-[1]: https://github.com/apache/cordova-app-hello-world
+### 3. Update PhoneGap Version
+
+    <preference name="phonegap-version" value="x.x.x" />
+
+### 4. Commit
+
+    $ git commit -am "Version x.x.x"
+
+### 5. Tag
+
+    $ git tag x.x.x
+
+[cordova-app]: http://github.com/apache/cordova-app-hello-world
+
