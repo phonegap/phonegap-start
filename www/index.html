@@ -1,42 +1,140 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+ 
+<!doctype html>
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
+<html lang="es">
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+		<title>Mis apps</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/estilos.css" />
+		<link rel="stylesheet" href="css/azul.css" />
+
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+
+	</head>
+	
+	<body>
+		
+		<div data-role="page" data-theme="a" id="home">
+			<header data-role="header" >
+				<a href="#" data-rel="back" data-icon="back">Regresar</a>
+				<h1>Home</h1>
+			</header>
+
+			<section data-role="content">
+				<!-- start slipsum code -->
+
+<h3>Nullam eros mi</h3>
+<p>Integer elementum massa at nulla placerat varius. Suspendisse in libero risus, in interdum massa. Vestibulum ac leo vitae metus faucibus gravida ac in neque. Nullam est eros, suscipit sed dictum quis, accumsan a ligula. In sit amet justo lectus. Etiam feugiat dolor ac elit suscipit in elementum orci fringilla. Aliquam in felis eros. Praesent hendrerit lectus sit amet turpis tempus hendrerit. Donec laoreet volutpat molestie. Praesent tempus dictum nibh ac ullamcorper. Sed eu consequat nisi. Quisque ligula metus, tristique eget euismod at, ullamcorper et nibh. Duis ultricies quam egestas nibh mollis in ultrices turpis pharetra. Vivamus et volutpat mi. Donec nec est eget dolor laoreet iaculis a sit amet diam.  </p>
+
+
+			</section>
+
+			<footer data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+				    <ul>
+				        <li><a href="#home" class="ui-btn-active">Inicio</a></li>
+				        <li><a href="#foto">Fotos</a></li>
+				        <li><a href="#contacto">Contacto</a></li>
+				    </ul>
+				</div><!-- /navbar -->
+			</footer>
+			
+		</div>
+
+	
+		<div data-role="page" data-theme="a" id="foto">
+			<header data-role="header" >
+				<a href="#" data-rel="back" data-icon="back">Regresar</a>
+				<h1>Fotos</h1>
+			</header>
+
+			<section data-role="content">
+				<div class="foto">
+					<h3>Uuummmm, this is a tasty burger!</h3>
+					<img src="http://1.bp.blogspot.com/_wpPLG-yJpJw/S-cg1w2EmrI/AAAAAAAADtM/99WF0mQeMhs/s320/Calnan-Batman291-12a.jpg" />
+				</div>
+				<div class="foto">
+					<h3>Uuummmm, this is a tasty burger!</h3>
+					<img src="http://1.bp.blogspot.com/_wpPLG-yJpJw/S-cg1w2EmrI/AAAAAAAADtM/99WF0mQeMhs/s320/Calnan-Batman291-12a.jpg" />
+				</div>
+				<div class="foto">
+					<h3>Uuummmm, this is a tasty burger!</h3>
+					<img src="http://1.bp.blogspot.com/_wpPLG-yJpJw/S-cg1w2EmrI/AAAAAAAADtM/99WF0mQeMhs/s320/Calnan-Batman291-12a.jpg" />
+				</div>
+				<div class="foto">
+					<h3>Uuummmm, this is a tasty burger!</h3>
+					<img src="http://1.bp.blogspot.com/_wpPLG-yJpJw/S-cg1w2EmrI/AAAAAAAADtM/99WF0mQeMhs/s320/Calnan-Batman291-12a.jpg" />
+				</div>
+				<div class="foto">
+					<h3>Uuummmm, this is a tasty burger!</h3>
+					<img src="http://1.bp.blogspot.com/_wpPLG-yJpJw/S-cg1w2EmrI/AAAAAAAADtM/99WF0mQeMhs/s320/Calnan-Batman291-12a.jpg" />
+				</div>
+
+
+			</section>
+
+			<footer data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+				    <ul>
+				        <li><a href="#home" >Inicio</a></li>
+				        <li><a href="#foto" class="ui-btn-active">Fotos</a></li>
+				        <li><a href="#contacto">Contacto</a></li>
+				    </ul>
+				</div><!-- /navbar -->
+			</footer>
+			
+		</div>
+
+
+		<div data-role="page" data-theme="a" id="contacto">
+			<header data-role="header" >
+				<a href="#" data-rel="back" data-icon="back">Regresar</a>
+				<h1>Contacto</h1>
+			</header>
+
+			<section data-role="content">
+
+				<label for="text-basic">Tu nombre:</label>
+<input name="text-basic" id="text-basic" value="" type="text">
+
+<label for="textarea">Mensaje:</label>
+<textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+
+				<label for="select-choice-1" class="select">Estado</label>
+<select name="select-choice-1" id="select-choice-1">
+    <option value="standard">Nuevo leon</option>
+    <option value="rush">Jalisco</option>
+    <option value="express">Cd de Mexico</option>
+    <input value="Submit button, mini" data-icon="grid" data-iconpos="right" data-mini="true" data-theme="e" type="submit"
+</select>
+
+
+			</section>
+
+			<footer data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+				    <ul>
+				        <li><a href="#home" >Inicio</a></li>
+				        <li><a href="#foto">Fotos</a></li>
+				        <li><a href="#contacto" class="ui-btn-active">Contacto</a></li>
+				    </ul>
+				</div><!-- /navbar -->
+			</footer>
+			
+		</div>
+
+       <script type="text/javascript" src="phonegap.js"></script>
+	</body>
 </html>
+
+
+
+
+
+
