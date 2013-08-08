@@ -51,6 +51,7 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" /> 
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
@@ -89,6 +90,7 @@
         Otherwise, you can specify specific domains:
     -->
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+    <access origin="https://cp.pushwoosh.com"/>
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
