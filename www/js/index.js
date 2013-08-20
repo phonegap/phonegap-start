@@ -16,6 +16,48 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
+ function initPushwoosh() {
+	var pushNotification = window.plugins.pushNotification;
+	pushNotification.onDeviceReady();
+	
+	pushNotification.registerDevice({alert:true, badge:true, sound:true, pw_appid:"4F0C807E51EC77.93591449", appname:"Pushwoosh"},
+									function(status) {
+										var deviceToken = status['deviceToken'];
+										console.warn('registerDevice: ' + deviceToken);
+									},
+									function(status) {
+										console.warn('failed to register : ' + JSON.stringify(status));
+										navigator.notification.alert(JSON.stringify(['failed to register ', status]));
+									});
+	
+	pushNotification.setApplicationIconBadgeNumber(0);
+	 
+	pushNotification.getTags(function(tags) {
+								console.warn('tags for the device: ' + JSON.stringify(tags));
+							 },
+							 function(error) {
+								console.warn('get tags error: ' + JSON.stringify(error));
+							 });
+	 
+	//start geo tracking. PWTrackSignificantLocationChanges - Uses GPS in foreground, Cell Triangulation in background. 
+	pushNotification.startLocationTracking('PWTrackSignificantLocationChanges',
+									function() {
+										   console.warn('Location Tracking Started');
+									});
+	
+	document.addEventListener('push-notification', function(event) {
+								var notification = event.notification;
+								
+  							    navigator.notification.alert(notification.aps.alert);
+								
+								//to view full push payload
+								//navigator.notification.alert(JSON.stringify(notification));
+								
+								pushNotification.setApplicationIconBadgeNumber(0);
+							  });
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -33,6 +75,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        initPushwoosh();
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
