@@ -49,6 +49,7 @@ function registerPushwooshIOS() {
 
 function onPushwooshiOSInitialized(pushToken)
 {
+	var pushNotification = window.plugins.pushNotification;
 	//retrieve the tags for the device
 	pushNotification.getTags(function(tags) {
 								console.warn('tags for the device: ' + JSON.stringify(tags));
