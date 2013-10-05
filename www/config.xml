@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonega"
-        version   = "1.0.3">
+        id        = "com.servehttp"
+        version   = "1.0.4">
 
     <name>EasyOrder</name>
 
     <description>
-        Easy to Order
+        Easy to Order4
     </description>
 
     <author href="Wahana System" email="wahana.system@gmail.com">
