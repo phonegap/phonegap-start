@@ -26,13 +26,448 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+       
+<section data-role="page" id="home" >
+	<div data-role="header" data-position="fixed" data-theme="a">
+    <h1>Eros Tech Company</h1>
+     <a href="#nav" data-icon="bars" data-iconpos="notext" class="left">Kontaki</a>
+    <a href="#login" data-icon="bars" class="right" data-iconpos="notext">Log In</a>
+	</div>
+	<div data-role="content">
+    <img src="../../Ico/books/eros-logo-final.jpg" width="80" height="35" class="imglogo"/>
+    	
+		<ul class="ui-icon-alt" data-inset="true" data-role="listview"  data-corners="false">
+	<li><a href="#artikujt" class="arthome"><img src="../../Ico/article.png" class="ui-li-icon "/>Artikujt</a></li>
+    <li><a href="#sherbimet" class="sherhome"><img src="../../Ico/service.png" class="ui-li-icon"/>Sherbimet</a></li>
+    <li><a href="#rrethnesh" class="rrethhome"><img src="../../Ico/user_info.png" class="ui-li-icon"/>Rreth nesh</a></li>
+    <li><a href="#nav" class="navhome"><img src="../../Ico/usercard_01.png" class="ui-li-icon" />Kontakti</a></li>
+    <li><a href="#login" class="loghome"><img src="../../Ico/1380779681_Login.png" class="ui-li-icon"/>Log In</a></li>
+    <li><a href="#register" class="reghome"><img src="../../Ico/register.png" class="ui-li-icon"/>Register</a></li>
+            </ul>
             </div>
+             <div data-role="panel" id="nav" data-display="push" data-position="left" data-theme="b">
+  <form action="#" method="post">
+    <input type="text" id="txtemri" name="txtemri" value="" placeholder="Emri" tabindex="1"autofocus/>
+    <input type="text" id="txtmbiemri" name="txtmbiemri" value="" placeholder="Mbiemri" tabindex="2"/>
+    <input type="text" id="adressa" name="adressa" value="" placeholder="example@something.com" tabindex="3"/>
+    <textarea cols="10" rows="10" name="feedbacks" tabindex="4">
+    </textarea>
+    <a href="#home" data-role="button" class="drgo">Dergo</a>
+    </fieldset>
+    </form>
+    </div>
+            <!--Login form-->
+            <div data-role="panel" id="login" data-theme="a" data-content-theme="b" data-display="overlay" data-position="right">
+  <form action="#" method="post" name="frmlogin">
+  <fieldset data-role="fieldcontain" data-corners="false">
+  <input type="text" id="txtemri" name="txtemri" value="" placeholder="Username" autofocus /><br />
+  <input type="password" id="pswpassword" name="pswpassword" value="" placeholder="Password" required />
+  <a href="#home" data-role="button" data-theme="a" class="btnlogin">Log In</a>
+  <a href="#register" class="register">Register Now</a>
+  </fieldset>
+  </form>
+  <!--Login form-->
+  <!--Register form-->
+  </div>
+  <div data-role="panel" id="register" data-position="right" data-display="overlay" data-theme="a">
+ <form action="#" method="post">
+  <fieldset data-role="fieldcontain" >
+  <label for="txtemri">Emri</label>
+  <input type="text" id="txtemri" id="txtemri" value="" autofocus/>
+  <label for="txtmbiemri">Mbiemri</label>
+  <input type="text" id="txtmbiemri" name="txtmbiemri" value=""  required="required" />
+  <label for="txtxemail">E-mail *</label>
+  <input type="email" id="txtemail" name="txtemail" value="" required/>
+  <label for="txtrepeatemail">Confirm E-mail</label>
+  <input type="email" id="txtrepeatemail" name="txtrepeatemail" value="" required/>
+  <label for="password">New Password *</label>
+  <input type="password" id="password" name-"password" value="" required/>
+  <a href="#login" id="btnsubmit" data-role="button" data-theme="a">Register</a>
+  </fieldset>
+  </form>
+  </div>
+  <!--Register form-->
+  <!--kontaki page-->
+	<div data-role="footer" data-position="fixed" >
+		<nav data-role="navbar">
+        <ul>
+        <li><a href="#home" data-icon="home" data-iconpos="top" class="ui-btn-active">Ballina</a></li>
+        <li><a href="#artikujt" data-icon="grid" data-iconpos="top">Artikujt</a></li>
+        <li><a href="#sherbimet" data-icon="grid" data-iconpos="top">Sherbimet</a></li>
+        <li><a href="#rrethnesh" data-icon="grid"  data-iconpos="top">Rreth Nesh</a></li>
+        </ul>
+        </nav>
         </div>
+	</div>
+</section>
+<!---Home page-->
+<section data-role="page" id="artikujt">
+	<div data-role="header"
+     data-position="fixed" 
+     data-theme="a"	
+     >
+		<h1>Artikujt</h1>
+        <a href="#home" data-icon="home" data-iconpos="notext">home</a>
+    </div>
+    <div data-role="content">
+    <ul data-role="listview" data-inset="true"  data-corners="false" class="ui-icon-alt" data-split-theme="b"
+    data-split-icon="arrow-r" data-count-theme="b">
+    <li><a href="#detail1"><img src="../../Ico/windows_xp_logo.jpg" alt="windows xp">
+    <h3>Windows Xp</h3>
+    <p>Windows Xp invented in 2002 its the first sistem operation that make microsoft one of the most companies that make greate products</p>
+        <span class="ui-li-count">4</span>
+    <a href="#dialog1" data-rel="dialog" data-transition="flip">open</a>
+    </a></li>
+    <li><a href="#detail2"><img src="../../Ico/Windows_Vista_Ultimate_Logo_by_vitoraws.jpg" alt="windows vista">
+    <h3>Windows Vista</h3>
+    <p>Windows Vista invented in 2002 its the first sistem operation that make microsoft one of the most companies that make greate products</p>
+    <span class="ui-li-count">5</span>
+    <a href="#dialog2" data-rel="dialog" data-transition="flip">open</a>
+    </a></li>
+    <li><a href="#detail3"><img src="../../Ico/Windows-7-logo.jpg" alt="windows 7">
+    <h3>Windows 7</h3>
+    <p>Windows 7 invented in 2002 its the first sistem operation that make microsoft one of the most companies that make greate products</p>
+        <span class="ui-li-count">5</span>
+    <a href="#dialog3" data-rel="dialog" data-transition="pop">open</a>
+    </a></li>
+    <li><a href="#detail4"><img src="../../Ico/Windows-8-Logo (1).png" alt="windows 8">
+    <h3>Windows 8</h3>
+    <p>Windows 8 invented in 2002 its the first sistem operation that make microsoft one of the most companies that make greate products</p>
+            <span class="ui-li-count">5</span>
+    <a href="#dialog4" data-rel="dialog" data-transition="pop">open</a>
+    </a></li>
+    <li><a href="#detail5"><img src="../../Ico/8.1/gsmarena_002.jpg" alt="windows 8.1">
+    <h3>Windows 8.1</h3>
+    <p>Windows 8.1invented in 2002 its the first sistem operation that make microsoft one of the most companies that make greate products</p>
+            <span class="ui-li-count">5</span>
+    <a href="#dialog5" data-rel="dialog" data-transition="pop">open</a>
+    </a></li>
+    </ul>
+    </div>
+	<div data-role="footer" data-position="fixed" >
+			<nav data-role="navbar">
+        <ul>
+        <li><a href="#home" data-icon="home" data-iconpos="top">Ballina</a></li>
+        <li><a href="#" data-icon="grid" data-iconpos="top" class="ui-btn-active">Artikujt</a></li>
+        <li><a href="#sherbimet" data-icon="grid" data-iconpos="top">Sherbimet</a></li>
+        <li><a href="#rrethnesh" data-icon="grid"  data-iconpos="top">Rrreth Nesh</a></li>
+        </ul>
+        </nav>	</div>
+</section>
+<!--artikujt-->
+
+<section data-role="page" id="sherbimet">
+	<div data-role="header" data-position="fixed" data-theme="a">
+		<h1>Sherbimet</h1>
+          <a href="#home" data-icon="home" data-iconpos="notext">Artikujt</a>
+	</div>
+	<div data-role="content">
+    <ul data-role="listview"  data-count-theme="a" data-filter="true" data-filter-placeholder="Search Items.."
+    data-mini="true">
+    <li data-role="list-divider" data-divider-theme="a">Video tutorials<span class="ui-li-count">5</span></li>
+    <li><a href="http://www.youtube.com/watch?v=IIaBVAUm-SA">
+    <h2>How to install Windows Xp</h2>
+    <p><strong>Watch this video</strong></p>
+    <p>This video make you to understand how to really install Windows Xp in your Pc</p>
+    <p><span class="ui-li-aside">09:06</span></p>
+    </a></li>
+    <li><a href="http://www.youtube.com/watch?v=cfxXjiiOZlE" >
+    <h2>How to install Windows Vista</h2>
+    <p><strong>Watch this video</strong></p>
+    <p>This video make you to understand how to really install Windows Vista in your Pc</p>
+    <p><span class="ui-li-aside">04:00</span></p>
+    </a></li>
+     <li><a href="http://www.youtube.com/watch?v=mME9VLT7-xw" >
+    <h2>How to install Windows 7</h2>
+    <p><strong>Watch this video</strong></p>
+    <p>This video make you to understand how to really install Windows 7 in your Pc</p>
+    <p><span class="ui-li-aside">07:22</span></p>
+    </a></li>
+         <li><a href="http://www.youtube.com/watch?v=aChTliTct8Q" >
+    <h2>How to install Windows 8</h2>
+    <p><strong>Watch this video</strong></p>
+    <p>This video make you to understand how to really install Windows 8 in your Pc</p>
+    <p><span class="ui-li-aside">08:18</span></p>
+    </a></li>
+         <li><a href="http://www.youtube.com/watch?v=fZgjWoQtW3E" >
+    <h2>How to install Windows 8.1</h2>
+    <p><strong>Watch this video</strong></p>
+    <p>This video make you to understand how to really install Windows 8.1 in your Pc</p>
+    <p><span class="ui-li-aside">11:06</span></p>
+    </a></li>
+     <li data-role="list-divider" data-divider-theme="b">Books<span class="ui-li-count">11</span></li>
+     <li><a href="#"><img src="../../Ico/books/html5-designers2.gif" />
+     <h1>Html5 for web Desingers</h1>
+     <p>Html5 its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+     </a></li>
+     <li><a href="#"><img src="../../Ico/books/5185Iha5-6L._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_AA300_SH20_OU01_.jpg" />
+     <h1>Html5 Solutions</h1>
+     <p>Html5 Solutions its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+     </a></li>
+     <li><a href="3"><img src="../../Ico/books/download.jpg"/>
+     <h1>Css3 Solutions</h1>
+     <p>Css3 Solutions its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+     </a></li>
+     <li><a href="#" ><img src="../../Ico/books/css3-quick.jpg" />
+     <h1>Css3 Root</h1>
+     <p>Css3 Solutions its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+     </a></li>
+     <li><a href="#"><img src="../../Ico/books/513nzccFtwL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_AA300_SH20_OU01_.jpg"/>
+     <h1>Jquery,Jquery Ui,and Jquery Mobile</h1>
+     <p>JQuery,Jquery UI,and Jquery Mobile its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+     </a>></li>
+    <li><a href="#"><img src="../../Ico/books/41XeY6Pua+L._SL500_AA300_.jpg"/>
+    <h1>Jquery Mobile</h1>
+    <p>Jquery Mobile its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+    </a></li>
+    <li><a href="#"><img src="../../Ico/books/master-mobile-web-apps-with-jqm.png"/>
+    <h1>Jquery Pro</h1>
+    <p>Jquery Pro its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+    </a></li>
+    <li><a href="#"><img src="../../Ico/books/pro-javascript-techniques.jpg"/>
+    <h1>PRo Javascript</h1>
+    <p>Pro Javascript its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+    </a></li>
+    <li><a href="#"><img src="../../Ico/books/javascriptForDevelopers.jpg"/>
+    <h1>Javascript for web Developers</h1>
+    <p>Jquery for Web Designers its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+    </a></li>
+    <li><a href="#"><img src="../../Ico/books/access2010bible.jpg"/>
+    <h1>Access 2010 Bible</h1>
+    <p>Access 2010 its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+    </a></li>
+    <li><a href="#"><img src="../../Ico/books/download (1).jpg"/>
+    <h1>Excel 2010 | The missing Manual</h1>
+    <p>Excel 2010 | The missing Manual its last versions of the hmtl,if you use this bokk you will be able to complete a web page design</p>
+    </a></li>
+        </ul>	
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<nav data-role="navbar">
+        <ul>
+        <li><a href="#home" data-icon="home" data-iconpos="top">Ballina</a></li>
+        <li><a href="#artikujt" data-icon="grid" data-iconpos="top">Artikujt</a></li>
+        <li><a href="#" data-icon="grid" data-iconpos="top" class="ui-btn-active">Sherbimet</a></li>
+        <li><a href="#rrethnesh" data-icon="grid"  data-iconpos="top">Rreth Nesh</a></li>
+        </ul>
+        </nav>
+	</div>
+</section>
+<!--Sherbimet-->
+<section data-role="page" id="rrethnesh">
+	<div data-role="header" data-position="fixed" data-theme="a">
+		<h1>Rreth Nesh</h1>
+        <a href="#home" data-icon="home" data-iconpos="notext">home</a>
+	</div>
+	<div data-role="content">
+    <div data-role="collepsible-set">
+    <div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="left">
+    <h3>Rreth Eros Tech Company</h3>
+    <p>Eros Tech Company, studio grafike që ofron kreativitet, printime, design profesional dhe web-design. Përvoja na ka bërë të kuptojmë se imazhi është pjesë vitale e biznesit. Faqja juaj e internetit, reklamimi, kartëvizita dhe kolateralët e tjera duhet të ofrojnë më shume sesa një foto të bukur. Imazhi duhet të jetë pika e fortë e biznesit tuaj. Grafika dhe fjalët e përzgjedhura do të jenë të afta tu tregojnë historinë tuaj klienteve potenciale dhe të arrijnë efektin e shumë dëshiruar nga ju.</p>
+    </div>
+    <div>
+    <form action="#" method="post">
+    <fieldset data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="left" data-collapsed="false">
+    <legend>Vrejtjet edhe kerkesat</legend>
+    <label for="txtemri">Emri</label>
+    <input type="text" id="txtemri" name="txtemri" value="" placeholder="Emri" tabindex="1"autofocus/>
+    <label for="txtmbiemri">Mbiemri</label>
+    <input type="text" id="txtmbiemri" name="txtmbiemri" value="" placeholder="Mbiemri" tabindex="2"/>
+    <label for="adressa">E-mail</label>
+    <input type="text" id="adressa" name="adressa" value="" placeholder="example@something.com" tabindex="3"/>
+    <label for="feedbacks">Feedbacks</label>
+    <textarea cols="10" rows="10" name="feedbacks" tabindex="4"
+    placeholder="Write somthing to Us"></textarea>
+    <input type="submit" name="btnsubmit" id="btnsubmit" value="Dergo" class="drgo" />
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    </div>
+	<div data-role="footer" data-position="fixed" >
+	<nav data-role="navbar">
+        <ul>
+        <li><a href="#home" data-icon="home" data-iconpos="top">Ballina</a></li>
+        <li><a href="#artikujt" data-icon="grid" data-iconpos="top">Artikujt</a></li>
+        <li><a href="#sherbimet" data-icon="grid" data-iconpos="top">Sherbimet</a></li>
+        <li><a href="#" data-icon="grid"  data-iconpos="top" class="ui-btn-active">Rreth Nesh</a></li>
+        </ul>
+        </nav>
+	</div>
+</section>
+<!--Per rreth nesh-->
+<div data-role="page" id="detail1" data-fullscreen="true" >
+  <div data-role="header" data-position="fixed" >
+    <h1>Header</h1>
+    <a href="#artikujt" data-icon="arrow-l" data-iconpos="notext" >home</a>
+  </div>
+  <div data-role="content">
+  <img src="../../Ico/xp/images.jpg" width="350" height="170" alt="photo1" />
+  <img src="../../Ico/xp/images (2).jpg" width="350" height="170" alt="photo2" />
+  <img src="../../Ico/xp/images (1).jpg" width="350" height="170" alt="photo3" />
+  <img src="../../Ico/xp/download (2).jpg" width="350" height="170" alt="photo4" />
+</div>
+  <div data-role="footer" data-position="fixed" >
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--detail1 page-->
+<div data-role="page" id="detail2" data-fullscreen="true" >
+  <div data-role="header" data-position="fixed" >
+    <h1>Header</h1>
+        <a href="#artikujt" data-icon="arrow-l" data-iconpos="notext" >home</a>
+  </div>
+  <div data-role="content">
+  <img src="../../Ico/vista/images (3).jpg" width="350" height="170 alt="photo1" />
+  <img src="../../Ico/vista/images.jpg" width="350" height="170" alt="photo2" />
+  <img src="../../Ico/vista/images (1).jpg" width="350" height="170" alt="photo3" />
+  <img src="../../Ico/vista/images (2).jpg" width="350" height="170" alt="photo4" />
+  <img src="../../Ico/vista/images (4).jpg" width="350" height="170" alt="photo5" />
+  </div>
+  <div data-role="footer" data-fullscreen="true" data-position="fixed" >
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--detail2 page-->
+<div data-role="page" id="detail3" data-fullscreen="true" >
+  <div data-role="header"  data-position="fixed" >
+    <h1>Header</h1>
+        <a href="#artikujt" data-icon="arrow-l" data-iconpos="notext" >home</a>
+  </div>
+  <div data-role="content">
+  <img src="../../Ico/7/images.jpg" width="350" height="170" alt="photo1" />
+  <img src="../../Ico/7/images (5).jpg" width="350" height="170" alt="photo2" />
+  <img src="../../Ico/7/images (2).jpg" width="350" height="170" alt="photo3"/>
+  <img src="../../Ico/7/images (1).jpg" width="350" height="170" alt="photo4" />
+  <img src="../../Ico/7/Windows_7_HD_Wallpaper_by_AnimusDesign.jpg" width="350" height="170" alt="photo5" />
+  </div>
+  <div data-role="footer" data-fullscreen="true" data-position="fixed" >
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--detail3 page-->
+<div data-role="page" id="detail4" data-fullscreen="true" >
+  <div data-role="header" data-postion="fixed" >
+    <h1>Windows 8</h1>
+        <a href="#artikujt" data-icon="arrow-l" data-iconpos="notext" >home</a>
+  </div>
+  <div data-role="content">
+  <img src="../../Ico/8/images (2).jpg" width="350" height="170" alt="photo1" />
+  <img src="../../Ico/8/images (1).jpg" width="350" height="170" alt="photo2"/>
+  <img src="../../Ico/8/download.jpg" width="350" height="170" alt="photo3" />
+  <img src="../../Ico/8/images (3).jpg" width="350" height="170" alt="photo4" />
+  <img src="../../Ico/8/images.jpg" width="350" height="170" alt="photo5" />
+</div>
+  <div data-role="footer" data-fullscreen="true" data-position="fixed" >
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--detail4 page-->
+<div data-role="page" id="detail5" data-fullscreen="true" >
+  <div data-role="header" data-position="fixed" >
+    <h1>Windows 8.1</h1>
+        <a href="#artikujt" data-icon="arrow-l" data-iconpos="notext" >home</a>
+  </div>
+  <div data-role="content">
+  <img src="../../Ico/8.1/images.jpg" width="350" height="170" alt="photo1" />
+  <img src="../../Ico/8.1/download (1).jpg" width="350" height="170" alt="photo2" />
+  <img src="../../Ico/8.1/images (2).jpg" width="350" height="170" alt="photo3" />
+  <img src="../../Ico/8.1/xhow.jpg" width="350" height="170" alt="photo4" />
+  <img src="../../Ico/8.1/download (1).jpg" width="350" height="170" alt="photo5" />
+  </div>
+  <div data-role="footer" data-fullscreen="true" data-position="fixed" data-theme="a">
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--detail5 page-->
+<div data-role="page" id="dialog1" data-position="fixed"  data-content-theme="e">
+  <div data-role="header" data-theme="a">
+    <h1>Windows Xp</h1>
+  </div>
+  <div data-role="content">
+  <h2>Windows Xp</h2>
+  <p>
+  Windows XP is an operating system produced by Microsoft for use on personal computers, including home and business desktops, laptops and media centers. First released to computer manufacturers on August 24, 2001,[5] it is the second most popular version of Windows, based on installed user base.[6] The name "XP" is short for "eXPerience",[7] highlighting the enhanced user experience.[8]
+Windows XP, the successor to Windows 2000 and Windows ME, was the first consumer-oriented operating system produced by Microsoft to be built on the Windows NT kernel. Windows XP was released worldwide for retail sale on October 25, 2001, and over 400 million copies were in use in January 2006.[9] It was succeeded by Windows Vista in January 2007. Direct OEM and retail sales of Windows XP ceased on June 30, 2008. Microsoft continued to sell Windows XP through their System Builders (smaller OEMs who sell assembled computers) program until January 31, 2009.[10][11] On April 10, 2012, Microsoft reaffirmed that extended support for Windows XP and Office 2003 would end on April 8, 2014 and suggested that administrators begin preparing to migrate to a newer OS.[12][13][14]
+The NT-based versions of Windows, which are programmed in C, C++, and assembly,[15] are known for their improved stability and efficiency over the 9x versions of Microsoft Windows.[16][17] Windows XP presented a significantly redesigned graphical user interface, a change Microsoft promoted as more user-friendly than previous versions of Windows. In an attempt to further ameliorate the "DLL hell" that plagued the past versions of Windows, improved side-by-side assembly technology in Windows XP allows side-by-side installation, registration and servicing of multiple versions of globally shared software components in full isolation.[18][19] It is also the first version of Windows to use product activation to combat illegal copying.</p>
+<a href="#home" data-role="button" data-icon="home" data-iconpos="left" data-theme="a">Home</a>
+<a href="#artikujt" data-role="button" data-icon="back" data-iconpos="left" data-theme="a">Back</a
+></div>
+  <div data-role="footer" data-position"fixed" data-theme="a">
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--dialog1 page-->
+<div data-role="page" id="dialog2" data-positin="fixed" data-theme="a" data-content-theme="e">
+  <div data-role="header" data-theme="a">
+    <h1>Windows Vista</h1>
+  </div>
+  <div data-role="content">
+  <h2>Windows Vista</h2>
+  <p>Windows Vista is an operating system by Microsoft for use on personal computers, including home and business desktops, laptops, tablet PCs, and media center PCs. Prior to its announcement on July 22, 2005, Windows Vista was known by its codename "Longhorn".[4] Development was completed on November 8, 2006, and over the following three months, it was released in stages to computer hardware and software manufacturers, business customers and retail channels. On January 30, 2007, it was released worldwide[5] and was made available for purchase and download from Microsoft's website.[6] The release of Windows Vista came more than five years after the introduction of its predecessor, Windows XP, the longest time span between successive releases of Microsoft Windows desktop operating systems. It was succeeded by Windows 7, which was released to manufacturing on July 22, 2009 and released worldwide for retail on October 22, 2009.
+New features of Windows Vista include an updated graphical user interface and visual style dubbed Aero, a new search component called Windows Search, redesigned networking, audio, print and display sub-systems, and new multimedia tools including Windows DVD Maker. Vista aimed to increase the level of communication between machines on a home network, using peer-to-peer technology to simplify sharing files and media between computers and devices. Windows Vista included version 3.0 of the .NET Framework, allowing software developers to write applications without traditional Windows APIs.<p>
+<a href="#home" data-role="button" data-icon="home" data-iconpos="left" data-theme="a">Home</a>
+<a href="#artikujt" data-role="button" data-icon="back" data-iconpos="left" data-theme="a">Back</a>
+  </div>
+  <div data-role="footer" data-theme="a">
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--dialog2 page-->
+<div data-role="page" id="dialog3" data-position="fixed" data-theme="a" data-content-theme="e">
+  <div data-role="header" data-theme="a">
+    <h1>Windows 7</h1>
+  </div>
+  <div data-role="content">
+  <h2>Windows 7</h2>
+  <p>
+Windows 7 is an operating system produced by Microsoft for use on personal computers, including home and business desktops, laptops, netbooks, tablet PCs, and media center PCs.[6] It was released to manufacturing on July 22, 2009,[7] and became generally available for retail worldwide on October 22, 2009,[8] less than three years after the release of its predecessor, Windows Vista. Windows 7's server counterpart, Windows Server 2008 R2, was released at the same time. Windows 7 is succeeded by Windows 8.
+Unlike Windows Vista's many new features, Windows 7 was an incremental upgrade designed to work with Vista-compatible applications and hardware.[9] Presentations given by Microsoft in 2008 focused on multi-touch support, an updated Windows shell with a new taskbar, referred to internally as the Superbar, a home networking system called HomeGroup,[10] and performance improvements. Some standard applications that have been included with prior releases of Microsoft Windows, including Windows Calendar, Windows Mail, Windows Movie Maker, and Windows Photo Gallery, are not included in Windows 7;[11][12] most are instead offered separately at no charge as part of the Windows Essentials suite.[13].</p>
+<a href="#home" data-role="button" data-icon="home" data-iconpos="left" data-theme="a">Home</a>
+<a href="#artikujt" data-role="button" data-icon="back" data-iconpos="left" data-theme="a">Back</a>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--dialog3 page-->
+<div data-role="page" id="dialog4" data-position="fixed" data-theme="a" data-content-theme="e">
+  <div data-role="header" data-theme="a">
+    <h1>indows 8</h1>
+  </div>
+  <div data-role="content">
+  <h2>Windows 8</h2>
+  <p>
+  Windows 8 is a version of Microsoft Windows (an operating system developed by Microsoft) for use on personal computers, including home and business desktops, laptops, tablets, and home theater PCs. Development of Windows 8 started before the release of its predecessor, Windows 7, in 2009. It was announced at CES 2011, and followed by the release of three pre-release versions from September 2011 to May 2012. The operating system was released to manufacturing on August 1, 2012, and was released for general availability on October 26, 2012.[3]
+Windows 8 introduced major changes to the operating system's platform and user interface to improve its user experience on devices such as tablets, where Windows was now competing with mobile operating systems such as Android and iOS.[4] In particular, these changes included a touch-optimized Windows shell based on Microsoft's "Metro" design language, the Start screen (which displays programs and dynamically updated content on a grid of tiles), a new platform for developing apps with an emphasis on touchscreen input, integration with online services (including the ability to sync apps and settings between devices), and Windows Store, an online store for downloading and purchasing new software. Windows 8 added support for new and emerging technologies such as USB 3.0, Advanced Format hard drives, near field communications, and cloud computing. Additional security features were introduced, such as built-in antivirus software, integration with Microsoft SmartScreen phishing filtering service and support for UEFI Secure Boot on supported devices with UEFI firmware, to prevent malware from infecting the boot process.</p>
+<a href="#home" data-role="button" data-icon="home" data-iconpos="left" data-theme="a">Home</a>
+<a href="#artikujt" data-role="button" data-icon="back" data-iconpos="left" data-theme="a">Back</a>
+  </div>
+  <div data-role="footer" data-position="fixed" data-theme="a">
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--dialog4 page-->
+<div data-role="page" id="dialog5" data-theme="a" data-position="fixed" data-theme="a" data-content-theme="e">
+<div data-role="header" data-theme="a">
+    <h1>Windows 8.1</h1>
+  </div>
+<div data-role="content">
+  <h2>Windows 8.1</h2>
+  <p>
+   Windows 8 is a version of Microsoft Windows (an operating system developed by Microsoft) for use on personal computers, including home and business desktops, laptops, tablets, and home theater PCs. Development of Windows 8 started before the release of its predecessor, Windows 7, in 2009. It was announced at CES 2011, and followed by the release of three pre-release versions from September 2011 to May 2012. The operating system was released to manufacturing on August 1, 2012, and was released for general availability on October 26, 2012.[3]
+Windows 8 introduced major changes to the operating system's platform and user interface to improve its user experience on devices such as tablets, where Windows was now competing with mobile operating systems such as Android and iOS.[4] In particular, these changes included a touch-optimized Windows shell based on Microsoft's "Metro" design language, the Start screen (which displays programs and dynamically updated content on a grid of tiles), a new platform for developing apps with an emphasis on touchscreen input, integration with online services (including the ability to sync apps and settings between devices), and Windows Store, an online store for downloading and purchasing new software. Windows 8 added support for new and emerging technologies such as USB 3.0, Advanced Format hard drives, near field communications, and cloud computing. Additional security features were introduced, such as built-in antivirus software, integration with Microsoft SmartScreen phishing filtering service and support for UEFI Secure Boot on supported devices with UEFI firmware, to prevent malware from infecting the boot process.</p>
+<a href="#home" data-role="button" data-icon="home" data-iconpos="left" data-theme="a">Home</a>
+<a href="#artikujt" data-role="button" data-icon="back" data-iconpos="left" data-theme="a">Back</a>
+  </div>
+<div data-role="footer" data-theme="a" data-position="fixed">
+    <h4>Footer</h4>
+  </div>
+</div>
+<!--dialog5 page-->
+<!--RegsiterPage-->
+<!--Register form-->
+</body>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
