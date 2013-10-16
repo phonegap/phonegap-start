@@ -47,14 +47,18 @@ var app = {
         console.log('Received Event: ' + id);
     },
     displaygeolocation: function() {
-    options = {
-        consumerKey: app.consumerKey,
-        consumerSecret: app.consumerSecret,
-        callbackUrl : "gotOAuth.html",
-        signatureMethod : "HMAC-SHA1",
-    };
-    oauth = OAuth(options);
-    // step 1
-    oauth.request({'method': 'GET', 'url': app.evernoteHostName + '/oauth', 'success': app.success, 'failure': app.failure});
+                 function onSuccess(acceleration) {
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
+};
+
+function onError() {
+    alert('onError!');
+};
+
+navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+
 }
 };
