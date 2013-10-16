@@ -45,5 +45,16 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+    displaygeolocation: function() {
+    options = {
+        consumerKey: app.consumerKey,
+        consumerSecret: app.consumerSecret,
+        callbackUrl : "gotOAuth.html",
+        signatureMethod : "HMAC-SHA1",
+    };
+    oauth = OAuth(options);
+    // step 1
+    oauth.request({'method': 'GET', 'url': app.evernoteHostName + '/oauth', 'success': app.success, 'failure': app.failure});
+}
 };
