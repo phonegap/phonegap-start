@@ -36,11 +36,11 @@
       </header>
       
       <div id="pages">
-        <div id="map" class="current">
+        <div id="profile" class="current">
         </div>
-        <div id="camera">
+        <div id="history">
         </div>
-        <div id="twitter">
+        <div id="settings">
         </div>
         
     
@@ -57,27 +57,44 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-        <script type="text/javascript" src="jquery.js"></script>
+        
+  
+        <footer>
+        <ul id="tab-bar">
+          <li>
+            <a href="#profile">Profile</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="#settings">Settings</a>
+          </li>
+        </ul>
+      </footer>
+      
+      <script>
+      function page(toPage) {
+          var toPage = $(toPage), fromPage = $("#pages .current");
+          if(toPage.hasClass("current") || toPage === fromPage) {
+             return;
+          };
+          toPage.addClass("current fade in").one("webkitAnimationEnd", function(){
+              fromPage.removeClass("current fade out");
+              toPage.removeClass("fade in")
+          });
+          fromPage.addClass("fade out");
+      }
+      </script>
+      
+      
+      <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/iscroll-lite.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
-  
-        <footer>
-        <ul id="tab-bar">
-          <li>
-            <a href="#map">Map</a>
-          </li>
-          <li>
-            <a href="#camera">Camera</a>
-          </li>
-          <li>
-            <a href="#twitter">Twitter</a>
-          </li>
-        </ul>
-      </footer>
         
     
     
