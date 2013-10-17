@@ -33,6 +33,21 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        
+         $('#tab-bar a').on('click', function(e){
+    e.preventDefault();
+    var nextPage = $(e.target.hash);
+    $("#pages .current").removeClass("current");
+    nextPage.addClass("current");
+});
+
+var theScroll;
+function scroll(){
+    theScroll = new iScroll('wrapper');
+}
+document.addEventListener('DOMContentLoaded', scroll, false);
+}
+
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -47,11 +62,23 @@ var app = {
         console.log('Received Event: ' + id);
     },
     initiscroll: function() {
-                var theScroll;
-function scroll(){
-    theScroll = new iScroll('wrapper');
-}
-document.addEventListener('DOMContentLoaded', scroll, false);
-}
+                alert("Hi")
 
 };
+
+
+       
+function page(toPage) {
+    var toPage = $(toPage),
+    fromPage = $("#pages .current");
+    if(toPage.hasClass("current") || toPage === fromPage) {
+        return;
+    };
+    toPage.addClass("current fade in").one("webkitAnimationEnd", function(){
+        fromPage.removeClass("current fade out");
+        toPage.removeClass("fade in")
+    });
+    fromPage.addClass("fade out");
+}
+       
+       
