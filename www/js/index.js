@@ -46,19 +46,12 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-    displaygeolocation: function() {
-                 function onSuccess(acceleration) {
-    alert('Acceleration X: ' + acceleration.x + '\n' +
-          'Acceleration Y: ' + acceleration.y + '\n' +
-          'Acceleration Z: ' + acceleration.z + '\n' +
-          'Timestamp: '      + acceleration.timestamp + '\n');
-};
-
-function onError() {
-    alert('onError!');
-};
-
-navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-
+    initiscroll: function() {
+                var theScroll;
+function scroll(){
+    theScroll = new iScroll('wrapper');
 }
+document.addEventListener('DOMContentLoaded', scroll, false);
+}
+
 };
