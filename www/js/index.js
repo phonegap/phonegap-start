@@ -63,11 +63,7 @@ document.addEventListener('DOMContentLoaded', scroll, false);
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    },
-    initiscroll: function() {
-                //alert("Hi")
-
-}
+    }
 
 
   /*     
