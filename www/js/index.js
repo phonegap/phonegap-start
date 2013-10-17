@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', scroll, false);
     initiscroll: function() {
                 //alert("Hi")
 
-};
+}
 
 
   /*     
