@@ -7,7 +7,7 @@ html, body{
 
 
 
-
+/*
 body {
  font-family:Arial,  sans-serif;
  line-height:1.5;
@@ -18,9 +18,10 @@ body {
  word-wrap: break-word;
  -webkit-text-size-adjust: none;
 }
+*/
 
 
-/*
+
 body {
     -webkit-touch-callout: none;                // prevent callout to copy image, etc when tap to hold
     -webkit-text-size-adjust: none;             // prevent webkit from resizing text to fit
@@ -45,7 +46,7 @@ body {
     text-transform:uppercase;
     width:100%;
 }
-*/
+
 
 
 h1, h2, h3, h4, h5, h6{ font-weight: normal; }
