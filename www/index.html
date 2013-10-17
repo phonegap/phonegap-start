@@ -26,6 +26,19 @@
         <title>Hello World</title>
     </head>
     <body>
+    
+    <div id="wrapper">
+    <div id="main-content">
+      <header>
+        <h1>Bounce</h1>
+      </header>
+      <div id="pages">
+        <div id="map" class="current">
+        </div>
+        <div id="camera">
+        </div>
+        <div id="twitter">
+        </div>
         <div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
@@ -33,11 +46,37 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
+    
+      </div> <!-- the pages div -->
+      <footer>
+        <ul id="tab-bar">
+          <li>
+            <a href="#map">Map</a>
+          </li>
+          <li>
+            <a href="#camera">Camera</a>
+          </li>
+          <li>
+            <a href="#twitter">Twitter</a>
+          </li>
+        </ul>
+      </footer>
+      </div><!-- main content -->
+      </div><!-- wrapper -->
+    
+        
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/iscroll-lite.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
+        
+        
+       
+        
+    
+    
     </body>
 </html>
