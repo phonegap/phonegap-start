@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', scroll, false);
         console.log('Received Event: ' + id);
     }
 
-
+}
   /*     
 function page(toPage) {
     var toPage = $(toPage),
