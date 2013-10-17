@@ -32,19 +32,7 @@
         <title>Bounce</title>
     </head>
     <body>
-    <div id="wrapper">
-    <div id="main-content">
-    <header>
-    <h1>Bounce</h1>
-    </header>
-    <div id="pages">
-    <div id="map" class="current">
-    </div>
-    <div id="camera">
-    </div>
-    <div id="twitter">
-    </div>
-    </div>
+    
         <div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
@@ -70,29 +58,10 @@
         
         
         <script>
-        $('#tab-bar a').on('click', function(e){
-    e.preventDefault();
-    var nextPage = $(e.target.hash);
-    $("#pages .current").removeClass("current");
-    nextPage.addClass("current");
-});
-
-function page(toPage) {
-    var toPage = $(toPage),
-    fromPage = $("#pages .current");
-    if(toPage.hasClass("current") || toPage === fromPage) {
-        return;
-    };
-    toPage.addClass("current fade in").one("webkitAnimationEnd", function(){
-        fromPage.removeClass("current fade out");
-        toPage.removeClass("fade in")
-    });
-    fromPage.addClass("fade out");
-}
+       
         </script>
         
-    </div>
-    </div>
+    
     <footer>
     <ul id="tab-bar">
     <li>
