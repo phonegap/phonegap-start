@@ -33,13 +33,14 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        
+        /*
          $('#tab-bar a').on('click', function(e){
     e.preventDefault();
     var nextPage = $(e.target.hash);
     $("#pages .current").removeClass("current");
     nextPage.addClass("current");
 });
+*/
 
 /*
 var theScroll;
@@ -64,12 +65,12 @@ document.addEventListener('DOMContentLoaded', scroll, false);
         console.log('Received Event: ' + id);
     },
     initiscroll: function() {
-                alert("Hi")
+                //alert("Hi")
 
 };
 
 
-       
+  /*     
 function page(toPage) {
     var toPage = $(toPage),
     fromPage = $("#pages .current");
@@ -82,5 +83,6 @@ function page(toPage) {
     });
     fromPage.addClass("fade out");
 }
+*/
        
        
