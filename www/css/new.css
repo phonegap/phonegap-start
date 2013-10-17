@@ -26,11 +26,11 @@ body {
  -webkit-text-size-adjust: none;
 }
 */
-
+/*
 h1, h2, h3, h4, h5, h6{ font-weight: normal; }
 p img { float: left; margin: 0 10px 5px 0; padding: 0; }
 img { border: 0; max-width: 100%; }
-
+*/
 /*  Main Styles */
 
 /*
@@ -62,10 +62,12 @@ header, footer{
     text-shadow:0 -1px 0 rgba(0,0,0,0.5);
     line-height:45px;
 }
+/*
 h1{
     margin:0;
     text-transform: uppercase;
 }
+*/
 #wrapper {
     position:absolute;
     z-index:1;
@@ -80,6 +82,7 @@ h1{
     padding:0;
 }
 
+/*
 #tab-bar{
     margin:0;
     padding:0;
@@ -110,7 +113,7 @@ h1{
 #pages{
     position:relative;
 }
-/* Update this style */
+
 #pages > div {
     display: none;
     position: absolute;
@@ -134,4 +137,4 @@ h1{
 .fade.out {
     z-index: 0;
 }
-
+*/
