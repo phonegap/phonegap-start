@@ -1,0 +1,119 @@
+html, body{
+ margin: 0;
+ padding: 0;
+ border: 0;
+}
+body {
+ font-family:Arial,  sans-serif;
+ line-height:1.5;
+ font-size:16px;
+ background: #fff;
+ padding:5px;
+ color: #000;
+ word-wrap: break-word;
+ -webkit-text-size-adjust: none;
+}
+h1, h2, h3, h4, h5, h6{ font-weight: normal; }
+p img { float: left; margin: 0 10px 5px 0; padding: 0; }
+img { border: 0; max-width: 100%; }
+
+/*  Main Styles */
+body{
+    background: #222;
+}
+header{
+    top:0; left:0;
+    height:45px;
+}
+footer {
+    bottom:0; left:0;
+    height:48px;
+    background-color:#c27b00;
+    border-top:1px solid #eee;
+}
+header, footer{
+    background-color:#deb500;
+    padding:0;
+    position:absolute;
+    z-index:2;
+    font-size:20px;
+    width:100%;
+    text-align:center;
+    color:#f3f3f3;
+    font-weight:bold;
+    text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+    line-height:45px;
+}
+h1{
+    margin:0;
+    text-transform: uppercase;
+}
+#wrapper {
+    position:absolute;
+    z-index:1;
+    top:45px; bottom:48px; left:0;
+    width:100%;
+    overflow:auto;
+}
+#main-content {
+    position:absolute;
+    z-index:1;
+    width:100%;
+    padding:0;
+}
+
+#tab-bar{
+    margin:0;
+    padding:0;
+}
+#tab-bar li {
+    display: inline;
+    float:left;
+    width: 33.333%;
+}
+#tab-bar a {
+    color: #cdcdcd;
+    display: block;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-touch-callout:none;
+}
+
+#pages > div {
+    display: none;
+}
+#pages > div.current {
+    display: block;
+}
+
+#pages{
+    position:relative;
+}
+/* Update this style */
+#pages > div {
+    display: none;
+    position: absolute;
+    top:0;left:0;
+    width:100%;
+}
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 400ms;
+}
+
+@-webkit-keyframes fade-in {
+    from { opacity: 0; } to { opacity: 1; }
+}
+
+.fade.in {
+    -webkit-animation-name: fade-in;
+    z-index: 5;
+}
+.fade.out {
+    z-index: 0;
+}
+
