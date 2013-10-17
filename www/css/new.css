@@ -1,4 +1,4 @@
-
+/*
 html, body{
  margin: 0;
  padding: 0;
@@ -20,7 +20,7 @@ body {
  -webkit-text-size-adjust: none;
 }
 
-
+*/
 
 
 
@@ -32,11 +32,11 @@ img { border: 0; max-width: 100%; }
 
 /*  Main Styles */
 
-
+/*
 body{
     background: #222;
 }
-
+*/
 
 header{
     top:0; left:0;
@@ -66,6 +66,7 @@ h1{
     margin:0;
     text-transform: uppercase;
 }
+
 
 #wrapper {
     position:absolute;
