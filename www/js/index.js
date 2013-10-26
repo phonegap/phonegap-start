@@ -62,7 +62,10 @@ function onError(error) {
           'message: ' + error.message + '\n');
 }
 
- var options = { enableHighAccuracy: true };
+ var options = {
+ 	timeout: 10000,
+ 	maximumAge: 5000,
+ 	enableHighAccuracy: true };
 
 
 navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
