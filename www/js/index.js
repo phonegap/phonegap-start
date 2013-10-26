@@ -41,22 +41,9 @@ var app = {
     	//navigator.notification.alert("Hi John",function(){},"title","Done")
     	//alert("Hi John")
   
-  alert(1)  
   
-  function onSuccess(acceleration) {
-    alert('Acceleration X: ' + acceleration.x + '\n' +
-          'Acceleration Y: ' + acceleration.y + '\n' +
-          'Acceleration Z: ' + acceleration.z + '\n' +
-          'Timestamp: '      + acceleration.timestamp + '\n');
-};
 
-function onError() {
-    alert('onError!');
-};
-
-navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-
-    	/*
+    
     	var onSuccess = function(position) {
     alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
@@ -79,7 +66,7 @@ function onError(error) {
 
 
 navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-*/
+
 
    
     },
