@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -17,98 +16,150 @@
     specific language governing permissions and limitations
     under the License.
 -->
-	<html>
+<!--
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-       <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/new.css" />
-        <title>Bounce</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
     </head>
     <body>
-   
-    
-    <div id="wrapper">
-    <div id="main-content">
-     <header>
-        <h1>Bounce</h1>
-      </header>
-      
-      <div id="pages">
-        <div id="profile" class="current">
-        </div>
-        <div id="history">
-        </div>
-        <div id="settings">
-        </div>
-        
-    
-      </div> <!-- the pages div -->
-     
-      </div><!-- main content -->
-      </div><!-- wrapper -->
-      
-      
         <div class="app">
-            <h1>Bounce</h1>
+            <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
+                
+                <button onclick="app.getGeoLocation();">Click me</button>
             </div>
         </div>
-        
-  
-        <footer>
-        <ul id="tab-bar">
-          <li>
-            <a href="#profile">Profile</a>
-          </li>
-          <li>
-            <a href="#history">History</a>
-          </li>
-          <li>
-            <a href="#settings">Settings</a>
-          </li>
-        </ul>
-      </footer>
-      
-      <script>
-      
-      $('#tab-bar a').on('click', function(e){
-      	console.log("Hi John")
-      	/*
-         e.preventDefault();
-         var nextPage = $(e.target.hash);
-         $("#pages .current").removeClass("current");
-         nextPage.addClass("current");
-         */
-      });
-      
-      function page(toPage) {
-          var toPage = $(toPage), fromPage = $("#pages .current");
-          if(toPage.hasClass("current") || toPage === fromPage) {
-             return;
-          };
-          toPage.addClass("current fade in").one("webkitAnimationEnd", function(){
-              fromPage.removeClass("current fade out");
-              toPage.removeClass("fade in")
-          });
-          fromPage.addClass("fade out");
-      }
-      </script>
-      
-      
-      <script type="text/javascript" src="jquery.js"></script>
-      <script type="text/javascript" src="phonegap.js"></script>
-      <script type="text/javascript" src="js/index.js"></script>
-      <script type="text/javascript" src="js/iscroll-lite.js"></script>
-      <script type="text/javascript">
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
             app.initialize();
-      </script>
-        
-    
-    
+        </script>
     </body>
+</html>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-->
+
+<meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+<style>
+.circular {
+	width: 65px;
+	height: 65px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url(http://runmyline.com/b/white.png) no-repeat;
+	padding-top:10px;
+	}
+</style>
+
+</head>
+<body>
+
+
+<div class="container" style="background-color:#c3c1c2; height:500px; padding-top:15px; padding-right:20px; padding-left:15px; padding-left:15px;">
+
+
+<div class="row" style="padding-left:50px;">
+     <div class="col-xs-12 col-sm-12 col-md-12" style="background-color:#656364; height:66px;">
+          <div class="row" style="margin-left:-62px;">
+               <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="circular"></div> <span>name<span><br />
+                    <span style="padding-left:100px;">address</span><img src="" alt="bounce image"></img>
+               </div>
+       
+
+          </div>
+     </div>
+</div>
+
+<div class="row">
+<div class="col-xs-11 col-sm-11 col-md-11" style="padding-top:5px; padding-bottom:5px;">
+<a href="#" onclick="alert('Display the MAP.')" style="color:black;text-decoration:none;">MAP</a> | <a href="#" onclick="alert('Display the LIST.')"  style="color:black;text-decoration:none;">LIST</a> | <a href="#" onclick="alert('Display the CARD.')"  style="color:black;text-decoration:none;">CARD</a>
+</div>
+<div class="col-xs-1 col-sm-1 col-md-1">
+<img src="http://www.clker.com/cliparts/e/1/8/7/11949850681230545940cog_01.svg.thumb.png" style="width:25px; height:25px;" /> 
+</div>
+</div>
+
+
+
+
+<div class="row" style="background-color:#656565; margin-left:0px; margin-bottom:10px;">
+<div class="col-xs-12 col-sm-12 col-md-12"  style="height:300px; border:1px solid black;">
+content
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div class="col-xs-1 col-sm-1 col-md-1">
+<img src="" alt="attach files"></img>
+</div>
+
+<div class="col-xs-11 col-sm-11 col-md-11">
+<form role="form">
+<div class="row">
+<div class="col-xs-8 col-sm-8 col-md-8">
+  <div class="form-group">
+     <input type="text" class="form-control" id="bounce" placeholder="Bounce">
+  </div>
+  </div>
+  <div class="col-xs-4 col-sm-4 col-md-4">
+  <button type="submit" class="btn btn-default">Submit Bounce</button>
+  </div>
+  </div>
+</form>
+
+</div>
+</div>
+
+
+
+</div>
+
+<script type="text/javascript" src="phonegap.js"></script>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//code.jquery.com/jquery.js"></script>
+   
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+<!--
+<script>
+document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceReady() {
+alert('The device is ready')        
+    }
+</script>
+-->
+</body>
 </html>
