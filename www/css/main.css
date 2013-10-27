@@ -92,22 +92,7 @@ body
     -webkit-box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
 }
-.footer:before
-{
-        content: url(img/logo.png);
-        position: relative;
-        left: 12px;
-    top:2px;
-}
 
-.footer div
-{
-        position:absolute;
-    right:12px;
-    top:4px;;
-        color: #afb1b5;
-    font-size:14px;
-}
 
 
 /* landscape */
