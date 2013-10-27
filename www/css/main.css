@@ -66,11 +66,11 @@ body
     top: 100px;
     left:0px;
     width:95%;
-    height:70%;
+    height:75%;
     border:none;
     margin-left:10px;
     padding-top:10px;
-    margin-bottom:10px;
+    margin-bottom:0px;
     color: black;
     background-color:#656565;
 }
@@ -81,11 +81,8 @@ body
 .footer
 {
     position:fixed;
-    bottom:0px;
+    bottom:10px;
     left:0px;
-    width:95%;
-    height: 75px;
-    margin-top:10px;
     margin-left:10px;
     margin-bottom:10px;
     padding-top:40px;
