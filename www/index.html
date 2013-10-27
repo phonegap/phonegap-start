@@ -140,10 +140,20 @@
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	
+	<!--
 	<style>
         [data-role=page]{height: 100% !important; position:relative !important;}
         [data-role=footer]{bottom:0; position:absolute !important; top: auto !important; width:100%;} 
         </style>
+        -->
+  
+  <sryle>      
+        .ui-footer {
+    position: absolute !important;
+    bottom: 0;
+    width: 100%;
+}
+</style>
 </head> 
 <body> 
 
@@ -157,7 +167,7 @@
 		<p>Hello world</p>		
 	</div>
 	
-	<div data-role="footer">
+	<div id="ui-footer">
 		<h1>My Title</h1>
 	</div>
 
