@@ -108,19 +108,3 @@ body
 	border:0px solid black;
 	z-index:100;
 	}
-		
-
-	
-
-
-
-/* landscape */
-@media screen and (orientation:landscape) {
-        .button.dh {
-        height:32px;
-        width:220px;
-    }
-}
-
-
-
