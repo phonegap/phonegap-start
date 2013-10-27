@@ -80,7 +80,7 @@ body
 /*footer*/
 .footer
 {
-    position:fixed;
+    position:absolute;
     bottom:10px;
     left:0px;
     margin-left:10px;
