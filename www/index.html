@@ -73,7 +73,7 @@
 </div>
 -->
 
-<!--
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -85,6 +85,20 @@
         
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
+        
+        <script src="phonegap.js"></script>
+        <script src="js/index.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.0-rc.1/jquery.mobile-1.4.0-rc.1.min.js"></script>
+        
+        
+        
+        <style>
+        [data-role=page]{height: 100% !important; position:relative !important;}
+        [data-role=footer]{bottom:0; position:absolute !important; top: auto !important; width:100%;} 
+        </style>
+        
+        
     </head>
     <body>
     <div data-role="page">
@@ -99,25 +113,23 @@
             </div>
          </div>
         
-     </div>
-      <div data-role="footer" data-position="fixed">
+     
+     	 <div data-role="footer" data-position="fixed">
               <h1>files edit box button</h1>
          </div>
-       <script src="phonegap.js"></script>
-       <script src="js/index.js"></script>
-       <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-       <script src="http://code.jquery.com/mobile/1.4.0-rc.1/jquery.mobile-1.4.0-rc.1.min.js"></script>
-        
+     </div>
+     
+      
         
         <script type="text/javascript">
             app.initialize();
         </script>
     </body>
 </html>
--->
 
 
 
+<!--
 <!DOCTYPE html> 
 <html> 
 	<head> 
@@ -133,20 +145,21 @@
 
 	<div data-role="header">
 		<h1>My Title</h1>
-	</div><!-- /header -->
+	</div>
 
 	<div data-role="content">	
 		<p>Hello world</p>		
-	</div><!-- /content -->
+	</div>
 	
 	<div data-role="footer">
 		<h1>My Title</h1>
-	</div><!-- /header -->
+	</div>
 
-</div><!-- /page -->
+</div>
 
 </body>
 </html>
+-->
 
 
 
