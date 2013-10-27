@@ -50,9 +50,9 @@ body
         top: 0px;
     left:0px;
     width:100%;
-    height: 60px;
+    height: 100px;
     border:none;
-    background: #dedfe1;
+    background: #f8f8f8;
     background: -moz-linear-gradient(top, #ffffff 0%, #e6e6e6 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e6e6e6));
     background: -webkit-linear-gradient(top, #ffffff 0%,#e6e6e6 100%);
@@ -65,17 +65,7 @@ body
     border-bottom: 1px solid #9ca1a5;
     color: #639ecd;
 }
-.header > h1
-{
-        font-size: 30px;
-        font-weight: normal;
-        border-bottom: 4px solid #639ecd;
-        display: inline-block;
-        margin: 0 0 0 12px;
-    position:absolute;
-    bottom:0;
-    text-shadow: 0 1px 0 #fff;
-}
+
 
 /*content*/
 .content
@@ -86,85 +76,7 @@ body
     overflow:hidden;
 }
     
-.content > .input-area,
-.content > .action-area,
-.content > .result-area {
-    width: 100%;
-    border-top: 1px solid #9ca1a5;
-    position:relative;
-}
-.content > .input-area,
-.content > .action-area {
-    border-top-color:#fff;
-}
-.content > .input-area.ch100,
-.content > .action-areach100,
-.content > .result-area.ch100 {
-    border-top-color:transparent;
-}
 
-.content > .input-area > .inputBox {
-        background-color: #fff;
-        font-style: italic;
-        color: #A7A7A7;
-        width: 290px;
-        padding: 7px 10px;
-        border-radius: 3px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: rgb(180, 180, 180);
-        border-bottom-color: rgb(255, 255, 255);
-        box-shadow: 0 -1px 0 #3C3C3C;
-    margin-left:12px;
-    margin-top:10px;
-}
-.content > .input-area {
-    background-color:#e4e4e4;
-}
-
-.content > .result-area > .results {
-    margin:20px;
-}
-
-.content > .result-area > .results > .desc {
-    font-size:12px;
-    color:#a7a9ad;
-    margin-top:20px;
-    text-align:center;
-}
-
-.content > .result-area > .results > .result-info > div:first-of-type {
-    color:#a7a9ad;
-    font-size:20px;
-    float:left;
-    text-align:right;
-    text-shadow: 0 1px 0 #fff;
-}
-.content > .result-area > .results > .result-info > div:first-of-type + div {
-    color:#414349;
-    font-size:20px;
-    margin-left:10px;
-    float:left;
-    text-shadow: 0 1px 0 #fff;
-}
-
-/*separator*/
-.content > .result-area > .separator
-{
-        height: 12px;
-        border: none;
-        background: -moz-linear-gradient(top, rgba(227, 227, 227, 1) 0%, rgba(240, 240, 240, 1) 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(227, 227, 227, 1)), color-stop(100%, rgba(240, 240, 240, 1)));
-        background: -webkit-linear-gradient(top, rgba(227, 227, 227, 1) 0%, rgba(240, 240, 240, 1) 100%);
-        background: -o-linear-gradient(top, rgba(227, 227, 227, 1) 0%, rgba(240, 240, 240, 1) 100%);
-        background: -ms-linear-gradient(top, rgba(227, 227, 227, 1) 0%, rgba(240, 240, 240, 1) 100%);
-        background: linear-gradient(to bottom, rgba(227, 227, 227, 1) 0%, rgba(240, 240, 240, 1) 100%);
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        margin: 1px;
-}
 
 /*footer*/
 .footer
@@ -173,8 +85,8 @@ body
         bottom: 0px;
     left:0px;
     width:100%;
-    height: 24px;
-        background:#5f626a;
+    height: 100px;
+    background:#f8f8f8;
     border-top:1px solid #42444a;
     box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
     -webkit-box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
@@ -197,46 +109,6 @@ body
     font-size:14px;
 }
 
-/*button*/
-.button
-{
-        border: 1px solid #8d9096;
-    border-radius: 3px;
-    color: #4d5d6b;
-    background: transparent;
-    margin-left:12px;
-    margin-top:12px;
-    width: 140px;
-    height: 32px;
-    display: inline;
-    float: left;
-}
-     
-.button:active
-{
-        border: 1px solid #639ecd;
-        background-image: none;
-        background-color: #639ecd;
-    color: #fff;
-    box-shadow: inset 0px 1px 1px 0px rgba(0,0,0,0.3);
-    -webkit-box-shadow: inset 0px 1px 1px 0px rgba(0,0,0,0.3);
-    -moz-box-shadow: inset 0px 1px 1px 0px rgba(0,0,0,0.3);
-}
-
-.button:disabled,
-.button:disabled:hover,
-.button:disabled:active
-{
-        background: rgba(49, 52, 55, 0.1);
-        color: rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-}
-.button.dh {
-    height:60px;
-}
-.button.dw {
-    width:220px;
-}
 
 /* landscape */
 @media screen and (orientation:landscape) {
@@ -246,10 +118,5 @@ body
     }
 }
 
-        /*specific*/
-.content > .result-area > .results > .desc {
-    font-size:16px;
-    color:#639ecd;
-    word-wrap:break-word;
-}
+
 
