@@ -64,9 +64,10 @@ body
     overflow:hidden;
     */
     position:absolute;
-    top: 120px;
+    top: 90px;
     left:0px;
-    height:50%;
+    width:95%;
+    height:70%;
     border:none;
     margin-left:10px;
     padding-top:10px;
