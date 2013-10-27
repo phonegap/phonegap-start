@@ -9,10 +9,10 @@ html
 
 body
 {
-        font-family: sans-serif, Arial, Segoe UI;
-        font-size: 16px;
-        margin: 0;
-        padding: 0;
+    font-family: sans-serif, Arial, Segoe UI;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
     height:100%;
     padding: 60px 0px 24px 0px;
     overflow:hidden;
@@ -46,14 +46,13 @@ body
 /*header*/
 .header
 {
-        position:absolute;
-        top: 0px;
+    position:absolute;
+    top: 0px;
     left:0px;
-    width:90%;
+    width:95%;
     height:50px;
     border:none;
     margin-left:10px;
-   
     margin-top:10px;
     background: #f8f8f8;
     background: -moz-linear-gradient(top, #ffffff 0%, #e6e6e6 100%);
@@ -65,7 +64,6 @@ body
     box-shadow: 0px 1px 0px 0px #fff;
     -webkit-box-shadow: 0px 1px 0px 0px #fff;
     -moz-box-shadow: 0px 1px 0px 0px #fff;
-    border-bottom: 1px solid #9ca1a5;
     color: #639ecd;
 }
 
@@ -87,14 +85,12 @@ body
     position:fixed;
     bottom:0px;
     left:0px;
-    width:90%;
+    width:95%;
     height: 75px;
     margin-left:10px;
-  
     margin-bottom:10px;
     padding-top:20px;
     background:#f8f8f8;
-    border-top:1px solid #42444a;
     box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
     -webkit-box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 0px 1px 7px 0px rgba(0,0,0,0.5);
