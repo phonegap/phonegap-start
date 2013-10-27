@@ -49,11 +49,11 @@ body
         position:absolute;
         top: 0px;
     left:0px;
-    width:100%;
+    width:90%;
     height:50px;
     border:none;
     margin-left:10px;
-    margin-right:50px;
+   
     margin-top:10px;
     background: #f8f8f8;
     background: -moz-linear-gradient(top, #ffffff 0%, #e6e6e6 100%);
@@ -87,10 +87,10 @@ body
     position:fixed;
     bottom:0px;
     left:0px;
-    width:100%;
+    width:90%;
     height: 75px;
     margin-left:10px;
-    margin-right:50px;
+  
     margin-bottom:10px;
     padding-top:20px;
     background:#f8f8f8;
