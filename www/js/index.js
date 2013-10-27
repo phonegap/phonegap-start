@@ -34,6 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        $("appinfo").html("The device is ready.")
     },
     
     getGeoLocation: function() {
