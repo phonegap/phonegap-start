@@ -87,13 +87,17 @@
     </head>
     <body>
         <div class="app">
-            <h1>PhoneGap</h1>
+        <div data-role="page">
+           <div data-role="header" data-positon="fixed">
+          <h1>Bounce</h1>
+          </div>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
                 
                 <button onclick="app.getGeoLocation();">Click me</button>
             </div>
+        </div>
         </div>
        <script src="phonegap.js"></script>
        <script src="js/index.js"></script>
