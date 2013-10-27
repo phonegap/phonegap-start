@@ -74,7 +74,7 @@ navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
 
    
     },
-    // Update DOM on a Received Event
+    //  Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
