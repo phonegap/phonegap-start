@@ -85,23 +85,3 @@ body
     padding-top:40px;
 }
 
-
-.circular {
-	position:absolute;
-	left:10px;
-	top:10px;
-	width: 49px;
-	height: 49px;
-	border-radius: 100%;
-	border:1px solid black;
-	z-index:100;
-	}
-	
-.circular2 {
-	width: 49px;
-	height: 49px;
-	border-radius: 100%;
-	background-color:#656364;
-	border:0px solid black;
-	z-index:100;
-	}
