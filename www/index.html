@@ -24,7 +24,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
 	
+	<style>
+	textarea{ 
+  width: 200px; 
+  min-width:200px; 
+  max-height:200px; 
+
+  height:200px; 
+  min-height:200px;  
+  max-height:200px;
+}
+
+textarea { resize:none; }
+</style>
+
+
 
 
 </head> 
@@ -62,6 +81,7 @@
   </div>
 -->
 
+<!--
 <footer class="footer">
 
 
@@ -83,11 +103,36 @@
 
 
 </footer>
+-->
+
+<footer class="footer">
+
+<div style="float:left;">
+<div class="circular2" style="float:left;width:50px; height:50px;">
+<div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">+</div>
+</div>
+     <div  style="float:left; margin-left:10px;">
+          <form role="form">
+
+             <div class="form-group">
+               <input type="text" class="form-control" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce">
+               <button type="submit" class="btn btn-default">B</button>
+             </div>
+    
+          </form>
+     </div>
+</div>
+</footer>
 
 
 
 <script src="phonegap.js"></script>
 <script src="js/index.js"></script>
+
+<script src="//code.jquery.com/jquery.js"></script>
+   
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
  
 <script type="text/javascript">
             app.initialize();
