@@ -17,6 +17,9 @@
     under the License.
 -->
 
+
+<!--
+
 <!DOCTYPE html> 
 <html> 
 	<head> 
@@ -122,30 +125,13 @@ textarea { resize:none; }
 </style>
 
 
-<script src="phonegap.js"></script>
-<script src="js/index.js"></script>
 
-<script src="//code.jquery.com/jquery.js"></script>
-   
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-function processData(bounce) {
-    alert("The bounce message is "+bounce)
-    alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
-}
-</script> 
-
-<script type="text/javascript">
-            //app.initialize();
-</script>
 
 
 </head> 
 <body style="background-color:#c3c1c2;"> 
 
-                    <img id="uid" src="//runmyline.com/b/white.png" class="circular" />
+                    <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
              
 <header class="header">
 
@@ -176,7 +162,7 @@ function processData(bounce) {
 <footer class="footer">
 
 
-     <!--
+     
           <form role="form">
 
              <div class="form-group">
@@ -186,15 +172,169 @@ function processData(bounce) {
              </div>
     
           </form>
-     -->
+     
 
 
 </footer>
 
 
+<script src="phonegap.js"></script>
+<script src="js/index.js"></script>
+
+<script src="//code.jquery.com/jquery.js"></script>
+   
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+function processData(bounce) {
+    alert("The bounce message is "+bounce)
+    alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
+}
+</script> 
+
+<script type="text/javascript">
+            app.initialize();
+</script>
+
+
 
 </body>
 </html>
+-->
+
+
+
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+	
+	<style>
+	textarea{ 
+  width: 200px; 
+  min-width:200px; 
+  max-height:200px; 
+
+  height:45px; 
+  min-height:45px;  
+  max-height:45px;
+}
+
+textarea { resize:none; }
+
+
+.header
+{
+    position:absolute;
+    top: 0px;
+    left:24px;
+    width:88%;
+    height:50px;
+    border:none;
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color:#656364;
+    color: #639ecd;
+   
+}
+
+
+.line
+{
+    position:absolute;
+    top: 60px;
+    left:0px;
+    height:50px;
+    border:none;
+    margin-left:10px;
+    padding-top:10px;
+    margin-bottom:10px;
+    color: black;
+   
+}
+
+
+.content
+{
+    position:absolute;
+    top: 100px;
+    left:0px;
+    width:95%;
+    min-height:70%;
+    height:70%;
+    border:none;
+    margin-left:10px;
+    padding-top:10px;
+    color: black;
+    background-color:#656565;
+}
+    
+
+
+.footer
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    width:300px;
+    height:100px;
+    border:1px solid black;
+    background-color:#656565;
+}
+
+.circular {
+	width: 45px;
+	height: 45px;
+	border-radius:100%;
+	border:1px solid black;
+	}
+	
+.circular2 {
+	float:left;
+	width: 50px;
+	height: 50px;
+	border-radius:100%;
+	border:1px solid black;
+	}
+	
+
+
+</style>
+
+
+
+
+
+</head> 
+<body style="background-color:#c3c1c2;"> 
+        
+<header class="header">
+header
+</header>
+
+<div class="content">
+content
+</div>
+
+<footer class="footer">
+footer
+</footer>
+
+</body>
+</html>
+
+
+
+
+
 
 <!--
 
