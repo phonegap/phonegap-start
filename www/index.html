@@ -17,14 +17,12 @@
     under the License.
 -->
 
-<!--
 <!DOCTYPE html> 
 <html> 
 	<head> 
 	<title>My Page</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/main.css" />
-	
+
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 
@@ -42,46 +40,69 @@
 }
 
 textarea { resize:none; }
+
+
+.header
+{
+    position:absolute;
+    top: 0px;
+    left:24px;
+    width:88%;
+    height:50px;
+    border:none;
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color:#656364;
+    color: #639ecd;
+   
+}
+
+
+.line
+{
+    position:absolute;
+    top: 60px;
+    left:0px;
+    height:50px;
+    border:none;
+    margin-left:10px;
+    padding-top:10px;
+    margin-bottom:10px;
+    color: black;
+   
+}
+
+
+.content
+{
+    position:absolute;
+    top: 100px;
+    left:0px;
+    width:95%;
+    min-height:70%;
+    height:70%;
+    border:none;
+    margin-left:10px;
+    padding-top:10px;
+    color: black;
+    background-color:#656565;
+}
+    
+
+
+.footer
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    width:300px;
+    height:100px;
+    border:1px solid black;
+}
+
+
 </style>
-
-
-
-
-</head> 
-<body style="background-color:#c3c1c2;"> 
-
-                    <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
-             
-<header class="header">
-
-               <div style="float:left;padding-left:85px">
-                    name<br />address
-               </div>
-               <div style="float:left;padding-left:15px;">
-                    bounce image
-               </div>
-</header>
-
-<div class="line">
-<a href="#" onclick="alert('Display the MAP.')" style="color:black;text-decoration:none;">MAP</a> | <a href="#" onclick="alert('Display the LIST.')"  style="color:black;text-decoration:none;">LIST</a> | <a href="#" onclick="alert('Display the CARD.')"  style="color:black;text-decoration:none;">CARD</a>
-</div>
-
-
-
-
-<footer class="footer">
-
-<div>
-
-  <div class="circular2" >
-    <div>+</div>
-             
-               <textarea rows="3" id="bounce" style="float:left; border:none; margin-right:10px;" maxlength="140"></textarea>
-               
-               <button type="button"  style="float:left;" onclick="processData(this.bounce.value); return false;">B</button>
-
-</footer>
-
 
 
 <script src="phonegap.js"></script>
@@ -91,89 +112,21 @@ textarea { resize:none; }
    
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
- 
-<script type="text/javascript">
-            app.initialize();
-        </script>
-
 
 <script type="text/javascript">
 function processData(bounce) {
     alert("The bounce message is "+bounce)
     alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
 }
-</script>        
+</script> 
 
-<div>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-         </div>
- 
+<script type="text/javascript">
+            app.initialize();
+</script>
 
-</body>
-</html>
--->
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>My Page</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/main.css" />
-	
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
-
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-
-	
-
-<style>
-.circular {
-	position:absolute;
-	left:10px;
-	top:10px;
-	width: 49px;
-	height: 49px;
-	/*border-radius: 150px;*/
-	border-radius: 100%;
-	/*background: url(http://runmyline.com/b/white.png) no-repeat;*/
-	/*background-color:white;*/
-	border:1px solid black;
-	z-index:100;
-	}
-	
-.circular2 {
-	width: 49px;
-	height: 49px;
-	border-radius: 100%;
-	/*border-radius: 150px;*/
-	/*background: url(http://runmyline.com/b/white.png) no-repeat;*/
-	background-color:#656364;
-	border:0px solid black;
-	z-index:100;
-	}
-	
-	
-	textarea{ 
-  width: 200px; 
-  min-width:200px; 
-  max-height:200px; 
-
-  height:45px; 
-  min-height:45px;  
-  max-height:45px;
-}
-
-textarea { resize:none; }
-		
-	</style>
-	
 
 </head> 
 <body style="background-color:#c3c1c2;"> 
-
 
                     <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
              
@@ -192,57 +145,46 @@ textarea { resize:none; }
 </div>
 
 <div class="content">
-
-         <div class="app">
+	<div class="app">
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
          </div>
-  </div>
-
-<footer class="footer" style="width:95%; height:100px;">
-<!--
-<div style="float:left;">
-<div class="circular2" style="float:left;width:50px; height:50px;">
-<div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">+</div>
 </div>
-     <div  style="float:left; margin-left:10px;">
+
+
+
+
+<footer class="footer">
+
+
+     
           <form role="form">
 
              <div class="form-group">
-               <textarea class="form-control" rows="3" id="bounce" style="float:left; border:none; margin-right:10px;" maxlength="140"></textarea>
+               <textarea class="form-control" rows="3" id="bounce" style="" maxlength="140"></textarea>
                
-               <button class="form-control" type="button"  style="float:left;" onclick="processData(this.bounce.value); return false;">B</button>
+               <button class="form-control" type="button"  style="" onclick="processData(this.form.bounce.value); return false;">B</button>
              </div>
     
           </form>
-     </div>
-</div>
--->
+     
+
+
 </footer>
 
 
 
-<script src="phonegap.js"></script>
-<script src="js/index.js"></script>
- 
-<script src="//code.jquery.com/jquery.js"></script>
-   
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
- <script type="text/javascript">
-            app.initialize();
-        </script>
-        
-<script type="text/javascript">
-function processData(bounce) {
-    alert("The bounce message is "+bounce)
-    alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
-}
-</script>   
-
 </body>
 </html>
+
+<!--
+
+<div class="circular2" style="float:left;width:50px; height:50px;">
+<div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">+</div>
+</div>
+-->
+
+
 
