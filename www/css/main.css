@@ -86,3 +86,17 @@ textarea {
 	resize:none;
 }
 
+.circular {
+	width: 49px;
+	height: 49px;
+	border-radius: 100%;
+
+	}
+	
+.circular2 {
+	width: 49px;
+	height: 49px;
+	border-radius: 100%;
+
+	}
+
