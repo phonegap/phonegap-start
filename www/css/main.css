@@ -9,7 +9,7 @@ html
 
 body
 {
-	/*
+
     font-family: sans-serif, Arial, Segoe UI;
     font-size: 16px;
     margin: 0;
@@ -17,7 +17,7 @@ body
     height:100%;
     padding: 0px 0px 0px 0px;
     overflow:hidden;
-    */
+   
     
 }
 
@@ -53,8 +53,6 @@ body
    
 }
 
-
-/*content*/
 .content
 {
     position:absolute;
@@ -74,14 +72,17 @@ body
     
 
 
-/*footer*/
-.footer
-{
-    position:absolute;
-    bottom:10px;
-    left:0px;
-    margin-left:10px;
-    margin-bottom:10px;
-    padding-top:40px;
+textarea{ 
+  width: 200px; 
+  min-width:200px; 
+  max-height:200px; 
+
+  height:45px; 
+  min-height:45px;  
+  max-height:45px;
+}
+
+textarea { 
+	resize:none;
 }
 
