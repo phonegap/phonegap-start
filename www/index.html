@@ -26,7 +26,6 @@
 	
 	
 
-	
 
 </head> 
 <body style="background-color:#c3c1c2;"> 
@@ -68,8 +67,8 @@
           <form>
 
              <div>
-               <textarea rows="3" id="bounce" style="float:left; border:none; width:250px; height:45px; margin-right:10px;" maxlength="140"></textarea>
-               <button type="button" style="float:left;" onclick="processData(this.form.bounce.value); return false;">B</button>
+               <input type="text" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce">
+               <button type="submit">B</button>
              </div>
     
           </form>
@@ -89,13 +88,6 @@
  <script type="text/javascript">
             app.initialize();
         </script>
-        
-        <script type="text/javascript">
-function processData(bounce) {
-    alert("The bounce message is "+bounce)
-    alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
-}
-</script>
 
 </body>
 </html>
