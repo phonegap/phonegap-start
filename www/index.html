@@ -25,8 +25,10 @@
 <title>Bounce</title> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/main.css" />
+<!--
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+-->
 </head> 
 
 <body style="background-color:#c3c1c2;"> 
@@ -60,13 +62,13 @@
       <div  style="font-size:40px; font-weight:bold; color:white; text-align:center;"><a href="#" onclick="alert('Attach files.')" style="color:white; text-decoration:none;">+</a></div>
     </div>
     <div  style="float:left; margin-left:10px;">
-      <form role="form">
-        <div class="form-group">
+      <form>
+        <div>
         <!--
           <input type="text" class="form-control" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce" maxlength="140">
          -->
-         <textarea class="form-control" rows="3" style="width:250px; height:45px; margin-right:10px" maxlength="140"></textarea>
-          <button type="button" class="btn btn-default" onclick="processData(this.textarea.bounce.value); return false;">B</button>
+         <textarea class="" rows="3" style="width:250px; height:45px; margin-right:10px; font-family:helvetica, sans serif; font-size:1em;" maxlength="140"></textarea>
+          <button type="button" class="" onclick="processData(this.form.bounce.value); return false;">B</button>
         </div>
       </form>
     </div>
@@ -78,7 +80,9 @@
 <script src="phonegap.js"></script>
 <script src="js/index.js"></script>
 <script src="//code.jquery.com/jquery.js"></script>
+<!--
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+-->
 
 <script type="text/javascript">
   app.initialize();
