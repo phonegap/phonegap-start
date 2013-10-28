@@ -17,7 +17,95 @@
     under the License.
 -->
 
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	
 
+
+	
+
+</head> 
+<body style="background-color:#c3c1c2;"> 
+
+
+                    <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
+             
+<header class="header">
+
+               <div style="float:left;padding-left:85px">
+                    name<br />address
+               </div>
+               <div style="float:left;padding-left:15px;">
+                    bounce image
+               </div>
+</header>
+
+<div class="line">
+<a href="#" onclick="alert('Display the MAP.')" style="color:black;text-decoration:none;">MAP</a> | <a href="#" onclick="alert('Display the LIST.')"  style="color:black;text-decoration:none;">LIST</a> | <a href="#" onclick="alert('Display the CARD.')"  style="color:black;text-decoration:none;">CARD</a>
+</div>
+
+<div class="content">
+
+         <div class="app">
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+         </div>
+  </div>
+
+<footer class="footer">
+
+<div style="float:left;">
+<div class="circular2" style="float:left;width:50px; height:50px;">
+<div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">+</div>
+</div>
+     <div  style="float:left; margin-left:10px;">
+          <form>
+
+             <div>
+               <input type="text" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce">
+               <button type="submit" class="btn btn-default">B</button>
+             </div>
+    
+          </form>
+     </div>
+</div>
+</footer>
+
+<!--
+
+
+-->
+
+
+
+<script src="phonegap.js"></script>
+<script src="js/index.js"></script>
+ 
+<script src="//code.jquery.com/jquery.js"></script>
+   
+
+<script type="text/javascript">
+            app.initialize();
+        </script>
+        
+        
+<script type="text/javascript">
+function processData(bounce) {
+    alert("The bounce message is "+bounce)
+    alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
+}
+</script>
+
+</body>
+</html>
+
+<!--
 <!DOCTYPE html> 
 <html> 
 
@@ -55,7 +143,7 @@
 
 <footer class="footer">
   <div style="float:left;">
-  <!--
+  
     <div class="circular2" style="float:left;width:50px; height:50px;">
       <div  style="font-size:40px; font-weight:bold; color:white; text-align:center;"><a href="#" onclick="alert('Attach files.')" style="color:white; text-decoration:none;">+</a></div>
     </div>
@@ -68,7 +156,7 @@
         </div>
       </form>
     </div>
-    -->
+    
   </div>
 </footer>
 
@@ -91,3 +179,4 @@ function processData(bounce) {
 
 </body>
 </html>
+-->
