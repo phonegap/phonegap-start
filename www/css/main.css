@@ -81,11 +81,11 @@ body
 .footer
 {
     position:absolute;
-    bottom:10px;
+    bottom:0px;
     left:0px;
     margin-left:10px;
-    margin-bottom:10px;
-    padding-top:40px;
+    margin-bottom:0px;
+    /*padding-top:0px;*/
 }
 
 
