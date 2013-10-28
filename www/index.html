@@ -63,12 +63,8 @@
     </div>
     <div  style="float:left; margin-left:10px;">
       <form>
-         <!--
-          <input type="text" class="form-control" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce" maxlength="140">
-         -->
-          <textarea class="" rows="3" id="bounce" style="border:none; width:250px; height:45px; margin-right:10px; font-family:helvetica, sans serif; font-size:1em;" maxlength="140"></textarea>
-          <button type="button" class="" onclick="processData(this.form.bounce.value); return false;">B</button>
-       
+        <textarea class="" rows="3" id="bounce" style="border:none; width:250px; height:45px; margin-right:10px; font-family:helvetica, sans serif; font-size:1em;" maxlength="140"></textarea>
+        <button type="button" style="margin-top:-25px" onclick="processData(this.form.bounce.value); return false;">B</button>
       </form>
     </div>
   </div>
@@ -89,9 +85,8 @@
 
 <script type="text/javascript">
 function processData(bounce) {
-    //var bounce=$('#bounce').val();
     alert("The bounce message is "+bounce)
-    alert('Call Mohammed\'s go web service with the bounce message as data.')
+    alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
 }
 </script>
 
