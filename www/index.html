@@ -35,9 +35,9 @@
   min-width:200px; 
   max-height:200px; 
 
-  height:200px; 
-  min-height:200px;  
-  max-height:200px;
+  height:45px; 
+  min-height:45px;  
+  max-height:45px;
 }
 
 textarea { resize:none; }
@@ -48,7 +48,7 @@ textarea { resize:none; }
 
 </head> 
 <body style="background-color:#c3c1c2;"> 
-<!--
+
 
                     <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
              
@@ -61,25 +61,25 @@ textarea { resize:none; }
                     bounce image
                </div>
 </header>
--->
 
-<!--
+
+
 <div class="line">
 <a href="#" onclick="alert('Display the MAP.')" style="color:black;text-decoration:none;">MAP</a> | <a href="#" onclick="alert('Display the LIST.')"  style="color:black;text-decoration:none;">LIST</a> | <a href="#" onclick="alert('Display the CARD.')"  style="color:black;text-decoration:none;">CARD</a>
 </div>
--->
-<!--
+
+
 <div class="content">
--->
+
          <div class="app">
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
          </div>
-<!--         
+        
   </div>
--->
+
 
 <!--
 <footer class="footer">
@@ -115,8 +115,8 @@ textarea { resize:none; }
           <form role="form">
 
              <div class="form-group">
-               <input type="text" class="form-control" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce">
-               <button type="submit" class="btn btn-default">B</button>
+               <textarea rows="3" id="bounce" style="float:left; border:none; margin-right:10px;" maxlength="140"></textarea>
+               <button type="button" style="float:left;" onclick="processData(this.form.bounce.value); return false;">B</button>
              </div>
     
           </form>
