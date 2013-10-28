@@ -17,6 +17,7 @@
     under the License.
 -->
 
+<!--
 <!DOCTYPE html> 
 <html> 
 	<head> 
@@ -113,3 +114,112 @@ function processData(bounce) {
 
 </body>
 </html>
+-->
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	
+	
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+<style>
+.circular {
+	position:absolute;
+	left:10px;
+	top:10px;
+	width: 49px;
+	height: 49px;
+	/*border-radius: 150px;*/
+	border-radius: 100%;
+	/*background: url(http://runmyline.com/b/white.png) no-repeat;*/
+	/*background-color:white;*/
+	border:1px solid black;
+	z-index:100;
+	}
+	
+.circular2 {
+	width: 49px;
+	height: 49px;
+	border-radius: 100%;
+	/*border-radius: 150px;*/
+	/*background: url(http://runmyline.com/b/white.png) no-repeat;*/
+	background-color:#656364;
+	border:0px solid black;
+	z-index:100;
+	}
+		
+	</style>
+	
+
+</head> 
+<body style="background-color:#c3c1c2;"> 
+
+
+                    <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
+             
+<header class="header">
+
+               <div style="float:left;padding-left:85px">
+                    name<br />address
+               </div>
+               <div style="float:left;padding-left:15px;">
+                    bounce image
+               </div>
+</header>
+
+<div class="line">
+<a href="#" onclick="alert('Display the MAP.')" style="color:black;text-decoration:none;">MAP</a> | <a href="#" onclick="alert('Display the LIST.')"  style="color:black;text-decoration:none;">LIST</a> | <a href="#" onclick="alert('Display the CARD.')"  style="color:black;text-decoration:none;">CARD</a>
+</div>
+
+<div class="content">
+
+         <div class="app">
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+         </div>
+  </div>
+
+<footer class="footer">
+
+<div style="float:left;">
+<div class="circular2" style="float:left;width:50px; height:50px;">
+<div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">+</div>
+</div>
+     <div  style="float:left; margin-left:10px;">
+          <form role="form">
+
+             <div class="form-group">
+               <input type="text" class="form-control" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce">
+               <button type="submit" class="btn btn-default">B</button>
+             </div>
+    
+          </form>
+     </div>
+</div>
+</footer>
+
+
+
+<script src="phonegap.js"></script>
+<script src="js/index.js"></script>
+ 
+<script src="//code.jquery.com/jquery.js"></script>
+   
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+ <script type="text/javascript">
+            app.initialize();
+        </script>
+
+</body>
+</html>
+
