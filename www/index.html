@@ -33,8 +33,8 @@
 <img id="uid" src="http://runmyline.com/b/white.png" class="circular" />
 
 <header class="header">
-  <div style="float:left;padding-left:85px">
-    name<br />address
+  <div id="nameLocationId" style="float:left;padding-left:85px; font-family:helvetica,sans serif; font-size:1em;">
+    name<br />location
   </div>
     <div style="float:left;padding-left:15px;">
       bounce image
@@ -62,8 +62,11 @@
     <div  style="float:left; margin-left:10px;">
       <form role="form">
         <div class="form-group">
+        <!--
           <input type="text" class="form-control" style="width:250px; height:45px; margin-right:10px" id="bounce" placeholder="Bounce" maxlength="140">
-          <button type="button" class="btn btn-default" onclick="processData(this.form.bounce.value); return false;">B</button>
+         -->
+         <textarea class="form-control" rows="3" cols="50" maxlength="140"></textarea>
+          <button type="button" class="btn btn-default" onclick="processData(this.textarea.bounce.value); return false;">B</button>
         </div>
       </form>
     </div>
