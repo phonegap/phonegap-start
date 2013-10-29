@@ -386,13 +386,13 @@ textarea {
 
      <div style="float:left;">
             <div style="float:left; margin-left:5px;">
-              <form>
+             
                    <div style="float:left;">
                     <textarea rows="3" id="bounce" style="width:255px; border:none;" maxlength="140"></textarea>
                     </div>
                     <div style="float:left;margin-left:5px;">
                     
-                    <a type="text" style="text-decoration:none;" href="#" onclick="alert(this.form.bounce.value); return false;">
+                    <a type="text" style="text-decoration:none;" href="#" onclick="alert($('#bounce').val()); return false;">
                     
                     <!--
                     <a type="text" style="text-decoration:none;" href="#" onclick="alert('hi'); return false;">
@@ -403,7 +403,7 @@ textarea {
                        
                     </a>
                     </div>
-               </form>
+              
              </div>
 
      </div>
@@ -421,8 +421,9 @@ textarea {
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-
+<div id="tt"></div>
 <script type="text/javascript">
+   alert($('#tt').val())
    app.initialize();
 </script>
 
