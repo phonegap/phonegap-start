@@ -6,10 +6,10 @@
         id        = "com.phonegap.hello-world"
         version   = "1.0.0">
 
-    <name>Bounce</name>
+    <name>Hello World</name>
 
     <description>
-        This bounce application bounces messages around.
+       Hello World
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
