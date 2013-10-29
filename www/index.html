@@ -336,6 +336,7 @@ textarea {
 	height: 49px;
 	border-radius: 100%;
         border:0px solid black;
+        background-color:#656364;
 	}
 
 </style>
@@ -379,10 +380,14 @@ textarea {
      <div style="float:left;">
               <div style="float:left; margin-left:10px;">
                    <div style="float:left;">
-                    <textarea rows="3" id="bounce" style="" maxlength="140"></textarea>
+                    <textarea rows="3" id="bounce" style="border:none;" maxlength="140"></textarea>
                     </div>
                     <div style="float:left;">
-                    <button type="button" style="" onclick="processData(this.bounce.value); return false;">B</button>
+                    <button type="button" style="" onclick="processData(this.bounce.value); return false;">
+                    	<div class="circular2" style="float:left;">
+                            <div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">B</div>
+                        </div>
+                    </button>
                     </div>
                </div>
 
