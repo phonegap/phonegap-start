@@ -298,7 +298,7 @@ body
     bottom: 0px;
     left:0px;
     width:70%;
-    height:50px;
+    height:100px;
     border:none;
     background-color:#656364;
     
@@ -366,29 +366,24 @@ textarea {
         </div>
     </div>    
         
-<footer class="footer">
+<footer class="footer" style="float:left;">
 
-<div>
+<div style="float:left;">
 
      <div class="circular2" style="float:left;">
           <div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">+</div>
      </div>
 
      <div style="float:left;">
-          <form role="form">
-
-               <div class="form-group">
-
-                    <div style="float:left;">
-                    <textarea class="form-control" rows="3" id="bounce" style="" maxlength="140"></textarea>
+              <div style="float;">
+                   <div style="float:left;">
+                    <textarea rows="3" id="bounce" style="" maxlength="140"></textarea>
                     </div>
                     <div style="float:left;">
-                    <button class="form-control" type="button" style="" onclick="processData(this.form.bounce.value); return false;">B</button>
+                    <button type="button" style="" onclick="processData(this.bounce.value); return false;">B</button>
                     </div>
-
                </div>
-          </form>
-     </div>
+      </div>
 
 </div>
 
