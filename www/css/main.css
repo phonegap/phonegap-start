@@ -69,7 +69,20 @@ body
     background-color:#656565;
     overflow:hidden;
 }
+  
+.footer
+{
+    position:absolute;
+    bottom: 0px;
+    left:0px;
+    width:70%;
+    height:50px;
+    border:none;
+    background-color:#656364;
     
+    color:black;
+   
+}    
 
 
 textarea{ 
