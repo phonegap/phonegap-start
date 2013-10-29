@@ -298,7 +298,7 @@ body
     position:absolute;
     bottom: 0px;
     left:0px;
-    width:95%;
+    width:100%;
     height:60px;
     border:none;
    
@@ -329,6 +329,8 @@ textarea {
 	border-radius: 100%;
         border:1px solid black;
         z-index:100;
+        text-align:center;
+        background-color:white;
 	}
 	
 .circular2 {
@@ -341,11 +343,13 @@ textarea {
 
 </style>
 
-    </head>
-    <body>
-    <div  class="circular">
+</head>
+<body>
+<div  class="circular">
+<!--
     <img id="uid" src="http://runmyline.com/b/white.png" />
-    </div>
+ -->
+</div>
              
 <header class="header">
 
@@ -381,7 +385,7 @@ textarea {
      <div style="float:left;">
               <div style="float:left; margin-left:10px;">
                    <div style="float:left;">
-                    <textarea rows="3" id="bounce" style="width:280px; border:none;" maxlength="140"></textarea>
+                    <textarea rows="3" id="bounce" style="width:270px; border:none;" maxlength="140"></textarea>
                     </div>
                     <div style="float:left;margin-left:10px;">
                     <input type="image" style="" onclick="processData(this.bounce.value); return false;">
