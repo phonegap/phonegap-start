@@ -392,7 +392,7 @@ textarea {
                     </div>
                     <div style="float:left;margin-left:5px;">
                     
-                    <a type="text" style="text-decoration:none;" href="#" onclick="alert($('#bounce').val()); return false;">
+                    <a type="text" style="text-decoration:none;" href="#" onclick="processData(); return false;">
                     
                     <!--
                     <a type="text" style="text-decoration:none;" href="#" onclick="alert('hi'); return false;">
@@ -419,15 +419,14 @@ textarea {
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-<div id="tt">tt</div>
+
 <script type="text/javascript">
-   alert($('#tt').val())
    app.initialize();
 </script>
 
 <script type="text/javascript">
-function processData(bounce) {
-	//var bounce=$('#bounce').val()
+function processData() {
+	var bounce = $('#bounce').val()
     alert("The bounce message is "+bounce)
     alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
 }
