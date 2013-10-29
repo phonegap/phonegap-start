@@ -391,11 +391,12 @@ textarea {
                     <textarea rows="3" id="bounce" style="width:255px; border:none;" maxlength="140"></textarea>
                     </div>
                     <div style="float:left;margin-left:5px;">
+                    
+                    <a type="text" style="text-decoration:none;" href="#" onclick="processData(); return false;">
+                    
                     <!--
-                    <a type="text" style="text-decoration:none;" href="#" onclick="processData(this.form.bounce.value); return false;">
-                    -->
                     <a type="text" style="text-decoration:none;" href="#" onclick="alert('hi'); return false;">
-                   
+                    -->
                     	<div class="circular2" style="float:left;">
                             <div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">B</div>
                         </div>
@@ -414,7 +415,7 @@ textarea {
 <script src="phonegap.js"></script>
 <script src="js/index.js"></script>
 
-<script src="//code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
    
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -425,7 +426,8 @@ textarea {
 </script>
 
 <script type="text/javascript">
-function processData(bounce) {
+function processData() {
+	var bounce=$('#bounce').val()
     alert("The bounce message is "+bounce)
     alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
 }
