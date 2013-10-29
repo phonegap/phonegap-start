@@ -385,12 +385,13 @@ textarea {
 
 
      <div style="float:left;">
-              <div style="float:left; margin-left:5px;">
+            <div style="float:left; margin-left:5px;">
+              <form>
                    <div style="float:left;">
                     <textarea rows="3" id="bounce" style="width:255px; border:none;" maxlength="140"></textarea>
                     </div>
                     <div style="float:left;margin-left:5px;">
-                    <a type="text" style="text-decoration:none;" href="#" onclick="processData(this.bounce.value); return false;">
+                    <a type="text" style="text-decoration:none;" href="#" onclick="processData(this.form.bounce.value); return false;">
                     
                     	<div class="circular2" style="float:left;">
                             <div  style="font-size:40px; font-weight:bold; color:white; text-align:center;">B</div>
@@ -398,7 +399,8 @@ textarea {
                        
                     </a>
                     </div>
-               </div>
+               </form>
+             </div>
 
      </div>
 </div>
