@@ -392,7 +392,7 @@ textarea {
                     </div>
                     <div style="float:left;margin-left:5px;">
                     
-                    <a type="text" style="text-decoration:none;" href="#" onclick="processData(); return false;">
+                    <a type="text" style="text-decoration:none;" href="#" onclick="alert(this.form.bounce.value); return false;">
                     
                     <!--
                     <a type="text" style="text-decoration:none;" href="#" onclick="alert('hi'); return false;">
@@ -427,8 +427,8 @@ textarea {
 </script>
 
 <script type="text/javascript">
-function processData() {
-	var bounce=$('#bounce').val()
+function processData(bounce) {
+	//var bounce=$('#bounce').val()
     alert("The bounce message is "+bounce)
     alert('Call Mohammed\'s go web service with the bounce message as data,'+bounce+".")
 }
