@@ -1,3 +1,4 @@
+ 
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -103,28 +104,6 @@ body
     background-color:#656565;
     overflow:hidden;
 }
-
-.content2
-{
-    position:absolute;
-    top: 140px;
-    left:0px;
-    width:353px;
-    height:353px;
-    border:none;
-    margin-left:15px;
-    padding-top:10px;
-    margin-bottom:0px;
-    color: black;
-    overflow:hidden;
-}
-
-.listitem {
- background-color:#656364;
- margin:5px 0px 5px 0px;
- height:54px;
- width:353px;
-}
   
 .footer
 {
@@ -173,21 +152,91 @@ textarea {
         border:0px solid black;
         background-color:#656364;
 	}
-	
-.circular3 {
-	float:left;
-	margin-left:5px;
-	margin-top:5px;
-	width: 44px;
-	height:44px;
-	border-radius: 100%;
-        z-index:100;
-        background-color:white;
-        
-	}
 
 </style>
 
+<style>
+div.r45 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:90px;
+    height:90px;   
+}
+
+div.r40 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:80px;
+    height:80px;   
+}
+
+div.r35 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:70px;
+    height:70px;   
+}
+
+div.r30 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:60px;
+    height:60px;   
+}
+
+div.r25 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:50px;
+    height:50px;   
+}
+
+div.r20 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:40px;
+    height:40px;   
+}
+
+div.r15 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:30px;
+    height:30px;   
+}
+
+div.r10 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:20px;
+    height:20px;   
+}
+
+div.r8 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:16px;
+    height:16px;   
+}
+
+div.r5 {
+   
+    border-radius: 100%;
+    border:solid 5px #26b2ff; 
+    width:10px;
+    height:10px;   
+}
+
+</style>
 
 </head>
 <body>
@@ -221,7 +270,7 @@ textarea {
 </div>
 
 
-<div id="contentId" class="content2">
+<div id="contentId" class="content">
         <div class="app">
             <h1></h1>
             <div id="deviceready" class="blink">
@@ -230,28 +279,36 @@ textarea {
             </div>
         </div>
         
-        <!-- put the list here -->
+        <div style="width:100%; font-size:1.4em; color:white;text-align:center; font-weight:bold;margin-bottom:20px;" >Select Bounce Option</div>
+        <!--
+        <div style="position:absolute; top:65px; left:145px;" class="r30"></div>
+        <div style="position:absolute; top:75px; left:155px;" class="r20"></div>
+        <div style="position:absolute; top:85px; left:165px;" class="r10"></div>
+        -->
         
-         
-        <div class="listitem" >
-       
-             <div  class="circular3">
+        <div style="position:absolute; top:65px; left:150px;" class="r25"></div>
+        <div style="position:absolute; top:75px; left:160px;" class="r15"></div>
+        <div style="position:absolute; top:85px; left:170px;" class="r5"></div>
         
-             </div>
-             <div style="position:relative; left:22px; top:5px; width:100px; height:44px; z-index:-1; border:0px solid black; margin-right:5px;background-color:blue;">
-        	
-             </div>
-             <div style="float:left; width:215px; height:38px; border:1px solid black; margin-top:8px; margin-bottom:8px;">
-        	
-             </div>
-       
-        </div>
+        <div style="width:100%; font-size:1.1em; color:white;text-align:center; font-weight:bold;margin-top:65px;" >Personal</div>
+        <div style="width:100%; font-size:.9em; color:white;text-align:center; font-weight:normal;">Range: 100 yards</div>
+        <div style="width:100%; font-size:.7em; color:white;text-align:center; font-weight:normal;margin-top:7px;" >*Share Pics, Video, Music, Text, Social Card, Links </div>
+        <!--
+        <div style="position:absolute; top:200px; left:135px;" class="r40"></div>
+        <div style="position:absolute; top:210px; left:145px;" class="r30"></div>
+        <div style="position:absolute; top:220px; left:155px;" class="r20"></div>
+        <div style="position:absolute; top:230px; left:165px;" class="r10"></div>
+        -->
+        <div style="position:absolute; top:195px; left:140px;" class="r35"></div>
+        <div style="position:absolute; top:205px; left:150px;" class="r25"></div>
+        <div style="position:absolute; top:215px; left:160px;" class="r15"></div>
+        <div style="position:absolute; top:225px; left:170px;" class="r5"></div>
+        
+        <div style="width:100%; font-size:1.1em; color:white;text-align:center; font-weight:bold;margin-top:90px;" >Commercial</div>
+        <div style="width:100%; font-size:.9em; color:white;text-align:center; font-weight:normal;" >Range: 1000 yards</div>
+        <div style="width:100%; font-size:.7em; color:white;text-align:center; font-weight:normal;margin-top:7px;" >*Create Gift Card, Deal or Special Offer</div>
         
         
-       
-        
-        
-              
        
 </div>    
         

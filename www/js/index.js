@@ -34,8 +34,47 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        $("appinfo").html("The device is ready.")
     },
-    // Update DOM on a Received Event
+    
+    getGeoLocation: function() {
+    	
+    	//navigator.notification.alert("Hi John",function(){},"title","Done")
+    	//alert("Hi John")
+  
+  
+
+    
+    	var onSuccess = function(position) {
+    alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' +
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + new Date(position.timestamp)      + '\n');
+};
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
+ var options = {
+ 	timeout: 10000,
+ 	maximumAge: 5000,
+ 	enableHighAccuracy: true };
+
+
+navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+
+   
+    },
+    //  Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
@@ -43,7 +82,26 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+		
+		
+       console.log('Received Event: ' + id);
     }
+    
+    
 };
+
+
+	
+
+
+
+/*
+navigator.notification.alert(
+    'You are the winner!',  // message
+    alertDismissed,         // callback
+    'Game Over',            // title
+    'Done'                  // buttonName
+);
+*/
+
+

@@ -1,0 +1,115 @@
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html
+{
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    height:100%;
+}
+
+body
+{
+
+    font-family: sans-serif, Arial, Segoe UI;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    padding: 0px 0px 0px 0px;
+    overflow:hidden;
+   
+    
+}
+
+
+.header
+{
+    position:absolute;
+    top: 0px;
+    left:24px;
+    width:88%;
+    height:50px;
+    border:none;
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color:#656364;
+    color: #639ecd;
+   
+}
+
+
+.line
+{
+    position:absolute;
+    top: 60px;
+    left:0px;
+    height:50px;
+    border:none;
+    margin-left:10px;
+    padding-top:10px;
+    margin-bottom:10px;
+    color: black;
+   
+}
+
+.content
+{
+    position:absolute;
+    top: 100px;
+    left:0px;
+    width:95%;
+    min-height:70%;
+    height:70%;
+    border:none;
+    margin-left:10px;
+    padding-top:10px;
+    margin-bottom:0px;
+    color: black;
+    background-color:#656565;
+    overflow:hidden;
+}
+  
+.footer
+{
+    position:absolute;
+    bottom: 0px;
+    left:0px;
+    width:70%;
+    height:50px;
+    border:none;
+    background-color:#656364;
+    
+    color:black;
+   
+}    
+
+
+textarea{ 
+  width: 200px; 
+  min-width:200px; 
+  max-height:200px; 
+
+  height:45px; 
+  min-height:45px;  
+  max-height:45px;
+}
+
+textarea { 
+	resize:none;
+}
+
+.circular {
+	width: 49px;
+	height: 49px;
+	border-radius: 100%;
+
+	}
+	
+.circular2 {
+	width: 49px;
+	height: 49px;
+	border-radius: 100%;
+
+	}
+
