@@ -4,12 +4,12 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.servehttp.ws"
-        version   = "1.0.5">
+        version   = "1.0.6">
 
     <name>EasyOrder</name>
 
     <description>
-        Easy to Order5
+        Easy to Order
     </description>
 
     <author href="Wahana System" email="wahana.system@gmail.com">
@@ -88,7 +88,8 @@
 
         Otherwise, you can specify specific domains:
     -->
-    <access origin="http//ws.servehttp.com/easyorder" subdomains="true" /> <!-- allow local pages -->
+    <access />  
+    <!--<access origin="http//ws.servehttp.com/easyorder" subdomains="true" /> <!-- allow local pages -->
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
