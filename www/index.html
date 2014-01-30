@@ -26,13 +26,8 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+        <div id="allRepos"></div>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="PushNotification.js"></script>
@@ -41,43 +36,27 @@
             var pushNotification;
             
             function onDeviceReady() {
-                $("#app-status-ul").append('<li>deviceready event received</li>');
-                
-    			document.addEventListener("backbutton", function(e)
-				{
-                	$("#app-status-ul").append('<li>backbutton event received</li>');
-  					
-      				if( $("#home").length > 0)
-					{
-						// call this to get a new token each time. don't call it to reuse existing token.
-						//pushNotification.unregister(successHandler, errorHandler);
-						e.preventDefault();
-						navigator.app.exitApp();
-					}
-					else
-					{
-						navigator.app.backHistory();
-					}
-				}, false);
+               
+                var xhr = new XMLHttpRequest();
+ xhr.open('GET', 'https://api.github.com/legacy/repos/search/javascript', true);
+  // Response handlers.
+  xhr.onload = function () {
+     var repos = JSON.parse(xhr.response), i, reposHTML = "";
+     for (i = 0; i < repos.repositories.length; i++) {
+       reposHTML += "<p><a href='https://github.com/" + repos.repositories[i].username + "/" + repos.repositories[i].name + "'>" + repos.repositories[i].name + "</a><br>" + repos.repositories[i].description + "</p>";
+     }
+     document.getElementById("allRepos").innerHTML = reposHTML;
+  };
 
-				try 
-				{ 
-                	pushNotification = window.plugins.pushNotification;
-                	if (device.platform == 'android' || device.platform == 'Android') {
-						$("#app-status-ul").append('<li>registering android</li>');
-                    	pushNotification.register(successHandler, errorHandler, {"senderID":"144277535234","ecb":"onNotificationGCM"});		// required!
-					} else {
-						$("#app-status-ul").append('<li>registering iOS</li>');
-                    	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
-                	}
+  xhr.onerror = function () {
+     alert('error making the request.');
+  };
+
+xhr.send();
+    		
+				
+			
                 }
-				catch(err) 
-				{ 
-					txt="There was an error on this page.\n\n"; 
-					txt+="Error description: " + err.message + "\n\n"; 
-					alert(txt); 
-				} 
-            }
             
             // handle APNS notifications for iOS
             function onNotificationAPN(e) {
