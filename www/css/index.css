@@ -47,7 +47,7 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    position:absolute;             /* position in the center of the screen */
+    position:absolute;        /* position in the center of the screen */
     left:0;
     top:0;
     height:100%;                   /* text area height */
@@ -114,7 +114,23 @@ h1 {
 }
 
 .big-button {
-	padding:10px;
 	height:50%;
+	width:100%;
+}
+
+.header{
+	background-color:#4B946A;
+	height:40px;
+	width100%;
+}
+
+.top-button{
+	height:100%;
+	width:40px;
+	margin: 0px calc(100% - 40px) 0px 0px;
+}
+
+.bodyStuff{
+	height:calc(100% - 40px);
 	width:100%;
 }
