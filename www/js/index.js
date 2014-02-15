@@ -47,3 +47,6 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+function test(){
+	document.getElementById('inPls').innerHTML='it worked!';
+}
