@@ -49,4 +49,14 @@ var app = {
 };
 function test(){
 	document.getElementById('inPls').innerHTML='it worked!';
+	window.location="spec.html";
+}
+
+
+function change(){
+	if(document.getElementById('check').innerHTML==='Check In'){
+		document.getElementById('check').innerHTML='Check Out';
+	}else{
+		document.getElementById('check').innerHTML='Check In';
+	}
 }
