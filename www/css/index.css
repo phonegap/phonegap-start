@@ -48,13 +48,13 @@ body {
 /* Portrait layout (default) */
 .app {
     position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    left:0;
+    top:0;
+    height:100%;                   /* text area height */
+    width:100%;                   /* text area width */
     text-align:center;
     padding:0px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    margin:0px 0px 0px 0px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
 
@@ -63,7 +63,7 @@ body {
     .app {
         background-position:left center;
         padding:0px 0px 0px 0px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+        margin:0px 0px 0px 0px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
     }
 }
@@ -115,6 +115,6 @@ h1 {
 
 .big-button {
 	padding:10px;
-	height:100%;
+	height:50%;
 	width:100%;
 }
