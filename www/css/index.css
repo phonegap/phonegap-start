@@ -49,8 +49,8 @@ body {
 .app {
     position:absolute;             /* position in the center of the screen */
     left:0;
-    top:0;
-    height:100%;                   /* text area height */
+    top:10%;
+    height:90%;                   /* text area height */
     width:100%;                   /* text area width */
     text-align:center;
     padding:0px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
@@ -113,8 +113,61 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
+#headtext
+{
+	position:absolute;
+	left:0;
+	top:0;
+    height:10%;
+    width:100%;
+    background-color:#ff8b35;
+    font-family: Verdana;
+    font-weight:Bold;
+    color: white;
+    margin: 0 0 0 0;
+}
+
+#textdiv
+{
+	position: absolute;
+	width: 100px;
+	margin: auto;
+}
+
+#text
+{
+    font-size: 1.5em;
+}
+
+#menu
+{
+    height: 35px;
+	position: absolute;
+	left: 15px;
+	bottom: 5px;
+}
+
+#people
+{
+    position: absolute;
+    height: 35px;
+	right: 15px;
+	bottom: 5px;
+}
+
 .big-button {
 	padding:10px;
 	height:50%;
 	width:100%;
+}
+
+.parent{
+	position:absolute;
+	bottom:0px;
+	height:60px;
+	width:100%; /*width should be 100%*/
+}
+.child{
+	width:300px; /*min width should give to center the div.*/
+	margin:0px auto; /*here it will make center*/
 }
