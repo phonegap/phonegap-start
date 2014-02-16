@@ -129,6 +129,7 @@ h1 {
 	position: absolute;
 	left: 15px;
 	bottom: 5px;
+	z-index: 1;
 }
 
 #people
