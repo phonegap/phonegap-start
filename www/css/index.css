@@ -294,3 +294,12 @@ font-family: "gotham-rounded-bold";
 {
 	width: 10em;
 }
+
+#settings-div
+{
+	position:absolute;
+	left:0px;
+	top:10%;
+	height:90%;
+	width:100%;
+}
