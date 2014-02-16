@@ -1,4 +1,4 @@
-user = "Michael"
+user = window.localStorage.getItem('name')
 plat = "OSX"
 platVer = "7.1"
 uuid = "The Woz"//We're off to see the wizard,The wonderful wizard of Woz.
