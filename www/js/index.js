@@ -67,6 +67,7 @@ function tchange(){
 		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
 			if(ul.firstChild != null){
 				fillKarma(ul.firstChild.innerHTML, function(data){
+
 			});
 			}
 		}
