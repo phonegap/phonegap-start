@@ -47,15 +47,14 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    position:absolute;        /* position in the center of the screen */
+    left:0;
+    top:0;
+    height:100%;                   /* text area height */
+    width:100%;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    padding:0px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:0px 0px 0px 0px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
 
@@ -63,8 +62,8 @@ body {
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
         background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+        padding:0px 0px 0px 0px;  /* padding-top + padding-bottom + text area = image height */
+        margin:0px 0px 0px 0px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
     }
 }
@@ -112,4 +111,26 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.big-button {
+	height:50%;
+	width:100%;
+}
+
+.header{
+	background-color:#4B946A;
+	height:40px;
+	width100%;
+}
+
+.top-button{
+	height:100%;
+	width:40px;
+	margin: 0px calc(100% - 40px) 0px 0px;
+}
+
+.bodyStuff{
+	height:calc(100% - 40px);
+	width:100%;
 }
