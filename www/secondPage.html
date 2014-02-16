@@ -3,9 +3,18 @@
 	<head>
 	</head>
 	<body>
-		Username: <input id='userInput' size =60> <button id='submitUserNameButton' onClick='userNameSubmit()'>Submit</button><BR>
+		<table>
+			<tr>
+				<td>Username:</td>
+				<td><input id='userInput' size =60> <button id='submitUserNameButton' onClick='userNameSubmit()'>Submit</button></td>
+			</tr>
+			<tr>
+				<td>Time Before Refreshing(Seconds):</td> <td><input id='timeInput' type="number"> <button id='submitTimeButton' onClick='timeSubmit()'>Submit</button></td>
+			</tr>
+			<tr>
+				<td><button id='doneButton' onClick='done()'>Done!</button></td>
+			</tr>
+		</table>
 		<script type="text/javascript" src="js/secondPage.js"></script>
-		Time Before Refreshing(Seconds): <input id='timeInput' type="number"> <button id='submitTimeButton' onClick='timeSubmit()'>Submit</button><BR>
-		<button id='doneButton' onClick='done()'>Done!</button>
 	</body>
 </html>
