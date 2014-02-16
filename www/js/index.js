@@ -47,3 +47,42 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+function tchange(){
+	if(document.getElementById('inPls').innerHTML==='Let Me In'){
+		document.getElementById('inPls').innerHTML='Cancel Karma';
+		document.getElementById('check').innerHTML='Karma Recived';
+	}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
+		document.getElementById('inPls').innerHTML='Let Me In';
+		document.getElementById('check').innerHTML='Check In';
+	}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
+		
+	}
+}
+
+function bchange(){
+	if(document.getElementById('check').innerHTML==='Check In'){
+		document.getElementById('check').innerHTML='Check Out';
+		document.getElementById('inPls').innerHTML='Answer Karma';
+	}else if(document.getElementById('check').innerHTML==='Check Out'){
+		document.getElementById('check').innerHTML='Check In';
+		document.getElementById('inPls').innerHTML='Let Me In';
+	}else if(document.getElementById('check').innerHTML==='Karma Recived'){
+		document.getElementById('inPls').innerHTML='Let Me In';
+		document.getElementById('check').innerHTML='Check In';
+	}
+}
+
+var tButton = document.getElementById('inPls');
+if(tButton.addEventListener){
+	tButton.addEventListener("click", tchange, false);
+}else if(tButton.attachEvent){
+	tButton.attachEvent('onclick', tchange);
+}
+
+var bButton = document.getElementById('check');
+if(bButton.addEventListener){
+	bButton.addEventListener("click", bchange, false);
+}else if(tButton.attachEvent){
+	bButton.attachEvent('onclick', bchange);
+}
