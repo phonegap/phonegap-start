@@ -93,6 +93,9 @@ function bchange(){
 function mchange(){
 	window.location="secondPage.html";
 }
+function pchange(){
+	$("#navi").toggleClass("expanded-nav");
+}
 
 var tButton = document.getElementById('inPls');
 if(tButton.addEventListener){
@@ -113,6 +116,13 @@ if(mClick.addEventListener){
 	mClick.addEventListener("click", mchange, false);
 }else if(mClick.attachEvent){
 	mClick.attachEvent('onclick', mchange);
+}
+
+var pClick = document.getElementById("people");
+if(pClick.addEventListener){
+	pClick.addEventListener("click", pchange, false);
+}else if(pClick.attachEvent){
+	pClick.attachEvent('onclick', pchange);
 }
 
 var rR = false;
