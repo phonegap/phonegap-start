@@ -55,14 +55,18 @@ function tchange(){
 	}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
 		document.getElementById('inPls').innerHTML='Let Me In';
 		document.getElementById('check').innerHTML='Check In';
+	}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
+		
 	}
 }
 
 function bchange(){
 	if(document.getElementById('check').innerHTML==='Check In'){
 		document.getElementById('check').innerHTML='Check Out';
+		document.getElementById('inPls').innerHTML='Answer Karma';
 	}else if(document.getElementById('check').innerHTML==='Check Out'){
 		document.getElementById('check').innerHTML='Check In';
+		document.getElementById('inPls').innerHTML='Let Me In';
 	}else if(document.getElementById('check').innerHTML==='Karma Recived'){
 		document.getElementById('inPls').innerHTML='Let Me In';
 		document.getElementById('check').innerHTML='Check In';
