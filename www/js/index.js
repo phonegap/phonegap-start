@@ -65,9 +65,10 @@ function tchange(){
 			
 			});
 		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
-			fillKarma(device.uuid, function(data){
-			
+			if(ul.firstChild != null){
+				fillKarma(ul.firstChild.innerHTML, function(data){
 			});
+			}
 		}
 	}else{
 		alert("Please set up username and time in the settings");
@@ -134,7 +135,7 @@ if(pClick.addEventListener){
 }else if(pClick.attachEvent){
 	pClick.attachEvent('onclick', pchange);
 }
-
+var ul= document.getElementById("listPeople");
 var rR = false;
 var rG = false;
 var myVar = setInterval(function(){myTimer()}, Math.abs(window.localStorage.getItem("time") * 1000));
@@ -156,19 +157,19 @@ function myTimer(){
 	if(rG){
 		userlistKarma(function(data){
 		console.log(data);
+		
 		var people=JSON.parse(data).tickets;
 		while(ul.firstChild)
 		{
 			ul.removeChild(ul.firstChild);
 		}
-			var ul= document.getElementById("listPeople");
 
-			for(var i=0; i<stuff.length;i++)
-			{
-				var temp=document.createElement(people[i]);
-				ul.appendChild(temp);
-				temp.innerHTML=people[i];
-			}
+		for(var i=0; i<people.length;i++)
+		{
+			var temp=document.createElement(people[i]);
+			ul.appendChild(temp);
+			temp.innerHTML=people[i];
+		}
 		});
 		readyPollKarma(function(data){
 		console.log(data);
