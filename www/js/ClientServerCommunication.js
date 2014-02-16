@@ -1,8 +1,8 @@
 user = window.localStorage.getItem('name')
 //uses phonegap device library to pull informationfrom the phone 
-plat = window.device.platform
-platVer = window.device.version
-uuid = window.device.uuid
+plat = window.localStorage.getItem('platform')
+platVer = window.localStorage.getItem('version')
+uuid = window.localStorage.getItem('uuid');
 secret = window.localStorage.getItem('secret')
 serverAddr = window.localStorage.getItem('serverIP')
 if ( serverAddr == null || serverAddr == "" )
@@ -62,7 +62,7 @@ function userlistKarma(callback)
 // called when ready to receive karma to see if it is on its way
 function waitingPollKarma(callback) {
 	$.get(
-		"http://" + serverAddr + "/waitingPollKarma/" + secret,
+			"http://" + serverAddr + "/waitingPollKarma/" + uuid +"/"+ secret,
 		callback
 	)
 }
