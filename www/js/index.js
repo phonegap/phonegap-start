@@ -54,14 +54,20 @@ function tchange(){
 			document.getElementById('inPls').innerHTML='Cancel Karma';
 			document.getElementById('check').innerHTML='Karma Recived';
 			rR = true;
-			requestKarma();
+			requestKarma(function(data){
+				
+			});
 		}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
 			document.getElementById('inPls').innerHTML='Let Me In';
 			document.getElementById('check').innerHTML='Check In';
 			rR = false;
-			killKarma();
+			killKarma(function(data){
+			
+			});
 		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
-			fillKarma(device.uuid);
+			fillKarma(device.uuid, function(data){
+			
+			});
 		}
 	}else{
 		alert("Please set up username and time in the settings");
@@ -74,12 +80,16 @@ function bchange(){
 			document.getElementById('check').innerHTML='Check Out';
 			document.getElementById('inPls').innerHTML='Answer Karma';
 			rG = true;
-			readyKarma();
+			readyKarma(function(data){
+			
+			});
 		}else if(document.getElementById('check').innerHTML==='Check Out'){
 			document.getElementById('check').innerHTML='Check In';
 			document.getElementById('inPls').innerHTML='Let Me In';
 			rG = false;
-			unreadyKarma();
+			unreadyKarma(function(data){
+			
+			});
 		}else if(document.getElementById('check').innerHTML==='Karma Recived'){
 			document.getElementById('inPls').innerHTML='Let Me In';
 			document.getElementById('check').innerHTML='Check In';
