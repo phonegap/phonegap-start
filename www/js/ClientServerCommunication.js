@@ -1,8 +1,8 @@
 user = window.localStorage.getItem('name')
 //uses phonegap device library to pull informationfrom the phone 
-plat = device.platform
-platVer = device.version
-uuid = device.uuid
+plat = window.device.platform
+platVer = window.device.version
+uuid = window.device.uuid
 secret = window.localStorage.getItem('secret')
 serverAddr = window.localStorage.getItem('serverIP')
 if ( serverAddr == null || serverAddr == "" )
