@@ -176,10 +176,6 @@ function myTimer(){
 			}
 		}
 		});
-		readyPollKarma(function(data){
-		console.log(data);
-		
-		});
 	}
 }
 
