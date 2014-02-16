@@ -6,101 +6,74 @@ secret = "blowfish321@"
 serverAddr = "10.0.6.20:5000"
 
 //Cancels the request
-function killKarma()
+function killKarma(callback)
 {
 	$.get(
 		"http://" + serverAddr + "/killKarma/" + uuid + "/" + secret,
-		function(data) {
-			//success or failure
-			//failure is unimportant
-			alert('page content: ' + data)
-	})
+		callback
+	)
 }
 //This is the opens a request for karma
-function requestKarma()
+function requestKarma(callback)
 {
 	$.get(
 		"http://" + serverAddr + "/requestKarma/" + uuid + "/" + user + "/" + plat + "/" + platVer + "/" + secret,
-		function(data) {
-			//success or failure
-			//failure matters
-			alert('page content: ' + data)
-	})
+		callback
+	)
 }
 //User says"I got dis!" and goes to open the door
 //@param filledUUID is the UUID of the person requesting Karma
-function fillKarma(filledUUID)
+function fillKarma(filledUUID, callback)
 {
 	$.get(
 		"http://" + serverAddr + "/fillKarma/" + filledUUID + "/" + uuid + "/" + user + "/" + plat + "/" + platVer + "/" + secret,
-		function(data) {
-			//success or failure
-			//failure means something
-			alert('page content: ' + data)
-	})
+		callback
+	)
 }
 //signals user is ready to open the door
-function readyKarma()
+function readyKarma(callback)
 {
 	$.get(
 		"http://" + serverAddr + "/readyKarma/" + uuid + "/" + user + "/" + secret,
-		function(data) {
-			//success or failure
-			//failure is important
-			alert('my hands are typing words: ' + data)
-	})
+		callback
+	)
 }
 // signals that user is no longer available for door openage
-function unreadyKarma()
+function unreadyKarma(callback)
 {
 	$.get(
 		"http://" + serverAddr + "/unreadyKarma/" + uuid + "/" + user + "/" + secret,
-		function(data) {
-			//success or failure
-			//failure shouldn't particularly matter
-			alert('words are coming out: ' + data)
-	})
+		callback
+	)
 }
 //Returns list of waiting users
-function userlistKarma()
+function userlistKarma(callback)
 {
 	$.get(
 		"http://" + serverAddr + "/userListKarma/" + secret,
-		function(data) {
-			//we should be expecting a JSON formatted list back
-			alert('and now they form sentences: ' + data)
-	})
+		callback
+	)
 }
 // called when ready to receive karma to see if it is on its way
-function waitingPollKarma() {
+function waitingPollKarma(callback) {
 	$.get(
 		"http://" + serverAddr + "/waitingPollKarma/" + secret,
-		function(data) {
-			//success or failure
-			//repeated failure matters
-			alert('and now data arrives: ' + data)
-	})
+		callback
+	)
 }
 // called when ready to give karma to see if tasks need to be done
-function readyPollKarma() {
+function readyPollKarma(callback) {
 	$.get(
 		"http://" + serverAddr + "/readyPollKarma/" + secret,
-		function(data) {
-			//success or failure
-			//repeated failure matters
-			alert('and we complete the cuuuuube: ' + data)
-	})
+		callback
+	)
 }
 //polls for global messages
-function messagePollKarma() {
+function messagePollKarma(callback) {
 	$.get(
 		"http://" + serverAddr + "/messagePollKarma/" + secret,
-		function(data) {
-			//success or failure
-			//failure is the default state
-			//success indicates a message
-			alert('and they healed :) ' + data)
-	})
+		callback
+	)
 }
 //Test code
 /*
