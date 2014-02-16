@@ -49,7 +49,6 @@ var app = {
 };
 
 function tchange(){
-	console.log('nailed it');
 	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time")!=null){
 		if(document.getElementById('inPls').innerHTML==='Let Me In'){
 			document.getElementById('inPls').innerHTML='Cancel Karma';
@@ -87,7 +86,6 @@ function bchange(){
 }
 
 function mchange(){
-	console.log('nailed it');
 	window.location="secondPage.html";
 }
 
@@ -106,7 +104,6 @@ if(bButton.addEventListener){
 }
 
 var mClick = document.getElementById("menu");
-
 if(mClick.addEventListener){
 	mClick.addEventListener("click", mchange, false);
 }else if(mClick.attachEvent){
