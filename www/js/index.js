@@ -155,6 +155,31 @@ function myTimer(){
 				alert("Someone is on the way!");
 			}
 		});
+		
+		
+		
+		
+		userlistKarma(function(data){
+		console.log(data);
+		
+		var people=JSON.parse(data).ready;
+		while(ul.firstChild)
+		{
+			ul.removeChild(ul.firstChild);
+		}
+		
+
+		for(var key in people)
+		{
+			if(people.hasOwnProperty(key)) {
+				var temp=document.createElement(people[key]);
+				temp.type = "li";
+				ul.appendChild(temp);
+				temp.innerHTML=people[key];
+			}
+		}
+		});
+		
 	}
 	if(rG){
 		userlistKarma(function(data){
@@ -171,6 +196,7 @@ function myTimer(){
 		{
 			if(people.hasOwnProperty(key)) {
 				var temp=document.createElement(people[key]);
+				temp.type = "li";
 				ul.appendChild(temp);
 				temp.innerHTML=people[key];
 			}
