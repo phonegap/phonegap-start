@@ -28,6 +28,7 @@
 }
 
 body {
+	position: fixed;
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
@@ -39,10 +40,100 @@ body {
     text-transform:uppercase;
     width:100%;
 }
+.app:after
+{
+	position: absolute;
+    content: ' ';
+	width:100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+#headtext:after
+{
+    position: absolute;
+    content: ' ';
+	width:100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+nav
+{
+    position: fixed;
+    right: -16em;
+    top: 0;
+    bottom: 0;
+    background-color: #2e2929;
+    border-right: 20px solid #2e2929;
+    z-index: 1;
+    cursor: pointer;
+}
+ 
+nav:after
+{
+    position: absolute;
+    content: ' ';
+    width: 0;
+    height: 0;
+    left: -70px;
+    top: 50%;
+}
+
+nav ul
+{
+    width: 14em;
+    list-style-type: none;
+    margin: 0;
+    padding: 1em;
+}
+
+#headtext, #headtext:after, .app, .app:after, nav, nav *
+{
+    -webkit-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    transition: all 600ms ease;
+}
+
+nav:hover
+{
+    right: 0;
+}
+
+nav:hover ~ #headtext
+{
+    -webkit-transform: translateX(-16em);
+    -moz-transform: translateX(-16em);
+    -ms-transform: translateX(-16em);
+    -o-transform: translateX(-16em);
+    transform: translateX(-16em);
+}
+
+nav:hover ~ .app
+{
+    -webkit-transform: translateX(-16em);
+    -moz-transform: translateX(-16em);
+    -ms-transform: translateX(-16em);
+    -o-transform: translateX(-16em);
+    transform: translateX(-16em);
+}
+
+nav:hover ~ #headtext:after
+{
+    right: 60%;
+}
+
+nav:hover ~ .app:after
+{
+    right: 60%;
+}
 
 /* Portrait layout (default) */
 .app {
-    position:absolute;             /* position in the center of the screen */
+    position:fixed;             /* position in the center of the screen */
     left:0;
     top:10%;
     height:90%;                   /* text area height */
@@ -51,6 +142,13 @@ body {
     padding:0px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
     margin:0px 0px 0px 0px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
+	overflow: auto;
+    z-index: 0;
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    -o-transform-origin: 0 50%;
+    transform-origin: 0 50%;
 }
 
 
@@ -98,7 +196,7 @@ h1 {
 
 #headtext
 {
-	position:absolute;
+	position:fixed;
 	left:0;
 	top:0;
     height:10%;
@@ -107,6 +205,13 @@ h1 {
     font-family: "gotham-rounded-bold", verdana;
     color: white;
     margin: 0 0 0 0;
+	overflow: auto;
+    z-index: 0;
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    -o-transform-origin: 0 50%;
+    transform-origin: 0 50%;
 }
 
 #textdiv
