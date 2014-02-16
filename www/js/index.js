@@ -109,3 +109,18 @@ if(mClick.addEventListener){
 }else if(mClick.attachEvent){
 	mClick.attachEvent('onclick', mchange);
 }
+
+var myVar = setInterval(function(){myTimer()}, Math.abs(window.localStorage.getItem("time") * 1000));
+function myTimer(){
+	console.log('nailed it');
+	if(window.localStorage.getItem("changeTime")){
+		stopTimer();
+		window.localStorage.setItem("changeTime", false);
+		myVar = setInterval(function(){myTimer()},Math.abs(window.localStorage.getItem("time")) * 1000);
+	}
+	
+}
+
+function stopTimer(){
+	clearInterval(myVar);
+}
