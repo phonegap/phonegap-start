@@ -1,8 +1,7 @@
 user = window.localStorage.getItem('name')
-//uses phonegap device library to pull informationfrom the phone 
-plat = device.platform
-platVer = device.version
-uuid = device.uuid
+plat = "OSX"
+platVer = "7.1"
+uuid = "The Woz"//We're off to see the wizard,The wonderful wizard of Woz.
 secret = window.localStorage.getItem('secret')
 serverAddr = window.localStorage.getItem('serverIP')
 console.log(serverAddr)
