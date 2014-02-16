@@ -2,8 +2,10 @@ function done(){
 	console.log('nailed that done');
 	var userName=document.getElementById('userInput').value;
 	var time=document.getElementById('timeInput').value;
+	var server=document.getElementById('serverInput').value;
 	window.localStorage.setItem("name", userName);
 	window.localStorage.setItem("time", time);
+	window.localStorage.setItem("server", server);
 	window.localStorage.setItem("changeTime", true);
 	window.location="index.html";
 }
@@ -30,3 +32,4 @@ if(cButton.addEventListener){
 
 $('#timeInput').val(window.localStorage.getItem('time'));
 $('#userInput').val(window.localStorage.getItem('name'));
+$('#serverInput').val(window.localStorage.getItem('server'));
