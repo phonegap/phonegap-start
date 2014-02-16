@@ -121,7 +121,7 @@ h1 {
     height:10%;
     width:100%;
     background-color:#ff8b35;
-    font-family: Verdana;
+    font-family: 'Varela Round', san-serif;
     font-weight:Bold;
     color: white;
     margin: 0 0 0 0;
@@ -159,8 +159,12 @@ h1 {
 	padding:10px;
 	height:50%;
 	width:100%;
+	/*border-radius: 100%;*/
+	font-family: 'Varela Round', serif;
+	font-weight: Bold;
 }
 
+<<<<<<< HEAD
 .parent{
 	position:absolute;
 	bottom:0px;
@@ -171,3 +175,6 @@ h1 {
 	width:300px; /*min width should give to center the div.*/
 	margin:0px auto; /*here it will make center*/
 }
+=======
+
+>>>>>>> Change Fonts of Header and Buttons
