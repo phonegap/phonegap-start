@@ -1,4 +1,5 @@
 /*
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -66,7 +67,7 @@ function tchange(){
 			});
 		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
 			if(ul.firstChild != null){
-				fillKarma(ul.firstChild.innerHTML, function(data){
+				fillKarma( function(data){
 
 			});
 			}

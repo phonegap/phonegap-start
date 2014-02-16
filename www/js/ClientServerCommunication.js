@@ -27,11 +27,10 @@ function requestKarma(callback)
 	)
 }
 //User says"I got dis!" and goes to open the door
-//@param filledUUID is the UUID of the person requesting Karma
-function fillKarma(filledUUID, callback)
+function fillKarma(callback)
 {
 	$.get(
-		"http://" + serverAddr + "/fillKarma/" + filledUUID + "/" + uuid + "/" + user + "/" + plat + "/" + platVer + "/" + secret,
+		"http://" + serverAddr + "/fillKarma/" + uuid + "/" + user + "/" + plat + "/" + platVer + "/" + secret,
 		callback
 	)
 }
