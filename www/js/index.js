@@ -147,13 +147,28 @@ function myTimer(){
 	if(rR){
 		waitingPollKarma(function(data){
 		console.log(data);
-			
+			if(JSON.parse(data).onTheWay)
+			{
+				alert("Someone is on the way!");
+			}
 		});
 	}
 	if(rG){
 		userlistKarma(function(data){
 		console.log(data);
-		
+		var people=JSON.parse(data).tickets;
+		while(ul.firstChild)
+		{
+			ul.removeChild(ul.firstChild);
+		}
+			var ul= document.getElementById("listPeople");
+
+			for(var i=0; i<stuff.length;i++)
+			{
+				var temp=document.createElement(people[i]);
+				ul.appendChild(temp);
+				temp.innerHTML=people[i];
+			}
 		});
 		readyPollKarma(function(data){
 		console.log(data);
