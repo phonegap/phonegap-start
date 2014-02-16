@@ -47,3 +47,68 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+function tchange(){
+	console.log('nailed it');
+	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time")!=null){
+		if(document.getElementById('inPls').innerHTML==='Let Me In'){
+			document.getElementById('inPls').innerHTML='Cancel Karma';
+			document.getElementById('check').innerHTML='Karma Recived';
+			requestKarma();
+		}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
+			document.getElementById('inPls').innerHTML='Let Me In';
+			document.getElementById('check').innerHTML='Check In';
+			killKarma();
+		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
+			fillKarma(device.uuid);
+		}
+	}else{
+		alert("Please set up username and time in the settings");
+	}
+}
+
+function bchange(){
+	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time") !=null){
+		if(document.getElementById('check').innerHTML==='Check In'){
+			document.getElementById('check').innerHTML='Check Out';
+			document.getElementById('inPls').innerHTML='Answer Karma';
+			readyKarma();
+		}else if(document.getElementById('check').innerHTML==='Check Out'){
+			document.getElementById('check').innerHTML='Check In';
+			document.getElementById('inPls').innerHTML='Let Me In';
+			unreadyKarma();
+		}else if(document.getElementById('check').innerHTML==='Karma Recived'){
+			document.getElementById('inPls').innerHTML='Let Me In';
+			document.getElementById('check').innerHTML='Check In';
+		}
+	}else{
+		alert("Please set up username and time in the settings");
+	}
+}
+
+function mchange(){
+	console.log('nailed it');
+	window.location="secondPage.html";
+}
+
+var tButton = document.getElementById('inPls');
+if(tButton.addEventListener){
+	tButton.addEventListener("click", tchange, false);
+}else if(tButton.attachEvent){
+	tButton.attachEvent('onclick', tchange);
+}
+
+var bButton = document.getElementById('check');
+if(bButton.addEventListener){
+	bButton.addEventListener("click", bchange, false);
+}else if(tButton.attachEvent){
+	bButton.attachEvent('onclick', bchange);
+}
+
+var mClick = document.getElementById("menu");
+
+if(mClick.addEventListener){
+	mClick.addEventListener("click", mchange, false);
+}else if(mClick.attachEvent){
+	mClick.attachEvent('onclick', mchange);
+}
