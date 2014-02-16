@@ -4,8 +4,11 @@ body
 }
 #headtext
 {
-    height:50%;
-    width:auto;
+	position:absolute;
+	left:0;
+	top:0;
+    height:10%;
+    width:100%;
     background-color:#ff8b35;
     font-family: Verdana;
     font-weight:Bold;
@@ -13,28 +16,47 @@ body
     margin: 0 0 0 0;
 }
 
+#textdiv
+{
+	position: absolute;
+	width: 100px;
+	margin: auto;
+}
+
 #text
 {
-    margin: -40px 0px 0px 35px;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 #menu
 {
-    margin: 20px 0px 0px 10px;
     height: 35px;
+	position: absolute;
+	left: 15px;
+	bottom: 5px;
 }
 
 #people
 {
-    margin: 20px 10px 0px 0px;
-    position: relative;
-    float: right;
+    position: absolute;
     height: 35px;
+	right: 15px;
+	bottom: 5px;
 }
 
 html
 {
 	height: 100%;
 	background-color:#eae7e1;
+}
+
+.parent{
+	position:absolute;
+	bottom:0px;
+	height:60px;
+	width:100%; /*width should be 100%*/
+}
+.child{
+	width:300px; /*min width should give to center the div.*/
+	margin:0px auto; /*here it will make center*/
 }
