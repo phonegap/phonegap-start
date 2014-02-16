@@ -27,3 +27,6 @@ if(cButton.addEventListener){
 }else if(cButton.attachEvent){
 	cButton.attachEvent('onclick', cancel);
 }
+
+$('#timeInput').val(window.localStorage.getItem('time'));
+$('#userInput').val(window.localStorage.getItem('name'));
