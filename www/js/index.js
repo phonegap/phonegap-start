@@ -49,31 +49,40 @@ var app = {
 };
 
 function tchange(){
-	if(document.getElementById('inPls').innerHTML==='Let Me In'){
-		document.getElementById('inPls').innerHTML='Cancel Karma';
-		document.getElementById('check').innerHTML='Karma Recived';
-	}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
-		document.getElementById('inPls').innerHTML='Let Me In';
-		document.getElementById('check').innerHTML='Check In';
-	}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
-		
+	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time")!=null){
+		if(document.getElementById('inPls').innerHTML==='Let Me In'){
+			document.getElementById('inPls').innerHTML='Cancel Karma';
+			document.getElementById('check').innerHTML='Karma Recived';
+		}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
+			document.getElementById('inPls').innerHTML='Let Me In';
+			document.getElementById('check').innerHTML='Check In';
+		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
+			
+		}
+	}else{
+		alert("Please set up username and time in the settings");
 	}
 }
 
 function bchange(){
-	if(document.getElementById('check').innerHTML==='Check In'){
-		document.getElementById('check').innerHTML='Check Out';
-		document.getElementById('inPls').innerHTML='Answer Karma';
-	}else if(document.getElementById('check').innerHTML==='Check Out'){
-		document.getElementById('check').innerHTML='Check In';
-		document.getElementById('inPls').innerHTML='Let Me In';
-	}else if(document.getElementById('check').innerHTML==='Karma Recived'){
-		document.getElementById('inPls').innerHTML='Let Me In';
-		document.getElementById('check').innerHTML='Check In';
+	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time") !=null){
+		if(document.getElementById('check').innerHTML==='Check In'){
+			document.getElementById('check').innerHTML='Check Out';
+			document.getElementById('inPls').innerHTML='Answer Karma';
+		}else if(document.getElementById('check').innerHTML==='Check Out'){
+			document.getElementById('check').innerHTML='Check In';
+			document.getElementById('inPls').innerHTML='Let Me In';
+		}else if(document.getElementById('check').innerHTML==='Karma Recived'){
+			document.getElementById('inPls').innerHTML='Let Me In';
+			document.getElementById('check').innerHTML='Check In';
+		}
+	}else{
+		alert("Please set up username and time in the settings");
 	}
 }
 
 function mchange(){
+	console.log('nailed it');
 	window.location="secondPage.html";
 }
 
@@ -91,9 +100,10 @@ if(bButton.addEventListener){
 	bButton.attachEvent('onclick', bchange);
 }
 
-var mClick = document.getElementById('menu');
+var mClick = document.getElementById("menu");
+
 if(mClick.addEventListener){
 	mClick.addEventListener("click", mchange, false);
 }else if(mClick.attachEvent){
 	mClick.attachEvent('onclick', mchange);
-}
+}console.log(mClick);
