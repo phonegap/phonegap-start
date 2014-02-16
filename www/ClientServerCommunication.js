@@ -2,8 +2,13 @@ user = window.localStorage.getItem('name')
 plat = "OSX"
 platVer = "7.1"
 uuid = "The Woz"//We're off to see the wizard,The wonderful wizard of Woz.
-secret = "blowfish321@"
-serverAddr = "10.0.6.20:5000"
+secret = window.localStorage.getItem('secret')
+serverAddr = window.localStorage.getItem('serverIP')
+console.log(serverAddr)
+if ( serverAddr == null || serverAddr == "" )
+{
+	serverAddr = "10.0.6.20:5000"
+}
 
 //Cancels the request
 function killKarma(callback)

@@ -2,10 +2,12 @@ function done(){
 	console.log('nailed that done');
 	var userName=document.getElementById('userInput').value;
 	var time=document.getElementById('timeInput').value;
-	var server=document.getElementById('serverInput').value;
+	var secret=document.getElementById('secretInput').value;
+	var ip=document.getElementById('serverIP').value;
 	window.localStorage.setItem("name", userName);
 	window.localStorage.setItem("time", time);
-	window.localStorage.setItem("server", server);
+	window.localStorage.setItem("secret", secret);
+	window.localStorage.setItem("serverIP", ip);
 	window.localStorage.setItem("changeTime", true);
 	window.location="index.html";
 }
@@ -32,4 +34,5 @@ if(cButton.addEventListener){
 
 $('#timeInput').val(window.localStorage.getItem('time'));
 $('#userInput').val(window.localStorage.getItem('name'));
-$('#serverInput').val(window.localStorage.getItem('server'));
+$('#secretInput').val(window.localStorage.getItem('secret'));
+$('#serverIP').val(window.localStorage.getItem('serverIP'));

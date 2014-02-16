@@ -5,6 +5,17 @@
 	</head>
 	<body>
 	<script type="text/javascript" src="jquery-2.1.0.js"></script>
+		<div id = "headtext"> 
+			<img id = "menu" src = "http://i.imgur.com/1E4ZZ8j.png"/>
+			<img id = "people" src = "http://i.imgur.com/tSHRIeY.png"/>
+			<div class = "parent">
+				<div class = "child">
+					<h3 id = "text" align = "center"> DOOR KARMA </h3>
+				</div>
+			</div>
+		</div>
+
+		<div id="settings-div">
 		<table>
 			<tr>
 				<td>Username:</td>
@@ -15,11 +26,16 @@
 				<td align="right"><input id='timeInput' type="number"></td>
 			</tr>
 			<tr>
-				<td>Server IP:</td>
-				<td align="rigth"><input id='serverInput' typer='userInput'></td>
+				<td>Secret to Everyone:</td>
+				<td align="right"><input id='secretInput'></td>
+			</tr>
+			<tr>
+				<td>Server IP (if not default):</td>
+				<td align="right"><input id='serverIP'></td>
 			</tr>
 		</table>
 		<button id='doneButton'>Done!</button><button id='cancelButton'>Cancel</button>
+	</div>
 		<script type="text/javascript" src="js/secondPage.js"></script>
 	</body>
 </html>
