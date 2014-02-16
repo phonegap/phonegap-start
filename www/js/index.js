@@ -165,12 +165,15 @@ function myTimer(){
 		{
 			ul.removeChild(ul.firstChild);
 		}
+		
 
-		for(var i=0; i<people.length;i++)
+		for(var key in people)
 		{
-			var temp=document.createElement(people[i]);
-			ul.appendChild(temp);
-			temp.innerHTML=people[i];
+			if(people.hasOwnProperty(key)) {
+				var temp=document.createElement(people[key]);
+				ul.appendChild(temp);
+				temp.innerHTML=people[key];
+			}
 		}
 		});
 		readyPollKarma(function(data){
