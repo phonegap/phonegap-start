@@ -53,10 +53,12 @@ function tchange(){
 		if(document.getElementById('inPls').innerHTML==='Let Me In'){
 			document.getElementById('inPls').innerHTML='Cancel Karma';
 			document.getElementById('check').innerHTML='Karma Recived';
+			rR = true;
 			requestKarma();
 		}else if(document.getElementById('inPls').innerHTML==='Cancel Karma'){
 			document.getElementById('inPls').innerHTML='Let Me In';
 			document.getElementById('check').innerHTML='Check In';
+			rR = false;
 			killKarma();
 		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
 			fillKarma(device.uuid);
@@ -71,14 +73,17 @@ function bchange(){
 		if(document.getElementById('check').innerHTML==='Check In'){
 			document.getElementById('check').innerHTML='Check Out';
 			document.getElementById('inPls').innerHTML='Answer Karma';
+			rG = true;
 			readyKarma();
 		}else if(document.getElementById('check').innerHTML==='Check Out'){
 			document.getElementById('check').innerHTML='Check In';
 			document.getElementById('inPls').innerHTML='Let Me In';
+			rG = false;
 			unreadyKarma();
 		}else if(document.getElementById('check').innerHTML==='Karma Recived'){
 			document.getElementById('inPls').innerHTML='Let Me In';
 			document.getElementById('check').innerHTML='Check In';
+			rR = false;
 		}
 	}else{
 		alert("Please set up username and time in the settings");
@@ -110,15 +115,37 @@ if(mClick.addEventListener){
 	mClick.attachEvent('onclick', mchange);
 }
 
+var rR = false;
+var rG = false;
+
 var myVar = setInterval(function(){myTimer()}, Math.abs(window.localStorage.getItem("time") * 1000));
 function myTimer(){
-	console.log('nailed it');
 	if(window.localStorage.getItem("changeTime")){
 		stopTimer();
 		window.localStorage.setItem("changeTime", false);
 		myVar = setInterval(function(){myTimer()},Math.abs(window.localStorage.getItem("time")) * 1000);
 	}
-	
+	messagePollKarma(function(data){
+		console.log(data);
+		console.log(JSON.parse(data).message);
+		
+	});
+	if(rR){
+		waitingPollKarma(function(data){
+		console.log(data);
+			
+		});
+	}
+	if(rG){
+		userlistKarma(function(data){
+		console.log(data);
+		
+		});
+		readyPollKarma(function(data){
+		console.log(data);
+		
+		});
+	}
 }
 
 function stopTimer(){
