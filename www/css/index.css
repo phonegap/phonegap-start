@@ -20,24 +20,20 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+
+@font-face
+{
+	font-family: gotham-rounded-bold;
+	src: url('fonts/gotham-rounded-bold.otf');
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
+    background-color: #eae7e1;
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    font-family: gotham-rounded-bold;
     height:100%;
     margin:0px;
     padding:0px;
@@ -58,15 +54,6 @@ body {
                                    /* offset horizontal: half of text area width */
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:0px 0px 0px 0px;  /* padding-top + padding-bottom + text area = image height */
-        margin:0px 0px 0px 0px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
-}
 
 h1 {
     font-size:24px;
@@ -78,21 +65,18 @@ h1 {
 }
 
 .event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
     font-size:12px;
     margin:0px 30px;
-    padding:2px 0px;
+    /*padding:2px 0px;*/
 }
 
 .event.listening {
-    background-color:#333333;
+    background-color:#eae7e1;
     display:block;
 }
 
 .event.received {
-    background-color:#4B946A;
+    background-color:#eae7e1;
     display:none;
 }
 
@@ -121,8 +105,7 @@ h1 {
     height:10%;
     width:100%;
     background-color:#ff8b35;
-    font-family: 'Varela Round', san-serif;
-    font-weight:Bold;
+    font-family: Verdana;
     color: white;
     margin: 0 0 0 0;
 }
@@ -157,15 +140,17 @@ h1 {
 
 .big-button {
 
+	border: 0px;
 	background: #35e4b2;
-	border-radius: 3px;
 	color: white;
-	font-family: 'Varela Round', helvetica, arial, sans-serif;
+	font-family: 'Gotham-Rounded-Bold';
 	font-size: 2em;
 	font-weight: bold;
 	text-align: center;
 	height: 20%;
-	width: 80%; }
+	width: 80%;
+	margin: 20px 0px 0px 0px;
+	}
   .big-button:active {
     background: #d0d0d0;
     box-shadow: inset 0 0 1px 1px #e3e3e3;
