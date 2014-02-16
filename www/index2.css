@@ -1,0 +1,40 @@
+body
+{
+    margin: 0px 0px 0px 0px;
+}
+#headtext
+{
+    height:50%;
+    width:auto;
+    background-color:#ff8b35;
+    font-family: Verdana;
+    font-weight:Bold;
+    color: white;
+    margin: 0 0 0 0;
+}
+
+#text
+{
+    margin: -40px 0px 0px 35px;
+    font-size: 2em;
+}
+
+#menu
+{
+    margin: 20px 0px 0px 10px;
+    height: 35px;
+}
+
+#people
+{
+    margin: 20px 10px 0px 0px;
+    position: relative;
+    float: right;
+    height: 35px;
+}
+
+html
+{
+	height: 100%;
+	background-color:#eae7e1;
+}
