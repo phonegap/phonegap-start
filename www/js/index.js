@@ -117,19 +117,13 @@ if(mClick.addEventListener){
 
 var rR = false;
 var rG = false;
-
 var myVar = setInterval(function(){myTimer()}, Math.abs(window.localStorage.getItem("time") * 1000));
 function myTimer(){
 	if(window.localStorage.getItem("changeTime")){
-		stopTimer();
+		stopTimer(myVar);
 		window.localStorage.setItem("changeTime", false);
 		myVar = setInterval(function(){myTimer()},Math.abs(window.localStorage.getItem("time")) * 1000);
 	}
-	messagePollKarma(function(data){
-		console.log(data);
-		console.log(JSON.parse(data).message);
-		
-	});
 	if(rR){
 		waitingPollKarma(function(data){
 		console.log(data);
@@ -148,6 +142,15 @@ function myTimer(){
 	}
 }
 
-function stopTimer(){
-	clearInterval(myVar);
+var sysM = setInterval(function(){sysTimer()}, 60000);
+function sysTimer(){
+	messagePollKarma(function(data){
+		console.log(data);
+		console.log(JSON.parse(data).message);
+		alert("System message: " + JSON.parse(data).message);
+	});
+}
+
+function stopTimer(thing){
+	clearInterval(thing);
 }
