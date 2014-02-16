@@ -73,6 +73,10 @@ function bchange(){
 	}
 }
 
+function mchange(){
+	window.location="secondPage.html";
+}
+
 var tButton = document.getElementById('inPls');
 if(tButton.addEventListener){
 	tButton.addEventListener("click", tchange, false);
@@ -85,4 +89,11 @@ if(bButton.addEventListener){
 	bButton.addEventListener("click", bchange, false);
 }else if(tButton.attachEvent){
 	bButton.attachEvent('onclick', bchange);
+}
+
+var mClick = document.getElementById('menu');
+if(mClick.addEventListener){
+	mClick.addEventListener("click", mchange, false);
+}else if(mClick.attachEvent){
+	mClick.attachEvent('onclick', mchange);
 }
