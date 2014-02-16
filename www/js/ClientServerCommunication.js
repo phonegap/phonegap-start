@@ -5,7 +5,6 @@ platVer = device.version
 uuid = device.uuid
 secret = window.localStorage.getItem('secret')
 serverAddr = window.localStorage.getItem('serverIP')
-console.log(serverAddr)
 if ( serverAddr == null || serverAddr == "" )
 {
 	serverAddr = "10.0.6.20:5000"
