@@ -63,7 +63,7 @@ function userlistKarma(callback)
 // called when ready to receive karma to see if it is on its way
 function waitingPollKarma(callback) {
 	$.get(
-			"http://" + serverAddr + "/waitingPollKarma/" + uuid +"/"+ secret
+			"http://" + serverAddr + "/waitingPollKarma/" + uuid +"/"+ secret,
 		callback
 	)
 }
