@@ -65,7 +65,7 @@ nav
  
 nav:after
 {
-    position: absolute;
+    position: fixed;
     content: ' ';
     width: 0;
     height: 0;
@@ -88,12 +88,12 @@ nav ul
     transition: all 600ms ease;
 }
 
-nav:hover
+.expanded-nav
 {
     right: 0;
 }
 
-nav:hover ~ #headtext
+.expanded-nav ~ #headtext
 {
     -webkit-transform: translateX(-16em);
     -moz-transform: translateX(-16em);
@@ -102,7 +102,7 @@ nav:hover ~ #headtext
     transform: translateX(-16em);
 }
 
-nav:hover ~ .app
+.expanded-nav ~ .app
 {
     -webkit-transform: translateX(-16em);
     -moz-transform: translateX(-16em);
@@ -111,12 +111,12 @@ nav:hover ~ .app
     transform: translateX(-16em);
 }
 
-nav:hover ~ #headtext:after
+.expanded-nav ~ #headtext:after
 {
     right: 60%;
 }
 
-nav:hover ~ .app:after
+.expanded-nav ~ .app:after
 {
     right: 60%;
 }
@@ -237,6 +237,7 @@ nav ~ #headtext
     height: 35px;
 	right: 15px;
 	bottom: 5px;
+	z-index: 1;
 }
 
 .big-button {
