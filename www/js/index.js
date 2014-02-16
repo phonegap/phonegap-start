@@ -172,9 +172,10 @@ function myTimer(){
 		for(var key in people)
 		{
 			if(people.hasOwnProperty(key)) {
+				var li=document.createElement("li");
 				var temp=document.createElement(people[key]);
-				temp.type = "li";
-				ul.appendChild(temp);
+				li.appendChild(temp);
+				ul.appendChild(li);
 				temp.innerHTML=people[key];
 			}
 		}
@@ -195,9 +196,10 @@ function myTimer(){
 		for(var key in people)
 		{
 			if(people.hasOwnProperty(key)) {
+				var li=document.createElement("li");
 				var temp=document.createElement(people[key]);
-				temp.type = "li";
-				ul.appendChild(temp);
+				li.appendChild(temp);
+				ul.appendChild(li);
 				temp.innerHTML=people[key];
 			}
 		}
