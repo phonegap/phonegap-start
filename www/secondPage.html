@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	</head>
 	<body>
+	<script type="text/javascript" src="jquery-2.1.0.js"></script>
 		<table>
 			<tr>
 				<td>Username:</td>
-				<td><input id='userInput' size =60></td>
+				<td align="right"><input id='userInput' size=60></td>
 			</tr>
 			<tr>
 				<td>Time Before Refreshing(Seconds):</td>
-				<td><input id='timeInput' type="number"></td>
+				<td align="right"><input id='timeInput' type="number"></td>
 			</tr>
 		</table>
 		<button id='doneButton' onClick='done()'>Done!</button><button id='cancleButton' onClick='cancel()'>Cancel</button>
