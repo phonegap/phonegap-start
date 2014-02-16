@@ -65,7 +65,8 @@ function tchange(){
 			
 			});
 		}else if(document.getElementById('inPls').innerHTML==='Answer Karma'){
-			fillKarma(device.uuid, function(data){
+			var uuid = window.localStorage.getItem('uuid');
+			fillKarma(uuid, function(data){
 			
 			});
 		}
