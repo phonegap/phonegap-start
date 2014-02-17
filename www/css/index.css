@@ -58,7 +58,6 @@ nav
     top: 0;
     bottom: 0;
     background-color: #2e2929;
-    border-right: 20px solid #2e2929;
     z-index: 1;
     cursor: pointer;
 }
