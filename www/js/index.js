@@ -188,8 +188,13 @@ var sysM = setInterval(function(){sysTimer()}, 60000);
 function sysTimer(){
 	messagePollKarma(function(data){
 		console.log(data);
-		console.log(JSON.parse(data).message);
-		alert("System message: " + JSON.parse(data).message);
+		var message = JSON.parse(data).message;
+		console.log(message);
+		if(message!=window.localStorage.getItem("sysMessage"))
+		{
+			windown.localStorage.getItem("sysMessage", message);
+			alert("System message: " + message);
+		}
 	});
 }
 
