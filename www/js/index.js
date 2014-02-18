@@ -192,7 +192,7 @@ function sysTimer(){
 		console.log(message);
 		if(message!=window.localStorage.getItem("sysMessage"))
 		{
-			windown.localStorage.getItem("sysMessage", message);
+			windown.localStorage.setItem("sysMessage", message);
 			alert("System message: " + message);
 		}
 	});
