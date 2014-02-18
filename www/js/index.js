@@ -17,6 +17,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+// When the top button is pressed...
 function tchange(){
 	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time")!=null){
 		if(document.getElementById('inPls').innerHTML==='Let Me In'){
@@ -45,6 +47,7 @@ function tchange(){
 	}
 }
 
+// When the bottom button is pressed...
 function bchange(){
 	if(window.localStorage.getItem("name") !=null && window.localStorage.getItem("time") !=null){
 		if(document.getElementById('check').innerHTML==='Check In'){
@@ -71,13 +74,16 @@ function bchange(){
 	}
 }
 
+// When the menu button is pressed...
 function mchange(){
 	window.location="secondPage.html";
 }
+// When the people button is pressed...
 function pchange(){
 	$("#navi").toggleClass("expanded-nav");
 }
 
+// Register functions to the buttons
 var tButton = document.getElementById('inPls');
 if(tButton.addEventListener){
 	tButton.addEventListener("click", tchange, false);
@@ -105,6 +111,8 @@ if(pClick.addEventListener){
 }else if(pClick.attachEvent){
 	pClick.attachEvent('onclick', pchange);
 }
+
+// Poll for people
 var ul= document.getElementById("listPeople");
 var rR = false;
 var rG = false;
@@ -175,6 +183,7 @@ function myTimer(){
 	}
 }
 
+// Make a timer for the sysMessage
 var sysM = setInterval(function(){sysTimer()}, 60000);
 function sysTimer(){
 	messagePollKarma(function(data){
@@ -184,6 +193,7 @@ function sysTimer(){
 	});
 }
 
+// Stop any timer
 function stopTimer(thing){
 	clearInterval(thing);
 }
