@@ -20,54 +20,126 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+
+@font-face
+{
+	font-family: 'gotham-rounded-bold';
+	src: url('../fonts/gotham-rounded-bold.eot');
+}
+
 body {
+	position: fixed;
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
+    background-color: #eae7e1;
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
     text-transform:uppercase;
     width:100%;
 }
+#headtext:after
+{
+    position: absolute;
+    content: ' ';
+	width:100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+nav
+{
+    position: fixed;
+    right: -16em;
+    top: 0;
+    bottom: 0;
+    background-color: #2e2929;
+    z-index: 1;
+    cursor: pointer;
+}
+ 
+nav:after
+{
+    position: fixed;
+    content: ' ';
+    width: 0;
+    height: 0;
+    left: -70px;
+    top: 50%;
+}
+
+nav ul
+{
+    width: 14em;
+    list-style-type: none;
+    margin: 0;
+    padding: 1em;
+}
+
+#headtext, #headtext:after, .app, .app:after, nav, nav *
+{
+    -webkit-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    transition: all 600ms ease;
+}
+
+.expanded-nav
+{
+    right: 0;
+}
+
+.expanded-nav ~ #headtext
+{
+    -webkit-transform: translateX(-16em);
+    -moz-transform: translateX(-16em);
+    -ms-transform: translateX(-16em);
+    -o-transform: translateX(-16em);
+    transform: translateX(-16em);
+}
+
+.expanded-nav ~ .app
+{
+    -webkit-transform: translateX(-16em);
+    -moz-transform: translateX(-16em);
+    -ms-transform: translateX(-16em);
+    -o-transform: translateX(-16em);
+    transform: translateX(-16em);
+}
+
+.expanded-nav ~ #headtext:after
+{
+    right: 60%;
+}
+
+.expanded-nav ~ .app:after
+{
+    right: 60%;
+}
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    position:fixed;             /* position in the center of the screen */
+    left:0;
+    top:10%;
+    height:90%;                   /* text area height */
+    width:100%;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    padding:0px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:0px 0px 0px 0px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
+	overflow: auto;
+    z-index: 0;
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    -o-transform-origin: 0 50%;
+    transform-origin: 0 50%;
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
-}
 
 h1 {
     font-size:24px;
@@ -79,21 +151,18 @@ h1 {
 }
 
 .event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
     font-size:12px;
     margin:0px 30px;
-    padding:2px 0px;
+    /*padding:2px 0px;*/
 }
 
 .event.listening {
-    background-color:#333333;
+    background-color:#eae7e1;
     display:block;
 }
 
 .event.received {
-    background-color:#4B946A;
+    background-color:#eae7e1;
     display:none;
 }
 
@@ -112,4 +181,129 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+#headtext
+{
+	position:fixed;
+	left:0;
+	top:0;
+    height:10%;
+    width:100%;
+    background-color:#ff8b35;
+    font-family: "gotham-rounded-bold", verdana;
+    color: white;
+    margin: 0 0 0 0;
+    z-index: 0;
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    -o-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+}
+
+#textdiv
+{
+	position: absolute;
+	width: 100px;
+	margin: auto;
+}
+
+#text
+{
+    font-size: 1.5em;
+	font-family: "gotham-rounded-bold", verdana;
+	font-size: bold;
+}
+
+#menu
+{
+    height: 35px;
+	position: absolute;
+	left: 15px;
+	bottom: 5px;
+	z-index: 1;
+}
+
+#people
+{
+    position: absolute;
+    height: 35px;
+	right: 15px;
+	bottom: 5px;
+	z-index: 1;
+}
+
+.big-button {
+
+	border: 0px;
+	background: #03C03C;
+	color: white;
+	font-family: "gotham-rounded-bold", verdana;
+	font-weight: bold;
+	font-size: 1.3em;
+	/*font-weight: bold;*/
+	text-align: center;
+	height: 20%;
+	width: 90%;
+	margin: 20px 0px 0px 0px;
+	}
+  .big-button:active {
+    background: #d0d0d0;
+    box-shadow: inset 0 0 1px 1px #e3e3e3;
+    color: #000
+
+	/*padding:10px;
+	height:50%;
+	width:100%;
+	/*border-radius: 100%;
+	font-family: 'Varela Round', serif;
+	font-weight: Bold;*/
+}
+
+html{
+font-family: "gotham-rounded-bold";
+}
+
+.parent{
+	position:absolute;
+	bottom:0px;
+	height:60px;
+	width:100%; /*width should be 100%*/
+}
+.child{
+	width:300px; /*min width should give to center the div.*/
+	margin:0px auto; /*here it will make center*/
+}
+
+
+#userInput
+{
+	width: 10em;
+}
+#timeInput
+{
+	width: 10em;
+}
+#secretInput
+{
+	width: 10em;
+}
+#serverIP
+{
+	width: 10em;
+}
+
+#settings-div
+{
+	position:absolute;
+	left:0px;
+	top:10%;
+	height:90%;
+	width:100%;
+}
+
+#listPeople
+{
+	color: #ffffff;
 }
