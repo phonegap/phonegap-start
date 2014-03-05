@@ -93,6 +93,9 @@
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
 
+    <!-- Hook up a plugin, eh? -->
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" />
+
     <!--
         Define access to external domains.
 
