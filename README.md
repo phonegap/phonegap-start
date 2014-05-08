@@ -12,6 +12,14 @@
 
     /www/spec.html
 
+### Hack on Nitrous.IO
+
+Get Set Up with the Phonegap Starter App on
+[Nitrous.IO](https://www.nitrous.io) in a matter of seconds.
+
+[![Hack phonegap/phonegap-start on
+Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-l-v1-3cc067e71372f6045e1949af9d96095b.png)](https://www.nitrous.io/hack_button?source=embed&runtime=nodejs&repo=phonegap%2Fphonegap-start&file_to_open=README.nitrous.md)
+
 ### PhoneGap/Build
 
 Create a new app with the following repository:
