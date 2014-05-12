@@ -68,7 +68,9 @@
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     -->
 
-    <!-- Define app icon for each platform. -->
+    <!-- Define app icon for each platform. This is a relative path to config.xml.
+        For e.g. if you place an icon.png inside res folder, you should modify the
+        src in the following setting to "res/icon.png" -->
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
