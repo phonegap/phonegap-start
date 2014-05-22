@@ -28,10 +28,10 @@ function registerPushwooshIOS() {
 			var notification = event.notification;
 
 			//display alert to the user for example
-			navigator.notification.alert(notification.aps.alert);
+			alert(notification.aps.alert);
 			
 			//to view full push payload
-			//navigator.notification.alert(JSON.stringify(notification));
+			//alert(JSON.stringify(notification));
 			
 			//clear the app badge
 			pushNotification.setApplicationIconBadgeNumber(0);
@@ -52,7 +52,7 @@ function registerPushwooshIOS() {
 		function(status)
 		{
 			console.warn('failed to register : ' + JSON.stringify(status));
-			navigator.notification.alert(JSON.stringify(['failed to register ', status]));
+			//alert(JSON.stringify(['failed to register ', status]));
 		}
 	);
 	
