@@ -38,11 +38,14 @@ function registerPushwooshIOS() {
 		}
 	);
 
-	//initialize the plugin
-    pushNotification.onDeviceReady({pw_appid:"539E9-AB8AE"});
+	//trigger pending push notifications
+	pushNotification.onDeviceReady();
 
-	//register for pushes
-	pushNotification.registerDevice(
+	//register for pushes.
+	//!!! Please note this is an API for PGB plugin. This code is different in CLI plugin!!!
+	//At the moment I cannot update the plugin to the latest version. TY PGB Team!
+	//see http://community.phonegap.com/nitobi/topics/malformed_xml_in_plugin_xml_file?utm_source=notification&utm_medium=email&utm_campaign=new_reply&utm_content=reply_button&reply%5Bid%5D=14224918#reply_14224918
+	pushNotification.registerDevice({alert:true, badge:true, sound:true, pw_appid:"539E9-AB8AE", appname:"Pushwoosh"},
 		function(status)
 		{
 			var deviceToken = status['deviceToken'];
@@ -70,29 +73,6 @@ function onPushwooshiOSInitialized(pushToken)
 		},
 		function(error) {
 			console.warn('get tags error: ' + JSON.stringify(error));
-		}
-	);
-
-	//example how to get push token at a later time 
-	pushNotification.getPushToken(
-		function(token)
-		{
-			console.warn('push token device: ' + token);
-		}
-	);
-
-	//example how to get Pushwoosh HWID to communicate with Pushwoosh API
-	pushNotification.getPushwooshHWID(
-		function(token) {
-			console.warn('Pushwoosh HWID: ' + token);
-		}
-	);
-
-	//start geo tracking.
-	pushNotification.startLocationTracking(
-		function()
-		{
-			   console.warn('Location Tracking Started');
 		}
 	);
 }

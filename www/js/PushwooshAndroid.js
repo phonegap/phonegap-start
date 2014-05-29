@@ -41,10 +41,14 @@ function registerPushwooshAndroid() {
 		}
 	);
 
-	//initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-	pushNotification.onDeviceReady({ projectid: "60756016005", appid : "539E9-AB8AE" });
+	//trigger pending push notifications
+	pushNotification.onDeviceReady();
 
-	pushNotification.registerDevice(
+	//register for pushes.
+	//!!! Please note this is an API for PGB plugin. This code is different in CLI plugin!!!
+	//At the moment I cannot update the plugin to the latest version. TY PGB Team!
+	//see http://community.phonegap.com/nitobi/topics/malformed_xml_in_plugin_xml_file?utm_source=notification&utm_medium=email&utm_campaign=new_reply&utm_content=reply_button&reply%5Bid%5D=14224918#reply_14224918
+	pushNotification.registerDevice({ projectid: "60756016005", appid : "539E9-AB8AE" },
 		function(token)
 		{
 			alert(token);
@@ -65,21 +69,6 @@ function onPushwooshAndroidInitialized(pushToken)
 	console.warn('push token: ' + pushToken);
 
 	var pushNotification = window.plugins.pushNotification;
-	
-	//if you need push token at a later time you can always get it from Pushwoosh plugin
-	pushNotification.getPushToken(
-		function(token)
-		{
-			console.warn('push token: ' + token);
-		}
-	);
-
-	//and HWID if you want to communicate with Pushwoosh API
-	pushNotification.getPushwooshHWID(
-		function(token) {
-			console.warn('Pushwoosh HWID: ' + token);
-		}
-	);
 	
 	pushNotification.getTags(
 		function(tags)
@@ -124,36 +113,6 @@ function onPushwooshAndroidInitialized(pushToken)
 			console.warn('setTags failed');
 		}
 	);
-		
-	function geolocationSuccess(position) {
-		pushNotification.sendLocation({lat:position.coords.latitude, lon:position.coords.longitude},
-			function(status) {
-				console.warn('sendLocation success');
-			},
-			function(status) {
-				console.warn('sendLocation failed');
-			}
-		);
-	};
-		
-	// onError Callback receives a PositionError object
-	//
-	function geolocationError(error) {
-		alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	}
-	
-	function getCurrentPosition() {
-		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-	}
-	
-	//greedy method to get user position every 3 second. works well for demo.
-//	setInterval(getCurrentPosition, 3000);
-		
-	//this method just gives the position once
-//	navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-		
-	//this method should track the user position as per Phonegap docs.
-//	navigator.geolocation.watchPosition(geolocationSuccess, geolocationError, { maximumAge: 3000, enableHighAccuracy: true });
 
 	//Pushwoosh Android specific method that cares for the battery
 	pushNotification.startGeoPushes();
