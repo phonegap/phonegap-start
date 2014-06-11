@@ -1,31 +1,26 @@
-# PhoneGap Build Starter Application
+# Hello World PhoneGap Application
 
-> A Hello World application to get started with PhoneGap Build.
+> A Hello World application built with PhoneGap
 
-## Running the Application
+## Usage
 
-### Run Locally
+### Desktop
 
-#### Run Application
+In your browser, open `/www/index.html`.
 
-    /www/index.html
+### PhoneGap CLI
 
-#### Run Tests
+This repository is automatically downloaded by [phonegap-cli][phonegap-cli-url].
 
-    /www/spec.html
-
-### Using PhoneGap Build
+### PhoneGap Build
 
 Create a new app with the following repository:
 
     https://github.com/phonegap/phonegap-start.git
 
-### Using PhoneGap Build and nitrous.io
+### nitrous.io
 
-Setup [nitrous.io](https://www.nitrous.io) in a matter of seconds:
-
-[![Hack phonegap/phonegap-start on
-Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-l-v1-3cc067e71372f6045e1949af9d96095b.png)](https://www.nitrous.io/hack_button?source=embed&runtime=nodejs&repo=phonegap%2Fphonegap-start&file_to_open=README.nitrous.md)
+[Setup nitrous.io][nitrous].
 
 Then run the following commands in the nitrous.io terminal:
 
@@ -65,5 +60,7 @@ Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 
     $ git tag x.x.x
 
+[phonegap-cli-url]: http://github.com/phonegap/phonegap-cli
 [cordova-app]: http://github.com/apache/cordova-app-hello-world
+[nitrous-url]: https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-l-v1-3cc067e(https://www.nitrous.io/hack_button?source=embed&runtime=nodejs&repo=phonegap%2Fphonegap-start&file_to_open=README.md
 
