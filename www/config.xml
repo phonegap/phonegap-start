@@ -3,7 +3,7 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
+        id        = "com.phonegap.helloworld"
         version   = "1.0.0">
 
     <name>Hello World</name>
@@ -68,9 +68,7 @@
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     -->
 
-    <!-- Define app icon for each platform. This is a relative path to config.xml.
-        For e.g. if you place an icon.png inside res folder, you should modify the
-        src in the following setting to "res/icon.png" -->
+    <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
