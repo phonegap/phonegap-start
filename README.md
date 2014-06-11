@@ -12,7 +12,8 @@ In your browser, open the file:
 
 ### PhoneGap CLI
 
-This repository is automatically downloaded by [phonegap-cli][phonegap-cli-url].
+This repository is automatically downloaded by [phonegap-cli][phonegap-cli-url]
+when you create a new application.
 
 ### PhoneGap Build
 
@@ -20,15 +21,15 @@ Create a new app with the following repository:
 
     https://github.com/phonegap/phonegap-start.git
 
-### nitrous.io
+### Nitrous.io
 
-[Setup nitrous.io][nitrous].
+First [setup nitrous.io][nitrous-url] to use this project.
 
 Then run the following commands in the nitrous.io terminal:
 
-1. `cd ~/workspace/phonegap-start`
-2. `npm install -g phonegap`
-3. `phonegap remote build android`
+    $ cd ~/workspace/phonegap-start
+    $ npm install -g phonegap
+    $ phonegap remote build android
 
 The last command requires an Adobe ID and will build your app on PhoneGap Build.
 
