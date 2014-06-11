@@ -6,7 +6,9 @@
 
 ### Desktop
 
-In your browser, open `/www/index.html`.
+In your browser, open the file:
+
+    /www/index.html
 
 ### PhoneGap CLI
 
