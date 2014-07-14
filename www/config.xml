@@ -42,8 +42,11 @@
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
     <!-- Custom Config -->
-    <gap:config-file platform="android" parent="/manifest/application">
-        <activity android:launchMode="singleTask" android:windowSoftInputMode="stateHidden|adjustResize" />
+    <gap:config-file platform="android" parent="/manifest">
+	<supports-screens 
+        android:xlargeScreens="false" 
+        android:largeScreens="false" 
+        android:smallScreens="false" />
     </gap:config-file>
     
     <!-- Plugins -->
