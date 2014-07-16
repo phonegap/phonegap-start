@@ -3,7 +3,6 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        xmlns:android = "http://schemas.android.com/apk/res/android"
         id        = "com.phonegap.helloworld"
         version   = "1.0.0">
 
@@ -40,15 +39,6 @@
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-
-    <!-- Custom Config -->
-    <gap:config-file platform="android" parent="/manifest">
-	<supports-screens 
-        android:xlargeScreens="false" 
-        android:largeScreens="false" 
-        android:smallScreens="false" />
-    </gap:config-file>
-    
     <!-- Plugins -->
 
     <!-- Core plugins -->
