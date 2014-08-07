@@ -7,7 +7,7 @@ artifacts:
 
 notifications:
   - provider: Webhook
-    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/pgci
+    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/phonegapci
   - provider: Webhook
-    url: http://pgci.azurewebsites.net/deployment/appveyor/phonegap/dcqxeAtibWxNWVXEow28/app/1036031/chatroom/pgci
+    url: http://pgci.azurewebsites.net/deployment/appveyor/phonegap/dcqxeAtibWxNWVXEow28/app/1022598/chatroom/phonegapci
     on_build_failure: false
