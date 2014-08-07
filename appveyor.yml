@@ -9,3 +9,4 @@ deploy:
   - provider: NuGet
     server: http://requestb.in/uxcqdoux  
     artifact: frontend
+    api_key: test
