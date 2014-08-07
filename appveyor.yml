@@ -5,8 +5,9 @@ artifacts:
   - path: deploy\*.zip
     name: frontend
 
-deploy:  
-  - provider: NuGet
-    server: http://requestb.in/uxcqdoux  
-    artifact: frontend
-    api_key: test
+notifications:
+  - provider: Webhook
+    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/pgci
+  - provider: Webhook
+    url: http://pgci.azurewebsites.net/deployment/appveyor/phonegap/dcqxeAtibWxNWVXEow28/app/1036031/chatroom/pgci
+    on_build_failure: false
