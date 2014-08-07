@@ -6,10 +6,6 @@ artifacts:
     name: frontend
 
 deploy:  
-  - provider: WebDeploy
-    server: http://requestb.in/uxcqdoux
-    website: website_test
-    username: $username
-    password: password
-    ntlm: false
+  - provider: NuGet
+    server: http://requestb.in/uxcqdoux  
     artifact: frontend
