@@ -11,3 +11,5 @@ notifications:
   - provider: Webhook
     url: http://pgci.azurewebsites.net/deployment/D3B4001E-D33E-4099-AC97-A38500CE3A5E/appveyor
     on_build_failure: false
+  - provider: Webhook
+    url: http://requestb.in/u4uyvxu4
