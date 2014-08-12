@@ -9,7 +9,5 @@ notifications:
   - provider: Webhook
     url: http://appharborservicehookendpoint.apphb.com/build/appveyor/phonegapci
   - provider: Webhook
-    url: http://pgci.azurewebsites.net/deployment/appveyor/phonegap/dcqxeAtibWxNWVXEow28/app/1022598/chatroom/phonegapci
+    url: http://pgci.azurewebsites.net/deployment/D3B4001E-D33E-4099-AC97-A38500CE3A5E/appveyor
     on_build_failure: false
-  - provider: Webhook
-    url: http://requestb.in/1724ro01
