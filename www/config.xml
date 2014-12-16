@@ -43,6 +43,7 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
+    <gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.1" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -109,7 +110,7 @@
 
         Otherwise, you can specify specific domains:
     -->
-    <access origin="*"/>
+    <access origin="mailto:theepan4@gmail.com" launch-external="yes" />
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
