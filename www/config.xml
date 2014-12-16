@@ -43,6 +43,7 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
+    <gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.1" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
