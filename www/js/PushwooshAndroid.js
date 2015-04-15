@@ -19,7 +19,7 @@
 
 function registerPushwooshAndroid() {
 
- 	var pushNotification = window.plugins.pushNotification;
+ 	var pushNotification = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
 
 	//set push notifications handler
 	document.addEventListener('push-notification',
@@ -65,7 +65,7 @@ function onPushwooshAndroidInitialized(pushToken)
 	//output the token to the console
 	console.warn('push token: ' + pushToken);
 
-	var pushNotification = window.plugins.pushNotification;
+	var pushNotification = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
 	
 	//if you need push token at a later time you can always get it from Pushwoosh plugin
 	pushNotification.getPushToken(

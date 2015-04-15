@@ -18,7 +18,7 @@
  */
 
 function initPushwoosh() {
-	var pushNotification = window.plugins.pushNotification;
+	var pushNotification = = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
 	if(device.platform == "Android")
 	{
 		registerPushwooshAndroid();
