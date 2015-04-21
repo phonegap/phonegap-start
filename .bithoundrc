@@ -1,6 +1,6 @@
 {
   "ignore": [
-    "www/spec/**",
+    "www/spec/lib/**",
     "**/deps/**",
     "**/node_modules/**",
     "**/thirdparty/**",
