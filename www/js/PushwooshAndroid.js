@@ -107,12 +107,6 @@ function onPushwooshAndroidInitialized(pushToken)
 	
 	pushNotification.setLightScreenOnNotification(false);
 	
-	//goal with count
-	//pushNotification.sendGoalAchieved({goal:'purchase', count:3});
-	
-	//goal with no count
-	//pushNotification.sendGoalAchieved({goal:'registration'});
-
 	//setting list tags
 	//pushNotification.setTags({"MyTag":["hello", "world"]});
 	
