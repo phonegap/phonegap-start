@@ -28,6 +28,10 @@ function initPushwoosh() {
 	{
 		registerPushwooshIOS();
 	}
+
+	if (device.platform == "Win32NT") {
+	    registerPushwooshWP();
+	}
 }
 
 var app = {
