@@ -57,7 +57,7 @@
     <gap:plugin name="org.apache.cordova.vibration" />
 
     <!-- Pushwoosh plugin -->
-    <gap:plugin name="pushwoosh-cordova-plugin" source="npm" version="3.6.2" />
+    <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
