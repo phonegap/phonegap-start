@@ -9,7 +9,7 @@
     <name>Hello World</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Hello World sample application that responds to the device ready event.
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
@@ -21,6 +21,7 @@
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires.
     -->
+    <preference name="phonegap-version"       value="3.5.0" />
     <preference name="permissions"                value="none"/>
 
     <!-- Customize your app and platform with the preference element. -->
@@ -37,10 +38,6 @@
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-    <!--
-        Define a specific version of PhoneGap to build into your app.
-        <preference name="phonegap-version"       value="3.5.0" />
-    -->
 
     <!-- Plugins -->
 
