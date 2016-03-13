@@ -30,21 +30,12 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="android-build-tool" value="gradle" />
 
-    <!-- App icons for Android & Windows -->
+    <!-- App icons -->
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="res/icon/android/icon-hdpi.png"   gap:platform="android"    gap:qualifier="hdpi" />
     <icon src="res/icon/android/icon-xhdpi.png"  gap:platform="android"    gap:qualifier="xhdpi" />
     <icon src="res/icon/android/icon-xxhdpi.png"  gap:platform="android"    gap:qualifier="xxhdpi" />
-    
-    <icon platform="winphone" width="44" height="44" src="res/Square44x44Logo.scale-100.png" />
-    <icon platform="winphone" width="106" height="106" src="res/Square44x44Logo.scale-240.png" />
-    <icon platform="winphone" width="150" height="150" src="res/Square150x150Logo.scale-100.png" />
-    <icon platform="winphone" width="360" height="360" src="res/Square150x150Logo.scale-240.png" />
-    <icon platform="winphone" width="71" height="71" src="res/Square71x71Logo.scale-100.png" />
-    <icon platform="winphone" width="170" height="170" src="res/Square71x71Logo.scale-240.png" />
-    <icon platform="winphone" width="310" height="150" src="res/Wide310x150Logo.scale-100.png" />
-    <icon platform="winphone" width="744" height="360" src="res/Wide310x150Logo.scale-240.png" />
 
     <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
@@ -59,6 +50,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    <platform name="winphone" />
+    <!-- PhoneGap doesn't support Windows 10 and Windows Phone 8.1 is old. -->
+	<!-- <platform name="winphone" /> -->
 
 </widget>
