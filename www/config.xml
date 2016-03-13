@@ -103,5 +103,6 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+    <platform name="winphone" />
 
 </widget>
