@@ -1,0 +1,4 @@
+[submodule "karafone-app"]
+	path = www
+	url = git@gitlab.tena.local:developers/karafone-app.git
+	branch = phonegap

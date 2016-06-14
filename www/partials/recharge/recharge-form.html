@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <a href="#/" class="btn btn-link pull-right"><i class="fa fa-arrow-left"></i></a>
+                <h2> شارژ موبایل</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <form name="rechargeForm" data-example-id="input-group-segmented-buttons">
+                <div class="bs-example">
+                    <div class="row">
+                        <h4 class="col-md-12 title">شماره موبایل</h4>
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <div class="thumbnail" cg-busy="phoneNumberPromise">
+                                <div class="input-group" dir="ltr">
+                                    <span class="input-group-addon">09</span>
+                                    <input tabindex="1" class="form-control" name="phoneNumber" type="tel" maxlength="9" ignore-non-numeric="ignore-non-numeric" ng-pattern="/^\d+$/"
+                                           ng-model-options="{ updateOn: 'change' }" ng-change="getServiceProvider(purchaseInfo.phoneNumber)" ng-model="purchaseInfo.phoneNumber"/>
+                                </div>
+                            </div>
+                            <span ng-show="rechargeForm.phoneNumber.$error.pattern">عدد وارد نمایید.</span>
+                            <span>{{phoneNumberValidationErrors}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bs-example" ng-show="rechargeTypeVisibility">
+                    <div class="row">
+                        <h4 class="col-md-12 title">نوع شارژ</h4>
+                        <div class="col-md-4 col-sm-4 col-xs-6 text-center">
+                            <div class="thumbnail" ng-class="{selected: purchaseInfo.rechargeType == 'normal'}">
+                                <input id="normal" name="rechargeType" type="radio" value="normal" ng-click="rechargeTypeClicked()" ng-model="purchaseInfo.rechargeType"/>
+                                <label class="h4" for="normal">عادی</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-6 text-center" ng-show="'MTN'==purchaseInfo.operator">
+                            <div class="thumbnail" ng-class="{selected: purchaseInfo.rechargeType == 'wow'}">
+                                <input id="wow" name="rechargeType" type="radio" value="wow" ng-click="rechargeTypeClicked()" ng-model="purchaseInfo.rechargeType"/>
+                                <label class="h4" for="wow">شگفت انگیز</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-6 text-center">
+                            <div class="thumbnail" ng-class="{selected: purchaseInfo.planType == 'postpaid'}">
+                                <input id="postpaid" name="rechargeType" type="radio" value="postpaid" ng-click="planTypeClicked()" ng-model="purchaseInfo.planType"/>
+                                <label class="h4" for="postpaid">خط دائمی</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bs-example" ng-show="purchaseInfo.rechargeType || ('MTN'==purchaseInfo.operator && 'postpaid'==purchaseInfo.planType)">
+                    <div class="row">
+                        <h4 class="col-md-12 title">مبلغ(ريال)</h4>
+                        <div class="col-md-3 col-sm-4 col-xs-6 text-center" ng-repeat="(key, value) in amounts" ng-show="purchaseInfo.rechargeType">
+                            <div class="thumbnail" ng-class="{selected: purchaseInfo.amount == '{{value}}'}">
+                                <input id="amount{{value}}" name="amount" type="radio" value="{{value}}" string-to-number="string-to-number" ng-click="amountClicked()" ng-model="purchaseInfo.amount"/>
+                                <label class="h4" for="amount{{value}}">{{key}}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 text-center" ng-show="purchaseInfo.rechargeType && 'MTN'==purchaseInfo.operator">
+                            <div class="thumbnail" ng-class="{selected: hasOtherAmounts == 'true'}">
+                                <input id="hasOtherAmounts" type="radio" value="true" ng-click="otherAmountsClicked()" ng-model="hasOtherAmounts"/>
+                                <label class="h4" for="hasOtherAmounts">مبالغ دیگر</label>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center" ng-show="'MTN'==purchaseInfo.operator && 'postpaid'==purchaseInfo.planType || hasOtherAmounts">
+                            <div class="thumbnail" cg-busy="amountPromise">
+                                <div class="input-group" dir="ltr">
+                                    <span class="input-group-addon">ریال</span>
+                                    <input tabindex="10" class="form-control" id="amount" type="number"
+                                           ng-model-options="{ updateOn: 'change' }" ng-change="validateAmount(purchaseInfo.operator, purchaseInfo.planType, purchaseInfo.rechargeType, purchaseInfo.amount)" ng-model="purchaseInfo.amount"/>
+                                </div>
+                            </div>
+                            <span>{{amountValidationErrors}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bs-example" ng-show="'MCI'==purchaseInfo.operator && 'postpaid'==purchaseInfo.planType">
+                    <div class="row">
+                        <div class="col-md-12 text-center alert alert-info">
+                            <p>به بخش پرداخت قبض مراجعه نمایید.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="" ng-show="paymentVisibility">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="alert alert-info alert-payment">
+                                <p>
+                                    خرید شارژ
+                                    <strong>{{purchaseInfo.rechargeType | convertEnglishToPersian}}</strong>
+                                    به مبلغ
+                                    <strong>{{purchaseInfo.amount | number}} ريال</strong>
+                                    برای خط
+                                    <strong>{{purchaseInfo.planType | convertEnglishToPersian}} {{purchaseInfo.operator | convertEnglishToPersian}}</strong>
+                                    به شماره
+                                    <strong>09{{purchaseInfo.phoneNumber}}</strong>
+                                </p>
+                                <div class="ptl"></div>
+                                <button class="btn btn-lg btn-success" type="button" ng-click="paymentProcess()">تائید و پرداخت</button>
+                            </div>
+                            <p>{{paymentErrors}}</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $( document ).ready(function() {
+        /*$('.btn-success').on('mouseup', function (event) {
+            alert('ارائه سرویس موقتا امکان پذیر نمی باشد!');
+        });*/
+    });
+</script>
