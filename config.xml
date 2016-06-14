@@ -1,0 +1,118 @@
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="ir.karafone.karafone" version="1.0.0">
+  <name>KaraFone</name>
+  <description>Hello World sample application that responds to the deviceready event.</description>
+  <author href="http://www.karafone.ir" email="support@karafone.ir">Karafone Team</author>
+
+  <content src="index.html"/>
+
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="android-minSdkVersion" value="14"/>
+  <preference name="fullscreen" value="true" />
+  <!--<plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>-->
+  <!--<plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/>-->
+  <!--<plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/>-->
+  <!--<plugin name="cordova-plugin-console" source="npm" spec="~1.0.2"/>-->
+  <!--<plugin name="cordova-plugin-contacts" source="npm" spec="~2.0.1"/>-->
+  <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1"/>
+  <!--<plugin name="cordova-plugin-device-motion" source="npm" spec="~1.2.0"/>-->
+  <!--<plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2"/>-->
+  <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.0"/>
+  <!--<plugin name="cordova-plugin-file" source="npm" spec="~4.1.1"/>-->
+  <!--<plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.5.0"/>-->
+  <!--<plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0"/>-->
+  <!--<plugin name="cordova-plugin-globalization" source="npm" spec="~1.0.3"/>-->
+  <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0"/>
+  <!--<plugin name="cordova-plugin-media" source="npm" spec="~2.2.0"/>-->
+  <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0"/>
+  <!--<plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1"/>-->
+  <!--<plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>-->
+  <!--<plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>-->
+  <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
+  <plugin spec="https://github.com/guyromb/Cordova-open-native-settings.git" />
+  <icon src="icon.png"/>
+  <platform name="android">
+    <icon src="pg-www/res/icon/android/drawable-ldpi-icon.png" density="ldpi"/>
+    <icon src="pg-www/res/icon/android/drawable-mdpi-icon.png" density="mdpi"/>
+    <icon src="pg-www/res/icon/android/drawable-hdpi-icon.png" density="hdpi"/>
+    <icon src="pg-www/res/icon/android/drawable-xhdpi-icon.png" density="xhdpi"/>
+    <icon src="pg-www/res/icon/android/drawable-xxhdpi-icon.png" density="xxhdpi"/>
+    <icon src="pg-www/res/icon/android/drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-land-ldpi-screen.png" density="land-ldpi"/>
+    <splash src="pg-www/res/screen/android/drawable-land-mdpi-screen.png" density="land-mdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-land-hdpi-screen.png" density="land-hdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-land-xhdpi-screen.png" density="land-xhdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-land-xxhdpi-screen.png" density="land-xxhdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-land-xxxhdpi-screen.png" density="land-xxxhdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-port-ldpi-screen.png" density="port-ldpi"/>
+    <splash src="pg-www/res/screen/android/drawable-port-mdpi-screen.png" density="port-mdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-port-hdpi-screen.png" density="port-hdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+    <splash src="pg-www/res/screen/android/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+  </platform>
+  <platform name="ios">
+    <icon src="pg-www/res/icon/ios/icon.png" platform="ios" width="57" height="57"/>
+    <icon src="pg-www/res/icon/ios/icon@2x.png" platform="ios" width="114" height="114"/>
+    <icon src="pg-www/res/icon/ios/icon-40.png" platform="ios" width="40" height="40"/>
+    <icon src="pg-www/res/icon/ios/icon-40@2x.png" platform="ios" width="80" height="80"/>
+    <icon src="pg-www/res/icon/ios/icon-50.png" platform="ios" width="50" height="50"/>
+    <icon src="pg-www/res/icon/ios/icon-50@2x.png" platform="ios" width="100" height="100"/>
+    <icon src="pg-www/res/icon/ios/icon-60.png" platform="ios" width="60" height="60"/>
+    <icon src="pg-www/res/icon/ios/icon-60@2x.png" platform="ios" width="120" height="120"/>
+    <icon src="pg-www/res/icon/ios/icon-60@3x.png" platform="ios" width="180" height="180"/>
+    <icon src="pg-www/res/icon/ios/icon-72.png" platform="ios" width="72" height="72"/>
+    <icon src="pg-www/res/icon/ios/icon-72@2x.png" platform="ios" width="144" height="144"/>
+    <icon src="pg-www/res/icon/ios/icon-76.png" platform="ios" width="76" height="76"/>
+    <icon src="pg-www/res/icon/ios/icon-76@2x.png" platform="ios" width="152" height="152"/>
+    <icon src="pg-www/res/icon/ios/icon-small.png" platform="ios" width="29" height="29"/>
+    <icon src="pg-www/res/icon/ios/icon-small@2x.png" platform="ios" width="58" height="58"/>
+    <icon src="pg-www/res/icon/ios/icon-small@3x.png" platform="ios" width="87" height="87"/>
+    <splash src="pg-www/res/screen/ios/Default-568h@2x~iphone.png" platform="ios" width="640" height="1136"/>
+    <splash src="pg-www/res/screen/ios/Default-667h.png" platform="ios" width="750" height="1334"/>
+    <splash src="pg-www/res/screen/ios/Default-736h.png" platform="ios" width="1242" height="2208"/>
+    <splash src="pg-www/res/screen/ios/Default-Landscape-736h.png" platform="ios" width="2208" height="1242"/>
+    <splash src="pg-www/res/screen/ios/Default-Landscape@2x~ipad.png" platform="ios" width="2048" height="1536"/>
+    <splash src="pg-www/res/screen/ios/Default-Landscape~ipad.png" platform="ios" width="1024" height="768"/>
+    <splash src="pg-www/res/screen/ios/Default-Portrait@2x~ipad.png" platform="ios" width="1536" height="2048"/>
+    <splash src="pg-www/res/screen/ios/Default-Portrait~ipad.png" platform="ios" width="768" height="1024"/>
+    <splash src="pg-www/res/screen/ios/Default@2x~iphone.png" platform="ios" width="640" height="960"/>
+    <splash src="pg-www/res/screen/ios/Default~iphone.png" platform="ios" width="320" height="480"/>
+  </platform>
+  <platform name="wp8">
+    <icon src="pg-www/res/icon/wp8/ApplicationIcon.png" platform="wp8" width="99" height="99"/>
+    <icon src="pg-www/res/icon/wp8/Background.png" platform="wp8" width="159" height="159"/>
+    <splash src="pg-www/res/screen/wp8/screen-portrait.jpg" platform="wp8" width="768" height="1280"/>
+  </platform>
+  <platform name="windows">
+    <icon src="pg-www/res/icon/windows/Square150x150Logo.scale-100.png" platform="windows" width="150" height="150"/>
+    <icon src="pg-www/res/icon/windows/Square30x30Logo.scale-100.png" platform="windows" width="30" height="30"/>
+    <icon src="pg-www/res/icon/windows/StoreLogo.scale-100.png" platform="windows" width="50" height="50"/>
+    <splash src="pg-www/res/screen/windows/SplashScreen.scale-100.png" platform="windows" width="620" height="300"/>
+    <icon src="pg-www/res/icon/windows/StoreLogo.scale-240.png" platform="windows" width="120" height="120"/>
+    <icon src="pg-www/res/icon/windows/Square44x44Logo.scale-100.png" platform="windows" width="44" height="44"/>
+    <icon src="pg-www/res/icon/windows/Square44x44Logo.scale-240.png" platform="windows" width="106" height="106"/>
+    <icon src="pg-www/res/icon/windows/Square70x70Logo.scale-100.png" platform="windows" width="70" height="70"/>
+    <icon src="pg-www/res/icon/windows/Square71x71Logo.scale-100.png" platform="windows" width="71" height="71"/>
+    <icon src="pg-www/res/icon/windows/Square71x71Logo.scale-240.png" platform="windows" width="170" height="170"/>
+    <icon src="pg-www/res/icon/windows/Square150x150Logo.scale-240.png" platform="windows" width="360" height="360"/>
+    <icon src="pg-www/res/icon/windows/Square310x310Logo.scale-100.png" platform="windows" width="310" height="310"/>
+    <icon src="pg-www/res/icon/windows/Wide310x150Logo.scale-100.png" platform="windows" width="310" height="150"/>
+    <icon src="pg-www/res/icon/windows/Wide310x150Logo.scale-240.png" platform="windows" width="744" height="360"/>
+    <splash src="pg-www/res/screen/windows/SplashScreenPhone.scale-240.png" platform="windows" width="1152" height="1920"/>
+  </platform>
+  <access origin="*" browserOnly="false"/>
+  <allow-navigation href="*" />
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="mailto:*"/>
+  <allow-intent href="geo:*"/>
+  <platform name="android">
+    <allow-intent href="market:*"/>
+  </platform>
+  <platform name="ios">
+    <allow-intent href="itms:*"/>
+    <allow-intent href="itms-apps:*"/>
+  </platform>
+</widget>

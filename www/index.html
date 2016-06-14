@@ -1,46 +1,81 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+<html lang="fa" ng-app="webApp">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://www.karafone.ir data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src *">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.example.net; child-src 'none'; object-src 'none'">-->
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <title ng-bind="title"></title>
+    <meta name="description" content="" />
+    <!--favicon-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Web Application Css -->
+    <link href="lib/css/font-awesome.min.rtl.css" rel="stylesheet"/>
+    <link href="lib/css/bootstrap.min.rtl.css" rel="stylesheet"/>
+    <link href="lib/css/helpers.rtl.css" rel="stylesheet"/>
+    <link href="lib/css/angular-busy.min.css" rel="stylesheet"/>
+    <link href="lib/css/app.rtl.css" rel="stylesheet"/>
 
-    http://www.apache.org/licenses/LICENSE-2.0
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="fa fa-bars navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <i class=""></i>
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+            </div>
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-link" target="_blank" href="http://www.karafone.ir/">کارافون</a></li>
+                    <li><a class="navbar-link" target="_blank" href="http://www.karafone.ir/%d8%af%d8%b1%d8%a8%d8%a7%d8%b1%d9%87-%d9%85%d8%a7/">درباره ما</a></li>
+                    <li><a class="navbar-link" target="_blank" href="http://www.karafone.ir/%D8%AA%D9%85%D8%A7%D8%B3-%D8%A8%D8%A7-%D9%85%D8%A7/">تماس با ما</a></li>
+                    <li><a class="navbar-link" target="_blank" href="http://www.karafone.ir/%d9%82%d9%88%d8%a7%d9%86%db%8c%d9%86-%d9%88-%d9%85%d9%82%d8%b1%d8%b1%d8%a7%d8%aa/">قوانین و مقررات</a></li>
+                    <li><a class="navbar-link" target="_blank" href="http://www.karafone.ir/%d8%ab%d8%a8%d8%aa-%d8%b4%da%a9%d8%a7%db%8c%d8%a7%d8%aa/">ثبت شکایات</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+    </nav>
+    <div ng-view="ng-view"></div>
+
+    <div id="networkErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="networkErrorModal">
+        <div class="modal-dialog modal-dialog-fullscreen modal-lg">
+            <div class="modal-content modal-content-fullscreen text-center">
+                <div class="mtxxl ptxxl"></div>
+                <i class="fa fa-wifi fa-2x text-danger"></i>
+                <h4 class="">خطا در اتصال به اینترنت</h4>
+                <div class="mtxl"></div>
+                <button class="btn btn-lg btn-default wifi-settings">تنظیمات وای فای</button>
+                <button class="btn btn-lg btn-default mobile-data-settings">تنظیمات دیتا</button>
+            </div>
+        </div>
+    </div>
+    <!-- Web Application JavaScript -->
+    <script src="cordova.js"></script>
+    <script src="lib/js/jquery-2.2.3.min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <script src="lib/js/angular.min.js"></script>
+    <script src="lib/js/angular-route.min.js"></script>
+    <script src="lib/js/angular-busy.min.js"></script>
+    <script src="app/recharge/controllers/rechargeControllers.js"></script>
+    <script src="app/recharge/filters/rechargeFilters.js"></script>
+    <script src="app/recharge/directives/rechargeDirectives.js"></script>
+    <script src="app/common/services/commonServices.js"></script>
+    <script src="lib/js/angular-local-storage.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="lib/js/phonegap.js"></script>
+    <script src="lib/js/app.js"></script>
+</body>
 </html>

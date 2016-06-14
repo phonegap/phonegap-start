@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'B Yekan';
+    src: url('../fonts/BYekan.eot');
+    src: url('../fonts/BYekan.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BYekan.woff2') format('woff2'),
+        url('../fonts/BYekan.woff') format('woff'),
+        url('../fonts/BYekan.ttf') format('truetype'),
+        url('../fonts/BYekan.svg') format('svg');
+}
+
+body {
+    visibility: visible !important;
+    margin-top: 45px;
+    direction: rtl;
+    unicode-bidi: embed;
+    font-family: 'B Yekan',Arial,Helvetica,sans-serif;
+    font-size: 19px;;
+    -webkit-font-smoothing: antialiased;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'B Yekan',Arial,Helvetica,sans-serif;
+}
+.navbar.navbar-fixed-top * {
+    font-size: 1.072em;
+}
+.bs-example {
+    position: relative;
+    padding: 0 15px 15px 15px;
+    margin: 0 -15px 15px;
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0;
+    -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+    box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+.bs-example .title {
+    color: gray;
+}
+
+.thumbnail.selected {
+    border-color: green;
+}
+.thumbnail.selected label {
+    color: green;
+}
+.thumbnail label {
+    width: 100%;
+}
+.thumbnail input[type="radio"] {
+    display: none;
+}
+.thumbnail label {
+    color: gray;
+    font-weight: 700;
+}
+.thumbnail:hover label {
+    color: green;
+    cursor: pointer;
+}
+.thumbnail:hover {
+    cursor: pointer;
+}
+.navbar .fa {
+    color: #fff;
+}
+.input-group-addon:first-child {
+    border-left: 1px solid rgb(204,204,204);
+    border-right-width: 0;
+}
+.alert-payment {
+    font-size: 16px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select,
+    textarea,
+    input {
+        font-size: 18px !important;
+    }
+}
+
+.spinner {
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: gray;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+           transform: scaleY(1.0);
+           -webkit-transform: scaleY(1.0);
+       }
+}
+.modal-dialog-fullscreen {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content-fullscreen {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+}

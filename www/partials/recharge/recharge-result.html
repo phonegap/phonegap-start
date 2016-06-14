@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h2>وضعیت درخواست</h2>
+            </div>
+        </div>
+    </div>
+    <div class="bs-example">
+        <div class="row" ng-switch on="requestResult.payment" cg-busy="finalizePromise">
+            <h4 class="col-md-12 title">وضعیت پرداخت
+                <span class="label label-success" ng-switch-when="verified">موفق</span>
+                <span class="label label-warning" ng-switch-when="verifying">در انتظار تاییدیه</span>
+                <span class="label label-danger" ng-switch-when="canceled">ناموفق</span>
+                <span class="label label-danger" ng-switch-when="unverified">ناموفق</span>
+                <span class="label label-info" ng-switch-when="unknown">نامشخص</span>
+                <span class="label label-danger" ng-switch-when="error">نامشخص</span>
+                <!--<span class="label label-danger" ng-switch-default>پرداخت نامشخص</span>-->
+            </h4>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <p class="text-success h5 fw700" ng-switch-when="verified">{{requestParameters.refNum}}کد پیگیری</p>
+                    <p class="text-warning h5 fw700" ng-switch-when="verifying">تا تایید نهایی صفحه را باز نگه دارید.</p>
+                    <p class="text-danger h5 fw700" ng-switch-when="canceled">انصراف توسط کاربر</p>
+                    <p class="text-danger h5 fw700" ng-switch-when="unverified">عدم تایید از طرف بانک</p>
+                    <p class="text-info h5 fw700" ng-switch-when="unknown">اشکال در ارائه سرویس. در صورت عدم دریافت شارژ تا 30 دقیقه آینده برای پیگیری وضعیت پرداخت خود با شماره <span dir="ltr">021-8734</span> تماس بگیرید.</p>
+                    <p class="text-danger h5 fw700" ng-switch-when="error">{{callbackError}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bs-example" ng-show="'verified' == requestResult.payment">
+        <div class="row" ng-switch on="requestResult.service" cg-busy="statusPromise">
+            <h4 class="col-md-12 title">وضعیت شارژ
+                <span class="label label-success" ng-switch-when="successful">موفق</span>
+                <span class="label label-warning" ng-switch-when="unsuccessful">ناموفق</span>
+                <span class="label label-danger" ng-switch-when="pending">در حال انجام</span>
+                <span class="label label-info" ng-switch-when="unknown">نامشخص</span>
+                <span class="label label-info" ng-switch-when="error">نامشخص</span>
+            </h4>
+            <div class="col-md-12">
+                <div class="col-md-12">
+<!--
+                    <p class="text-success h5 fw700" ng-switch-when="verified">{{requestInfo}}کد پیگیری</p>
+                    <p class="text-warning h5 fw700" ng-switch-when="verifying">تا تایید نهایی صفحه را باز نگه دارید.</p>
+                    <p class="text-danger h5 fw700" ng-switch-when="canceled">انصراف توسط کاربر</p>
+                    <p class="text-danger h5 fw700" ng-switch-when="unverified">عدم تایید از طرف بانک</p>
+                    <p class="text-info h5 fw700" ng-switch-when="unknown">اشکال در ارائه سرویس. در صورت عدم دریافت شارژ تا 30 دقیقه آینده برای پیگیری وضعیت پرداخت خود با شماره <span dir="ltr">021-8734</span> تماس بگیرید.</p>
+-->
+                    <p class="text-danger h5 fw700" ng-switch-when="error">{{callbackError}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

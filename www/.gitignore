@@ -1,12 +1,5 @@
 !.gitkeep
 
-# OS X
-.DS_Store
-
-# phonegap
-platforms/
-plugins/
-
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 .idea/
 .idea_modules/
