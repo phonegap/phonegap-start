@@ -38,11 +38,11 @@ body {
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
-    height:200%;
+    height:100%;
     margin:0px;
-    padding:0px;
+    padding:500px;
     text-transform:uppercase;
-    width:200%;
+    width:100%;
 }
 
 /* Portrait layout (default) */
