@@ -6,14 +6,14 @@
         id        = "com.phonegap.helloworld"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Mini-Missions</name>
 
     <description>
         Hello World sample application that responds to the deviceready event.
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author href="http://forum.mm-ftw.com/index.php#shoutbox" email="diegotroll9930@hotmail.com">
+        Megadeth
     </author>
 
     <!--
