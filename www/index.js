@@ -36,9 +36,9 @@ function startSensor() {
 function stopSensor() {
 	navigator.accelerometer.clearWatch(watchID);
 			
-	$('#sensorX').val("0");
-	$('#sensorY').val("0");
-	$('#sensorZ').val("9.81");
+	$('#sensorX').val("");
+	$('#sensorY').val("");
+	$('#sensorZ').val("");
 	$('#timestamp').val("");
 }
 
@@ -58,8 +58,10 @@ function accelerometerError() {
 function updateFreq(elephant) {
     
 	accelerometerOptions.frequency = elephant;
-	startSensor();
+	
     stopSensor();
+    startSensor();
+    
 	//do something to update freq. here.
 }
 
