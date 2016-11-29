@@ -55,9 +55,11 @@ function accelerometerError() {
    alert('Error');
 }
 
-function updateFreq(freq) {
-	
-	
+function updateFreq(elephant) {
+    
+	accelerometerOptions.frequency = elephant;
+	startSensor();
+    stopSensor();
 	//do something to update freq. here.
 }
 
