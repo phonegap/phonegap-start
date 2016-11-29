@@ -17,6 +17,6 @@
         Chris P. Bowers
     </author>
 	
-	<gap:plugin name="cordova-plugin-device-motion" />
+	<gap:plugin name="org.apache.cordova.device-motion" />
 
 </widget>
