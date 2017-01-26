@@ -25,7 +25,7 @@ Create a new app with the following repository:
 
 ### Updating the Application
 
-The application is based on the [Apache Cordova Hello World][cordova-app] app.
+The application is based on the [Apache Cordova Hello World][cordova-app] app. Follow the instructions below to update the application!
 
 #### 1. Update the Source
 
