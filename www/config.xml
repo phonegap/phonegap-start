@@ -6,7 +6,7 @@
         id        = "com.phonegap.helloworld"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>chpmobile</name>
 
     <description>
         Hello World sample application that responds to the deviceready event.
@@ -39,8 +39,9 @@
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
     <!--
         Define a specific version of PhoneGap to build into your app.
+          -->
         <preference name="phonegap-version"       value="3.5.0" />
-    -->
+  
 
     <!-- Plugins -->
 
