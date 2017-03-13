@@ -1,46 +1,52 @@
-<!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+<head>
+
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<link href="jquery-mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+<script src="jquery-mobile/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+<script src="phonegap.js" type="text/javascript"></script>
+<script src="index.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+
+<div data-role="page" id="page1">
+  
+  <div data-role="header">
+    <h1>Sensor Example</h1>
+  </div>
+  
+  <div data-role="content">
+ 
+ 		<label for="flipswitch">Sensor:</label>
+      	<select name="flipswitch" id="flipswitch" data-role="slider">
+        	<option value="off">Off</option>
+        	<option value="on">On</option>
+      	</select>
+       
+      	<label for="textarea">Current values:</label>
+   		<input type="text" name="sensorX" id="sensorX" value=""  />
+   		<input type="text" name="sensorY" id="sensorY" value=""  />
+   		<input type="text" name="sensorZ" id="sensorZ" value=""  />
+		<input type="text" name="timestamp" id="timestamp" value=""  />
+   		
+        <label for="slider">Update (ms):</label>
+    	<input id="slider" type="range" name="slider" value="3000" min="0" max="10000" />
+    
+  </div>
+  
+  <div data-role="footer">
+    <h4>Footer</h4>
+  </div>
+  
+</div>
+
+
+
+</body>
 </html>
