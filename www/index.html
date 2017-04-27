@@ -30,12 +30,12 @@
         <title>Hello World</title>
     </head>
     <body>
+	<h1 style="padding:10px;text-align:left;">计算器</h1><hr>
         <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+            <input id="base" type="number" placeholder="输入底长" style="width:100%"/><br/><br/>
+	    <input id="height" type="number" placeholder="输入高" style="width:100%"/><br/><br/>
+	    <input id="btnCalculate" type="submit" value="计算" style="width:100%"/><br/><br/>
+	<h2 id="res"></h2>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
