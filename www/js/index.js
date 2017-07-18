@@ -47,9 +47,8 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
-	onCalculate:function(e)	{
-					if(13==e.keycode)
-					{
+	onCalculate:function()	{
+					
 						var l=document.getElementbyId('leng').value;
 						var b=document.getElementbyId('bred').value;
 						if(l.length==0||b.length==0)
@@ -65,15 +64,9 @@ var app = {
 							var x=parseInt(l);
 							var y=parseInt(b);
 							var area=x*y;
-							//document.getelementbyId('res').innerHtml="Area="+area;
+							document.getelementbyId('res').innerHtml="Area="+area;
 						}
-					}
+					
 				}
-		/*function (e)
-		{
-			if(13==e.keycode)
-			{
-				document.getelementbyId('res').innerHtml="Area="+area;	
-			}
-		}*/ 
+	
 };
