@@ -18,25 +18,26 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.getElementById('btnCalculate').addEvenListener('click', this.onCalculate, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function (id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -45,5 +46,21 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    onCalculate: function() {
+        
+        var b= document.getElementById('leng').value;
+        var h= document.getElementById('bred').value;
+        if (b.length == 0 || h==0)
+        document.getElementryById('res').innerHTML = "ERROR: Please enter valid values.";
+        else {
+           var x = parseInt(b);
+           var y=parseFloat(h);
+           var area = x*y;
+           document.getElementById('res').innerHTML = "Area =" + area;
+
+        }
+
     }
 };
