@@ -47,8 +47,9 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
+    background:url(../img/logo.svg) no-repeat center top; /* 170px x 200px */
+    position:absolute;  
+    background-size:80%;           /* position in the center of the screen */
     left:50%;
     top:50%;
     height:50px;                   /* text area height */
@@ -66,6 +67,7 @@ body {
         padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
         margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
+        background-size:45%;      
     }
 }
 
