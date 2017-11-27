@@ -2,6 +2,11 @@
 
 > A Hello World application built with PhoneGap
 
+## Getting Help with PhoneGap
+
+If you are looking for help with PhoneGap please visit the
+[PhoneGap Forums](https://forums.adobe.com/community/phonegap).
+
 ## Usage
 
 ### Desktop
@@ -31,9 +36,9 @@ The application is based on the [Apache Cordova Hello World][cordova-app] app.
 
     cp cordova-app-hello-world/www www/
 
-__Do not replace `www/config.xml`.__
+**Do not replace `www/config.xml`.**
 
-__Do not replace `www/img/logo.png`.__
+**Do not replace `www/img/logo.png`.**
 
 #### 2. Update index.html
 
@@ -55,4 +60,3 @@ Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 [cordova-app]: http://github.com/apache/cordova-app-hello-world
 [bithound-img]: https://www.bithound.io/github/phonegap/phonegap-start/badges/score.svg
 [bithound-url]: https://www.bithound.io/github/phonegap/phonegap-start
-
