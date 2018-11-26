@@ -1,4 +1,4 @@
-# Hello World PhoneGap Application [![bitHound Score][bithound-img]][bithound-url]
+# Hello World PhoneGap Application
 
 > A Hello World application built with PhoneGap
 
@@ -58,5 +58,3 @@ Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 
 [phonegap-cli-url]: http://github.com/phonegap/phonegap-cli
 [cordova-app]: http://github.com/apache/cordova-app-hello-world
-[bithound-img]: https://www.bithound.io/github/phonegap/phonegap-start/badges/score.svg
-[bithound-url]: https://www.bithound.io/github/phonegap/phonegap-start
