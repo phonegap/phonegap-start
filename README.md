@@ -4,14 +4,14 @@
 
 ## Getting Help with PhoneGap
 
-If you are looking for help with PhoneGap please visit the
+If you are looking for help with PhoneGap please visit the ->
 [PhoneGap Forums](https://forums.adobe.com/community/phonegap).
 
-## Usage
+## The Usage
 
 ### Desktop
 
-In your browser, open the file:
+In your 'browser', open the file:
 
     /www/index.html
 
