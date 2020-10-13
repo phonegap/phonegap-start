@@ -13,6 +13,7 @@ If you are looking for help with PhoneGap please visit the
 
 In your browser, open the file:
 
+
     /www/index.html
 
 ### PhoneGap CLI
