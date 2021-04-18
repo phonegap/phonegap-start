@@ -6,7 +6,7 @@
 
 If you are looking for help with PhoneGap please visit the
 [PhoneGap Forums](https://forums.adobe.com/community/phonegap).
-
+** Ignor this request **
 ## Usage
 
 ### Desktop
