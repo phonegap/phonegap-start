@@ -1,0 +1,373 @@
+{
+  "general": {
+    "404": {
+      "title": "Stránka sa nenašla",
+      "subtext_html": "Požadovaná stránka neexistuje.",
+      "404_link": "Pokračovať v nákupe"
+    },
+    "accessibility": {
+      "skip_to_content": "Prejsť na obsah",
+      "close_modal": "Zavrieť (esc)",
+      "refresh_page": "Výber bude mať za následok obnovenie celej stránky.",
+      "selection_help": "Ak chcete uskutočniť výber, stlačte medzerník a potom klávesy so šípkami.",
+      "unit_price_separator": "za"
+    },
+    "meta": {
+      "tags": "Označené ako „{{ tags }}“",
+      "page": "Stránka {{ page }}"
+    },
+    "password_page": {
+      "login_form_heading": "Prejdite do obchodu s použitím hesla",
+      "login_form_password_label": "Heslo",
+      "login_form_password_placeholder": "Vaše heslo",
+      "login_form_submit": "Prejsť",
+      "signup_form_email_label": "E-mail",
+      "signup_form_success": "Tesne pred otvorením vám odošleme e-mail!",
+      "admin_link_html": "Ste vlastníkom obchodu? <a href=\"\/admin\" class=\"text-link\">Prihláste sa tu<\/a>",
+      "password_link": "Prejsť s použitím hesla",
+      "powered_by_shopify_html": "Tento obchod bude používať technológiu {{ shopify }}"
+    },
+    "social": {
+      "share_title": "Zdieľať",
+      "alt_text": {
+        "share_on_facebook": "Zdielať na Facebooku",
+        "share_on_twitter": "Tweetovať na Twitteri",
+        "share_on_pinterest": "Pripnúť na Pintereste"
+      }
+    },
+    "newsletter_form": {
+      "newsletter_label": "Zaregistrujte sa na odber najnovších správ, ponúk a štýlov",
+      "newsletter_placeholder": "Váš e-mail",
+      "submit": "Prihlásiť sa na odber",
+      "confirmation": "Ďakujeme, že ste sa prihlásili na odber správ"
+    },
+    "search": {
+      "title": "Výsledky vyhľadávania",
+      "placeholder": "Vyhľadať",
+      "submit": "Vyhľadať",
+      "read_more": "Prečítať si viac",
+      "results_count_html": {
+        "one": "{{ count }} výsledok pre výraz <strong>{{ terms }}<\/strong>",
+        "other": "Počet výsledkov pre výraz <strong>{{ terms }}<\/strong>: {{ count }}",
+        "few": "Počet výsledkov pre výraz <strong>{{ terms }}<\/strong>: {{ count }}",
+        "many": "Počet výsledkov pre výraz <strong>{{ terms }}<\/strong>: {{ count }}"
+      },
+      "products": "Produkty",
+      "pages_and_articles": "Stránky a články"
+    },
+    "drawers": {
+      "menu": "Ponuka",
+      "navigation": "Navigácia na lokalite"
+    },
+    "payment": {
+      "method": "Spôsob platby"
+    }
+  },
+  "blogs": {
+    "article": {
+      "tags": "Značky",
+      "view_all": "Čítať všetko",
+      "all_tags": "Všetko",
+      "read_more": "Prečítať si viac",
+      "back_to_blog": "Späť na {{ title }}"
+    },
+    "comments": {
+      "title": "Pridať komentár",
+      "name": "Meno",
+      "email": "E-mail",
+      "message": "Správa",
+      "post": "Odoslať komentár",
+      "moderated": "Upozorňujeme, že komentáre musia byť pred publikovaním schválené",
+      "success_moderated": "Váš komentár sa úspešne odoslal Publikujeme ho o chvíľu, keďže náš blog je moderovaný.",
+      "success": "Váš komentár sa úspešne odoslal. Ďakujeme.",
+      "with_count": {
+        "one": "{{ count }} komentár",
+        "other": "Počet komentárov: {{ count }}",
+        "few": "Počet komentárov: {{ count }}",
+        "many": "Počet komentárov: {{ count }}"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Nákupný košík",
+      "remove": "Odstrániť",
+      "note": "Špeciálne pokyny pre predajcu",
+      "taxes_and_shipping_at_checkout": "Dane a doprava sa vypočítajú v pokladni",
+      "taxes_and_shipping_policy_at_checkout_html": "Dane a <a href=\"{{ link }}\">doprava<\/a> sa vypočítajú v pokladni",
+      "taxes_included_but_shipping_at_checkout": "Dane sa zahrnú a doprava sa vypočíta v pokladni",
+      "taxes_included_and_shipping_policy_html": "Vrátane dane. <a href=\"{{ link }}\">Doprava<\/a> sa vypočíta v pokladni.",
+      "update": "Aktualizovať košík",
+      "checkout": "Do pokladne",
+      "empty": "Váš košík je momentálne prázdny.",
+      "cookies_required": "Povoľte súbory cookie, aby ste mohli používať nákupný košík",
+      "continue_browsing": "Pokračovať v prezeraní",
+      "close_notification": "Zavrieť",
+      "savings_html": "Ušetríte {{ price }}"
+    },
+    "label": {
+      "product": "Produkt",
+      "quantity": "Množstvo",
+      "decrease_quantity": "Znížiť počet položiek o jednu",
+      "increase_quantity": "Zvýšiť počet položiek o jednu",
+      "total": "Celkove"
+    }
+  },
+  "collections": {
+    "general": {
+      "view_all": "Zobraziť všetko",
+      "all_of_collection": "Všetko",
+      "no_matches": "Ľutujeme, v tejto kolekcii nie sú žiadne produkty",
+      "link_title": "Prezrite si našu kolekciu {{ title }}"
+    },
+    "sorting": {
+      "title": "Zoradiť podľa",
+      "title_tags": "Filtrovať podľa",
+      "all_of_collection": "Všetko"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Meno",
+      "email": "E-mail",
+      "phone": "Telefónne číslo",
+      "message": "Správa",
+      "send": "Odoslať",
+      "post_success": "Ďakujeme, že ste nás kontaktovali. Budeme sa vám venovať čo najskôr."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Moje konto",
+      "details": "Podrobnosti o konte",
+      "view_addresses": "Zobraziť adresy",
+      "return": "Späť na podrobnosti o konte"
+    },
+    "activate_account": {
+      "title": "Aktivovať konto",
+      "subtext": "Vytvorte si heslo a aktivujte si konto.",
+      "password": "Heslo",
+      "password_confirm": "Potvrďte heslo",
+      "submit": "Aktivovať konto",
+      "cancel": "Odmietnuť pozvanie"
+    },
+    "addresses": {
+      "title": "Vaše adresy",
+      "default": "Predvolené",
+      "add_new": "Pridať novú adresu",
+      "edit_address": "Upraviť adresu",
+      "first_name": "Meno",
+      "last_name": "Priezvisko",
+      "company": "Spoločnosť",
+      "address1": "Adresa 1",
+      "address2": "Adresa 2",
+      "city": "Mesto",
+      "country": "Krajina\/oblasť",
+      "province": "Kraj",
+      "zip": "Poštové smerovacie číslo",
+      "phone": "Telefón",
+      "set_default": "Nastaviť ako predvolenú adresu",
+      "add": "Pridať adresu",
+      "update": "Aktualizovať adresu",
+      "cancel": "Zrušiť",
+      "edit": "Upraviť",
+      "delete": "Odstrániť",
+      "delete_confirm": "Naozaj chcete túto adresu odstrániť?"
+    },
+    "login": {
+      "title": "Prihlásiť sa",
+      "email": "E-mail",
+      "password": "Heslo",
+      "forgot_password": "Zabudli ste heslo?",
+      "sign_in": "Prihlásiť sa",
+      "guest_title": "Pokračovať ako hosť",
+      "guest_continue": "Pokračovať"
+    },
+    "orders": {
+      "title": "História objednávok",
+      "order_number": "Objednávka",
+      "date": "Dátum",
+      "payment_status": "Stav platby",
+      "fulfillment_status": "Stav vybavenia",
+      "total": "Celkove",
+      "none": "Zatiaľ ste nezadali žiadne objednávky."
+    },
+    "order": {
+      "title": "Objednávka {{ name }}",
+      "date": "Zadaná {{ date }}",
+      "cancelled": "Objednávka bola zrušená {{ date }}",
+      "cancelled_reason": "Dôvod: {{ reason }}",
+      "billing_address": "Fakturačná adresa",
+      "payment_status": "Stav platby",
+      "shipping_address": "Dodacia adresa",
+      "fulfillment_status": "Stav vybavenia",
+      "discount": "Zľava",
+      "shipping": "Doprava",
+      "tax": "Daň",
+      "product": "Produkt",
+      "sku": "Jednotka SKU",
+      "price": "Cena",
+      "quantity": "Množstvo",
+      "total": "Celkove",
+      "fulfilled_at": "Vybavené {{ date }}",
+      "subtotal": "Medzisúčet",
+      "track_shipment": "Sledovať zásielku"
+    },
+    "recover_password": {
+      "title": "Resetovať heslo",
+      "email": "E-mail",
+      "submit": "Odoslať",
+      "cancel": "Zrušiť",
+      "subtext": "Odošleme vám e-mail, aby ste si mohli resetovať heslo.",
+      "success": "Odoslali sme vám e-mail s prepojením, aby ste si mohli aktualizovať heslo."
+    },
+    "reset_password": {
+      "title": "Resetovať heslo konta",
+      "subtext": "Zadajte nové heslo pre e-mail {{ email }}",
+      "password": "Heslo",
+      "password_confirm": "Potvrďte heslo",
+      "submit": "Resetovať heslo"
+    },
+    "register": {
+      "title": "Vytvoriť konto",
+      "first_name": "Meno",
+      "last_name": "Priezvisko",
+      "email": "E-mail",
+      "password": "Heslo",
+      "submit": "Vytvoriť"
+    }
+  },
+  "homepage": {
+    "hero": {
+      "next_slide": "Nasledujúca snímka",
+      "previous_slide": "Predchádzajúca snímka",
+      "pause_slideshow": "Pozastaviť prezentáciu",
+      "play_slideshow": "Prehrať prezentáciu",
+      "navigation_instructions": "Na navigáciu v prezentácii použite šípky doľava\/doprava alebo ak používate mobilné zariadenie, potiahnite prstom doľava\/doprava",
+      "slide_number": "Snímka {{ slide_number }}, aktuálne"
+    },
+    "onboarding": {
+      "blog_title": "Názov vášho príspevku",
+      "product_title": "Vzorový názov produktu",
+      "collection_title": "Názov kolekcie",
+      "no_content": "Táto sekcia v súčasnosti nemá žiadny obsah. Obsah do tejto sekcie pridáte pomocou bočného panela."
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "Košík"
+    },
+    "customer": {
+      "account": "Konto",
+      "log_out": "Odhlásiť sa",
+      "create_account": "Vytvoriť konto"
+    },
+    "sidebar": {
+      "featured_products": "Odporúčané produkty"
+    },
+    "footer": {
+      "social_platform": "{{ name }} dňa {{ platform }}"
+    }
+  },
+  "products": {
+    "product": {
+      "sold_out": "Vypredané",
+      "unavailable": "Nedostupné",
+      "will_not_ship_until": "Odosiela sa od {{ date }}",
+      "will_be_in_stock_after": "Skladom po {{ date }}",
+      "sale_price": "Cena po zľave",
+      "regular_price": "Normálna cena",
+      "on_sale": "Zľava",
+      "on_sale_from_html": "V predaji už od {{ price }}",
+      "from_text_html": "Od {{ price }}",
+      "include_taxes": "Vrátane dane.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Doprava<\/a> sa vypočíta v pokladni.",
+      "quantity": "Množstvo",
+      "add_to_cart": "Pridať do košíka",
+      "full_details": "Všetky podrobnosti",
+      "view": "Zobraziť",
+      "stock_available": {
+        "one": "Dostupné: {{ count }}",
+        "other": "Dostupné: {{ count }}",
+        "few": "Dostupné: {{ count }}",
+        "many": "Dostupné: {{ count }}"
+      },
+      "collection_return": "Späť na",
+      "product_added_to_cart_html": "Položka sa pridala do košíka. <span>Zobraziť košík a prejsť do pokladne<\/span>.",
+      "stock_unavailable": "Položku sa nepodarilo pridať do košíka, pretože nie je skladom dostatočný počet kusov.",
+      "unit_price_label": "Jednotková cena"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title_html": "Váš darčekový poukaz v hodnote {{ value }} do obchodu {{ shop }}.",
+      "subtext": "Tu je váš darčekový poukaz.",
+      "disabled": "Zakázané",
+      "expired": "Platnosť skončila {{ expiry }}",
+      "active": "Platnosť skončí {{ expiry }}",
+      "redeem": "Použite tento kód v pokladni a uplatnite si darčekový poukaz v hodnote",
+      "shop_link": "Začať nakupovať",
+      "print": "Tlačiť",
+      "remaining_html": "Zostáva {{ balance }}",
+      "add_to_apple_wallet": "Pridať do aplikácie Apple Wallet"
+    }
+  },
+  "sections": {
+    "map": {
+      "get_directions": "Získať pokyny",
+      "address_error": "Pri vyhľadávaní tejto adresy sa vyskytla chyba",
+      "address_no_results": "Pre túto adresu sa nenašli žiadne výsledky",
+      "address_query_limit_html": "Prekročili ste limit používania rozhrania Google API. Zvážte inováciu na <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">prémiový plán<\/a>.",
+      "auth_error_html": "Pri overovaní kľúča rozhrania API Máp Google sa vyskytol problém."
+    }
+  },
+  "video": {
+    "play": "Prehrať video",
+    "close": "Zastaviť video"
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "regular_price": "Regular price",
+        "sold_out": "Sold out",
+        "unavailable": "Unavailable",
+        "on_sale": "Sale",
+        "quantity": "Quantity",
+        "add_to_cart": "Add to cart",
+        "back_to_collection": "Back to {{ title }}",
+        "view_details": "View details"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter store using password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "password_link": "Enter using password"
+    }
+  }
+}

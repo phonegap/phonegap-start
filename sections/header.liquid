@@ -1,0 +1,524 @@
+<style>
+.site-header__logo img {
+  max-width: {{ section.settings.logo_max_width | default: '450' | remove: 'px' | append: 'px' | escape }};
+}
+</style>
+
+<div id="NavDrawer" class="drawer drawer--left">
+  <div class="drawer__inner">
+    <form action="{{ routes.search_url }}" method="get" class="drawer__search" role="search">
+      <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="drawer__search-input">
+
+      <button type="submit" class="text-link drawer__search-submit">
+        {% include 'icon-search' %}
+        <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+      </button>
+    </form>
+    <ul class="drawer__nav">
+      {% for link in linklists[section.settings.main_linklist].links %}
+        {% assign child_list_handle = link.title | handleize %}
+
+        {% if link.links != blank %}
+          <li class="drawer__nav-item">
+            <div class="drawer__nav-has-sublist">
+              <a href="{{ link.url }}"
+                class="drawer__nav-link drawer__nav-link--top-level drawer__nav-link--split"
+                id="DrawerLabel-{{ child_list_handle }}"
+                {% if link.active %} aria-current="page"{% endif %}
+              >
+                {{ link.title }}
+              </a>
+              <button type="button" aria-controls="DrawerLinklist-{{ child_list_handle }}" class="text-link drawer__nav-toggle-btn drawer__meganav-toggle" aria-label="{{ link.title }} {{ 'general.drawers.menu' | t }}" aria-expanded="false">
+                <span class="drawer__nav-toggle--open">
+                  {% include 'icon-plus' %}
+                </span>
+                <span class="drawer__nav-toggle--close">
+                  {% include 'icon-minus' %}
+                </span>
+              </button>
+            </div>
+
+            <div class="meganav meganav--drawer" id="DrawerLinklist-{{ child_list_handle }}" aria-labelledby="DrawerLabel-{{ child_list_handle }}" role="navigation">
+              <ul class="meganav__nav">
+                {% include 'drawer-nav' %}
+              </ul>
+            </div>
+          </li>
+        {% else %}
+          <li class="drawer__nav-item">
+            <a href="{{ link.url }}"
+              class="drawer__nav-link drawer__nav-link--top-level"
+              {% if link.active %} aria-current="page"{% endif %}
+            >
+              {{ link.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li class="drawer__nav-item">
+            <a href="{{ routes.account_url }}" class="drawer__nav-link drawer__nav-link--top-level">
+              {{ 'layout.customer.account' | t }}
+            </a>
+          </li>
+          <li class="drawer__nav-item">
+            <a href="{{ routes.account_logout_url }}" class="drawer__nav-link drawer__nav-link--top-level">
+              {{ 'layout.customer.log_out' | t }}
+            </a>
+          </li>
+        {% else %}
+          <li class="drawer__nav-item">
+            <a href="{{ routes.account_login_url }}" class="drawer__nav-link drawer__nav-link--top-level">
+              {{ 'layout.customer.account' | t }}
+            </a>
+          </li>
+        {% endif %}
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+<header class="site-header page-element is-moved-by-drawer" role="banner" data-section-id="{{ section.id }}" data-section-type="header">
+  <div class="site-header__upper page-width">
+    <div class="grid grid--table">
+      <div class="grid__item small--one-quarter medium-up--hide">
+        <button type="button" class="text-link site-header__link js-drawer-open-left">
+          <span class="site-header__menu-toggle--open">
+            {% include 'icon-hamburger' %}
+          </span>
+          <span class="site-header__menu-toggle--close">
+            {% include 'icon-close' %}
+          </span>
+          <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
+        </button>
+      </div>
+      <div class="grid__item small--one-half medium-up--two-thirds small--text-center">
+        {% if request.page_type == 'index' %}
+          <h1 class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
+        {% else %}
+          <div class="site-header__logo h1" itemscope itemtype="http://schema.org/Organization">
+        {% endif %}
+          {% if section.settings.logo != blank %}
+            {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+            <a href="{{ routes.root_url }}" itemprop="url" class="site-header__logo-link">
+              <img src="{{ section.settings.logo | img_url: image_size }}"
+                   srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                   alt="{{ section.settings.logo.alt | default: shop.name }}"
+                   itemprop="logo">
+            </a>
+          {% else %}
+            {% assign shop_name_length = shop.name.size %}
+            <a href="{{ routes.root_url }}" itemprop="url" {% if shop_name_length > 10 %} class="site-header__shop-name--small"{% endif %}>{{ shop.name }}</a>
+          {% endif %}
+        {% if request.page_type == 'index' %}
+          </h1>
+        {% else %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="grid__item small--one-quarter medium-up--one-third text-right">
+        <div id="SiteNavSearchCart" class="site-header__search-cart-wrapper">
+          <form action="{{ routes.search_url }}" method="get" class="site-header__search small--hide" role="search">
+            {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+              <label for="SiteNavSearch" class="visually-hidden">{{ 'general.search.placeholder' | t }}</label>
+              <input type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="site-header__search-input">
+
+            <button type="submit" class="text-link site-header__link site-header__search-submit">
+              {% include 'icon-search' %}
+              <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+            </button>
+          </form>
+
+          <a href="{{ routes.cart_url }}" class="site-header__link site-header__cart">
+            {% include 'icon-cart' %}
+            <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+            <span class="site-header__cart-indicator {% if cart.item_count == 0 %}hide{% endif %}"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="StickNavWrapper">
+    <div id="StickyBar" class="sticky">
+      <nav class="nav-bar small--hide" role="navigation" id="StickyNav">
+        <div class="page-width">
+          <div class="grid grid--table">
+            <div class="grid__item {% if shop.customer_accounts_enabled %}four-fifths{% else%}seven-eighths{% endif %}" id="SiteNavParent">
+              <button type="button" class="hide text-link site-nav__link site-nav__link--compressed js-drawer-open-left" id="SiteNavCompressed">
+                {% include 'icon-hamburger' %}
+                <span class="site-nav__link-menu-label">{{ 'general.drawers.menu' | t }}</span>
+                <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
+              </button>
+              <ul class="site-nav list--inline" id="SiteNav">
+                {% for link in linklists[section.settings.main_linklist].links %}
+                  {% assign child_list_handle = link.title | handleize %}
+
+                  {% comment %}
+                    Use full width layout if there are 7+ links or parent has products
+                  {% endcomment %}
+                  {% assign meganav_use_columns = false %}
+                  {% assign nav_parent_product_count = link.object.products_count %}
+                  {% unless nav_parent_product_count == blank or nav_parent_product_count == 0 %}
+                    {% assign meganav_use_columns = true %}
+                  {% endunless %}
+
+                  {% if link.links.size > 7 %}
+                    {% assign meganav_use_columns = true %}
+                  {% endif %}
+
+                  {% assign is_collection_with_products = false %}
+                  {% if link.type == 'collection_link' and link.object.products_count > 0 %}
+                    {% assign is_collection_with_products = true %}
+                  {% endif %}
+
+                  {% if link.links != blank %}
+                    <li class="site-nav__item{% if link.active %} site-nav--active{% endif %}{% unless meganav_use_columns %} site-nav__item--no-columns{% endunless %}" aria-haspopup="true">
+                      <a href="{{ link.url }}" class="site-nav__link site-nav__link-toggle" id="SiteNavLabel-{{ child_list_handle }}" aria-controls="SiteNavLinklist-{{ child_list_handle }}" aria-expanded="false"{% if link.active %} aria-current="page"{% endif %}>
+                        {{ link.title }}
+                        {% include 'icon-arrow-down' %}
+                      </a>
+
+                      <div class="site-nav__dropdown meganav site-nav__dropdown--second-level" id="SiteNavLinklist-{{ child_list_handle }}" aria-labelledby="SiteNavLabel-{{ child_list_handle }}" role="navigation">
+                        <ul class="meganav__nav{% if is_collection_with_products %} meganav__nav--collection{% endif %} page-width">
+                          {% include 'site-nav' %}
+                        </ul>
+                      </div>
+                    </li>
+                  {% else %}
+                    <li class="site-nav__item{% if link.active %} site-nav--active{% endif %}">
+                      <a href="{{ link.url }}" class="site-nav__link"{% if link.active %} aria-current="page"{% endif %}>
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="grid__item {% if shop.customer_accounts_enabled %}one-fifth{% else%}one-eighth{% endif %} text-right">
+              <div class="sticky-only" id="StickyNavSearchCart"></div>
+              {% if shop.customer_accounts_enabled %}
+                <div class="customer-login-links sticky-hidden">
+                  {% if customer %}
+                    <a href="{{ routes.account_url }}">
+                      {{ 'layout.customer.account' | t }}
+                    </a>
+                    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                  {% else %}
+                    {{ 'layout.customer.account' | t | customer_login_link }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="NotificationSuccess" class="notification notification--success" aria-hidden="true">
+        <div class="page-width notification__inner notification__inner--has-link">
+          <a href="{{ routes.cart_url }}" class="notification__link">
+            <span class="notification__message">{{ 'products.product.product_added_to_cart_html' | t }}</span>
+          </a>
+          <button type="button" class="text-link notification__close">
+            {% include 'icon-close' %}
+            <span class="icon__fallback-text">{{ 'cart.general.close_notification' | t }}</span>
+          </button>
+        </div>
+      </div>
+      <div id="NotificationError" class="notification notification--error" aria-hidden="true">
+        <div class="page-width notification__inner">
+          <span class="notification__message notification__message--error" aria-live="assertive" aria-atomic="true"></span>
+          <button type="button" class="text-link notification__close">
+            {% include 'icon-close' %}
+            <span class="icon__fallback-text">{{ 'cart.general.close_notification' | t }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.promo_bar_enable and section.settings.promo_bar_text != blank %}
+    <div id="NotificationPromo" class="notification notification--promo" data-text="{{ section.settings.promo_bar_text | strip_html | handle }}">
+      <div class="page-width notification__inner {% if section.settings.promo_bar_link != blank %} notification__inner--has-link{% endif %}">
+        {% if section.settings.promo_bar_link != blank %}
+          <a href="{{ section.settings.promo_bar_link }}" class="notification__link">
+            <span class="notification__message">{{ section.settings.promo_bar_text | escape }}</span>
+          </a>
+        {% else %}
+          <span class="notification__message">{{ section.settings.promo_bar_text | escape }}</span>
+        {% endif %}
+        <button type="button" class="text-link notification__close" id="NotificationPromoClose">
+          {% include 'icon-close' %}
+          <span class="icon__fallback-text">{{ 'cart.general.close_notification' | t }}</span>
+        </button>
+      </div>
+    </div>
+  {% endif %}
+</header>
+
+{% schema %}
+{
+  "name": {
+    "cs": "Záhlaví",
+    "da": "Overskrift",
+    "de": "Titel",
+    "en": "Header",
+    "es": "Encabezado",
+    "fi": "Ylätunniste",
+    "fr": "En-tête",
+    "it": "Header",
+    "ja": "ヘッダー",
+    "ko": "헤더",
+    "nb": "Header",
+    "nl": "Koptekst",
+    "pl": "Nagłówek",
+    "pt-BR": "Cabeçalho",
+    "pt-PT": "Cabeçalho",
+    "sv": "Rubrik",
+    "th": "ส่วนหัว",
+    "tr": "Üstbilgi",
+    "vi": "Đầu trang",
+    "zh-CN": "标头",
+    "zh-TW": "標頭"
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "cs": "Obrázek loga",
+        "da": "Logobillede",
+        "de": "Logo-Foto",
+        "en": "Logo image",
+        "es": "Logo",
+        "fi": "Logokuva",
+        "fr": "Image du logo",
+        "it": "Immagine del logo",
+        "ja": "ロゴ画像",
+        "ko": "로고 이미지",
+        "nb": "Logobilde",
+        "nl": "Afbeelding van logo",
+        "pl": "Obraz logo",
+        "pt-BR": "Imagem do logo",
+        "pt-PT": "Imagem do logótipo",
+        "sv": "Logobild",
+        "th": "รูปภาพโลโก้",
+        "tr": "Logo görseli",
+        "vi": "Hình ảnh logo",
+        "zh-CN": "logo 图片",
+        "zh-TW": "標誌圖片"
+      }
+    },
+    {
+      "type": "text",
+      "id": "logo_max_width",
+      "label": {
+        "cs": "Šířka vlastního loga (v pixelech)",
+        "da": "Tilpasset logobredde (i pixels)",
+        "de": "Benutzerdefinierte Logobreite (Pixel)",
+        "en": "Custom logo width (in pixels)",
+        "es": "Ancho del logo personalizado (en píxeles)",
+        "fi": "Mukautettu logon leveys (pikseleinä)",
+        "fr": "Largeur personnalisée du logo (en pixels)",
+        "it": "Larghezza logo personalizzato (in pixel)",
+        "ja": "ロゴの幅をカスタマイズする (ピクセル単位)",
+        "ko": "사용자 지정 로고 폭 (픽셀)",
+        "nb": "Tilpasset logobredde (i piksler)",
+        "nl": "Aangepaste logobreedte (in pixels)",
+        "pl": "Niestandardowa szerokość logo (w pikselach)",
+        "pt-BR": "Largura do logo personalizado (em pixels)",
+        "pt-PT": "Largura de logótipo personalizada (em píxeis)",
+        "sv": "Anpassad logotypbredd (i pixlar)",
+        "th": "ความกว้างของโลโก้แบบกำหนดเอง (เป็นพิกเซล)",
+        "tr": "Özel logo genişliği (piksel)",
+        "vi": "Chiều rộng logo tùy chỉnh (pixel)",
+        "zh-CN": "自定义 logo 宽度（像素）",
+        "zh-TW": "自訂標誌寬度 (單位為像素)"
+      },
+      "default": {
+        "cs": "450",
+        "da": "450",
+        "de": "450",
+        "en": "450",
+        "es": "450",
+        "fi": "450",
+        "fr": "450",
+        "it": "450",
+        "ja": "450",
+        "ko": "450",
+        "nb": "450",
+        "nl": "450",
+        "pl": "450",
+        "pt-BR": "450",
+        "pt-PT": "450",
+        "sv": "450",
+        "th": "450",
+        "tr": "450",
+        "vi": "450",
+        "zh-CN": "450",
+        "zh-TW": "450"
+      }
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": {
+        "cs": "Nabídka",
+        "da": "Menu",
+        "de": "Menü",
+        "en": "Menu",
+        "es": "Menú",
+        "fi": "Valikko",
+        "fr": "Menu",
+        "it": "Menu",
+        "ja": "メニュー",
+        "ko": "메뉴",
+        "nb": "Meny",
+        "nl": "Menu",
+        "pl": "Menu",
+        "pt-BR": "Menu",
+        "pt-PT": "Menu",
+        "sv": "Meny",
+        "th": "เมนู",
+        "tr": "Menü",
+        "vi": "Menu",
+        "zh-CN": "菜单",
+        "zh-TW": "選單"
+      },
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": {
+        "cs": "Panel oznámení",
+        "da": "Meddelelseslinje",
+        "de": "Ankündigungsleiste",
+        "en": "Announcement bar",
+        "es": "Barra de anuncios",
+        "fi": "Ilmoituspalkki",
+        "fr": "Barre d'annonces",
+        "it": "Barra degli annunci",
+        "ja": "告知バー",
+        "ko": "공지 표시줄",
+        "nb": "Kunngjøringslinje",
+        "nl": "Aankondigingsbalk",
+        "pl": "Pasek ogłoszeń",
+        "pt-BR": "Barra de avisos",
+        "pt-PT": "Barra de comunicado",
+        "sv": "Meddelandefält",
+        "th": "แถบประกาศ",
+        "tr": "Duyuru çubuğu",
+        "vi": "Thanh thông báo",
+        "zh-CN": "公告栏",
+        "zh-TW": "公告列"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "promo_bar_enable",
+      "label": {
+        "cs": "Zobrazit oznámení",
+        "da": "Vis meddelelse",
+        "de": "Ankündigung anzeigen",
+        "en": "Show announcement",
+        "es": "Mostrar anuncio",
+        "fi": "Näytä ilmoitus",
+        "fr": "Afficher l'annonce",
+        "it": "Mostra annuncio",
+        "ja": "告知を表示する",
+        "ko": "공지 표시",
+        "nb": "Vis kunngjøring",
+        "nl": "Aankondiging weergeven",
+        "pl": "Pokaż ogłoszenie",
+        "pt-BR": "Exibir comunicado",
+        "pt-PT": "Mostrar comunicado",
+        "sv": "Visa tillkännagivande",
+        "th": "แสดงประกาศ",
+        "tr": "Duyuruyu göster",
+        "vi": "Hiển thị thông báo",
+        "zh-CN": "显示公告",
+        "zh-TW": "顯示公告"
+      }
+    },
+    {
+      "type": "text",
+      "id": "promo_bar_text",
+      "label": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      }
+    },
+    {
+      "type": "url",
+      "id": "promo_bar_link",
+      "label": {
+        "cs": "Odkaz",
+        "da": "Link",
+        "de": "Link",
+        "en": "Link",
+        "es": "Enlace",
+        "fi": "Linkki",
+        "fr": "Lien",
+        "it": "Link",
+        "ja": "リンク",
+        "ko": "링크",
+        "nb": "Kobling",
+        "nl": "Link",
+        "pl": "Link",
+        "pt-BR": "Link",
+        "pt-PT": "Ligação",
+        "sv": "Länk",
+        "th": "ลิงก์",
+        "tr": "Bağlantı",
+        "vi": "Liên kết",
+        "zh-CN": "链接",
+        "zh-TW": "連結"
+      },
+      "info": {
+        "cs": "Volitelné",
+        "da": "Valgfri",
+        "de": "Optional",
+        "en": "Optional",
+        "es": "Opcional",
+        "fi": "Valinnainen",
+        "fr": "Facultatif",
+        "it": "Facoltativo",
+        "ja": "オプション",
+        "ko": "선택 사항",
+        "nb": "Valgfritt",
+        "nl": "Optioneel",
+        "pl": "Opcjonalnie",
+        "pt-BR": "Opcional",
+        "pt-PT": "Opcional",
+        "sv": "Valfritt",
+        "th": "ไม่จำเป็น",
+        "tr": "İsteğe bağlı",
+        "vi": "Không bắt buộc",
+        "zh-CN": "可选",
+        "zh-TW": "(選填)"
+      }
+    }
+  ]
+}
+{% endschema %}

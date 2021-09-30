@@ -1,0 +1,742 @@
+<style>
+  {% if section.settings.cover_image %}
+    #VideoSection--{{ section.id }} .video-section__cover-background {
+      background-image: url({{ section.settings.cover_image | img_url: '1024x' | format: 'jpg' }});
+      background-position: {{ section.settings.cover_image_position }};
+    }
+  {% endif %}
+</style>
+
+{% if section.settings.show_overlay %}
+  <style>
+    #VideoSection--{{ section.id }} .video-section__cover-text {
+      color: {{ section.settings.overlay_text }};
+    }
+
+    #VideoSection--{{ section.id }} .video-section__load-player-button-triangle {
+      border-left-color: {{ section.settings.overlay_text }};
+    }
+
+    #VideoSection--{{ section.id }} .video-section__load-player-button.animated .video-section__load-player-button-circle,
+    #VideoSection--{{ section.id }} .video-section__load-player-button-circle {
+      border-color: {{ section.settings.overlay_text }};
+    }
+
+    #VideoSection--{{ section.id }} .video-section__cover-overlay {
+      background-color: {{ section.settings.overlay_color }};
+      opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    }
+  </style>
+{% endif %}
+
+<div class="page-width">
+  <div id="VideoSection--{{ section.id }}" class="video-section video-section--{{ section.settings.cover_image_height }}" data-section-id="{{ section.id }}" data-section-type="video" data-video-id="{{ section.settings.video_url.id }}" data-video-type="{{ section.settings.video_url.type }}">
+    <div class="video-section__body-overlay"></div>
+    <div class="video-section__modal">
+      <div class="video-wrapper">
+        <button class="video-section__player-close">
+          <span class="visually-hidden">{{ 'video.close' | t }}</span>
+          {% include 'icon-close' %}
+        </button>
+        <div class="video-section__player"></div>
+      </div>
+    </div>
+    <div class="video-section__cover">
+      <div class="video-section__cover-background">
+        {% if section.settings.cover_image == blank %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      <div class="video-section__cover-overlay"></div>
+      <div class="video-section__cover-content">
+        <button class="video-section__load-player-button {% if section.settings.button_label == blank %}video-section__load-player-button--large{% endif %}">
+          <span class="visually-hidden">{{ 'video.play' | t }}</span>
+          <div class="video-section__load-player-icon">
+            <div class="video-section__load-player-button-circle"></div>
+            <div class="video-section__load-player-button-triangle"></div>
+          </div>
+          {% if section.settings.button_label != blank %}
+            <div class="h1 video-section__load-player-text">{{ section.settings.button_label }}</div>
+          {% endif %}
+        </button>
+        <p class="video-section__error"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Video",
+    "da": "Video",
+    "de": "Video",
+    "en": "Video",
+    "es": "Video",
+    "fi": "Video",
+    "fr": "Vidéo",
+    "it": "Video",
+    "ja": "動画",
+    "ko": "동영상",
+    "nb": "Video",
+    "nl": "Video",
+    "pl": "Film",
+    "pt-BR": "Vídeo",
+    "pt-PT": "Vídeo",
+    "sv": "Video",
+    "th": "วิดีโอ",
+    "tr": "Video",
+    "vi": "Video",
+    "zh-CN": "视频",
+    "zh-TW": "影片"
+  },
+  "class": "index-section index-section--video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": {
+        "cs": "Text tlačítka",
+        "da": "Knaptekst",
+        "de": "Schaltflächenbeschriftung",
+        "en": "Button label",
+        "es": "Etiqueta de botón",
+        "fi": "Tekstipainike",
+        "fr": "Texte du bouton",
+        "it": "Etichetta pulsante",
+        "ja": "ボタンのラベル",
+        "ko": "버튼 레이블",
+        "nb": "Knappetikett",
+        "nl": "Knoplabel",
+        "pl": "Przycisk z etykietą",
+        "pt-BR": "Etiqueta de botão",
+        "pt-PT": "Etiqueta do botão",
+        "sv": "Knappetikett",
+        "th": "ป้ายกำกับปุ่ม",
+        "tr": "Düğme etiketi",
+        "vi": "Nhãn nút",
+        "zh-CN": "按钮标签",
+        "zh-TW": "按鈕標籤"
+      }
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": {
+        "cs": "Odkaz na video",
+        "da": "Videolink",
+        "de": "Video-Link",
+        "en": "Video link",
+        "es": "Enlace de video",
+        "fi": "Videolinkki",
+        "fr": "Lien de la vidéo",
+        "it": "Link video",
+        "ja": "ビデオリンク",
+        "ko": "동영상 링크",
+        "nb": "Videokobling",
+        "nl": "Videolink",
+        "pl": "Link do filmu",
+        "pt-BR": "Link do vídeo",
+        "pt-PT": "Ligação do vídeo",
+        "sv": "Videolänk",
+        "th": "ลิงก์วิดีโอ",
+        "tr": "Video bağlantısı",
+        "vi": "Liên kết video",
+        "zh-CN": "视频链接",
+        "zh-TW": "影片連結"
+      },
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "header",
+      "content": {
+        "cs": "Titulní stránka",
+        "da": "Cover",
+        "de": "Cover",
+        "en": "Cover",
+        "es": "Portada",
+        "fi": "Kansi",
+        "fr": "Couverture",
+        "it": "Copertina",
+        "ja": "カバー",
+        "ko": "커버",
+        "nb": "Forside",
+        "nl": "Cover",
+        "pl": "Strona tytułowa",
+        "pt-BR": "Capa",
+        "pt-PT": "Capa",
+        "sv": "Omslag",
+        "th": "หน้าปก",
+        "tr": "Kapak",
+        "vi": "Bìa",
+        "zh-CN": "封面",
+        "zh-TW": "封面"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    },
+    {
+      "type": "select",
+      "id": "cover_image_position",
+      "label": {
+        "cs": "Pozice obrázku",
+        "da": "Placering af billede",
+        "de": "Foto-Position",
+        "en": "Image position",
+        "es": "Posición de la imagen",
+        "fi": "Kuvan sijainti",
+        "fr": "Position de l'image",
+        "it": "Posizione Immagine",
+        "ja": "画像の位置",
+        "ko": "이미지 위치",
+        "nb": "Bildeposisjon",
+        "nl": "Afbeeldingspositie",
+        "pl": "Położenie obrazu",
+        "pt-BR": "Posição da imagem",
+        "pt-PT": "Posição da imagem",
+        "sv": "Bildposition",
+        "th": "ตำแหน่งรูปภาพ",
+        "tr": "Görsel konumu",
+        "vi": "Vị trí hình ảnh",
+        "zh-CN": "图片位置",
+        "zh-TW": "圖片位置"
+      },
+      "default": "center center",
+      "options": [
+        {
+          "label": {
+            "cs": "Nahoře vlevo",
+            "da": "Øverst til venstre",
+            "de": "Oben links",
+            "en": "Top left",
+            "es": "Superior izquierda",
+            "fi": "Ylhäällä vasemmalla",
+            "fr": "En haut à gauche",
+            "it": "In alto a sinistra",
+            "ja": "左上",
+            "ko": "왼쪽 상단",
+            "nb": "Øverst til venstre",
+            "nl": "Linksboven",
+            "pl": "Na górze po lewej",
+            "pt-BR": "Superior esquerdo",
+            "pt-PT": "Canto superior esquerdo",
+            "sv": "Överst till vänster",
+            "th": "ซ้ายบน",
+            "tr": "Üst sol",
+            "vi": "Trên cùng bên trái",
+            "zh-CN": "左上方",
+            "zh-TW": "左上角"
+          },
+          "value": "top left"
+        },
+        {
+          "label": {
+            "cs": "Nahoře ve středu",
+            "da": "Øverst i midten",
+            "de": "Oben Mitte",
+            "en": "Top center",
+            "es": "Superior centrada",
+            "fi": "Keskellä ylhäällä",
+            "fr": "En haut au centre",
+            "it": "In alto al centro",
+            "ja": "中央上",
+            "ko": "맨 위 중간",
+            "nb": "Toppsentrert",
+            "nl": "Midden boven",
+            "pl": "Na górze na środku",
+            "pt-BR": "Superior centro",
+            "pt-PT": "Superior centro",
+            "sv": "Längst upp i mitten",
+            "th": "กลางบน",
+            "tr": "Üst orta",
+            "vi": "Trên cùng ở giữa",
+            "zh-CN": "顶部居中",
+            "zh-TW": "中央上方"
+          },
+          "value": "top center"
+        },
+        {
+          "label": {
+            "cs": "Nahoře vpravo",
+            "da": "Øverst til højre",
+            "de": "Oben rechts",
+            "en": "Top right",
+            "es": "Superior derecha",
+            "fi": "Ylhäällä oikealla",
+            "fr": "En haut à droite",
+            "it": "In alto a destra",
+            "ja": "右上",
+            "ko": "오른쪽 상단",
+            "nb": "Øverst til høyre",
+            "nl": "Rechtsboven",
+            "pl": "Na górze po prawej",
+            "pt-BR": "Superior direito",
+            "pt-PT": "Canto superior direito",
+            "sv": "Överst till höger",
+            "th": "ขวาบน",
+            "tr": "Üst sağ",
+            "vi": "Trên cùng bên phải",
+            "zh-CN": "右上方",
+            "zh-TW": "右上角"
+          },
+          "value": "top right"
+        },
+        {
+          "label": {
+            "cs": "Uprostřed vlevo",
+            "da": "Midt på til venstre",
+            "de": "Mitte links",
+            "en": "Middle left",
+            "es": "Al medio a la izquierda",
+            "fi": "Keskellä vasemmalla",
+            "fr": "Au milieu à gauche",
+            "it": "In mezzo a sinistra",
+            "ja": "中央部左側",
+            "ko": "왼쪽 중간",
+            "nb": "Midt til venstre",
+            "nl": "Midden links",
+            "pl": "Na środku po lewej",
+            "pt-BR": "Meio esquerdo",
+            "pt-PT": "Intermédio à esquerda",
+            "sv": "Mitten till vänster",
+            "th": "ซ้ายกลาง",
+            "tr": "Orta sol",
+            "vi": "Ở giữa bên trái",
+            "zh-CN": "中间居左",
+            "zh-TW": "中央左方"
+          },
+          "value": "center left"
+        },
+        {
+          "label": {
+            "cs": "Uprostřed ve středu",
+            "da": "Midt på centreret",
+            "de": "Mitte mittig",
+            "en": "Middle center",
+            "es": "Centrada en el medio",
+            "fi": "Keskellä keskellä",
+            "fr": "Centrée au milieu",
+            "it": "In mezzo al centro",
+            "ja": "中心",
+            "ko": "가운데 중간",
+            "nb": "Midt i senter",
+            "nl": "Midden centrum",
+            "pl": "Na środku",
+            "pt-BR": "Meio centro",
+            "pt-PT": "Intermédio ao centro",
+            "sv": "Mitten centrerat",
+            "th": "กึ่งกลาง",
+            "tr": "Orta kısmın ortası",
+            "vi": "Chính giữa",
+            "zh-CN": "中间居中",
+            "zh-TW": "正中央"
+          },
+          "value": "center center"
+        },
+        {
+          "label": {
+            "cs": "Uprostřed vpravo",
+            "da": "Midt på til højre",
+            "de": "Mitte rechts",
+            "en": "Middle right",
+            "es": "Centrado a la derecha",
+            "fi": "Keskellä oikealla",
+            "fr": "Au milieu à droite",
+            "it": "In centro a destra",
+            "ja": "中央部右側",
+            "ko": "오른쪽 중간",
+            "nb": "Midt til høyre",
+            "nl": "Midden rechts",
+            "pl": "Na środku po prawej",
+            "pt-BR": "Meio direito",
+            "pt-PT": "Intermédio à direita",
+            "sv": "Mitten till höger",
+            "th": "ขวากลาง",
+            "tr": "Orta sağ",
+            "vi": "Ở giữa bên phải",
+            "zh-CN": "中间居右",
+            "zh-TW": "中央右方"
+          },
+          "value": "center right"
+        },
+        {
+          "label": {
+            "cs": "Dole vlevo",
+            "da": "Nederst til venstre",
+            "de": "Unten links",
+            "en": "Bottom left",
+            "es": "Inferior izquierda",
+            "fi": "Alhaalla vasemmalla",
+            "fr": "En bas à gauche",
+            "it": "In basso a sinistra",
+            "ja": "左下",
+            "ko": "왼쪽 하단",
+            "nb": "Nederst til venstre",
+            "nl": "Linksonder",
+            "pl": "Na dole po lewej",
+            "pt-BR": "Inferior esquerdo",
+            "pt-PT": "Canto inferior esquerdo",
+            "sv": "Nere till vänster",
+            "th": "ซ้ายล่าง",
+            "tr": "Alt sol",
+            "vi": "Dưới cùng bên trái",
+            "zh-CN": "左下方",
+            "zh-TW": "左下角"
+          },
+          "value": "bottom left"
+        },
+        {
+          "label": {
+            "cs": "Dole ve středu",
+            "da": "Nederst i midten",
+            "de": "Unten mittig",
+            "en": "Bottom center",
+            "es": "Inferior centrada",
+            "fi": "Keskellä alhaalla",
+            "fr": "En bas au centre",
+            "it": "In basso al centro",
+            "ja": "中央下",
+            "ko": "맨아래 중간",
+            "nb": "Bunnsentrert",
+            "nl": "Midden onder",
+            "pl": "Na dole na środku",
+            "pt-BR": "Inferior centro",
+            "pt-PT": "Inferior centro",
+            "sv": "Längst ner i mitten",
+            "th": "กลางล่าง",
+            "tr": "Alt orta",
+            "vi": "Dưới cùng ở giữa",
+            "zh-CN": "底部居中",
+            "zh-TW": "中央下方"
+          },
+          "value": "bottom center"
+        },
+        {
+          "label": {
+            "cs": "Dole vpravo",
+            "da": "Nederst til højre",
+            "de": "Unten rechts",
+            "en": "Bottom right",
+            "es": "Inferior derecha",
+            "fi": "Alhaalla oikealla",
+            "fr": "En bas à droite",
+            "it": "In basso a destra",
+            "ja": "右下",
+            "ko": "오른쪽 아래",
+            "nb": "Nederst til høyre",
+            "nl": "Rechtsonder",
+            "pl": "Na dole po prawej",
+            "pt-BR": "Inferior direito",
+            "pt-PT": "Canto inferior direito",
+            "sv": "Nere till höger",
+            "th": "ขวาล่าง",
+            "tr": "Alt sağ",
+            "vi": "Dưới cùng bên phải",
+            "zh-CN": "右下方",
+            "zh-TW": "右下角"
+          },
+          "value": "bottom right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "cover_image_height",
+      "label": {
+        "cs": "Výška obrázku",
+        "da": "Billedhøjde",
+        "de": "Bildhöhe",
+        "en": "Image height",
+        "es": "Altura de imagen",
+        "fi": "Kuvan korkeus",
+        "fr": "Hauteur de l'image",
+        "it": "Altezza immagine",
+        "ja": "画像の高さ",
+        "ko": "이미지 높이",
+        "nb": "Bildehøyde",
+        "nl": "Hoogte afbeelding",
+        "pl": "Wysokość obrazu",
+        "pt-BR": "Altura da imagem",
+        "pt-PT": "Altura da imagem",
+        "sv": "Bildhöjd",
+        "th": "ความสูงของรูปภาำ",
+        "tr": "Görsel yüksekliği",
+        "vi": "Chiều cao hình ảnh",
+        "zh-CN": "图片高度",
+        "zh-TW": "圖片高度"
+      },
+      "default": "short",
+      "options": [
+        {
+          "value": "short",
+          "label": {
+            "cs": "Malá",
+            "da": "Lav",
+            "de": "Niedrig",
+            "en": "Short",
+            "es": "Baja",
+            "fi": "Matala",
+            "fr": "Petite",
+            "it": "Bassa",
+            "ja": "低い",
+            "ko": "짧음",
+            "nb": "Lav",
+            "nl": "Kort",
+            "pl": "Krótki",
+            "pt-BR": "Pequena",
+            "pt-PT": "Pequena",
+            "sv": "Kort",
+            "th": "ต่ำ",
+            "tr": "Kısa",
+            "vi": "Thấp",
+            "zh-CN": "矮",
+            "zh-TW": "較矮"
+          }
+        },
+        {
+          "value": "tall",
+          "label": {
+            "cs": "Velká",
+            "da": "Høj",
+            "de": "Hoch",
+            "en": "Tall",
+            "es": "Alta",
+            "fi": "Korkea",
+            "fr": "Grande",
+            "it": "Alta",
+            "ja": "高い",
+            "ko": "김",
+            "nb": "Høy",
+            "nl": "Lang",
+            "pl": "Wysoki",
+            "pt-BR": "Alta",
+            "pt-PT": "Alta",
+            "sv": "Lång",
+            "th": "สูง",
+            "tr": "Uzun",
+            "vi": "Cao",
+            "zh-CN": "高",
+            "zh-TW": "較高"
+          }
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": {
+        "cs": "Překryv",
+        "da": "Overlejring",
+        "de": "Überlagerung",
+        "en": "Overlay",
+        "es": "Superposición",
+        "fi": "Peitto",
+        "fr": "Superposition",
+        "it": "Sovrapposizione",
+        "ja": "オーバーレイ",
+        "ko": "오버레이",
+        "nb": "Overlegg",
+        "nl": "Overlay",
+        "pl": "Nakładka",
+        "pt-BR": "Sobreposição",
+        "pt-PT": "Sobreposição",
+        "sv": "Överlagring",
+        "th": "การวางซ้อน",
+        "tr": "Yer paylaşımı",
+        "vi": "Lớp phủ",
+        "zh-CN": "叠加",
+        "zh-TW": "疊加層"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": {
+        "cs": "Zobrazit překryv",
+        "da": "Vis overlejring",
+        "de": "Überlagerung anzeigen",
+        "en": "Show overlay",
+        "es": "Mostrar superposición",
+        "fi": "Näytä peittokuva",
+        "fr": "Afficher la superposition",
+        "it": "Mostra sovrapposizione",
+        "ja": "オーバーレイを表示する",
+        "ko": "오버레이 표시",
+        "nb": "Vis overlegg",
+        "nl": "Overlay weergeven",
+        "pl": "Pokaż nakładkę",
+        "pt-BR": "Exibir sobreposição",
+        "pt-PT": "Mostrar sobreposição",
+        "sv": "Visa överlagring",
+        "th": "แสดงการวางซ้อน",
+        "tr": "Yer paylaşımını göster",
+        "vi": "Hiển thị lớp phủ",
+        "zh-CN": "显示叠加",
+        "zh-TW": "顯示疊加層"
+      },
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": {
+        "cs": "Překryv",
+        "da": "Overlejring",
+        "de": "Überlagerung",
+        "en": "Overlay",
+        "es": "Superposición",
+        "fi": "Peitto",
+        "fr": "Superposition",
+        "it": "Sovrapposizione",
+        "ja": "オーバーレイ",
+        "ko": "오버레이",
+        "nb": "Overlegg",
+        "nl": "Overlay",
+        "pl": "Nakładka",
+        "pt-BR": "Sobreposição",
+        "pt-PT": "Sobreposição",
+        "sv": "Överlagring",
+        "th": "การวางซ้อน",
+        "tr": "Yer paylaşımı",
+        "vi": "Lớp phủ",
+        "zh-CN": "叠加",
+        "zh-TW": "疊加層"
+      },
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": {
+        "cs": "%",
+        "da": "%",
+        "de": "%",
+        "en": "%",
+        "es": "%",
+        "fi": "%",
+        "fr": "%",
+        "it": "%",
+        "ja": "%",
+        "ko": "%",
+        "nb": "%",
+        "nl": "%",
+        "pl": "%",
+        "pt-BR": "%",
+        "pt-PT": "%",
+        "sv": "%",
+        "th": "%",
+        "tr": "%",
+        "vi": "%",
+        "zh-CN": "%",
+        "zh-TW": "%"
+      },
+      "label": {
+        "cs": "Neprůhlednost",
+        "da": "Uigennemsigtighed",
+        "de": "Opazität",
+        "en": "Opacity",
+        "es": "Opacidad",
+        "fi": "Sameus",
+        "fr": "Opacité",
+        "it": "Opacità",
+        "ja": "不透過率",
+        "ko": "불투명도",
+        "nb": "Gjennomsiktighet",
+        "nl": "Doorschijnendheid",
+        "pl": "Nieprzezroczystość",
+        "pt-BR": "Opacidade",
+        "pt-PT": "Opacidade",
+        "sv": "Opacitet",
+        "th": "ความทึบ",
+        "tr": "Opaklık",
+        "vi": "Độ chắn sáng",
+        "zh-CN": "不透明度",
+        "zh-TW": "透明度"
+      },
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Video",
+        "da": "Video",
+        "de": "Video",
+        "en": "Video",
+        "es": "Video",
+        "fi": "Video",
+        "fr": "Vidéo",
+        "it": "Video",
+        "ja": "動画",
+        "ko": "동영상",
+        "nb": "Video",
+        "nl": "Video",
+        "pl": "Film",
+        "pt-BR": "Vídeo",
+        "pt-PT": "Vídeo",
+        "sv": "Video",
+        "th": "วิดีโอ",
+        "tr": "Video",
+        "vi": "Video",
+        "zh-CN": "视频",
+        "zh-TW": "影片"
+      },
+      "category": {
+        "cs": "Video",
+        "da": "Video",
+        "de": "Video",
+        "en": "Video",
+        "es": "Video",
+        "fi": "Video",
+        "fr": "Vidéo",
+        "it": "Video",
+        "ja": "動画",
+        "ko": "동영상",
+        "nb": "Video",
+        "nl": "Video",
+        "pl": "Film",
+        "pt-BR": "Vídeo",
+        "pt-PT": "Vídeo",
+        "sv": "Video",
+        "th": "วิดีโอ",
+        "tr": "Video",
+        "vi": "Video",
+        "zh-CN": "视频",
+        "zh-TW": "影片"
+      }
+    }
+  ]
+}
+{% endschema %}

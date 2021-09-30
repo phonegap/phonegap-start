@@ -1,0 +1,112 @@
+
+<div data-section-id="{{ section.id }}" data-section-type="collection-filters">
+  {%- if section.settings.product_tags_enable and collection.all_tags.size > 0 -%}
+    <div class="collection-sort">
+      <label for="SortTags" class="collection-sort__label">{{ 'collections.sorting.title_tags' | t }}</label>
+      <select name="SortTags" id="SortTags" aria-describedby="a11y-refresh-page-message a11y-selection-message" class="collection-sort__input">
+        <option value="{{ collection.url }}">{{ 'collections.sorting.all_of_collection' | t }}</option>
+        {%- for tag in collection.all_tags -%}
+          {%- assign new_url = tag | link_to_tag: tag | split: 'href="' | last | split: '"' | first -%}
+          <option value="{{ new_url }}"{% if current_tags contains tag %} selected="selected"{% endif %}>{{ tag }}</option>
+        {%- endfor -%}
+      </select>
+    </div>
+  {%- endif -%}
+  {%- if section.settings.product_sorting_enable -%}
+    <div class="collection-sort">
+      {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+      <label for="SortBy" class="collection-sort__label">{{ 'collections.sorting.title' | t }}</label>
+      <select name="sort_by" id="SortBy" aria-describedby="a11y-refresh-page-message a11y-selection-message" class="collection-sort__input">
+        {%- for option in collection.sort_options -%}
+          <option value="{{ option.value }}"{% if sort_by == option.value %} selected="selected"{% endif %}>{{ option.name }}</option>
+        {%- endfor -%}
+      </select>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": {
+    "cs": "Kolekce",
+    "da": "Kollektion",
+    "de": "Kategorie",
+    "en": "Collection",
+    "es": "Colección",
+    "fi": "Kokoelma",
+    "fr": "Collection",
+    "it": "Collezione",
+    "ja": "コレクション",
+    "ko": "컬렉션",
+    "nb": "Samling",
+    "nl": "Collectie",
+    "pl": "Kolekcja",
+    "pt-BR": "Coleção",
+    "pt-PT": "Coleção",
+    "sv": "Produktserie",
+    "th": "คอลเลกชัน",
+    "tr": "Koleksiyon",
+    "vi": "Bộ sưu tập",
+    "zh-CN": "收藏",
+    "zh-TW": "商品系列"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "product_tags_enable",
+      "label": {
+        "cs": "Povolit filtrování podle štítku",
+        "da": "Aktivér tagfiltrering",
+        "de": "Tag-Filtern erlauben",
+        "en": "Enable tag filtering",
+        "es": "Habilitar filtro de etiquetas",
+        "fi": "Ota tunnisteiden suodatus käyttöön",
+        "fr": "Activer le filtrage par balises",
+        "it": "Attiva filtro tag",
+        "ja": "タグでの絞り込みを有効にする",
+        "ko": "태그 필터링 사용",
+        "nb": "Aktiver taggfiltrering",
+        "nl": "Filteren op tags inschakelen",
+        "pl": "Włącz filtrowanie tagów",
+        "pt-BR": "Habilitar filtragem de tag",
+        "pt-PT": "Ativar filtragem por etiqueta",
+        "sv": "Aktivera taggfiltrering",
+        "th": "เปิดใช้การกรองแท็ก",
+        "tr": "Etiket filtrelemeyi etkinleştir",
+        "vi": "Bật lọc thẻ",
+        "zh-CN": "启用标签筛选",
+        "zh-TW": "啟用標籤篩選功能"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_sorting_enable",
+      "label": {
+        "cs": "Povolit řazení",
+        "da": "Aktivér sortering",
+        "de": "Sortieren erlauben",
+        "en": "Enable sorting",
+        "es": "Habilitar la función ordenar",
+        "fi": "Ota lajittelu käyttöön",
+        "fr": "Activer le tri",
+        "it": "Permetti di ordinare",
+        "ja": "並べ替えを有効にする",
+        "ko": "정렬 사용",
+        "nb": "Aktiver sortering",
+        "nl": "Sortering inschakelen",
+        "pl": "Włącz sortowanie",
+        "pt-BR": "Habilitar organização",
+        "pt-PT": "Ativar ordenação",
+        "sv": "Aktivera sortering",
+        "th": "เปิดใช้การจัดเรียง",
+        "tr": "Sıralamayı etkinleştir",
+        "vi": "Bật sắp xếp",
+        "zh-CN": "启用排序",
+        "zh-TW": "啟用排序功能"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}

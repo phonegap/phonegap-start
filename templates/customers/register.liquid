@@ -1,0 +1,34 @@
+<div class="page-width">
+  <div class="grid">
+
+    <div class="grid__item medium-up--one-half medium-up--push-one-quarter">
+      <div class="content-block text-center">
+        <h1>{{ 'customer.register.title' | t }}</h1>
+
+        <div class="form-vertical text-center">
+          {% form 'create_customer' %}
+
+            {{ form.errors | default_errors }}
+
+            <label for="FirstName" class="label--hidden">{{ 'customer.register.first_name' | t }}</label>
+            <input type="text" name="customer[first_name]" id="FirstName" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autofocus>
+
+            <label for="LastName" class="label--hidden">{{ 'customer.register.last_name' | t }}</label>
+            <input type="text" name="customer[last_name]" id="LastName" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+
+            <label for="Email" class="label--hidden">{{ 'customer.register.email' | t }}</label>
+            <input type="email" name="customer[email]" id="Email" class="{% if form.errors contains 'email' %} input--error{% endif %}" placeholder="{{ 'customer.register.email' | t }}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+
+            <label for="CreatePassword" class="label--hidden">{{ 'customer.register.password' | t }}</label>
+            <input type="password" name="customer[password]" id="CreatePassword" class="{% if form.errors contains 'password' %} input--error{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
+
+            <p>
+              <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
+            </p>
+
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div
+	id="looxReviews"
+	data-limit="{{section.settings.data-limit}}"
+	{% if section.settings.aggregated %}data-loox-aggregate{% endif %}
+	{% if section.settings.only_photos %}data-mode="img"{% endif %}
+	{% if section.settings.product_handle %}data-product-id="{{ all_products[section.settings.product_handle].id }}"{% endif %}
+	{% if section.settings.hide_thumbnails %}data-product-thumbnails="false"{% endif %}
+	style="margin:0 auto;max-width:{{section.settings.maxwidth}}px;"
+></div>
+{% schema %}
+{
+	"name": "Loox Widget - All Reviews",
+	"class": "index-section",
+	"settings": [
+		{
+			"id": "only_photos",
+			"type": "checkbox",
+			"label": "Display only reviews with photos",
+			"default": false
+		},
+		{
+			"id": "hide_thumbnails",
+			"type": "checkbox",
+			"label": "Hide product thumbnails",
+			"default": false
+		},
+		{
+			"type": "product",
+			"id": "product_handle",
+			"label": "Add \"Write a review\" button linked to:"
+		},
+		{
+			"type": "checkbox",
+			"id": "aggregated",
+			"label": "Show reviews from all products",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "data-limit",
+			"min": 1,
+			"max": 40,
+			"step": 1,
+			"label": "Number of reviews to display",
+			"default": 20
+		},
+		{
+			"type": "range",
+			"id": "maxwidth",
+			"min": 480,
+			"max": 1920,
+			"step": 40,
+			"unit": "px",
+			"label": "Maximum width",
+			"default": 1080
+		}
+	],
+	"presets": [{
+		"name": "Loox Widget - All Reviews",
+		"category": "Loox"
+	}]
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'product-template' %}
+{% section 'product-recommendations' %}
+
+<div id="backToCollection"></div>
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  window.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+
+  if(sessionStorage.backToCollection) {
+    theme.backToCollection = {};
+    theme.backToCollection.collection = JSON.parse(sessionStorage.backToCollection);
+    var productCollections = {{ product.collections | json }};
+    var showCollection = false;
+    if (productCollections) {
+      productCollections.forEach(function(collection) {
+        if (collection.title === theme.backToCollection.collection.title) {
+          showCollection = true;
+        }
+      });
+    }
+    if(showCollection) {
+      var backToCollectionHTML = '<div class="full-width full-width--return-link"><a href="' + theme.backToCollection.collection.link + '" class="h1 return-link">{% include 'icon-arrow-thin-left' %}{{ 'products.product.collection_return' | t }} ' + theme.backToCollection.collection.title + '</a></div>';
+      var backToCollectionContainer = document.getElementById('backToCollection');
+      backToCollectionContainer.insertAdjacentHTML('afterbegin', backToCollectionHTML);
+    }
+  }
+</script>
+
+ {% render "reviews-importer" %}

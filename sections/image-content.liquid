@@ -1,0 +1,438 @@
+<div class="page-width">
+  <div class="section-block section-block--padding">
+    <div class="flex flex--grid flex--no-gutter">
+      {% case section.blocks.size %}
+        {% when 1 %}
+          {% assign flex_size = '' %}
+        {% when 2 %}
+          {% assign flex_size = 'medium-up--one-half' %}
+        {% when 3 %}
+          {% assign flex_size = 'medium-up--one-third' %}
+        {% else %}
+          {% assign flex_size = 'medium-up--one-half' %}
+      {% endcase %}
+      {% for block in section.blocks %}
+        <div class="flex__item flex flex--center-vertical {{ flex_size }}" {{ block.shopify_attributes }}>
+          {% case block.type %}
+            {% when 'image_block' %}
+              <div class="flex__item">
+                {% if block.settings.image != blank %}
+                  <noscript>
+                    <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                  </noscript>
+                  <div class="image-content__image-container">
+                    <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+                      {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                      <img class="image-content__image lazyload"
+                        src="{{ block.settings.image | img_url: '300x300' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ block.settings.image.alt | escape }}">
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+            {% when 'text_block' %}
+              <div class="flex__item image-content__text text-{{ block.settings.align }}">
+                <p class="h5">{{ block.settings.title | escape }}</p>
+                <div class="rte-setting">{{ block.settings.text }}</div>
+              </div>
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Obrázek s textem",
+    "da": "Billede med tekst",
+    "de": "Bild mit Text",
+    "en": "Image with text",
+    "es": "Imagen con texto",
+    "fi": "Kuva tekstillä",
+    "fr": "Image avec texte",
+    "it": "Immagine con testo",
+    "ja": "テキスト付き画像",
+    "ko": "텍스트 포함 이미지",
+    "nb": "Bilde med tekst",
+    "nl": "Afbeelding met tekst",
+    "pl": "Obraz z tekstem",
+    "pt-BR": "Imagem com texto",
+    "pt-PT": "Imagem com texto",
+    "sv": "Bild med text",
+    "th": "รูปภาพพร้อมข้อความ",
+    "tr": "Metin içeren görsel",
+    "vi": "Hình ảnh có chữ",
+    "zh-CN": "带文本图片",
+    "zh-TW": "附文字的圖片"
+  },
+  "class": "index-section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Titel",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "it": "Titolo",
+            "ja": "見出し",
+            "ko": "제목",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pl": "Nagłówek",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "tr": "Başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "cs": "Obrázek s textem",
+            "da": "Billede med tekst",
+            "de": "Bild mit Text",
+            "en": "Image with text",
+            "es": "Imagen con texto",
+            "fi": "Kuva tekstillä",
+            "fr": "Image avec texte",
+            "it": "Immagine con testo",
+            "ja": "テキスト付き画像",
+            "ko": "텍스트 포함 이미지",
+            "nb": "Bilde med tekst",
+            "nl": "Afbeelding met tekst",
+            "pl": "Obraz z tekstem",
+            "pt-BR": "Imagem com texto",
+            "pt-PT": "Imagem com texto",
+            "sv": "Bild med text",
+            "th": "รูปภาพพร้อมข้อความ",
+            "tr": "Metin içeren görsel",
+            "vi": "Hình ảnh có chữ",
+            "zh-CN": "带文本图片",
+            "zh-TW": "附文字的圖片"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": {
+            "cs": "Text",
+            "da": "Tekst",
+            "de": "Text",
+            "en": "Text",
+            "es": "Texto",
+            "fi": "Teksti",
+            "fr": "Texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "ko": "텍스트",
+            "nb": "Tekst",
+            "nl": "Tekst",
+            "pl": "Tekst",
+            "pt-BR": "Texto",
+            "pt-PT": "Texto",
+            "sv": "Text",
+            "th": "ข้อความ",
+            "tr": "Metin",
+            "vi": "Văn bản",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          },
+          "default": {
+            "cs": "<p>Zkombinujte velký text a obrázek, abyste zaměřili pozornost návštěvníků na zvolený produkt, kolekci či příspěvek na blogu. Pak můžete připojit podrobnosti o dostupnosti a stylu, nebo dokonce recenzi.</p>",
+            "da": "<p>Kombiner stor tekst med et billede for at give dit valgte produkt, din valgte kollektion eller dit valgte blogopslag fokus. Tilføj oplysninger om tilgængelighed, stil og eventuelt også en anmeldelse.</p>",
+            "de": "<p>Kombiniere große Schrift mit einem Foto, um einen Fokus auf dein ausgewähltes Produkt, die Kategorie oder einen Blogpost zu legen. Du kannst dann Details zur Verfügbarkeit und dem Style oder sogar eine Bewertung hinzufügen.</p>",
+            "en": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "es": "<p>Vincula un texto largo con una imagen para dar visibilidad a tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad, estilo, o incluso ofrece una reseña.</p>",
+            "fi": "<p>Korosta valitsemaasi tuotetta, kokoelmaa tai blogijulkaisua lisäämällä kuvaan suuri teksti. Lisää saatavuustiedot, määritä tyyli tai näytä vaikkapa arvostelu.</p>",
+            "fr": "<p>Ajoutez une image à un long paragraphe de texte pour mettre l'accent sur un produit de votre choix, une collection, ou un article de blog. Ajoutez des détails sur la disponibilité, le style, ou mettez un commentaire client en avant.</p>",
+            "it": "<p>Associa un testo di grandi dimensioni a un'immagine per dare importanza al prodotto, alla collezione o all'articolo del blog di tua scelta. Aggiungi dettagli sulla disponibilità, sullo stile o fornisci una recensione.</p>",
+            "ja": "<p>あなたが選んだ商品、コレクション、またはブログ記事に注目を集めるため、大きなテキストと画像を組み合わせます。可用性、スタイル、またはレビュー提供についての詳細を追加します。</p>",
+            "ko": "<p>이미지와 큰 텍스트를 짝지어 선택한 제품, 컬렉션, 블로그 게시판을 강조합니다. 사용 가능성, 스타일에 대한 자세한 정보를 추가하거나 리뷰를 제공합니다.</p>",
+            "nb": "<p>Koble stor tekst med et bilde for å drive fokus mot det valgte produktet, samlingen eller blogginnlegget. Legg til detaljer om tilgjengelighet, stil eller vis frem en vurdering.</p>",
+            "nl": "<p>Plaats een afbeelding bij grote stukken tekst om de aandacht op je gekozen product, collectie of blogpost te richten. Voeg details over beschikbaarheid en stijl toe of plaats een productrecensie.</p>",
+            "pl": "<p>Połącz duży tekst z obrazem, aby skierować uwagę na wybrany produkt, kolekcję lub post na blogu. Dodaj szczegóły dotyczące dostępności, stylu lub nawet dołącz recenzję.</p>",
+            "pt-BR": "<p>Emparelhe textos grandes com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.</p>",
+            "pt-PT": "<p>Associe um texto grande a uma imagem para dar ênfase ao produto, coleção ou publicação no blogue que escolheu. Adicione detalhes sobre disponibilidade, estilo ou uma avaliação.</p>",
+            "sv": "<p>Para ihop stor text med en bild för att ge fokus åt din valda produkt, kollektion eller blogginlägg. Lägg till information om tillgänglighet, stil eller tillhandahåll till och med en recension.</p>",
+            "th": "<p>จับคู่ข้อความขนาดใหญ่กับรูปภาพเพื่อให้ความสำคัญกับสินค้า คอลเลกชัน หรือโพสต์บล็อกที่คุณเลือก เพิ่มรายละเอียดเกี่ยวกับความพร้อม สไตล์ หรือแม้กระทั่งเขียนรีวิว</p>",
+            "tr": "<p>Geniş metni bir görselle eşleyerek seçtiğiniz ürüne, koleksiyona veya blog gönderisine dikkat çekin. Stok durumu, stil hakkındaki ayrıntıları ekleyin, hatta inceleme sağlayın.</p>",
+            "vi": "<p>Ghép nối văn bản lớn với hình ảnh để làm nổi bật sản phẩm, bộ sưu tập hoặc bài viết blog đã chọn. Thêm chi tiết về tình trạng còn hàng, kiểu hoặc đưa ra đánh giá.</p>",
+            "zh-CN": "<p>将大文本与图片配对，以便将焦点置于您选择的产品、产品系列或博客文章。添加有关可用性和样式的详细信息，甚至是提供评论。</p>",
+            "zh-TW": "<p>大型文字搭配圖片，以便強調特定產品、商品系列或網誌貼文。您可以加上各種有關可用性、樣式的資料，甚至可以提供使用心得。</p>"
+          }
+        },
+        {
+          "type": "select",
+          "id": "align",
+          "label": {
+            "cs": "Zarovnání textu",
+            "da": "Tekstjustering",
+            "de": "Textausrichtung",
+            "en": "Text alignment",
+            "es": "Alineación de texto",
+            "fi": "Tekstin tasaus",
+            "fr": "Alignement du texte",
+            "it": "Allineamento del testo",
+            "ja": "テキストアラインメント",
+            "ko": "텍스트 정렬",
+            "nb": "Tekstjustering",
+            "nl": "Tekstuitlijning",
+            "pl": "Wyrównanie tekstu",
+            "pt-BR": "Alinhamento de texto",
+            "pt-PT": "Alinhamento de texto",
+            "sv": "Textjustering",
+            "th": "การจัดตำแหน่งข้อความ",
+            "tr": "Metin hizalaması",
+            "vi": "Căn chỉnh văn bản",
+            "zh-CN": "文本对齐方式",
+            "zh-TW": "文字對齊"
+          },
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "cs": "Doleva",
+                "da": "Venstre",
+                "de": "Links",
+                "en": "Left",
+                "es": "Izquierda",
+                "fi": "Vasen",
+                "fr": "Gauche",
+                "it": "Sinistra",
+                "ja": "左",
+                "ko": "왼쪽",
+                "nb": "Venstre",
+                "nl": "Links",
+                "pl": "Do lewej",
+                "pt-BR": "Esquerda",
+                "pt-PT": "Esquerda",
+                "sv": "Vänster",
+                "th": "ด้านซ้าย",
+                "tr": "Sol",
+                "vi": "Bên trái",
+                "zh-CN": "左侧",
+                "zh-TW": "左方"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "cs": "Na střed",
+                "da": "Centreret",
+                "de": "Mitte",
+                "en": "Center",
+                "es": "Centrar",
+                "fi": "Keskitetty",
+                "fr": "Au centre",
+                "it": "Al centro",
+                "ja": "中央",
+                "ko": "센터",
+                "nb": "Sentrer",
+                "nl": "Midden",
+                "pl": "Do środka",
+                "pt-BR": "Centro",
+                "pt-PT": "Centro",
+                "sv": "Centrera",
+                "th": "ตรงกลาง",
+                "tr": "Orta",
+                "vi": "Ở giữa",
+                "zh-CN": "居中",
+                "zh-TW": "置中"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "cs": "Doprava",
+                "da": "Højre",
+                "de": "Rechts",
+                "en": "Right",
+                "es": "Derecha",
+                "fi": "Oikea",
+                "fr": "Droite",
+                "it": "Destra",
+                "ja": "右",
+                "ko": "오른쪽",
+                "nb": "Høyre",
+                "nl": "Rechts",
+                "pl": "Do prawej",
+                "pt-BR": "Direita",
+                "pt-PT": "Direita",
+                "sv": "Höger",
+                "th": "ด้านขวา",
+                "tr": "Sağ",
+                "vi": "Bên phải",
+                "zh-CN": "右侧",
+                "zh-TW": "右方"
+              }
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "image_block",
+      "name": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "cs": "Obrázek",
+            "da": "Billede",
+            "de": "Foto",
+            "en": "Image",
+            "es": "Imagen",
+            "fi": "Kuva",
+            "fr": "Image",
+            "it": "Immagine",
+            "ja": "画像",
+            "ko": "이미지",
+            "nb": "Bilde",
+            "nl": "Afbeelding",
+            "pl": "Obraz",
+            "pt-BR": "Imagem",
+            "pt-PT": "Imagem",
+            "sv": "Bild",
+            "th": "รูปภาพ",
+            "tr": "Görsel",
+            "vi": "Hình ảnh",
+            "zh-CN": "图片",
+            "zh-TW": "圖片"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Obrázek s textem",
+        "da": "Billede med tekst",
+        "de": "Bild mit Text",
+        "en": "Image with text",
+        "es": "Imagen con texto",
+        "fi": "Kuva tekstillä",
+        "fr": "Image avec texte",
+        "it": "Immagine con testo",
+        "ja": "テキスト付き画像",
+        "ko": "텍스트 포함 이미지",
+        "nb": "Bilde med tekst",
+        "nl": "Afbeelding met tekst",
+        "pl": "Obraz z tekstem",
+        "pt-BR": "Imagem com texto",
+        "pt-PT": "Imagem com texto",
+        "sv": "Bild med text",
+        "th": "รูปภาพพร้อมข้อความ",
+        "tr": "Metin içeren görsel",
+        "vi": "Hình ảnh có chữ",
+        "zh-CN": "带文本图片",
+        "zh-TW": "附文字的圖片"
+      },
+      "category": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "blocks": [
+        {
+          "type": "image_block"
+        },
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

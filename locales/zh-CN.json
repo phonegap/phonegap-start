@@ -1,0 +1,367 @@
+{
+  "general": {
+    "404": {
+      "title": "未找到页面",
+      "subtext_html": "您请求的页面不存在。",
+      "404_link": "继续购物"
+    },
+    "accessibility": {
+      "skip_to_content": "跳到内容",
+      "close_modal": "关闭 (esc)",
+      "refresh_page": "选择某一选项会使整个页面刷新。",
+      "selection_help": "先按空格键，然后使用箭头键来进行选择。",
+      "unit_price_separator": "单价"
+    },
+    "meta": {
+      "tags": "标记为“{{ tags }}”",
+      "page": "第 {{ page }} 页"
+    },
+    "password_page": {
+      "login_form_heading": "使用密码进入商店",
+      "login_form_password_label": "密码",
+      "login_form_password_placeholder": "您的密码",
+      "login_form_submit": "输入",
+      "signup_form_email_label": "电子邮件",
+      "signup_form_success": "在我们打开之前，我们会向您发送电子邮件！",
+      "admin_link_html": "您是否是店主？<a href=\"\/admin\" class=\"text-link\">在此处登录<\/a>",
+      "password_link": "使用密码进入",
+      "powered_by_shopify_html": "此商店由 {{ shopify }} 提供支持"
+    },
+    "social": {
+      "share_title": "共享",
+      "alt_text": {
+        "share_on_facebook": "在 Facebook 上共享",
+        "share_on_twitter": "在 Twitter 上发推文",
+        "share_on_pinterest": "固定在 Pinterest 上"
+      }
+    },
+    "newsletter_form": {
+      "newsletter_label": "注册以获取最新新闻、优惠和样式",
+      "newsletter_placeholder": "您的电子邮件",
+      "submit": "订阅",
+      "confirmation": "感谢您订阅"
+    },
+    "search": {
+      "title": "搜索结果",
+      "placeholder": "搜索",
+      "submit": "搜索",
+      "read_more": "阅读详细内容",
+      "results_count_html": {
+        "one": "<strong>{{ terms }}<\/strong> 有 {{ count }} 个匹配项",
+        "other": "<strong>{{ terms }}<\/strong> 有 {{ count }} 个匹配项"
+      },
+      "products": "产品",
+      "pages_and_articles": "页面和文章"
+    },
+    "drawers": {
+      "menu": "菜单",
+      "navigation": "网站网站地图"
+    },
+    "payment": {
+      "method": "支付方式"
+    }
+  },
+  "blogs": {
+    "article": {
+      "tags": "标签",
+      "view_all": "阅读全部",
+      "all_tags": "所有",
+      "read_more": "阅读详细内容",
+      "back_to_blog": "返回到 {{ title }}"
+    },
+    "comments": {
+      "title": "发表评论",
+      "name": "名称",
+      "email": "电子邮件",
+      "message": "消息",
+      "post": "发布评论",
+      "moderated": "请注意，评论必须在发布之前获得批准",
+      "success_moderated": "您的评论已成功发布。由于我们的博客要经过审核，我们会在稍后将其发布。",
+      "success": "您的评论已成功发布！谢谢！",
+      "with_count": {
+        "one": "{{ count }} 条评论",
+        "other": "{{ count }} 条评论"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "购物车",
+      "remove": "删除",
+      "note": "卖家须知",
+      "taxes_and_shipping_at_checkout": "结账时计算的税金和运费",
+      "taxes_and_shipping_policy_at_checkout_html": "结账时计算的税金和<a href=\"{{ link }}\">运费<\/a>",
+      "taxes_included_but_shipping_at_checkout": "结账时计算的税金（包含）和运费",
+      "taxes_included_and_shipping_policy_html": "税金（包含）。结账时计算的<a href=\"{{ link }}\">运费<\/a>。",
+      "update": "更新购物车",
+      "checkout": "结账",
+      "empty": "您的购物车当前是空的。",
+      "cookies_required": "启用 Cookie 以使用购物车",
+      "continue_browsing": "继续浏览",
+      "close_notification": "关闭",
+      "savings_html": "您正在保存 {{ price }}"
+    },
+    "label": {
+      "product": "产品",
+      "quantity": "数量",
+      "decrease_quantity": "将产品数量减少一件",
+      "increase_quantity": "将产品数量增加一件",
+      "total": "总计"
+    }
+  },
+  "collections": {
+    "general": {
+      "view_all": "查看全部",
+      "all_of_collection": "所有",
+      "no_matches": "抱歉，此产品系列中没有产品",
+      "link_title": "浏览我们的 {{ title }} 产品系列"
+    },
+    "sorting": {
+      "title": "排序方式",
+      "title_tags": "筛选条件",
+      "all_of_collection": "所有"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "名称",
+      "email": "电子邮件",
+      "phone": "电话号码",
+      "message": "消息",
+      "send": "发送",
+      "post_success": "感谢您联系我们。我们会尽快回复您。"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "我的账户",
+      "details": "账户详细信息",
+      "view_addresses": "查看地址",
+      "return": "返回账户详细信息"
+    },
+    "activate_account": {
+      "title": "激活账户",
+      "subtext": "创建密码以激活您的账户。",
+      "password": "密码",
+      "password_confirm": "确认密码",
+      "submit": "激活账户",
+      "cancel": "拒绝邀请"
+    },
+    "addresses": {
+      "title": "您的地址",
+      "default": "默认",
+      "add_new": "添加新地址",
+      "edit_address": "编辑地址",
+      "first_name": "名字",
+      "last_name": "姓",
+      "company": "公司",
+      "address1": "地址 1",
+      "address2": "地址 2",
+      "city": "城市",
+      "country": "国家\/地区",
+      "province": "省",
+      "zip": "邮编\/邮政编码",
+      "phone": "电话",
+      "set_default": "设为默认地址",
+      "add": "添加地址",
+      "update": "更新地址",
+      "cancel": "取消",
+      "edit": "编辑",
+      "delete": "删除",
+      "delete_confirm": "确定要删除此地址吗？"
+    },
+    "login": {
+      "title": "登录",
+      "email": "电子邮件",
+      "password": "密码",
+      "forgot_password": "忘记您的密码了？",
+      "sign_in": "登录",
+      "guest_title": "以游客身份继续",
+      "guest_continue": "继续"
+    },
+    "orders": {
+      "title": "订单历史记录",
+      "order_number": "订单",
+      "date": "日期",
+      "payment_status": "付款状态",
+      "fulfillment_status": "发货状态",
+      "total": "总计",
+      "none": "您尚未创建任何订单。"
+    },
+    "order": {
+      "title": "订单 {{ name }}",
+      "date": "下单日期：{{ date }}",
+      "cancelled": "订单取消日期：{{ date }}",
+      "cancelled_reason": "原因：{{ reason }}",
+      "billing_address": "账单地址",
+      "payment_status": "付款状态",
+      "shipping_address": "发货地址",
+      "fulfillment_status": "发货状态",
+      "discount": "折扣",
+      "shipping": "发货",
+      "tax": "税费",
+      "product": "产品",
+      "sku": "SKU",
+      "price": "价格",
+      "quantity": "数量",
+      "total": "总计",
+      "fulfilled_at": "已于 {{ date }} 发货",
+      "subtotal": "小计",
+      "track_shipment": "跟踪货件"
+    },
+    "recover_password": {
+      "title": "重置密码",
+      "email": "电子邮件",
+      "submit": "提交",
+      "cancel": "取消",
+      "subtext": "我们会向您发送电子邮件以重置您的密码。",
+      "success": "我们已向您发送电子邮件，其中包含更新密码的链接。"
+    },
+    "reset_password": {
+      "title": "重置账户密码",
+      "subtext": "输入 {{ email }} 的新密码",
+      "password": "密码",
+      "password_confirm": "确认密码",
+      "submit": "重置密码"
+    },
+    "register": {
+      "title": "创建账户",
+      "first_name": "名字",
+      "last_name": "姓",
+      "email": "电子邮件",
+      "password": "密码",
+      "submit": "创建"
+    }
+  },
+  "homepage": {
+    "hero": {
+      "next_slide": "下一张幻灯片",
+      "previous_slide": "上一张幻灯片",
+      "pause_slideshow": "暂停幻灯片",
+      "play_slideshow": "播放幻灯片",
+      "navigation_instructions": "使用左\/右箭头浏览幻灯片或者在使用移动设备时向左\/向右轻扫",
+      "slide_number": "当前幻灯片 {{ slide_number }}"
+    },
+    "onboarding": {
+      "blog_title": "您的文章的标题",
+      "product_title": "产品标题示例",
+      "collection_title": "产品系列名称",
+      "no_content": "此部分目前不包含任何内容。使用侧边栏向此部分添加内容。"
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "购物车"
+    },
+    "customer": {
+      "account": "账户",
+      "log_out": "登出",
+      "create_account": "创建账户"
+    },
+    "sidebar": {
+      "featured_products": "特色产品"
+    },
+    "footer": {
+      "social_platform": "{{ platform }} 上的 {{ name }}"
+    }
+  },
+  "products": {
+    "product": {
+      "sold_out": "售罄",
+      "unavailable": "不可用",
+      "will_not_ship_until": "直到 {{ date }} 才会发货",
+      "will_be_in_stock_after": "将在 {{ date }} 之后有货",
+      "sale_price": "销售价格",
+      "regular_price": "常规价格",
+      "on_sale": "销售额",
+      "on_sale_from_html": "促销价为 {{ price }} 起",
+      "from_text_html": "来自 {{ price }}",
+      "include_taxes": "税金（包含）。",
+      "shipping_policy_html": "结账时计算的<a href=\"{{ link }}\">运费<\/a>。",
+      "quantity": "数量",
+      "add_to_cart": "添加到购物车",
+      "full_details": "全部详细信息",
+      "view": "预览",
+      "stock_available": {
+        "one": "{{ count }} 件在售",
+        "other": "{{ count }} 件在售"
+      },
+      "collection_return": "返回到",
+      "product_added_to_cart_html": "产品已加入购物车。<span>查看购物车并结账<\/span>。",
+      "stock_unavailable": "由于库存不足，因此无法将商品添加到购物车中。",
+      "unit_price_label": "单价"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title_html": "这是您获得的 {{ shop }} 的 {{ value }} 礼品卡！",
+      "subtext": "这是您的礼品卡！",
+      "disabled": "已禁用",
+      "expired": "已于 {{ expiry }} 过期",
+      "active": "过期日期：{{ expiry }}",
+      "redeem": "在结账时使用此代码兑换您的礼品卡",
+      "shop_link": "开始购物",
+      "print": "打印",
+      "remaining_html": "剩余 {{ balance }}",
+      "add_to_apple_wallet": "添加到 Apple Wallet"
+    }
+  },
+  "sections": {
+    "map": {
+      "get_directions": "获取指示",
+      "address_error": "查找该地址时出错",
+      "address_no_results": "未找到该地址的结果",
+      "address_query_limit_html": "您已超过 Google API 使用限制。考虑升级到<a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">高级套餐<\/a>。",
+      "auth_error_html": "对您的 Google 地图 API 密钥进行身份验证时出现问题。"
+    }
+  },
+  "video": {
+    "play": "播放视频",
+    "close": "停止视频"
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "regular_price": "Regular price",
+        "sold_out": "Sold out",
+        "unavailable": "Unavailable",
+        "on_sale": "Sale",
+        "quantity": "Quantity",
+        "add_to_cart": "Add to cart",
+        "back_to_collection": "Back to {{ title }}",
+        "view_details": "View details"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter store using password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "password_link": "Enter using password"
+    }
+  }
+}

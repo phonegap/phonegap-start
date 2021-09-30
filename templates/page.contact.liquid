@@ -1,0 +1,45 @@
+<div class="page-width">
+  <h1 class="small--text-center">{{ page.title }}</h1>
+  {% if page.content != blank %}
+    <div class="content-block">
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    </div>
+  {% endif %}
+  <div class="content-block">
+    <div class="contact-form form-vertical">
+      {% form 'contact' %}
+
+        {% if form.posted_successfully? %}
+          <p class="form-success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="grid grid--half-gutters">
+          <div class="grid__item medium-up--one-half">
+            <label for="ContactFormName" class="label--hidden">{{ 'contact.form.name' | t }}</label>
+            <input type="text" id="ContactFormName" name="contact[{{ 'contact.form.name' | t }}]" placeholder="{{ 'contact.form.name' | t }}" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          </div>
+          <div class="grid__item medium-up--one-half">
+            <label for="ContactFormEmail" class="label--hidden">{{ 'contact.form.email' | t }}</label>
+            <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          </div>
+        </div>
+
+        <label for="ContactFormPhone" class="label--hidden">{{ 'contact.form.phone' | t }}</label>
+        <input type="tel" id="ContactFormPhone" name="contact[{{ 'contact.form.phone' | t }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+        <label for="ContactFormMessage" class="label--hidden">{{ 'contact.form.message' | t }}</label>
+        <textarea rows="10" id="ContactFormMessage" name="contact[{{ 'contact.form.message' | t }}]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+        <input type="submit" class="btn" value="{{ 'contact.form.send' | t }}">
+      {% endform %}
+    </div>
+  </div>
+
+  {% section 'featured-products-subsection' %}
+</div>

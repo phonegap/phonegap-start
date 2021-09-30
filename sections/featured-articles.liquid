@@ -1,0 +1,306 @@
+{% assign blog = blogs[section.settings.blog] %}
+
+{%  case section.settings.post_limit %}
+  {% when 3 %}
+    {%- assign width = 'small--one-whole medium-up--one-third' -%}
+  {% when 2 %}
+    {%- assign width = 'small--one-whole medium-up--one-half' -%}
+  {% when 1 %}
+    {%- assign width = 'small--one-whole medium-up--one-whole' -%}
+  {% else %}
+    {%- assign width = 'small--one-whole medium-up--one-third' -%}
+{% endcase %}
+
+<div class="page-width">
+  <div class="section-block section-block--padding">
+    {% if section.settings.title != blank or section.settings.show_view_all != blank %}
+      <div class="section-block__header text-center">
+        {% if section.settings.title != blank %}
+          <h4 class="h1--mini section-block__title">{{ section.settings.title | escape }}</h4>
+        {% endif %}
+        {% if section.settings.show_view_all != blank %}
+          <a href="{{ blog.url }}" class="section-block__subtext">{{ 'blogs.article.view_all' | t }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+      <div class="grid grid--no-gutters">
+        {% unless blog.articles_count == 0 %}
+          {% for article in blog.articles limit: section.settings.post_limit %}
+            <div class="grid__item {{ width }}">
+              <a href="{{ article.url }}" class="article-block">
+                {% if article.image %}
+                  <noscript>
+                    <div class="article-block__image" style="background-image: url('{{ article | img_url: '480x480' }}')">
+                    </div>
+                  </noscript>
+                  <div class="article-block__image lazyload"
+                    data-bgset="{% include 'bgset', image: article.image %}"
+                    data-sizes="auto"
+                    data-parent-fit="cover">
+                  </div>
+                {% endif %}
+                <div class="article-block__info">
+                  <span class="article-block__date">
+                    {{ article.published_at | time_tag: format: 'date' }}
+                  </span>
+                  <h6 class="article-block__title">{{ article.title }}</h6>
+                  <p>{{ 'blogs.article.read_more' | t }}</p>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for i in (1..section.settings.post_limit)  %}
+            <div class="grid__item {{ width }}">
+              <a href="#" class="article-block">
+                <div>
+                   {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="article-block__info">
+                  <h6 class="article-block__title">{{ 'homepage.onboarding.blog_title' | t }}</h6>
+                  <p>{{ 'blogs.article.read_more' | t }}</p>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        {% endunless %}
+        {% if blog == empty %}
+          {% for i in (1..section.settings.post_limit)  %}
+            <div class="grid__item {{ width }}">
+              <a href="#" class="article-block">
+                <div>
+                   {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="article-block__info">
+                  <h6 class="article-block__title">{{ 'homepage.onboarding.blog_title' | t }}</h6>
+                  <p>{{ 'blogs.article.read_more' | t }}</p>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Příspěvky na blogu",
+    "da": "Blogopslag",
+    "de": "Blog-Beiträge",
+    "en": "Blog posts",
+    "es": "Entradas del blog",
+    "fi": "Blogijulkaisut",
+    "fr": "Articles de blog",
+    "it": "Articoli del blog",
+    "ja": "ブログ記事",
+    "ko": "블로그 게시물",
+    "nb": "Blogginnlegg",
+    "nl": "Blogberichten",
+    "pl": "Posty na blogu",
+    "pt-BR": "Posts do blog",
+    "pt-PT": "Publicações no blogue",
+    "sv": "Blogginlägg",
+    "th": "โพสต์บล็อก",
+    "tr": "Blog gönderileri",
+    "vi": "Bài viết blog",
+    "zh-CN": "博客文章",
+    "zh-TW": "網誌文章"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "Titre",
+        "it": "Titolo",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Blog",
+        "da": "Blog",
+        "de": "Blog",
+        "en": "Blog",
+        "es": "Blog",
+        "fi": "Blogi",
+        "fr": "Blog",
+        "it": "Blog",
+        "ja": "ブログ",
+        "ko": "블로그",
+        "nb": "Blogg",
+        "nl": "Blog",
+        "pl": "Blog",
+        "pt-BR": "Blog",
+        "pt-PT": "Blogue",
+        "sv": "Blogg",
+        "th": "บล็อก",
+        "tr": "Blog",
+        "vi": "Blog",
+        "zh-CN": "博客",
+        "zh-TW": "網誌"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": {
+        "cs": "Zobrazit odkaz Přečíst vše",
+        "da": "Vis linket \"Læs alle\"",
+        "de": "Schaltfläche \"Alle lesen\" anzeigen",
+        "en": "Show 'Read all' link",
+        "es": "Mostrar el enlace \"Leer todo\"",
+        "fi": "Näytä \"Lue kaikki\" -linkki",
+        "fr": "Afficher le lien « Tout lire »",
+        "it": "Mostra link \"Leggi tutto\"",
+        "ja": "「すべて読む」リンクを表示する",
+        "ko": "'모두 읽기' 링크 표시",
+        "nb": "Vis «Les alle»-koblingen",
+        "nl": "Laat link 'Alles lezen' zien",
+        "pl": "Pokaż link „Czytaj wszystko”",
+        "pt-BR": "Exibir o link \"Ler tudo\"",
+        "pt-PT": "Mostrar ligação \"Ler tudo\"",
+        "sv": "Visa länken \"Läs allt\"",
+        "th": "แสดงลิงก์ 'อ่านทั้งหมด'",
+        "tr": "\"Tümünü oku\" bağlantısını göster",
+        "vi": "Hiển thị liên kết \"Đọc tất cả\"",
+        "zh-CN": "显示“阅读全部”链接",
+        "zh-TW": "顯示「閱讀全部」連結"
+      },
+      "default": true
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": {
+        "cs": "Blog",
+        "da": "Blog",
+        "de": "Blog",
+        "en": "Blog",
+        "es": "Blog",
+        "fi": "Blogi",
+        "fr": "Blog",
+        "it": "Blog",
+        "ja": "ブログ",
+        "ko": "블로그",
+        "nb": "Blogg",
+        "nl": "Blog",
+        "pl": "Blog",
+        "pt-BR": "Blog",
+        "pt-PT": "Blogue",
+        "sv": "Blogg",
+        "th": "บล็อก",
+        "tr": "Blog",
+        "vi": "Blog",
+        "zh-CN": "博客",
+        "zh-TW": "網誌"
+      }
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "label": {
+        "cs": "Příspěvky",
+        "da": "Opslag",
+        "de": "Beiträge",
+        "en": "Posts",
+        "es": "Publicaciones",
+        "fi": "Julkaisut",
+        "fr": "Articles",
+        "it": "articoli",
+        "ja": "投稿",
+        "ko": "게시물",
+        "nb": "Innlegg",
+        "nl": "Berichten",
+        "pl": "Posty",
+        "pt-BR": "posts",
+        "pt-PT": "Publicações",
+        "sv": "Inlägg",
+        "th": "โพสต์",
+        "tr": "Gönderiler",
+        "vi": "Bài viết",
+        "zh-CN": "文章",
+        "zh-TW": "貼文"
+      },
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Příspěvky na blogu",
+        "da": "Blogopslag",
+        "de": "Blog-Beiträge",
+        "en": "Blog posts",
+        "es": "Entradas del blog",
+        "fi": "Blogijulkaisut",
+        "fr": "Articles de blog",
+        "it": "Articoli del blog",
+        "ja": "ブログ記事",
+        "ko": "블로그 게시물",
+        "nb": "Blogginnlegg",
+        "nl": "Blogberichten",
+        "pl": "Posty na blogu",
+        "pt-BR": "Posts do blog",
+        "pt-PT": "Publicações no blogue",
+        "sv": "Blogginlägg",
+        "th": "โพสต์บล็อก",
+        "tr": "Blog gönderileri",
+        "vi": "Bài viết blog",
+        "zh-CN": "博客文章",
+        "zh-TW": "網誌文章"
+      },
+      "category": {
+        "cs": "Blog",
+        "da": "Blog",
+        "de": "Blog",
+        "en": "Blog",
+        "es": "Blog",
+        "fi": "Blogi",
+        "fr": "Blog",
+        "it": "Blog",
+        "ja": "ブログ",
+        "ko": "블로그",
+        "nb": "Blogg",
+        "nl": "Blog",
+        "pl": "Blog",
+        "pt-BR": "Blog",
+        "pt-PT": "Blogue",
+        "sv": "Blogg",
+        "th": "บล็อก",
+        "tr": "Blog",
+        "vi": "Blog",
+        "zh-CN": "博客",
+        "zh-TW": "網誌"
+      },
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}

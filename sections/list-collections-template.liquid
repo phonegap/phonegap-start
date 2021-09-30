@@ -1,0 +1,584 @@
+{% if section.settings.layout == 'grid' %}
+  {% if section.settings.display_type == 'all' %}
+    {%- assign collection_count = 0 -%}
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' %}
+        {%- assign collection_count = collection_count | plus: 1 -%}
+      {% endunless %}
+    {% endfor %}
+  {% else %}
+    {%- assign collection_count = section.blocks.size -%}
+  {% endif %}
+
+  {% assign number_rows = 1 %}
+
+  {% case collection_count %}
+    {% when 1 %}
+      {% assign grid_item_width = 'medium-up--one-half' %}
+      {% assign height = 450 %}
+    {% when 2 %}
+      {% assign grid_item_width = 'medium-up--one-half' %}
+      {% assign height = 450 %}
+    {% when 3 %}
+      {% assign grid_item_width = 'medium-up--one-third' %}
+      {% assign height = 330 %}
+    {% when 4 %}
+      {% assign grid_item_width = 'medium-up--one-quarter' %}
+      {% assign height = 235 %}
+    {% else %}
+      {% assign grid_item_width = 'medium-up--one-third' %}
+      {% assign height = 330 %}
+      {% assign number_rows = collection_count | divided_by: 3.0 | ceil %}
+  {% endcase %}
+{% endif %}
+
+<div class="page-width" data-section-id="{{ section.id }}" data-section-type="collections-list">
+  {% if section.settings.display_type == 'all' %}
+    {% case section.settings.sort %}
+      {% when 'products_high' or 'products_low' %}
+        {%- assign list_collections = collections | sort: 'all_products_count' -%}
+      {% when 'date' or 'date_reversed' %}
+        {%- assign list_collections = collections | sort: 'published_at' -%}
+      {% else %}
+        {%- assign list_collections = collections -%}
+    {% endcase %}
+    {% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}
+      <div class="grid grid--no-gutters grid--uniform collection" data-number-rows="{{ number_rows }}">
+        {% assign row_number = 1 %}
+        {% for collection in list_collections %}
+          {%- assign featured_collection = collection -%}
+          {% unless collection.handle == 'frontpage' %}
+            {% if section.settings.layout == 'list' %}
+              {% include 'collection-list-item' %}
+            {% else %}
+              {% if collection_count > 4 and forloop.index > 3 %}
+                {% assign row_number = forloop.index | divided_by: 3.0 | ceil %}
+              {% endif %}
+              {% include 'collection-grid-item' with stretch_collection_image: false, height: height %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="grid grid--no-gutters grid--uniform collection" data-number-rows="{{ number_rows }}">
+        {% assign row_number = 1 %}
+        {% for collection in list_collections reversed %}
+          {%- assign featured_collection = collection -%}
+          {% unless collection.handle == 'frontpage' %}
+            {% if section.settings.layout == 'list' %}
+              {% include 'collection-list-item' %}
+            {% else %}
+              {% if collection_count > 4 and forloop.index > 3 %}
+                {% assign row_number = forloop.index | divided_by: 3.0 | ceil %}
+              {% endif %}
+              {% include 'collection-grid-item' with stretch_collection_image: false, height: height %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% else %}
+    <div class="grid grid--no-gutters grid--uniform collection" data-number-rows="{{ number_rows }}">
+      {% assign row_number = 1 %}
+      {% for block in section.blocks %}
+        {%- assign featured_collection = collections[block.settings.collection] -%}
+        {% if section.settings.layout == 'list' %}
+          {% include 'collection-list-item' %}
+        {% else %}
+          {% if collection_count > 4 and forloop.index > 3 %}
+            {% assign row_number = forloop.index | divided_by: 3.0 | ceil %}
+          {% endif %}
+          {% include 'collection-grid-item' with stretch_collection_image: false, height: height %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Stránka se seznamem kolekcí",
+    "da": "Siden Kollektionsliste",
+    "de": "Kategorien-Liste Seite",
+    "en": "Collections list page",
+    "es": "Lista de colecciones",
+    "fi": "Kokoelmaluettelosivu",
+    "fr": "Liste des collections",
+    "it": "Elenco collezioni",
+    "ja": "コレクションリストのページ",
+    "ko": "컬렉션 목록 페이지",
+    "nb": "Samlingsliste-side",
+    "nl": "Pagina Collectielijst",
+    "pl": "Strona listy kolekcji",
+    "pt-BR": "Página da lista de coleções",
+    "pt-PT": "Página da lista de coleções",
+    "sv": "Kollektionslistsida",
+    "th": "หน้ารายการคอลเลกชัน",
+    "tr": "Koleksiyonlar listesi sayfası",
+    "vi": "Trang danh sách bộ sưu tập",
+    "zh-CN": "产品系列列表页面",
+    "zh-TW": "商品系列清單頁面"
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": {
+        "cs": "Seznam ve výchozím nastavení obsahuje všechny vaše kolekce. Pokud ho chcete přizpůsobit, zvolte možnost Vybrané a přidejte požadované kolekce.",
+        "da": "Alle dine kollektioner vises som standard. Hvis du vil tilpasse din liste, skal du vælge \"Valgte\" og tilføje kollektioner.",
+        "de": "Alle Kategorien sind automatisch gelistet. Zum Ändern der Liste wähle 'Ausgewählt' und füge Kategorien hinzu.",
+        "en": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections.",
+        "es": "Todas tus colecciones se muestran por defecto. Para personalizar tu lista, elige 'Seleccionadas' y agrega colecciones.",
+        "fi": "Kaikki kokoelmasi näkyvät oletuksena. Voit mukauttaa luetteloa napauttamalla \"Valittu\" ja lisäämällä kokoelmia.",
+        "fr": "Toutes vos collections sont listées par défaut. Pour personnaliser votre liste, cliquez sur « Sélection » et ajoutez des collections.",
+        "it": "Tutte le collezioni vengono elencate per impostazione predefinita. Per personalizzare il tuo elenco, scegli \"Selezionato\" e aggiungi delle collezioni.",
+        "ja": "すべてのコレクションがデフォルトで一覧表示されます。一覧をカスタマイズするには、「選択済み」を選択してコレクションを追加します。",
+        "ko": "모든 콜렉션이 기본으로 나열됩니다. 목록을 사용자 지정하려면 '선택'을 선택하고 컬렉션을 추가하십시오.",
+        "nb": "Alle samlingene dine vises som standard. For å tilpasse listen, velg «Valgte» og legg til samlinger.",
+        "nl": "Standaard worden al je collecties weergegeven. Kies Geselecteerd en voeg collecties toe om de lijst aan te passen.",
+        "pl": "Domyślnie wyświetlana jest lista wszystkich Twoich kolekcji. Aby dostosować listę, wybierz opcję „Wybrane” i dodaj kolekcje.",
+        "pt-BR": "Todas as suas coleções são listadas por padrão. Para personalizar sua lista, escolha \"Selecionado\" e adicione coleções.",
+        "pt-PT": "Todas as suas coleções são listadas por predefinição. Para personalizar a sua lista, escolha \"Selecionado\" e adicione coleções.",
+        "sv": "Alla dina kollektioner är listade som standard. För att anpassa din lista väljer du \"Vald\" och lägger till kollektioner.",
+        "th": "มีการระบุคอลเลกชันทั้งหมดของคุณไว้เป็นค่าเริ่มต้น หากต้องการปรับแต่งรายการของคุณ ให้เลือก 'ที่เลือก' แล้วเพิ่มคอลเลกชัน",
+        "tr": "Varsayılan olarak koleksiyonlarınızın tümü gösterilir. Listenizi özelleştirmek için \"Seçilen\" seçeneğini belirleyin ve koleksiyonlarınızı ekleyin.",
+        "vi": "Tất cả bộ sưu tập của bạn được liệt kê theo mặc định. Để tùy chỉnh danh sách, chọn \"Đã chọn\" và thêm bộ sưu tập.",
+        "zh-CN": "默认情况下列出您的所有产品系列。若要自定义列表，请选择“已选择”并添加产品系列。",
+        "zh-TW": "系統預設會將您所有的商品系列都列入清單。如果想自訂清單，請點選「已選取」並新增商品系列。"
+      }
+    },
+    {
+      "type": "radio",
+      "id": "display_type",
+      "label": {
+        "cs": "Vyberte kolekce, které chcete zobrazit",
+        "da": "Vælg de kollektioner, der skal vises",
+        "de": "Kategorien auswählen, die angezeigt werden sollen",
+        "en": "Select collections to show",
+        "es": "Selecciona colecciones para mostrar",
+        "fi": "Valitse näytettävät kokoelmat",
+        "fr": "Sélectionner les collections à afficher",
+        "it": "Seleziona le collezioni da mostrare",
+        "ja": "表示するコレクションを選択する",
+        "ko": "표시할 컬렉션 선택",
+        "nb": "Velg samlinger som skal vises",
+        "nl": "Collecties selecteren om weer te geven",
+        "pl": "Wybierz kolekcje do pokazania",
+        "pt-BR": "Selecione coleções para exibir",
+        "pt-PT": "Selecionar coleções para mostrar",
+        "sv": "Välj kollektioner som ska visas",
+        "th": "เลือกคอลเลกชันที่จะแสดง",
+        "tr": "Gösterilecek koleksiyonları seç",
+        "vi": "Chọn bộ sưu tập muốn hiển thị",
+        "zh-CN": "选择要显示的产品系列",
+        "zh-TW": "選取欲顯示的商品系列"
+      },
+      "default": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": {
+            "cs": "Všechny",
+            "da": "Alle",
+            "de": "Alle",
+            "en": "All",
+            "es": "Todos",
+            "fi": "Kaikki",
+            "fr": "Toutes",
+            "it": "Tutti",
+            "ja": "すべて",
+            "ko": "모두",
+            "nb": "Alle",
+            "nl": "Alle",
+            "pl": "Wszystko",
+            "pt-BR": "Todos",
+            "pt-PT": "Tudo",
+            "sv": "Alla",
+            "th": "ทั้งหมด",
+            "tr": "Tümü",
+            "vi": "Tất cả",
+            "zh-CN": "所有",
+            "zh-TW": "全部"
+          }
+        },
+        {
+          "value": "selected",
+          "label": {
+            "cs": "Vybrané",
+            "da": "Valgt",
+            "de": "Ausgewählt",
+            "en": "Selected",
+            "es": "Seleccionadas",
+            "fi": "Valittu",
+            "fr": "Sélection",
+            "it": "Selezionato",
+            "ja": "選択済み",
+            "ko": "선택됨",
+            "nb": "Valgt",
+            "nl": "Geselecteerd",
+            "pl": "Wybrane",
+            "pt-BR": "Selecionado",
+            "pt-PT": "Selecionado",
+            "sv": "Valt",
+            "th": "เลือกแล้ว",
+            "tr": "Seçildi",
+            "vi": "Đã chọn",
+            "zh-CN": "已选",
+            "zh-TW": "已選取"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "cs": "Vybrat rozvržení",
+        "da": "Vælg layout",
+        "de": "Layout auswählen",
+        "en": "Select layout",
+        "es": "Seleccionar diseño",
+        "fi": "Valitse asettelu",
+        "fr": "Sélectionner la mise en page",
+        "it": "Seleziona layout",
+        "ja": "レイアウトを選択する",
+        "ko": "레이아웃 표시",
+        "nb": "Velg oppsett",
+        "nl": "Selecteer opmaak",
+        "pl": "Wybierz układ",
+        "pt-BR": "Selecione o layout",
+        "pt-PT": "Selecionar esquema",
+        "sv": "Välj layout",
+        "th": "เลือกเลย์เอาต์",
+        "tr": "Düzen seç",
+        "vi": "Chọn bố cục",
+        "zh-CN": "选择布局",
+        "zh-TW": "選擇版面配置"
+      },
+      "default": "grid",
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "cs": "Mřížka",
+            "da": "Gitter",
+            "de": "Raster",
+            "en": "Grid",
+            "es": "Cuadrícula",
+            "fi": "Ruudukko",
+            "fr": "Grille",
+            "it": "Griglia",
+            "ja": "グリッド",
+            "ko": "그리드",
+            "nb": "Rutenett",
+            "nl": "Grid",
+            "pl": "Siatka",
+            "pt-BR": "Grade",
+            "pt-PT": "Grelha",
+            "sv": "Rutnät",
+            "th": "กริด",
+            "tr": "Izgara",
+            "vi": "Lưới",
+            "zh-CN": "网格",
+            "zh-TW": "網格"
+          }
+        },
+        {
+          "value": "list",
+          "label": {
+            "cs": "Seznam",
+            "da": "Liste",
+            "de": "Liste",
+            "en": "List",
+            "es": "Lista",
+            "fi": "Luettelo",
+            "fr": "Liste",
+            "it": "Elenco",
+            "ja": "リスト",
+            "ko": "목록",
+            "nb": "Liste",
+            "nl": "Lijst",
+            "pl": "Lista",
+            "pt-BR": "Lista",
+            "pt-PT": "Lista",
+            "sv": "Lista",
+            "th": "รายการ",
+            "tr": "Liste",
+            "vi": "Danh sách",
+            "zh-CN": "列表",
+            "zh-TW": "清單"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "label": {
+        "cs": "Seřadit kolekce:",
+        "da": "Sortér kollektioner efter:",
+        "de": "Kategorien sortieren nach:",
+        "en": "Sort collections by:",
+        "es": "Ordenar colecciones por:",
+        "fi": "Lajittele kokoelmat seuraavasti:",
+        "fr": "Trier les collections par :",
+        "it": "Ordina le collezioni per:",
+        "ja": "コレクションの並べ替え方法:",
+        "ko": "컬렉션 정렬 기준:",
+        "nb": "Sorter samlinger etter:",
+        "nl": "Collecties sorteren op:",
+        "pl": "Sortuj kolekcje według:",
+        "pt-BR": "Organizar coleções por:",
+        "pt-PT": "Ordenar coleções por:",
+        "sv": "Sortera kollektioner efter:",
+        "th": "จัดเรียงคอลเลกชันตาม:",
+        "tr": "Koleksiyonları sıralama ölçütü:",
+        "vi": "Sắp xếp bộ sưu tập theo:",
+        "zh-CN": "产品系列排序依据：",
+        "zh-TW": "以下列方式排序商品系列："
+      },
+      "info": {
+        "cs": "Řazení je možné použít jen v případě, že je vybrána možnost Všechny",
+        "da": "Sortering gælder kun, når \"Alle\" er valgt",
+        "de": "Sortieren funktioniert nur, wenn 'Alle' ausgewählt ist",
+        "en": "Sorting only applies when 'All' is selected",
+        "es": "La función ordenar solo se aplica cuando se selecciona \"Todas\"",
+        "fi": "Lajittelua sovelletaan vain, kun valintana on \"Kaikki\"",
+        "fr": "Le tri ne s'applique que lorsque « Toutes » est sélectionné",
+        "it": "L'ordinamento viene applicato solo quanto è selezionato \"Tutto\"",
+        "ja": "「すべて」が選択されている場合にのみ並べ替えを適用する",
+        "ko": "정렬은 '모두'를 선택한 경우에만 적용됩니다.",
+        "nb": "Sortering gjelder bare når «Alle» er valgt",
+        "nl": "Sorteren is alleen van toepassing als Alles is geselecteerd",
+        "pl": "Sortowanie można wykonać tylko po wybraniu opcji „Wszystkie”",
+        "pt-BR": "A organização só se aplica quando \"Tudo\" está selecionado",
+        "pt-PT": "A ordenação só se aplica quando \"Tudo\" está selecionado",
+        "sv": "Sortering gäller endast när \"Alla\" är markerat",
+        "th": "การจัดเรียงจะใช้ได้เมื่อเลือก 'ทั้งหมด' เท่านั้น",
+        "tr": "Sıralama yalnızca \"Tümü\" seçildiğinde uygulanır",
+        "vi": "Sắp xếp chỉ áp dụng khi chọn \"Tất cả\"",
+        "zh-CN": "仅在选择“全部”时应用排序",
+        "zh-TW": "只有在選擇「全部」的時候才能排序"
+      },
+      "default": "alphabetical",
+      "options": [
+        {
+          "value": "products_high",
+          "label": {
+            "cs": "Od nejvyššího počtu produktů po nejnižší",
+            "da": "Produktantal, høj til lav",
+            "de": "Produktanzahl, hoch zu niedrig",
+            "en": "Product count, high to low",
+            "es": "Recuento de productos, de mayor a menor",
+            "fi": "Tuotteiden määrä suurimmasta pienimpään",
+            "fr": "Nombre de produits, par ordre décroissant",
+            "it": "Conteggio decrescente prodotti",
+            "ja": "商品数の多い順",
+            "ko": "제품 개수, 높은 개수부터",
+            "nb": "Produktantall, høy til lav",
+            "nl": "Aantal producten, van hoog naar laag",
+            "pl": "Liczba produktów, od najwyższej do najniższej",
+            "pt-BR": "Contagem de produtos, alta para baixa",
+            "pt-PT": "Contagem de produtos, alta para baixa",
+            "sv": "Produktantal, högt till lågt",
+            "th": "จำนวนสินค้า จากสูงไปต่ำ",
+            "tr": "Ürün sayısı, yüksekten düşüğe",
+            "vi": "Số lượng sản phẩm, từ cao đến thấp",
+            "zh-CN": "产品数量，从高到低",
+            "zh-TW": "產品數量，從高到低"
+          }
+        },
+        {
+          "value": "products_low",
+          "label": {
+            "cs": "Od nejnižšího počtu produktů po nejvyšší",
+            "da": "Produktantal, lav til høj",
+            "de": "Produktanzahl, niedrig zu hoch",
+            "en": "Product count, low to high",
+            "es": "Recuento de productos, de menor a mayor",
+            "fi": "Tuotteiden määrä pienimmästä suurimpaan",
+            "fr": "Nombre de produits, par ordre croissant",
+            "it": "Conteggio crescente prodotti",
+            "ja": "商品数の少ない順",
+            "ko": "제품 개수, 낮은 개수부터",
+            "nb": "Produktantall, lav til høy",
+            "nl": "Aantal producten, van laag naar hoog",
+            "pl": "Liczba produktów, od najniższej do najwyższej",
+            "pt-BR": "Contagem de produtos, baixa para alta",
+            "pt-PT": "Contagem de produtos, baixa para alta",
+            "sv": "Produktantal, lågt till högt",
+            "th": "รูปแบบรูปภาพ จากต่ำไปสูง",
+            "tr": "Ürün sayısı, düşükten yükseğe",
+            "vi": "Số lượng sản phẩm, từ thấp đến cao",
+            "zh-CN": "产品数量，从低到高",
+            "zh-TW": "產品數量，從低到高"
+          }
+        },
+        {
+          "value": "alphabetical",
+          "label": {
+            "cs": "Abecedně: A–Z",
+            "da": "Alfabetisk, A-Å",
+            "de": "Alphabetisch, A-Z",
+            "en": "Alphabetically, A-Z",
+            "es": "Alfabéticamente, A-Z",
+            "fi": "Aakkosjärjestyksessä A–Z",
+            "fr": "Alphabétique, de A à Z",
+            "it": "In ordine alfabetico, A - Z",
+            "ja": "アルファベット順, A-Z",
+            "ko": "알파벳순, A-Z",
+            "nb": "Alfabetisk, A–Å",
+            "nl": "Alfabetisch: A-Z",
+            "pl": "Alfabetycznie, A-Z",
+            "pt-BR": "Ordem alfabética, A–Z",
+            "pt-PT": "Alfabeticamente, A-Z",
+            "sv": "Alfabetiskt, A–Ö",
+            "th": "เรียงตามตัวอักษร A-Z",
+            "tr": "Alfabetik olarak, A-Z",
+            "vi": "Thứ tự bảng chữ cái, từ A-Z",
+            "zh-CN": "按字母顺序排序，A-Z",
+            "zh-TW": "依字母順序 A 到 Z"
+          }
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": {
+            "cs": "Abecedně: Z–A",
+            "da": "Alfabetisk, Å-A",
+            "de": "Alphabetisch, Z-A",
+            "en": "Alphabetically, Z-A",
+            "es": "Alfabéticamente, Z-A",
+            "fi": "Aakkosjärjestyksessä Z–A",
+            "fr": "Alphabétique, de Z à A",
+            "it": "In ordine alfabetico, Z - A",
+            "ja": "アルファベット順, Z-A",
+            "ko": "알파벳순, Z-A",
+            "nb": "Alfabetisk, Å–A",
+            "nl": "Alfabetisch: Z-A",
+            "pl": "Alfabetycznie, Z-A",
+            "pt-BR": "Ordem alfabética, Z–A",
+            "pt-PT": "Alfabeticamente, Z-A",
+            "sv": "Alfabetiskt, Ö–A",
+            "th": "เรียงตามตัวอักษร Z-A",
+            "tr": "Alfabetik olarak, Z-A",
+            "vi": "Thứ tự bảng chữ cái, từ Z-A",
+            "zh-CN": "按字母顺序排序，Z-A",
+            "zh-TW": "依字母順序 Z 到 A"
+          }
+        },
+        {
+          "value": "date",
+          "label": {
+            "cs": "Od nejstaršího data po nejnovější",
+            "da": "Dato, ældre til nyere",
+            "de": "Datum, alt zu neu",
+            "en": "Date, old to new",
+            "es": "Fecha: antiguo(a) a reciente",
+            "fi": "Päivämäärä vanhimmasta uusimpaan",
+            "fr": "Date, de la plus ancienne à la plus récente",
+            "it": "Data, dal più vecchio al più recente",
+            "ja": "古い商品順",
+            "ko": "날짜(오래된 날짜부터)",
+            "nb": "Dato, gammelt til nytt",
+            "nl": "Datum: oud naar nieuw",
+            "pl": "Data, od najwcześniejszej do najpóźniejszej",
+            "pt-BR": "Data, mais antiga primeiro",
+            "pt-PT": "Data, mais antigos",
+            "sv": "Datum, gammalt till nytt",
+            "th": "วันที่ จากเก่าไปใหม่",
+            "tr": "Tarih, eskiden yeniye",
+            "vi": "Ngày, từ cũ đến mới",
+            "zh-CN": "日期从旧到新",
+            "zh-TW": "日期 (從舊到新)"
+          }
+        },
+        {
+          "value": "date_reversed",
+          "label": {
+            "cs": "Od nejnovějšího data po nejstarší",
+            "da": "Dato, nyere til ældre",
+            "de": "Datum, neu zu alt",
+            "en": "Date, new to old",
+            "es": "Fecha: reciente a antiguo(a)",
+            "fi": "Päivämäärä uusimmasta vanhimpaan",
+            "fr": "Date, de la plus récente à la plus ancienne",
+            "it": "Data, dal più recente al più vecchio",
+            "ja": "新着順",
+            "ko": "날짜(최신 날짜부터)",
+            "nb": "Dato, nytt til gammelt",
+            "nl": "Datum: nieuw naar oud",
+            "pl": "Data, od najpóźniejszej do najwcześniejszej",
+            "pt-BR": "Data, mais recente primeiro",
+            "pt-PT": "Data, mais recentes",
+            "sv": "Datum, nytt till gammalt",
+            "th": "วันที่ จากใหม่ไปเก่า",
+            "tr": "Tarih, yeniden eskiye",
+            "vi": "Ngày, từ mới đến cũ",
+            "zh-CN": "日期从新到旧",
+            "zh-TW": "日期 (從新到舊)"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": {
+        "cs": "Kolekce",
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pl": "Kolekcja",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "tr": "Koleksiyon",
+        "vi": "Bộ sưu tập",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      },
+      "settings": [
+        {
+          "label": {
+            "cs": "Kolekce",
+            "da": "Kollektion",
+            "de": "Kategorie",
+            "en": "Collection",
+            "es": "Colección",
+            "fi": "Kokoelma",
+            "fr": "Collection",
+            "it": "Collezione",
+            "ja": "コレクション",
+            "ko": "컬렉션",
+            "nb": "Samling",
+            "nl": "Collectie",
+            "pl": "Kolekcja",
+            "pt-BR": "Coleção",
+            "pt-PT": "Coleção",
+            "sv": "Produktserie",
+            "th": "คอลเลกชัน",
+            "tr": "Koleksiyon",
+            "vi": "Bộ sưu tập",
+            "zh-CN": "收藏",
+            "zh-TW": "商品系列"
+          },
+          "id": "collection",
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,59 @@
+<div class="page-width">
+  <h1>{{ 'customer.account.title' | t }}</h1>
+
+  <div class="grid">
+    <div class="grid__item medium-up--two-thirds">
+      <div class="content-block">
+        <h2>{{ 'customer.orders.title' | t }}</h2>
+
+        {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'date' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          {% else %}
+
+            <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            <div class="pagination">
+              {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+            </div>
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    </div>
+
+    <div class="grid__item medium-up--one-third">
+      <div class="content-block">
+        <h3 class="h6 content-block__title">{{ 'customer.account.details' | t }}</h3>
+
+        {{ customer.default_address | format_address }}
+
+        <p><a href="{{ routes.account_addresses_url }}">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+    </div>
+  </div>
+</div>

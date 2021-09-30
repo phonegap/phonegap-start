@@ -1,0 +1,147 @@
+{% comment %}
+  Meganav has 5 columns, up to 7 links per column.
+  Remaining columns are products from parent collection.
+
+  1. Get # of links in subnav
+  2. Calculate # of rows, based on 7 links per column
+  3. Max 5 columns, so 5 - # of columns = # of products to display
+{% endcomment %}
+{% assign fixed_width = false %}
+{% assign show_links = true %}
+
+{% assign display_products = true %}
+{% assign display_title = true %}
+
+{% if link.type == 'collection_link' %}
+  {% if link.object.products_count == 0 %}
+    {% assign display_products = false %}
+    {% assign display_title = false %}
+  {% endif %}
+{% else %}
+  {% assign display_products = false %}
+  {% assign display_title = false %}
+{% endif %}
+
+{% assign max_columns = 5 %}
+{% assign links_per_column = 7 %}
+{% assign max_links = max_columns | times: links_per_column %}
+
+{% if display_products == false and link.links.size > max_links %}
+  {% assign links_per_column = link.links.size | divided_by: max_columns %}
+  {% assign remainder = link.links.size | modulo: max_columns %}
+  {% if remainder > 0 %}
+    {% assign links_per_column = links_per_column | plus: 1 %}
+  {% endif %}
+{% endif %}
+
+{% assign number_of_links = link.links.size %}
+{% if display_products %}
+  {% assign number_of_links = number_of_links | plus: 1 %}
+{% endif %}
+
+{% assign number_of_link_columns = number_of_links | divided_by: links_per_column %}
+{% assign number_of_link_columns_remainder = number_of_links | modulo: links_per_column %}
+{% unless number_of_link_columns_remainder == 0 %}
+  {% assign number_of_link_columns = number_of_link_columns | plus: 1 %}
+{% endunless %}
+
+{% assign number_of_product_columns = max_columns | minus: number_of_link_columns %}
+
+<div class="grid grid--no-gutters meganav__scroller--has-list{% if number_of_link_columns > 1 or is_collection_with_products %} meganav__list--multiple-columns{% endif %}">
+  <div class="grid__item meganav__list one-fifth">
+
+    {% if display_title %}
+      <h5 class="h1 meganav__title{% unless is_collection_with_products %} page-width{% endunless %}">{{ link.title }}</h5>
+    {% endif %}
+
+    {% if display_products %}
+      <li{% unless is_collection_with_products %} class="site-nav__dropdown-container"{% endunless %}>
+        <a href="{{ link.url }}" class="meganav__link">{{ 'collections.general.all_of_collection' | t }}</a>
+      </li>
+    {% endif %}
+
+    {% for childlink in link.links %}
+      {% assign link_index = forloop.index %}
+      {% assign link_is_last = forloop.last %}
+
+      {% if display_products %}
+        {% comment %}
+          If parent has products we add an "All ___" link, so offset index by 1
+        {% endcomment %}
+        {% assign link_index = link_index | plus: 1 %}
+      {% endif %}
+
+      <li class="site-nav__dropdown-container">
+        {% comment %}
+          Since Shopify won't handleize tags for you on the Navigation page,
+          if link points to a collection filtered with tags,
+          we will make sure the tags are handleized in the URL.
+          To avoid changing the '+' that separate tags in the URL to a '-',
+          we will change the '+' characters to a string that we are betting won't be in the original URL,
+          then handleize the tags bit, then change the odd string back to '+'.
+          Say the original URL is /collections/handle/Tag1+Tag2, we will grab /Tag1+Tag2,
+          change to /Tag1987654321Tag2, handleize, hence ending up with tag1987654321tag2,
+          then replace 1987654321 with +, getting tag1+tag2, then appending that back to /collections/handle/,
+          getting a final URL that is /collections/handle/tag1+tag2.
+        {% endcomment %}
+        {% assign childlink_url = childlink.url %}
+        {% assign number = 987654321 %}
+        {% if childlink.type == 'collection_link' %}
+          {% assign tag_handle = childlink.url | remove: childlink.object.url | replace: '+', number | handle %}
+          {% unless tag_handle == empty %}
+            {% capture childlink_url %}{{ childlink.object.url }}/{{ tag_handle | replace: number, '+' }}{% endcapture %}
+          {% endunless %}
+        {% endif %}
+
+        {% if childlink.links != blank %}
+          {% assign grandchild_list_handle = childlink.title | handleize %}
+
+          <a href="{{ childlink_url }}" class="meganav__link meganav__link--second-level meganav__link-toggle site-nav__link-toggle meganav__link--has-list{% if childlink.active %} meganav__link--active{% endif %}"  id="SiteNavLabel-{{ grandchild_list_handle }}" aria-controls="SiteNavLinklist-{{ grandchild_list_handle }}" aria-expanded="false"{% if childlink.active %} aria-current="page"{% endif %}>
+            {{ childlink.title | escape }}
+            {% include 'icon-arrow-right' %}
+          </a>
+
+          <div class="site-nav__dropdown site-nav__dropdown--third-level {% if link.links.size > childlink.links.size %} site-nav__dropdown--full-height{% endif %}{% if display_title == true %} meganav__list--offset{% endif %}"
+            id="SiteNavLinklist-{{ grandchild_list_handle }}"
+            aria-labelledby="SiteNavLabel-{{ grandchild_list_handle }}">
+
+            <ul class="meganav__list meganav__list--gutter">
+              {% for grandchildlink in childlink.links %}
+                <li class="site-nav__dropdown-container site-nav__dropdown-container--third-level">
+                  <a href="{{ grandchildlink.url }}" class="meganav__link meganav__link--third-level{% if grandchildlink.active %} meganav__link--active{% endif %}"{% if grandchildlink.active %} aria-current="page"{% endif %}>
+                    {{ grandchildlink.title | escape }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% else %}
+          <a href="{{ childlink_url }}" class="meganav__link meganav__link--second-level{% if childlink.active %} meganav__link--active{% endif %}"{% if childlink.active %} aria-current="page"{% endif %}>
+            {{ childlink.title | escape }}
+          </a>
+        {% endif %}
+      </li>
+
+      {% comment %}
+        If the link index is a divisible unit of the # of columns,
+        and is not the last link in the list, create a new
+        column for the following links to go in.
+      {% endcomment %}
+      {% for column_number in (1..max_columns) %}
+        {% assign index_where_we_need_to_break = column_number | times: links_per_column %}
+        {% if link_index == index_where_we_need_to_break %}
+          {% unless link_is_last %}
+            </div>
+            <div class="grid__item meganav__list one-fifth{% if display_title %} meganav__list--offset{% endif %}">
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+  {% for product in link.object.products limit: number_of_product_columns %}
+    <div class="grid__item one-fifth meganav__product">
+      {% include 'product-card', product: product %}
+    </div>
+  {% endfor %}
+</div>

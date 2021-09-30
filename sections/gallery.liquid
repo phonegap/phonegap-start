@@ -1,0 +1,371 @@
+<div class="page-width">
+  <div class="flex column-flex">
+    {% for block in section.blocks %}
+      <div class="flex__item text-center" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          <noscript>
+            <div class="column-flex__image column-flex__image--{{ section.settings.gallery_height }}" style="background-image: url({{ block.settings.image | img_url: '600x' }}); background-position: {{ block.settings.image_align }};"></div>
+          </noscript>
+          <div class="column-flex__image column-flex__image--{{ section.settings.gallery_height }} lazyload"
+            style="background-position: {{ block.settings.image_align }};background-image: url('{{ block.settings.image | img_url: '300x300' }});"
+            data-bgset="{% include 'bgset', image: block.settings.image %}"
+            data-sizes="auto"
+            data-parent-fit="cover">
+          </div>
+        {% else %}
+          <div class="column-flex__image">
+            <div class="placeholder-background">
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Galerie",
+    "da": "Galleri",
+    "de": "Galerie",
+    "en": "Gallery",
+    "es": "Galería",
+    "fi": "Galleria",
+    "fr": "Galerie",
+    "it": "Galleria",
+    "ja": "ギャラリー",
+    "ko": "갤러리",
+    "nb": "Galleri",
+    "nl": "Galerie",
+    "pl": "Galeria",
+    "pt-BR": "Galeria",
+    "pt-PT": "Galeria",
+    "sv": "Galleri",
+    "th": "แกลเลอรี",
+    "tr": "Galeri",
+    "vi": "Bộ sưu tập ảnh",
+    "zh-CN": "图库",
+    "zh-TW": "圖庫"
+  },
+  "class": "index-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "select",
+      "id": "gallery_height",
+      "label": {
+        "cs": "Výška galerie",
+        "da": "Højde for galleri",
+        "de": "Galeriehöhe",
+        "en": "Gallery height",
+        "es": "Altura de la galería",
+        "fi": "Gallerian korkeus",
+        "fr": "Hauteur de la galerie",
+        "it": "Altezza galleria",
+        "ja": "ギャラリーの高さ",
+        "ko": "갤러리 높이",
+        "nb": "Gallerihøyde",
+        "nl": "Hoogte galerij",
+        "pl": "Wysokość galerii",
+        "pt-BR": "Altura da galeria",
+        "pt-PT": "Altura da galeria",
+        "sv": "Gallerihöjd",
+        "th": "ความสูงแกลเลอรี",
+        "tr": "Galeri yüksekliği",
+        "vi": "Chiều cao bộ sưu tập ảnh",
+        "zh-CN": "图库高度",
+        "zh-TW": "圖庫高度"
+      },
+      "default": "short",
+      "options": [
+        {
+          "value": "short",
+          "label": {
+            "cs": "Malá",
+            "da": "Lav",
+            "de": "Niedrig",
+            "en": "Short",
+            "es": "Baja",
+            "fi": "Matala",
+            "fr": "Court",
+            "it": "Bassa",
+            "ja": "低い",
+            "ko": "짧음",
+            "nb": "Lav",
+            "nl": "Kort",
+            "pl": "Krótki",
+            "pt-BR": "Pequena",
+            "pt-PT": "Pequena",
+            "sv": "Kort",
+            "th": "ต่ำ",
+            "tr": "Kısa",
+            "vi": "Thấp",
+            "zh-CN": "矮",
+            "zh-TW": "較矮"
+          }
+        },
+        {
+          "value": "tall",
+          "label": {
+            "cs": "Velká",
+            "da": "Høj",
+            "de": "Hoch",
+            "en": "Tall",
+            "es": "Alta",
+            "fi": "Pitkä",
+            "fr": "Grand",
+            "it": "Alta",
+            "ja": "高い",
+            "ko": "김",
+            "nb": "Høy",
+            "nl": "Lang",
+            "pl": "Wysoki",
+            "pt-BR": "Alta",
+            "pt-PT": "Alta",
+            "sv": "Lång",
+            "th": "สูง",
+            "tr": "Uzun",
+            "vi": "Cao",
+            "zh-CN": "高",
+            "zh-TW": "較高"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "cs": "Obrázek",
+            "da": "Billede",
+            "de": "Foto",
+            "en": "Image",
+            "es": "Imagen",
+            "fi": "Kuva",
+            "fr": "Image",
+            "it": "Immagine",
+            "ja": "画像",
+            "ko": "이미지",
+            "nb": "Bilde",
+            "nl": "Afbeelding",
+            "pl": "Obraz",
+            "pt-BR": "Imagem",
+            "pt-PT": "Imagem",
+            "sv": "Bild",
+            "th": "รูปภาพ",
+            "tr": "Görsel",
+            "vi": "Hình ảnh",
+            "zh-CN": "图片",
+            "zh-TW": "圖片"
+          }
+        },
+        {
+          "type": "radio",
+          "id": "image_align",
+          "label": {
+            "cs": "Zarovnání obrázku",
+            "da": "Justering af billede",
+            "de": "Fotoausrichtung",
+            "en": "Image alignment",
+            "es": "Alineación de imagen",
+            "fi": "Kuvan tasaus",
+            "fr": "Alignement de l'image",
+            "it": "Allineamento immagine",
+            "ja": "画像アラインメント",
+            "ko": "이미지 정렬",
+            "nb": "Bildejustering",
+            "nl": "Afbeelding uitlijnen",
+            "pl": "Wyrównanie obrazu",
+            "pt-BR": "Alinhamento da imagem",
+            "pt-PT": "Alinhamento da imagem",
+            "sv": "Bildjustering",
+            "th": "การจัดวางรูปภาพ",
+            "tr": "Görsel hizalaması",
+            "vi": "Căn chỉnh hình ảnh",
+            "zh-CN": "图片对齐方式",
+            "zh-TW": "圖片對齊"
+          },
+          "options": [
+            {
+              "value": "top center",
+              "label": {
+                "cs": "Nahoře na střed",
+                "da": "Øverst i midten",
+                "de": "Oben Mitte",
+                "en": "Top center",
+                "es": "Superior centrada",
+                "fi": "Keskellä ylhäällä",
+                "fr": "En haut au centre",
+                "it": "In alto al centro",
+                "ja": "中央上",
+                "ko": "맨 위 중간",
+                "nb": "Toppsentrert",
+                "nl": "Midden boven",
+                "pl": "Na górze na środku",
+                "pt-BR": "Superior centro",
+                "pt-PT": "Superior centro",
+                "sv": "Längst upp i mitten",
+                "th": "กลางบน",
+                "tr": "Üst orta",
+                "vi": "Trên cùng ở giữa",
+                "zh-CN": "顶部居中",
+                "zh-TW": "中央上方"
+              }
+            },
+            {
+              "value": "center center",
+              "label": {
+                "cs": "Na střed",
+                "da": "Centreret",
+                "de": "Mitte",
+                "en": "Center",
+                "es": "Centrar",
+                "fi": "Keskitetty",
+                "fr": "Centre",
+                "it": "Al centro",
+                "ja": "中央",
+                "ko": "센터",
+                "nb": "Sentrer",
+                "nl": "Midden",
+                "pl": "Do środka",
+                "pt-BR": "Centro",
+                "pt-PT": "Centro",
+                "sv": "Centrera",
+                "th": "ตรงกลาง",
+                "tr": "Orta",
+                "vi": "Ở giữa",
+                "zh-CN": "居中",
+                "zh-TW": "置中"
+              }
+            },
+            {
+              "value": "bottom center",
+              "label": {
+                "cs": "Dole na střed",
+                "da": "Nederst i midten",
+                "de": "Unten mittig",
+                "en": "Bottom center",
+                "es": "Inferior centrada",
+                "fi": "Keskellä alhaalla",
+                "fr": "En bas au centre",
+                "it": "In basso al centro",
+                "ja": "中央下",
+                "ko": "맨아래 중간",
+                "nb": "Bunnsentrert",
+                "nl": "Midden onder",
+                "pl": "Na dole na środku",
+                "pt-BR": "Inferior centro",
+                "pt-PT": "Inferior centro",
+                "sv": "Längst ner i mitten",
+                "th": "กลางล่าง",
+                "tr": "Alt orta",
+                "vi": "Dưới cùng ở giữa",
+                "zh-CN": "底部居中",
+                "zh-TW": "中央下方"
+              }
+            }
+          ],
+          "default": "top center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Galerie",
+        "da": "Galleri",
+        "de": "Galerie",
+        "en": "Gallery",
+        "es": "Galería",
+        "fi": "Galleria",
+        "fr": "Galerie",
+        "it": "Galleria",
+        "ja": "ギャラリー",
+        "ko": "갤러리",
+        "nb": "Galleri",
+        "nl": "Galerie",
+        "pl": "Galeria",
+        "pt-BR": "Galeria",
+        "pt-PT": "Galeria",
+        "sv": "Galleri",
+        "th": "แกลเลอรี",
+        "tr": "Galeri",
+        "vi": "Bộ sưu tập ảnh",
+        "zh-CN": "图库",
+        "zh-TW": "圖庫"
+      },
+      "category": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "blocks": [
+        {
+          "type": "image_block"
+        },
+        {
+          "type": "image_block"
+        },
+        {
+          "type": "image_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

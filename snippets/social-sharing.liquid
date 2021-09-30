@@ -1,0 +1,30 @@
+<!-- /snippets/social-sharing.liquid -->
+<div class="social-sharing grid medium-up--grid--table">
+  {% unless center_icons %}
+    <div class="grid__item medium-up--one-third medium-up--text-left">
+      <span class="social-sharing__title">{{ 'general.social.share_title' | t }}</span>
+    </div>
+  {% endunless %}
+  <div class="grid__item {% if center_icons %}text-center{% else %}medium-up--two-thirds medium-up--text-right{% endif %}">
+    {% if settings.share_facebook %}
+      <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" class="social-sharing__link share-facebook" title="{{ 'general.social.alt_text.share_on_facebook' | t }}">
+        {% include 'icon-facebook' %}
+        <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+      </a>
+    {% endif %}
+
+    {% if settings.share_twitter %}
+      <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" class="social-sharing__link share-twitter" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+        {% include 'icon-twitter' %}
+        <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+      </a>
+    {% endif %}
+
+    {% if settings.share_pinterest %}
+      <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}" class="social-sharing__link share-pinterest" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}">
+        {% include 'icon-pinterest' %}
+        <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
+      </a>
+    {% endif %}
+  </div>
+</div>

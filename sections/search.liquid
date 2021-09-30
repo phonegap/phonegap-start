@@ -1,0 +1,280 @@
+<div class="page-width">
+  <div class="section-block section-block--padding">
+    {% if section.settings.title != blank %}
+      <div class="section-block__header text-center">
+        <h4 class="h1--mini section-block__title">{{ section.settings.title | escape }}</h4>
+      </div>
+    {% endif %}
+    <div class="grid">
+      <div class="grid__item medium-up--two-thirds medium-up--push-one-sixth">
+        <form action="{{ routes.search_url }}" method="get" class="grid grid--half-gutters" role="search">
+          <div class="grid__item medium-up--three-quarters">
+            {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+            <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="input--full">
+          </div>
+          <div class="grid__item medium-up--one-quarter">
+            <button type="submit" class="btn btn--narrow btn--full">{{ 'general.search.submit' | t }}</button>
+          </div>
+        </form>
+
+        {% if section.settings.links_type %}
+          {% for collection in collections %}
+            {% capture collection_tags %}{{ collection.tags | join: ',' }}{% endcapture %}
+            {% capture all_tags %}{% if all_tags %}{{ all_tags }},{% endif %}{{ collection_tags }}{% endcapture %}
+          {% endfor %}
+          <ul class="list--inline tag-list small--text-center">
+            <li class="tag-list__item">{{ section.settings.quick_link_label | escape }}</li>
+            {% assign all_tags = all_tags | split: ',' | uniq %}
+            {% for tag in all_tags limit: 5 %}
+              <li class="tag-list__item"><a href="{{ routes.search_url }}?q={{ tag | handleize }}">{{ tag }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .tag-list {
+    margin-top: 10px;
+  }
+
+  .tag-list__item {
+    margin-right: 10px;
+  }
+{% endstylesheet %}
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Hledat",
+    "da": "Søg",
+    "de": "Suchen",
+    "en": "Search",
+    "es": "Buscar",
+    "fi": "Hae",
+    "fr": "Rechercher",
+    "it": "Cerca",
+    "ja": "検索",
+    "ko": "검색",
+    "nb": "Søk",
+    "nl": "Zoeken",
+    "pl": "Szukaj",
+    "pt-BR": "Pesquisa",
+    "pt-PT": "Pesquisar",
+    "sv": "Sök",
+    "th": "ค้นหา",
+    "tr": "Arama",
+    "vi": "Tìm kiếm",
+    "zh-CN": "搜索",
+    "zh-TW": "搜尋"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "Titre",
+        "it": "Titolo",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Hledat",
+        "da": "Søg",
+        "de": "Suchen",
+        "en": "Search",
+        "es": "Buscar",
+        "fi": "Hae",
+        "fr": "Rechercher",
+        "it": "Cerca",
+        "ja": "検索",
+        "ko": "검색",
+        "nb": "Søk",
+        "nl": "Zoeken",
+        "pl": "Szukaj",
+        "pt-BR": "Pesquisa",
+        "pt-PT": "Pesquisar",
+        "sv": "Sök",
+        "th": "ค้นหา",
+        "tr": "Arama",
+        "vi": "Tìm kiếm",
+        "zh-CN": "搜索",
+        "zh-TW": "搜尋"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "links_type",
+      "label": {
+        "cs": "Povolit rychlé odkazy",
+        "da": "Aktivér genvejslinks",
+        "de": "Quick-Links aktivieren",
+        "en": "Enable quick links",
+        "es": "Habilitar enlaces rápidos",
+        "fi": "Ota pikalinkit käyttöön",
+        "fr": "Activer les liens rapides",
+        "it": "Abilita collegamenti rapidi",
+        "ja": "クイックリンクを有効にする",
+        "ko": "빠른 링크 사용",
+        "nb": "Aktiver hurtigkoblinger",
+        "nl": "Snelle links inschakelen",
+        "pl": "Włącz szybkie linki",
+        "pt-BR": "Habilitar links rápidos",
+        "pt-PT": "Ativar links rápidos",
+        "sv": "Aktivera snabblänkar",
+        "th": "เปิดใช้ลิงก์ด่วน",
+        "tr": "Hızlı bağlantıları etkinleştir",
+        "vi": "Bật liên kết nhanh",
+        "zh-CN": "启用快速链接",
+        "zh-TW": "啟用快速連結"
+      },
+      "info": {
+        "cs": "Odkazy se automaticky generují z produktových štítků",
+        "da": "Der genereres automatisk links fra produkttags",
+        "de": "Links werden automatisch aus Produkt-Tags generiert",
+        "en": "Links are automatically generated from product tags",
+        "es": "Los enlaces se generan automáticamente desde las etiquetas de productos.",
+        "fi": "Linkit luodaan automaattisesti tuotetunnisteista",
+        "fr": "Les liens sont générés automatiquement à partir des balises de produit",
+        "it": "I link vengono generati automaticamente dai tag di prodotto",
+        "ja": "リンクは商品タグから自動的に生成されます",
+        "ko": "링크는 제품 태그에서 자동 생성됩니다.",
+        "nb": "Koblinger genereres automatisk fra produkttagger",
+        "nl": "Links worden automatisch van producttags gegenereerd",
+        "pl": "Linki są generowane automatycznie z tagów produktów",
+        "pt-BR": "Links são gerados automaticamente a partir de tags de produto",
+        "pt-PT": "As ligações são geradas automaticamente a partir de etiquetas de produtos",
+        "sv": "Länkar genereras automatiskt från produktkoder",
+        "th": "ระบบจะสร้างลิงก์โดยอัตโนมัติจากแท็กของสินค้า",
+        "tr": "Bağlantılar, ürün etiketlerinden otomatik olarak oluşturulur",
+        "vi": "Liên kết được tự động tạo từ thẻ sản phẩm",
+        "zh-CN": "链接基于产品标签自动生成",
+        "zh-TW": "連結由產品標籤自動產生"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "quick_link_label",
+      "label": {
+        "cs": "Text rychlých odkazů",
+        "da": "Label for genvejslinks",
+        "de": "Quick-Links-Label",
+        "en": "Quick links label",
+        "es": "Etiqueta de enlaces rápidos",
+        "fi": "Pikalinkkitarra",
+        "fr": "Étiquette de liens rapides",
+        "it": "Etichetta collegamenti rapidi",
+        "ja": "クイックリンクラベル",
+        "ko": "빠른 링크 레이블",
+        "nb": "Etikett for hurtigkobling",
+        "nl": "Label snelle links",
+        "pl": "Etykieta z szybkimi linkami",
+        "pt-BR": "Rótulo de links rápidos",
+        "pt-PT": "Etiqueta de ligações rápidas",
+        "sv": "Snabblänktikett",
+        "th": "ป้ายกำกับลิงก์ด่วน",
+        "tr": "Hızlı bağlantı etiketi",
+        "vi": "Nhãn liên kết nhanh",
+        "zh-CN": "快速链接标签",
+        "zh-TW": "快速連結標籤"
+      },
+      "default": {
+        "cs": "Rychlé odkazy:",
+        "da": "Genvejslinks:",
+        "de": "Quick-Links:",
+        "en": "Quick links:",
+        "es": "Enlaces rápidos:",
+        "fi": "Pikalinkit:",
+        "fr": "Liens rapides :",
+        "it": "Collegamenti rapidi:",
+        "ja": "クイックリンク:",
+        "ko": "빠른 링크",
+        "nb": "Hurtigkoblinger:",
+        "nl": "Snelle links:",
+        "pl": "Szybkie linki:",
+        "pt-BR": "Links rápidos:",
+        "pt-PT": "Ligações rápidas:",
+        "sv": "Snabblänkar",
+        "th": "ลิงก์ด่วน:",
+        "tr": "Hızlı bağlantılar:",
+        "vi": "Liên kết nhanh:",
+        "zh-CN": "快速链接：",
+        "zh-TW": "快速連結"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Hledat",
+        "da": "Søg",
+        "de": "Suchen",
+        "en": "Search",
+        "es": "Buscar",
+        "fi": "Hae",
+        "fr": "Rechercher",
+        "it": "Cerca",
+        "ja": "検索",
+        "ko": "검색",
+        "nb": "Søk",
+        "nl": "Zoeken",
+        "pl": "Szukaj",
+        "pt-BR": "Pesquisa",
+        "pt-PT": "Pesquisar",
+        "sv": "Sök",
+        "th": "ค้นหา",
+        "tr": "Arama",
+        "vi": "Tìm kiếm",
+        "zh-CN": "搜索",
+        "zh-TW": "搜尋"
+      },
+      "category": {
+        "cs": "Informace o obchodu",
+        "da": "Butiksoplysninger",
+        "de": "Shop-Informationen",
+        "en": "Store information",
+        "es": "Información sobre tu tienda",
+        "fi": "Kaupan tiedot",
+        "fr": "Renseignements sur votre boutique",
+        "it": "Informazioni del negozio",
+        "ja": "ストア情報",
+        "ko": "스토어 정보",
+        "nb": "Butikkinformasjon",
+        "nl": "Winkelinformatie",
+        "pl": "Informacje o sklepie",
+        "pt-BR": "Informações sobre a loja",
+        "pt-PT": "Informações da loja",
+        "sv": "Butiksinformation",
+        "th": "ข้อมูลร้านค้า",
+        "tr": "Mağaza bilgileri",
+        "vi": "Thông tin cửa hàng",
+        "zh-CN": "商店信息",
+        "zh-TW": "商店資訊"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,214 @@
+{%- assign new_comment = false -%}
+{% if comment and comment.created_at %}
+  {%- assign new_comment = true -%}
+  {%- assign new_comment_id = comment.id -%}
+{% endif %}
+
+{% if new_comment %}
+  {%- assign duplicate_comment = false %}
+  {% for comment in article.comments %}
+    {% if comment.id == new_comment_id %}
+      {%- assign duplicate_comment = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if duplicate_comment %}
+    {%- assign number_of_comments = article.comments_count -%}
+  {% else %}
+    {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+  {% endif %}
+{% else %}
+  {%- assign number_of_comments = article.comments_count -%}
+{% endif %}
+
+<div class="content-block">
+
+  {% if article.image %}
+    <div class="content-block__full-image content-block__full-image--large">
+      <noscript>
+        {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+      </noscript>
+      <div class="article__photo-container">
+        <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+        {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+          <img class="lazyload"
+            src="{{ article.image | img_url: '300x300' }}"
+            data-src="{{ img_url }}"
+            data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+            data-aspectratio="{{ article.image.aspect_ratio }}"
+            data-sizes="auto"
+            alt="{{ article.title | escape }}">
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <p class="blog__meta">
+    {% if article.tags.size > 0 %}
+      {% for tag in article.tags %}
+        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="link-body-color"><strong>{{ tag }}</strong></a>{% if forloop.last %} - {% else %}, {% endif %}
+      {% endfor %}
+    {% endif %}
+    {{ article.published_at | time_tag: format: 'date' }}
+  </p>
+
+  <h1 class="h2">{{ article.title }}</h1>
+
+  <div class="rte rte--indented-images" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+
+  {% if section.settings.social_sharing_blog %}
+    <hr>
+    {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+  {% endif %}
+</div>
+
+{% if blog.comments_enabled? %}
+  {% if number_of_comments > 0 %}
+    <div class="content-block">
+      <h2 class="h3">{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h2>
+
+      {% paginate article.comments by 5 %}
+
+        {% comment %}
+          #comments is required, it is used as an anchor link by Shopify.
+        {% endcomment %}
+        <div id="comments">
+
+          {% if new_comment %}
+            <p class="form-success">
+              {% if blog.moderated? %}
+                {{ 'blogs.comments.success_moderated' | t }}
+              {% else %}
+                {{ 'blogs.comments.success' | t }}
+              {% endif %}
+            </p>
+          {% endif %}
+
+          {% if number_of_comments > 0 %}
+            <ul class="comments list--no-bullets">
+              {% comment %}
+                If a comment was just submitted with no blank field, show it.
+              {% endcomment %}
+              {% if new_comment %}
+                {% unless paginate.current_page > 1 %}
+                  <li id="{{ comment.id }}" class="comment">
+                    {% include 'comment' %}
+                  </li>
+                {% endunless %}
+              {% endif %}
+
+              {% for comment in article.comments %}
+                {% unless comment.id == new_comment_id %}
+                  <li id="{{ comment.id }}" class="comment">
+                    {% include 'comment' %}
+                  </li>
+                {% endunless %}
+              {% endfor %}
+            </ul>
+
+            {% if paginate.pages > 1 %}
+              <div class="pagination">
+                {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+  <div class="content-block">
+    <div class="comment-form form-vertical">
+      {% form 'new_comment', article %}
+
+        <h2 class="h3">{{ 'blogs.comments.title' | t }}</h2>
+
+        {{ form.errors | default_errors }}
+
+        <div class="grid grid--half-gutters">
+          <div class="grid__item medium-up--one-half">
+            <label for="CommentAuthor" class="label--hidden">{{ 'blogs.comments.name' | t }}</label>
+            <input type="text" name="comment[author]" id="CommentAuthor" class="{% if form.errors contains 'author' %} input--error{% endif %}" placeholder="{{ 'blogs.comments.name' | t }}" value="{{ form.author }}">
+          </div>
+
+          <div class="grid__item medium-up--one-half">
+            <label for="CommentEmail" class="label--hidden">{{ 'blogs.comments.email' | t }}</label>
+            <input type="email" name="comment[email]" id="CommentEmail" class="{% if form.errors contains 'email' %} input--error{% endif %}" placeholder="{{ 'blogs.comments.email' | t }}" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+          </div>
+        </div>
+
+        <label for="CommentBody" class="label--hidden">{{ 'blogs.comments.message' | t }}</label>
+        <textarea name="comment[body]" id="CommentBody" class="{% if form.errors contains 'body' %} input--error{% endif %}" placeholder="{{ 'blogs.comments.message' | t }}">{{ form.body }}</textarea>
+
+        <input type="submit" class="btn" value="{{ 'blogs.comments.post' | t }}">
+
+        {% if blog.moderated? %}
+          <p class="text-center"><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Obsah článku",
+    "da": "Artikelindhold",
+    "de": "Artikelinhalt",
+    "en": "Article content",
+    "es": "Contenido del artículo",
+    "fi": "Artikkelisisältö",
+    "fr": "Contenu de l'article",
+    "it": "Contenuto articolo",
+    "ja": "記事の内容",
+    "ko": "문서 콘텐츠",
+    "nb": "Artikkelinnhold",
+    "nl": "Artikelcontent",
+    "pl": "Treść artykułu",
+    "pt-BR": "Conteúdo do artigo",
+    "pt-PT": "Conteúdo do artigo",
+    "sv": "Artikelinnehåll",
+    "th": "เนื้อหาของบทความ",
+    "tr": "Makale içeriği",
+    "vi": "Nội dung bài viết",
+    "zh-CN": "文章内容",
+    "zh-TW": "文章內容"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "social_sharing_blog",
+      "label": {
+        "cs": "Povolit sdílení příspěvků na bogu",
+        "da": "Aktivér deling af blogopslag",
+        "de": "Freigabe von Blog-Beiträgen aktivieren",
+        "en": "Enable blog post sharing",
+        "es": "Habilitar la función compartir entrada en el blog",
+        "fi": "Ota blogipäivitysten jakaminen käyttöön",
+        "fr": "Activer le partage des articles de blog",
+        "it": "Abilita condivisione articoli del blog",
+        "ja": "ブログ記事の共有を有効にする",
+        "ko": "블로그 게시물 공유 사용",
+        "nb": "Aktiver deling av blogginnlegg",
+        "nl": "Delen van blogpost inschakelen",
+        "pl": "Włącz udostępnianie posta na blogu",
+        "pt-BR": "Habilitar compartilhamento de post do blog",
+        "pt-PT": "Ativar partilha da publicação no blogue",
+        "sv": "Aktivera blogginläggsdelning",
+        "th": "เปิดใช้การแชร์โพสต์บล็อก",
+        "tr": "Blog gönderisi paylaşmayı etkinleştir",
+        "vi": "Bật chia sẻ bài viết blog",
+        "zh-CN": "启用博客文章分享",
+        "zh-TW": "啟用網誌貼文分享"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}

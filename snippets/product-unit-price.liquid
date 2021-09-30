@@ -1,0 +1,24 @@
+<!-- /snippets/product-unit-price.liquid -->
+
+{% comment %}
+  The product unit price snippet is passed a liquid object used in this file
+  as "product_variant". The object contains the unit price and unit price measurements.
+{% endcomment %}
+
+<span class="product-unit-price{% if wrapper_class != blank %} {{ wrapper_class }}{% endif %}{% unless product_variant.unit_price_measurement %} hide{% endunless %}" data-unit-price-container>
+  {%- capture unit_price_separator -%}
+    <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}</span>
+  {%- endcapture -%}
+
+  {%- capture unit_price_base_unit -%}
+    <span data-unit-price-base-unit>
+      {%- if product_variant.unit_price_measurement.reference_value != 1 -%}
+        {{- product_variant.unit_price_measurement.reference_value -}}
+      {%- endif -%}
+      {{ product_variant.unit_price_measurement.reference_unit }}
+    </span>
+  {%- endcapture -%}
+  <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
+  <span data-unit-price>{{ product_variant.unit_price | money }}</span>
+  {{- unit_price_separator -}}{{- unit_price_base_unit -}}
+</span>

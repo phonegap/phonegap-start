@@ -1,0 +1,826 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="page-width">
+    <div class="flex-footer">
+      {% for block in section.blocks %}
+        <div class="flex__item" {{ block.shopify_attributes }}>
+          {% case block.type %}
+            {% when 'social' %}
+              <div class="site-footer__section">
+                {% if block.settings.title != blank %}
+                  <h4 class="h1 site-footer__section-title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h4>
+                {% endif %}
+                <ul class="list--inline social-icons text-{{ block.settings.align }}">
+                  {% if settings.social_facebook_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                        {% include 'icon-facebook' %}
+                        <span class="icon__fallback-text">Facebook</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_twitter_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                        {% include 'icon-twitter' %}
+                        <span class="icon__fallback-text">Twitter</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_pinterest_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                        {% include 'icon-pinterest' %}
+                        <span class="icon__fallback-text">Pinterest</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_instagram_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                        {% include 'icon-instagram' %}
+                        <span class="icon__fallback-text">Instagram</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_tumblr_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                        {% include 'icon-tumblr' %}
+                        <span class="icon__fallback-text">Tumblr</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_snapchat_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                        {% include 'icon-snapchat' %}
+                        <span class="icon__fallback-text">Snapchat</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_youtube_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                        {% include 'icon-youtube' %}
+                        <span class="icon__fallback-text">YouTube</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_vimeo_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                        {% include 'icon-vimeo' %}
+                        <span class="icon__fallback-text">Vimeo</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+
+            {% when 'menu' %}
+              {% if linklists[block.settings.link_list].links.size > 0 %}
+                <div class="site-footer__section">
+                  <h4 class="h1 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h4>
+                  <ul class="site-footer__list">
+                    {% for link in linklists[block.settings.link_list].links %}
+                      <li class="site-footer__list-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+
+            {% when 'text' %}
+              <div class="site-footer__section">
+                <h4 class="h1 site-footer__section-title">{{ block.settings.title | escape }}</h4>
+                <div class="rte-setting">{{ block.settings.text }}</div>
+              </div>
+
+            {% when 'newsletter' %}
+              <style>
+                .site-footer__newsletter-input {
+                  background-color: {{ block.settings.color_newsletter_input }};
+                  color: {{ block.settings.color_newsletter_input_text }};
+                }
+
+                .site-footer__newsletter-input::-webkit-input-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 0.7;
+                }
+
+                .site-footer__newsletter-input:-moz-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 0.7;
+                }
+
+                .site-footer__newsletter-input:-ms-input-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 0.7;
+                }
+
+                .site-footer__newsletter-input::-ms-input-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 1;
+                }
+              </style>
+              <div class="site-footer__section">
+                <h4 class="site-footer__section-title h1">
+                  {% if block.settings.title != blank %}
+                    {{ block.settings.title | escape }}
+                  {% endif %}
+                </h4>
+                <div class="form-vertical">
+                  {% form 'customer' %}
+                    {{ form.errors | default_errors }}
+                    {% if form.posted_successfully? %}
+                      <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                    {% else %}
+                      <input type="hidden" name="contact[tags]" value="newsletter">
+                      <label for="NewsletterEmail-{{ block.id }}" class="site-footer__newsletter-label">
+                        {% if block.settings.subheading != blank %}
+                          {{ block.settings.subheading }}
+                        {% endif %}
+                      </label>
+                      <div class="input-group">
+                        <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" class="input-group__field site-footer__newsletter-input" autocorrect="off" autocapitalize="off">
+                        <div class="input-group__btn">
+                          <button type="submit" class="btn btn--narrow" name="commit">
+                            {% include 'icon-arrow-right' %}
+                            <span class="icon__fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+                          </button>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endform %}
+                </div>
+              </div>
+
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="site-footer__copyright">
+    <div class="page-width">
+      <div class="grid medium-up--grid--table">
+        <div class="grid__item medium-up--one-half">
+          <small>&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url }}. {{ powered_by_link }}</small>
+        </div>
+        <div class="grid__item medium-up--one-half medium-up--text-right">
+          {%- if section.settings.show_payment_icons -%}
+            {%- unless shop.enabled_payment_types == empty -%}
+              <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+              <ul class="list--inline payment-icons">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li>
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endunless -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Zápatí",
+    "da": "Sidefod",
+    "de": "Fußzeile",
+    "en": "Footer",
+    "es": "Pie de página",
+    "fi": "Alatunniste",
+    "fr": "Pied de page",
+    "it": "Footer",
+    "ja": "フッター",
+    "ko": "바닥글",
+    "nb": "Footer",
+    "nl": "Voettekst",
+    "pl": "Stopka",
+    "pt-BR": "Rodapé",
+    "pt-PT": "Rodapé",
+    "sv": "Sidfot",
+    "th": "ส่วนท้าย",
+    "tr": "Altbilgi",
+    "vi": "Chân trang",
+    "zh-CN": "页脚",
+    "zh-TW": "頁尾"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": {
+        "cs": "Zobrazit ikony plateb",
+        "da": "Vis betalingsikoner",
+        "de": "Zahlungs-Buttons anzeigen",
+        "en": "Show payment icons",
+        "es": "Mostrar iconos de pago",
+        "fi": "Näytä maksukuvakkeet",
+        "fr": "Afficher les icônes de paiement",
+        "it": "Mostra le icone di pagamento",
+        "ja": "支払いアイコンを表示する",
+        "ko": "결제 아이콘 표시",
+        "nb": "Vis betalingsikoner",
+        "nl": "Betalingspictogrammen weergeven",
+        "pl": "Pokaż ikony płatności",
+        "pt-BR": "Exibir ícones de pagamento",
+        "pt-PT": "Mostrar ícones de pagamento",
+        "sv": "Visa betalningsikoner",
+        "th": "แสดงไอคอนการชำระเงิน",
+        "tr": "Ödeme simgelerini göster",
+        "vi": "Hiển thị biểu tượng thanh toán",
+        "zh-CN": "显示付款图标",
+        "zh-TW": "顯示付款圖示"
+      },
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": {
+        "cs": "Účty na sociálních sítích",
+        "da": "SoMe-konti",
+        "de": "Social-Media-Konten",
+        "en": "Social accounts",
+        "es": "Cuentas de redes sociales",
+        "fi": "Sosiaalisen median tilit",
+        "fr": "Comptes sociaux",
+        "it": "Account social",
+        "ja": "SNSアカウント",
+        "ko": "소셜 계정",
+        "nb": "Sosiale kontoer",
+        "nl": "Socialmedia-accounts",
+        "pl": "Konta społecznościowe",
+        "pt-BR": "Contas de redes sociais",
+        "pt-PT": "Contas de redes sociais",
+        "sv": "Sociala konton",
+        "th": "บัญชีผู้ใช้โซเชียลมีเดีย",
+        "tr": "Sosyal medya hesapları",
+        "vi": "Tài khoản mạng xã hội",
+        "zh-CN": "社交媒体账户",
+        "zh-TW": "社群帳戶"
+      },
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Titel",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "it": "Titolo",
+            "ja": "見出し",
+            "ko": "제목",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pl": "Nagłówek",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "tr": "Başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "cs": "Sledujte nás",
+            "da": "Følg os",
+            "de": "Folge uns",
+            "en": "Follow us",
+            "es": "Síguenos",
+            "fi": "Seuraa meitä",
+            "fr": "Suivez-nous",
+            "it": "Seguici",
+            "ja": "フォローする",
+            "ko": "우리를 팔로우하기",
+            "nb": "Følg oss",
+            "nl": "Volg ons",
+            "pl": "Obserwuj nas",
+            "pt-BR": "Acompanhe",
+            "pt-PT": "Siga-nos",
+            "sv": "Följ oss",
+            "th": "ติดตามเรา",
+            "tr": "Bizi takip edin",
+            "vi": "Theo dõi chúng tôi",
+            "zh-CN": "关注我们",
+            "zh-TW": "追蹤我們"
+          }
+        },
+        {
+          "type": "radio",
+          "id": "align",
+          "label": {
+            "cs": "Zarovnání ikon",
+            "da": "Justering af ikon",
+            "de": "Symbolausrichtung",
+            "en": "Icon alignment",
+            "es": "Alineación de ícono",
+            "fi": "Kuvakkeen tasaus",
+            "fr": "Alignement des icônes",
+            "it": "Allineamento icona",
+            "ja": "アイコンのアラインメント",
+            "ko": "아이콘 정렬",
+            "nb": "Ikonjustering",
+            "nl": "Pictogram uitlijning",
+            "pl": "Wyrównanie ikon",
+            "pt-BR": "Alinhamento de ícone",
+            "pt-PT": "Alinhamento de ícone",
+            "sv": "Ikonjustering",
+            "th": "การจัดวางไอคอน",
+            "tr": "Simge hizalaması",
+            "vi": "Căn chỉnh biểu tượng",
+            "zh-CN": "图标对齐方式",
+            "zh-TW": "圖示對齊"
+          },
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "cs": "Doleva",
+                "da": "Venstre",
+                "de": "Links",
+                "en": "Left",
+                "es": "Izquierda",
+                "fi": "Vasen",
+                "fr": "Gauche",
+                "it": "Sinistra",
+                "ja": "左",
+                "ko": "왼쪽",
+                "nb": "Venstre",
+                "nl": "Links",
+                "pl": "Do lewej",
+                "pt-BR": "Esquerda",
+                "pt-PT": "Esquerda",
+                "sv": "Vänster",
+                "th": "ด้านซ้าย",
+                "tr": "Sol",
+                "vi": "Bên trái",
+                "zh-CN": "左侧",
+                "zh-TW": "左方"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "cs": "Na střed",
+                "da": "Centreret",
+                "de": "Mitte",
+                "en": "Center",
+                "es": "Centrar",
+                "fi": "Keskitetty",
+                "fr": "Centre",
+                "it": "Al centro",
+                "ja": "中央",
+                "ko": "센터",
+                "nb": "Sentrer",
+                "nl": "Midden",
+                "pl": "Do środka",
+                "pt-BR": "Centro",
+                "pt-PT": "Centro",
+                "sv": "Centrera",
+                "th": "ตรงกลาง",
+                "tr": "Orta",
+                "vi": "Ở giữa",
+                "zh-CN": "居中",
+                "zh-TW": "置中"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "cs": "Doprava",
+                "da": "Højre",
+                "de": "Rechts",
+                "en": "Right",
+                "es": "Derecha",
+                "fi": "Oikea",
+                "fr": "Droite",
+                "it": "Destra",
+                "ja": "右",
+                "ko": "오른쪽",
+                "nb": "Høyre",
+                "nl": "Rechts",
+                "pl": "Do prawej",
+                "pt-BR": "Direita",
+                "pt-PT": "Direita",
+                "sv": "Höger",
+                "th": "ด้านขวา",
+                "tr": "Sağ",
+                "vi": "Bên phải",
+                "zh-CN": "右侧",
+                "zh-TW": "右方"
+              }
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": {
+        "cs": "Nabídka",
+        "da": "Menu",
+        "de": "Menü",
+        "en": "Menu",
+        "es": "Menú",
+        "fi": "Valikko",
+        "fr": "Menu",
+        "it": "Menu",
+        "ja": "メニュー",
+        "ko": "메뉴",
+        "nb": "Meny",
+        "nl": "Menu",
+        "pl": "Menu",
+        "pt-BR": "Menu",
+        "pt-PT": "Menu",
+        "sv": "Meny",
+        "th": "เมนู",
+        "tr": "Menü",
+        "vi": "Menu",
+        "zh-CN": "菜单",
+        "zh-TW": "選單"
+      },
+      "settings": [
+        {
+          "id": "link_list",
+          "type": "link_list",
+          "label": {
+            "cs": "Nabídka",
+            "da": "Menu",
+            "de": "Menü",
+            "en": "Menu",
+            "es": "Menú",
+            "fi": "Valikko",
+            "fr": "Menu",
+            "it": "Menu",
+            "ja": "メニュー",
+            "ko": "메뉴",
+            "nb": "Meny",
+            "nl": "Menu",
+            "pl": "Menu",
+            "pt-BR": "Menu",
+            "pt-PT": "Menu",
+            "sv": "Meny",
+            "th": "เมนู",
+            "tr": "Menü",
+            "vi": "Menu",
+            "zh-CN": "菜单",
+            "zh-TW": "選單"
+          },
+          "default": "footer",
+          "info": {
+            "cs": "V této nabídce se nezobrazí položky rozevíracího seznamu",
+            "da": "Denne menu viser ikke rullemenupunkter",
+            "de": "Dieses Menü zeigt keine Dropdowns an",
+            "en": "This menu won't show dropdown items",
+            "es": "Este menú no mostrará elementos desplegables",
+            "fi": "Tämä valikko ei näytä pudotuskohteita",
+            "fr": "Ce menu n'affichera pas les éléments des menus déroulants",
+            "it": "Questo menu non mostrerà elementi a discesa",
+            "ja": "このメニューにはドロップダウンアイテムは表示されません",
+            "ko": "이 메뉴는 드롭 다운 항목을 표시하지 않습니다.",
+            "nb": "Denne menyen vil ikke vise rullegardinelementer",
+            "nl": "Dit menu laat geen vervolgkeuze-artikelen zien.",
+            "pl": "W tym menu pozycje rozwijane nie będą wyświetlane",
+            "pt-BR": "Este menu não mostra itens suspensos",
+            "pt-PT": "Este menu não irá mostrar itens pendentes",
+            "sv": "Den här menyn kommer inte att visa objekt i rullgardinsmenyn",
+            "th": "เมนูนี้จะไม่แสดงรายการดรอปดาวน์",
+            "tr": "Bu menü açılır öğeleri göstermez",
+            "vi": "Menu này sẽ không hiển thị các mục thả xuống",
+            "zh-CN": "此菜单不会显示下拉项",
+            "zh-TW": "這個選單不會顯示下拉式項目"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Titel",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "it": "Titolo",
+            "ja": "見出し",
+            "ko": "제목",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pl": "Nagłówek",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "tr": "Başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "cs": "Textový sloupec",
+            "da": "Tekstkolonne",
+            "de": "Textspalte",
+            "en": "Text column",
+            "es": "Columna de texto",
+            "fi": "Tekstisarake",
+            "fr": "Colonne de texte",
+            "it": "Colonna di testo",
+            "ja": "テキスト列",
+            "ko": "텍스트 칼럼",
+            "nb": "Tekstkolonne",
+            "nl": "Tekst kolom",
+            "pl": "Kolumna tekstowa",
+            "pt-BR": "Texto em coluna",
+            "pt-PT": "Coluna de texto",
+            "sv": "Textkolumn",
+            "th": "คอลัมน์ข้อความ",
+            "tr": "Metin sütunu",
+            "vi": "Cột văn bản",
+            "zh-CN": "文本列",
+            "zh-TW": "文字欄"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": {
+            "cs": "Text",
+            "da": "Tekst",
+            "de": "Text",
+            "en": "Text",
+            "es": "Texto",
+            "fi": "Teksti",
+            "fr": "Texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "ko": "텍스트",
+            "nb": "Tekst",
+            "nl": "Tekst",
+            "pl": "Tekst",
+            "pt-BR": "Texto",
+            "pt-PT": "Texto",
+            "sv": "Text",
+            "th": "ข้อความ",
+            "tr": "Metin",
+            "vi": "Văn bản",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          },
+          "default": {
+            "cs": "<p>Popište zákazníkům podrobně svůj obchod, propagační akce nebo značky nabízeného zboží</p>",
+            "da": "<p>Del butiksoplysninger, reklamer eller brandindhold med dine kunder</p>",
+            "de": "<p>Teile deine, Werbeaktionen oder Markeninhalte mit deinen Kunden</p>",
+            "en": "<p>Share store details, promotions, or brand content with your customers</p>",
+            "es": "<p>Comparte detalles de la tienda, promociones o contenido de la marca con tus clientes.</p>",
+            "fi": "<p>Jaa myymälän tiedot, tarjoukset tai brändin sisältö asiakkaittesi kanssa.</p>",
+            "fr": "<p>Partagez les détails de la boutique, les promotions ou le contenu de la marque avec vos clients</p>",
+            "it": "<p>Condividi dettagli del negozio, promozioni o contenuto del brand con i clienti</p>",
+            "ja": "<p>ストア詳細、プロモーション、ブランドのコンテンツをお客様と共有する</p>",
+            "ko": "<p>스토어 세부 정보, 프로모션 또는 브랜드 콘텐츠를 고객과 공유하십시오.</p>",
+            "nb": "<p>Del butikkdetaljer, kampanjer eller merkevareinnhold med kundene dine</p>",
+            "nl": "<p>Deel winkeldetails, promoties of merkcontent met je klanten</p>",
+            "pl": "<p>Poinformuj swoich klientów o sklepie, promocjach lub zawartości marki</p>",
+            "pt-BR": "<p>Compartilhe informações da loja, promoções ou conteúdo da marca com seus clientes</p>",
+            "pt-PT": "<p>Partilhe detalhes da loja, promoções ou conteúdo\nde marca com os seus clientes</p>",
+            "sv": "<p>Dela butikens detaljer, kampanjer eller varumärkesinnehåll med dina kunder.</p>",
+            "th": "<p>แชร์รายละเอียดร้านค้า โปรโมชัน หรือเนื้อหาแบรนด์กับลูกค้าของคุณ</p>",
+            "tr": "<p>Mağaza ayrıntılarını, promosyonları, marka içeriğini müşterilerinizle paylaşın</p>",
+            "vi": "<p>Chia sẻ thông tin cửa hàng, khuyến mãi hoặc nội dung thương hiệu với khách hàng</p>",
+            "zh-CN": "<p>与您的客户分享商店详细信息、促销信息或品牌内容</p>",
+            "zh-TW": "<p>與顧客分享商店的詳細資訊、宣傳活動或品牌內容。</p>"
+          }
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": {
+        "cs": "Novinky",
+        "da": "Nyhedsbrev",
+        "de": "Newsletter",
+        "en": "Newsletter",
+        "es": "Boletín",
+        "fi": "Uutiskirje",
+        "fr": "Newsletter",
+        "it": "Newsletter",
+        "ja": "ニュースレター",
+        "ko": "뉴스레터",
+        "nb": "Nyhetsbrev",
+        "nl": "Nieuwsbrief",
+        "pl": "Newsletter",
+        "pt-BR": "Newsletter",
+        "pt-PT": "Newsletter",
+        "sv": "Nyhetsbrev",
+        "th": "จดหมายข่าว",
+        "tr": "Bülten",
+        "vi": "Bản tin",
+        "zh-CN": "新闻通讯",
+        "zh-TW": "電子報"
+      },
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "color_newsletter_input",
+          "label": {
+            "cs": "Pole newsletteru s novinkami",
+            "da": "Feltet nyhedsbrev",
+            "de": "Newsletter-Feld",
+            "en": "Newsletter field",
+            "es": "Campo del boletín",
+            "fi": "Uutiskirje",
+            "fr": "Champ de la newsletter",
+            "it": "Campo newsletter",
+            "ja": "ニュースレターのフィールド",
+            "ko": "뉴스레터 필드",
+            "nb": "Nyhetsbrev-feltet",
+            "nl": "Veld nieuwsbrief",
+            "pl": "Pole newslettera",
+            "pt-BR": "Campo da newsletter",
+            "pt-PT": "Campo da newsletter",
+            "sv": "Nyhetsbrevets fält",
+            "th": "ช่องข้อมูลของจดหมายข่าว",
+            "tr": "Bülten alanı",
+            "vi": "Trường bản tin",
+            "zh-CN": "新闻通讯字段",
+            "zh-TW": "電子報欄位"
+          },
+          "default": "#1a1a1a"
+        },
+        {
+          "type": "color",
+          "id": "color_newsletter_input_text",
+          "label": {
+            "cs": "Text newsletteru s novinkami",
+            "da": "Tekst til nyhedsbrev",
+            "de": "Newsletter-Text",
+            "en": "Newsletter text",
+            "es": "Texto del boletín",
+            "fi": "Uutiskirjeen teksti",
+            "fr": "Texte de la newsletter",
+            "it": "Testo newsletter",
+            "ja": "ニュースレターのテキスト",
+            "ko": "뉴스레터 텍스트",
+            "nb": "Tekst til nyhetsbrev",
+            "nl": "Tekst nieuwsbrief",
+            "pl": "Tekst newslettera",
+            "pt-BR": "Texto da newsletter",
+            "pt-PT": "Texto da newsletter",
+            "sv": "Nyhetsbrevets text",
+            "th": "ข้อความของจดหมายข่าว",
+            "tr": "Bülten metni",
+            "vi": "Văn bản trong bản tin",
+            "zh-CN": "新闻通讯文本",
+            "zh-TW": "電子報文字"
+          },
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Titel",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "it": "Titolo",
+            "ja": "見出し",
+            "ko": "제목",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pl": "Nagłówek",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "tr": "Başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "cs": "Mějte o všem přehled",
+            "da": "Vær opdateret",
+            "de": "Bleibe auf dem Laufenden",
+            "en": "Be in the know",
+            "es": "Mantente informado",
+            "fi": "Pysy ajan tasalla",
+            "fr": "Restez au courant",
+            "it": "Rimani aggiornato",
+            "ja": "よく知ってください",
+            "ko": "정확히 알기",
+            "nb": "Hold deg oppdatert",
+            "nl": "Wees op de hoogte",
+            "pl": "Bądź na bieżąco",
+            "pt-BR": "Fique por dentro",
+            "pt-PT": "Esteja por dentro",
+            "sv": "Håll dig informerad",
+            "th": "รับข่าวสาร",
+            "tr": "Haberdar olun",
+            "vi": "Luôn cập nhật",
+            "zh-CN": "消息灵通",
+            "zh-TW": "掌握最新動態"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "label": {
+            "cs": "Podnadpis",
+            "da": "Underoverskrift",
+            "de": "Unter-Überschrift",
+            "en": "Subheading",
+            "es": "Subtítulo",
+            "fi": "Alaotsikko",
+            "fr": "Sous-titre",
+            "it": "Sottotitolo",
+            "ja": "小見出し",
+            "ko": "소제목",
+            "nb": "Underoverskrift",
+            "nl": "Subkop",
+            "pl": "Nagłówek podrzędny",
+            "pt-BR": "Subtítulo",
+            "pt-PT": "Subtítulo",
+            "sv": "Underrubrik",
+            "th": "หัวเรื่องย่อย",
+            "tr": "Alt başlık",
+            "vi": "Tiêu đề phụ",
+            "zh-CN": "副标题",
+            "zh-TW": "子標題"
+          },
+          "default": {
+            "cs": "<p>Získejte informace o propagačních akcích, nových produktech a slevách – přímo do své schránky.</p>",
+            "da": "<p>Reklamer, nye produkter og salg. Direkte i din indbakke.</p>",
+            "de": "<p>Werbeaktionen, neue Produkte und Sonderangebote. Direkt in deinem Posteingang.</p>",
+            "en": "<p>Promotions, new products and sales. Directly to your inbox.</p>",
+            "es": "<p>Promociones, nuevos productos y ofertas. Directamente a tu bandeja de entrada.</p>",
+            "fi": "<p>Kampanjat, uudet tuotteet ja myynti. Suoraan saapuneet-kansioosi</p>",
+            "fr": "<p>Promotions, nouveaux produits et soldes. Directement dans votre boîte de réception.</p>",
+            "it": "<p>Promozioni, nuovi prodotti e offerte. Direttamente nella tua casella di posta.</p>",
+            "ja": "<p>新商品やセール情報などのお得な情報をお届けします。</p>",
+            "ko": "<p>프로모션, 신제품, 판매. 받은 편지함으로 바로 이동.</p>",
+            "nb": "<p>Kampanjer, nye produkter og salg. Direkte i innboksen din.</p>",
+            "nl": "<p>Promoties, nieuwe producten en uitverkoop rechtstreeks in je inbox.</p>",
+            "pl": "<p>Promocje, nowe produkty i wyprzedaże. Bezpośrednio do Twojej skrzynki odbiorczej.</p>",
+            "pt-BR": "<p>Promoções, novos produtos e vendas. Diretamente para sua caixa de entrada.</p>",
+            "pt-PT": "<p>Promoções, novos produtos e ofertas. Diretamente na sua caixa de entrada.</p>",
+            "sv": "<p>Kampanjer, nya produkter och försäljning. Direkt till din inkorg.</p>",
+            "th": "<p>โปรโมชัน สินค้าใหม่ และการลดราคา ตรงสู่กล่องจดหมายเข้าของคุณ</p>",
+            "tr": "<p>Promosyonlar, yeni ürünler ve indirimler. Doğrudan gelen kutunuzda.</p>",
+            "vi": "<p>Khuyến mãi, sản phẩm mới và chương trình giảm giá. Trực tiếp vào hộp thư đến của bạn.</p>",
+            "zh-CN": "<p>促销、新产品和销售。直接发送到您的收件箱。</p>",
+            "zh-TW": "<p>讓您直接在收件匣內收取促銷活動、最新產品和特賣活動訊息。</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,287 @@
+<div class="page-width">
+  <div class="flex flex--grid flex--no-gutter">
+    {% assign image_size = '680x' %}
+    {% case section.blocks.size %}
+      {% when 1 %}
+        {% assign flex_size = '' %}
+        {% assign image_size = '1140x' %}
+      {% when 2 %}
+        {% assign flex_size = 'medium-up--one-half' %}
+      {% when 3 %}
+        {% assign flex_size = 'medium-up--one-third' %}
+      {% else %}
+        {% assign flex_size = 'medium-up--one-quarter' %}
+    {% endcase %}
+    {% for block in section.blocks %}
+      <div class="flex__item flex {{ flex_size }}" {{ block.shopify_attributes }}>
+        <noscript class="link-block-no-js">
+          <a href="{{ block.settings.link }}" class="link-block" {% if block.settings.image != blank %}style="background-image: url({{ block.settings.image | img_url: image_size | format: 'jpg' }});"{% endif %}>
+          {% if block.settings.image == blank %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            <div class="placeholder-background">
+              {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+            <div class="flex flex--center-vertical">
+              <div class="flex__item">
+                <span class="emphasized-title h1 link-block__cta">
+                  {{ block.settings.cta_label | escape }}
+                </span>
+              </div>
+            </div>
+          </a>
+        </noscript>
+          <a href="{{ block.settings.link }}" class="link-block lazyload"
+           {% if block.settings.image != blank %}
+              style="background-position: {{ block.settings.image_align }};
+                     background-image: url('{{ block.settings.image | img_url: '300x300' }});"
+            {% endif %}
+            data-bgset="{% include 'bgset', image: block.settings.image %}"
+            data-sizes="auto"
+            data-parent-fit="cover">
+          {% if block.settings.image == blank %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            <div class="placeholder-background">
+              {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+          <div class="flex flex--center-vertical">
+            <div class="flex__item">
+              <span class="emphasized-title h1 link-block__cta">
+                {{ block.settings.cta_label | escape }}
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Více bloků odkazů",
+    "da": "Flere linkblokke",
+    "de": "Mehrere Linkblöcke",
+    "en": "Multiple link blocks",
+    "es": "Enlaces múltiples",
+    "fi": "Useita linkkilohkoja",
+    "fr": "Blocs de liens multiples",
+    "it": "Più gruppi di link",
+    "ja": "複数のリンクのブロック",
+    "ko": "다중 링크 블록",
+    "nb": "Flere koblingsbokser",
+    "nl": "Meerdere-link blokken",
+    "pl": "Wiele bloków linków",
+    "pt-BR": "Blocos de links múltiplos",
+    "pt-PT": "Blocos lig. múltip.",
+    "sv": "Block med flera länkar",
+    "th": "การเชื่อมโยงหลายบล็อก",
+    "tr": "Çoklu bağlantı blokları",
+    "vi": "Nhiều khối liên kết",
+    "zh-CN": "多个链接块",
+    "zh-TW": "多重連結區塊"
+  },
+  "class": "index-section",
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "link_block",
+      "name": {
+        "cs": "Blok odkazů",
+        "da": "Linkblokke",
+        "de": "Linkblock",
+        "en": "Link block",
+        "es": "Vincular bloque",
+        "fi": "Linkkiosio",
+        "fr": "Bloc de lien",
+        "it": "Gruppo di link",
+        "ja": "リンクのブロック",
+        "ko": "링크 블록",
+        "nb": "Koblingsboks",
+        "nl": "Link blok",
+        "pl": "Blok linków",
+        "pt-BR": "Bloco de link",
+        "pt-PT": "Bloco de ligação",
+        "sv": "Länkblock",
+        "th": "บล็อกลิงก์",
+        "tr": "Bağlantı bloğu",
+        "vi": "Khối liên kết",
+        "zh-CN": "链接块",
+        "zh-TW": "連結區塊"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "cs": "Obrázek",
+            "da": "Billede",
+            "de": "Foto",
+            "en": "Image",
+            "es": "Imagen",
+            "fi": "Kuva",
+            "fr": "Image",
+            "it": "Immagine",
+            "ja": "画像",
+            "ko": "이미지",
+            "nb": "Bilde",
+            "nl": "Afbeelding",
+            "pl": "Obraz",
+            "pt-BR": "Imagem",
+            "pt-PT": "Imagem",
+            "sv": "Bild",
+            "th": "รูปภาพ",
+            "tr": "Görsel",
+            "vi": "Hình ảnh",
+            "zh-CN": "图片",
+            "zh-TW": "圖片"
+          }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": {
+            "cs": "Odkaz",
+            "da": "Link",
+            "de": "Link",
+            "en": "Link",
+            "es": "Enlace",
+            "fi": "Linkki",
+            "fr": "Lien",
+            "it": "Link",
+            "ja": "リンク",
+            "ko": "링크",
+            "nb": "Kobling",
+            "nl": "Link",
+            "pl": "Link",
+            "pt-BR": "Link",
+            "pt-PT": "Ligação",
+            "sv": "Länk",
+            "th": "ลิงก์",
+            "tr": "Bağlantı",
+            "vi": "Liên kết",
+            "zh-CN": "链接",
+            "zh-TW": "連結"
+          }
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": {
+            "cs": "Štítek odkazu",
+            "da": "Navn på link",
+            "de": "Link-Label",
+            "en": "Link label",
+            "es": "Vincular etiqueta",
+            "fi": "Linkin otsikko",
+            "fr": "Étiquette de lien",
+            "it": "Etichetta link",
+            "ja": "リンクラベル",
+            "ko": "링크 레이블",
+            "nb": "Koblingsetikett",
+            "nl": "Link-label",
+            "pl": "Etykieta linku",
+            "pt-BR": "Marcador de link",
+            "pt-PT": "Etiqueta de ligação",
+            "sv": "Länketikett",
+            "th": "ป้ายกำกับลิงก์",
+            "tr": "Bağlantı etiketi",
+            "vi": "Nhãn liên kết",
+            "zh-CN": "链接标签",
+            "zh-TW": "連結標籤"
+          },
+          "default": {
+            "cs": "Štítek odkazu",
+            "da": "Navn på link",
+            "de": "Link-Label",
+            "en": "Link label",
+            "es": "Vincular etiqueta",
+            "fi": "Linkin otsikko",
+            "fr": "Étiquette de lien",
+            "it": "Etichetta link",
+            "ja": "リンクラベル",
+            "ko": "링크 레이블",
+            "nb": "Koblingsetikett",
+            "nl": "Link-label",
+            "pl": "Etykieta linku",
+            "pt-BR": "Marcador de link",
+            "pt-PT": "Etiqueta de ligação",
+            "sv": "Länketikett",
+            "th": "ป้ายกำกับลิงก์",
+            "tr": "Bağlantı etiketi",
+            "vi": "Nhãn liên kết",
+            "zh-CN": "链接标签",
+            "zh-TW": "連結標籤"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Více bloků odkazů",
+        "da": "Flere linkblokke",
+        "de": "Mehrere Linkblöcke",
+        "en": "Multiple link blocks",
+        "es": "Enlaces múltiples",
+        "fi": "Useita linkkilohkoja",
+        "fr": "Blocs de liens multiples",
+        "it": "Più gruppi di link",
+        "ja": "複数のリンクのブロック",
+        "ko": "다중 링크 블록",
+        "nb": "Flere koblingsbokser",
+        "nl": "Meerdere-link blokken",
+        "pl": "Wiele bloków linków",
+        "pt-BR": "Blocos de links múltiplos",
+        "pt-PT": "Blocos lig. múltip.",
+        "sv": "Block med flera länkar",
+        "th": "การเชื่อมโยงหลายบล็อก",
+        "tr": "Çoklu bağlantı blokları",
+        "vi": "Nhiều khối liên kết",
+        "zh-CN": "多个链接块",
+        "zh-TW": "多重連結區塊"
+      },
+      "category": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "blocks": [
+        {
+          "type": "link_block"
+        },
+        {
+          "type": "link_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

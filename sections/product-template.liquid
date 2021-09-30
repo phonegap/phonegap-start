@@ -1,0 +1,429 @@
+<div class="page-width" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" data-ajax="{{ section.settings.enable_ajax }}" data-stock="{{ section.settings.stock_enable }}">
+{% if product.metafields.loox.num_reviews %}
+	<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		<meta itemprop="ratingValue" content="{{ product.metafields.loox.avg_rating }}"/>
+		<meta itemprop="reviewCount" content="{{ product.metafields.loox.num_reviews }}"/>
+	</div>
+{% endif %}
+  {% assign product_image_size = '480x480' %}
+
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: '600x600' }}">
+  {%- if settings.product_vendor_enable -%}
+    <meta itemprop="brand" content="{{ product.vendor }}">
+  {%- endif -%}
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign variants_with_unit_price = product.variants | where: "unit_price_measurement" %}
+
+  <div class="grid product-single">
+    <div class="grid__item {% if product.images.size > 1 %}medium-up--three-fifths{% else %}medium-up--one-half{% endif %}">
+      <div class="photos">
+        <div class="photos__item photos__item--main">
+          {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+          {%- for image in product.images -%}
+            <div class="product-single__photo product__photo-container product__photo-container-{{ section.id }} js{% unless image == featured_image %} hide{% endunless %}"
+                 id="ProductPhoto"
+                 style="max-width: {% include 'image-width' with image: image, width: 480 %}px;"
+                 data-image-id="{{ image.id }}">
+              <a href="{{ image | img_url: '1024x1024' }}"
+                 class="js-modal-open-product-modal product__photo-wrapper product__photo-wrapper-{{ section.id }}"
+                 style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
+                {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img class="lazyload{% unless image == featured_image %} lazypreload{% endunless %}"
+                  src="{{ image | img_url: '150x150' }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[180, 240, 360, 480, 720, 960, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ image.alt | escape }}">
+              </a>
+            </div>
+          {%- endfor -%}
+          <noscript>
+            <a href="{{ featured_image | img_url: '1024x1024' }}">
+              <img src="{{ featured_image | img_url: product_image_size }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg-{{ section.id }}">
+            </a>
+          </noscript>
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="photos__item photos__item--thumbs">
+            <div class="product-single__thumbnails product-single__thumbnails-{{ section.id }}{% unless product.images.size > 2 %} product-single__thumbnails--static{% endunless %}">
+              {% for image in product.images %}
+                <div class="product-single__thumbnail-item product-single__thumbnail-item-{{ section.id }}{% if image == featured_image %} is-active{% endif %}" data-image-id="{{ image.id }}">
+                  <a href="{{ image.src | img_url: product_image_size }}" data-zoom="{{ image.src | img_url: '1024x1024' }}" class="product-single__thumbnail product-single__thumbnail-{{ section.id }}">
+                    <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        {% if product.images.size > 2 %}
+          {% comment %}
+            Add SVG icon snippets to an object for custom slider arrows
+          {% endcomment %}
+          <script>
+            {% capture arrow_left %}{% include 'icon-arrow-left' %}{% endcapture %}
+            {% capture arrow_right %}{% include 'icon-arrow-right' %}{% endcapture %}
+            {% capture arrow_up %}{% include 'icon-arrow-up' %}{% endcapture %}
+            {% capture arrow_down %}{% include 'icon-arrow-down' %}{% endcapture %}
+            var sliderArrows = {
+              left: {{ arrow_left | json }},
+              right: {{ arrow_right | json }},
+              up: {{ arrow_up | json }},
+              down: {{ arrow_down | json }}
+            }
+          </script>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="grid__item {% if product.images.size > 1 %}medium-up--two-fifths{% else %}medium-up--one-half{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="product-single__info-wrapper">
+        <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+        <div class="product-single__meta small--text-center">
+          {% if settings.product_vendor_enable %}
+            <p class="product-single__vendor">{{ product.vendor }}</p>
+          {% endif %}
+
+          <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
+<a href="#looxReviews"><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div></a>
+
+          <ul class="product-single__meta-list list--no-bullets list--inline{% if cart.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
+            <li id="ProductSaleTag-{{ section.id }}" class="{% unless product.compare_at_price > product.price %}hide{% endunless %}">
+              <div class="product-tag">
+                {{ 'products.product.on_sale' | t }}
+              </div>
+            </li>
+            <li>
+              {% unless product.compare_at_price_max > product.price %}
+                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              {% endunless %}
+              <span id="ProductPrice-{{ section.id }}" class="product-single__price" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                {{ current_variant.price | money }}
+              </span>
+            </li>
+            {% if product.compare_at_price_max > product.price %}
+              <li>
+                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                <s id="ComparePrice-{{ section.id }}" class="product-single__price product-single__price--compare">
+                  {{ current_variant.compare_at_price | money }}
+                </s>
+              </li>
+            {% endif %}
+            {%- if variants_with_unit_price.size > 0 -%}
+              <li>
+                {% include 'product-unit-price', product_variant: current_variant %}
+              </li>
+            {%- endif -%}
+            {% assign show_stock = false %}
+            {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
+              {% assign show_stock = true %}
+            {% elsif current_variant.inventory_quantity < 1 and current_variant.incoming %}
+              {% assign show_stock = true %}
+            {% endif  %}
+            {%- if section.settings.stock_enable -%}
+              <li>
+                <span id="ProductStock-{{ section.id }}" class="product-single__stock{% unless show_stock %} hide{% endunless %}">
+                  {% if current_variant.inventory_management %}
+                    {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
+                      {% assign qty = current_variant.inventory_quantity %}
+                      {{ 'products.product.stock_available' | t: count: qty }}
+                    {% elsif current_variant.inventory_quantity < 1 and current_variant.incoming %}
+                      {% if current_variant.available %}
+                        {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
+                        {{ 'products.product.will_not_ship_until' | t: date: date  }}
+                      {% else %}
+                        {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
+                        {{ 'products.product.will_be_in_stock_after' | t: date: date  }}
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                </span>
+              </li>
+            {% endif %}
+          </ul>
+
+          {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+            <div class="product-single__policies rte">
+              {%- if cart.taxes_included -%}
+                {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%}
+                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+        </div>
+
+        <hr>
+
+        {% capture "form_class" %}product-form{% if section.settings.enable_payment_button %} product-form--payment-button{% endif %}{%- endcapture %}
+
+        {% capture "form_id" %}AddToCartForm-{{ section.id }}{%- endcapture %}
+
+        {% form 'product', product, class:form_class, id:form_id %}
+          {{ form | payment_terms }}
+          {% unless product.has_only_default_variant %}
+            {% for option in product.options_with_values %}
+              <div class="selector-wrapper js product-form__item">
+                <label for="SingleOptionSelector-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+                <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+                  id="SingleOptionSelector-{{ forloop.index0 }}"
+                  data-name="{{ option.name }}"
+                  data-index="option{{ forloop.index }}">
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          {% endunless %}
+
+          <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+            {% for variant in product.variants %}
+              <option {% if variant == current_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% unless variant.available %} disabled="disabled" {% endunless %}>
+                {% if variant.available %}
+                  {{ variant.title }} - {{ variant.price | money_with_currency }}
+                {% else %}
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                {% endif %}
+              </option>
+            {% endfor %}
+          </select>
+          <div class="product-form__item product-form__item--quantity">
+            <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="product-form__input product-form__quantity">
+          </div>
+          <div class="product-form__item product-form__item--submit">
+            <button type="submit"
+              name="add"
+              id="AddToCart-{{ section.id }}"
+              class="btn btn--full product-form__cart-submit{% unless current_variant.available %} btn--sold-out{% endunless %}{% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}"
+              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+              <span id="AddToCartText-{{ section.id }}">
+                {% unless current_variant.available %}
+                  {{ 'products.product.sold_out' | t }}
+                {% else %}
+                  {{ 'products.product.add_to_cart' | t }}
+                {% endunless %}
+              </span>
+            </button>
+            {% if section.settings.enable_payment_button %}
+              {{ form | payment_button }}
+            {% endif %}
+          </div>
+        {% endform %}
+
+        <hr>
+
+        <div class="rte product-single__description" itemprop="description">
+          {{ product.description }}
+        </div>
+
+        {% if section.settings.social_sharing_products %}
+          <hr>
+          {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+  {% if section.settings.stock_enable %}
+    <script type="application/json" id="VariantJson-{{ section.id }}">
+      [
+        {% for variant in product.variants %}
+          {
+             "incoming": {{ variant.incoming | default: false | json }},
+             "next_incoming_date": {{ variant.next_incoming_date | date: format: 'date' | json }},
+             "inventory_policy": {{ variant.inventory_policy | json }},
+             "inventory_quantity": {{ variant.inventory_quantity | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    </script>
+  {% endif %}
+{% endunless %}
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Stránky produktu",
+    "da": "Produktsider",
+    "de": "Produktseiten",
+    "en": "Product pages",
+    "es": "Páginas de productos",
+    "fi": "Tuotesivut",
+    "fr": "Pages de produits",
+    "it": "Pagine di prodotto",
+    "ja": "商品ページ",
+    "ko": "제품 페이지",
+    "nb": "Produktsider",
+    "nl": "Productpagina's",
+    "pl": "Strony produktu",
+    "pt-BR": "Páginas de produtos",
+    "pt-PT": "Páginas de produtos",
+    "sv": "Produktsidor",
+    "th": "หน้าสินค้า",
+    "tr": "Ürün sayfaları",
+    "vi": "Trang sản phẩm",
+    "zh-CN": "产品页面",
+    "zh-TW": "產品頁面"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_ajax",
+      "label": {
+        "cs": "Po přidání položky do košíku zůstat na aktuální stránce",
+        "da": "Bliv på aktuel side, når vare lægges i indkøbskurven",
+        "de": "Auf der aktuellen Seite bleiben, wenn Artikel hinzugefügt wird",
+        "en": "Stay on current page when item is added to cart",
+        "es": "Permanece en la página actual al agregar el artículo al carrito.",
+        "fi": "Pysy nykyisellä sivulla, kun tuote lisätään ostoskoriin",
+        "fr": "Rester sur la page actuelle lorsqu'un article est ajouté au panier",
+        "it": "Resta sulla stessa pagina quando l'articolo viene aggiunto al carrello",
+        "ja": "アイテムがカートに追加されたときに現在のページにとどまる",
+        "ko": "카트에 품목이 추가되면 현재 페이지에 머무십시오",
+        "nb": "Bli på nåværende side når vare legges i handlekurven",
+        "nl": "Blijf op de huidige pagina wanneer het product is toegevoegd",
+        "pl": "Pozostań na bieżącej stronie po dodaniu pozycji do koszyka",
+        "pt-BR": "Permanecer na página atual quando o item for adicionado ao carrinho",
+        "pt-PT": "Permanecer na página atual quando o item é adicionado ao carrinho",
+        "sv": "Stanna på nuvarande sida när objektet läggs i kundvagnen",
+        "th": "อยู่ในหน้าปัจจุบันเมื่อมีการเพิ่มรายการลงในตะกร้าสินค้า",
+        "tr": "Sepete ürün eklendiğinde mevcut sayfada kal",
+        "vi": "Ở lại trang hiện tại khi thêm mặt hàng vào giỏ hàng",
+        "zh-CN": "在将产品添加到购物车时停留在当前页面",
+        "zh-TW": "商品加入購物車時留在目前頁面"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "stock_enable",
+      "label": {
+        "cs": "Zobrazit skladové zásoby, jakmile je k dispozici méně než 10 produktů",
+        "da": "Vis lagerbeholdning, når der er mindre end 10 tilgængelige produkter",
+        "de": "Bestand anzeigen, wenn weniger als 10 Produkte verfügbar sind",
+        "en": "Show stock when less than 10 products available",
+        "es": "Mostrar inventario cuando haya menos de 10 productos disponibles.",
+        "fi": "Näytä varastotiedot, kun saatavilla on alle 10 tuotetta",
+        "fr": "Afficher le stock lorsque moins de 10 produits sont disponibles",
+        "it": "Mostra quantità prodotti disponibili quando ne restano meno di 10",
+        "ja": "商品の在庫数が10個以下の場合は在庫を表示する",
+        "ko": "사용할 수 있는 제품이 10개 미만인 경우 재고 표시",
+        "nb": "Vis lagerbeholdning når mindre enn 10 produkter er tilgjengelig",
+        "nl": "Laat voorraad zien wanneer minder dan 10 producten beschikbaar zijn",
+        "pl": "Pokaż zapasy, gdy dostępnych jest mniej niż 10 produktów",
+        "pt-BR": "Exibir estoque quando há menos de 10 produtos disponíveis",
+        "pt-PT": "Mostrar stock quando há menos de 10 produtos disponíveis",
+        "sv": "Visa lager när mindre än 10 produkter är tillgängliga",
+        "th": "แสดงสต็อกเมื่อมีสินค้าพร้อมจำหน่ายน้อยกว่า 10 ชิ้น",
+        "tr": "10 adetten az ürün mevcut olduğunda stoku göster",
+        "vi": "Hiển thị hàng lưu kho khi còn dưới 10 sản phẩm",
+        "zh-CN": "在可供货的产品不足 10 个时显示库存",
+        "zh-TW": "可提供產品少於 10 項時顯示庫存。"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_payment_button",
+      "label": {
+        "cs": "Zobrazit dynamické tlačítko pokladny",
+        "da": "Vis dynamisk betalingsknap",
+        "de": "Dynamischen Checkout Button anzeigen",
+        "en": "Show dynamic checkout button",
+        "es": "Mostrar botón de pago dinámico",
+        "fi": "Näytä dynaaminen kassapainike",
+        "fr": "Afficher le bouton de paiement dynamique",
+        "it": "Mostra pulsante di check-out dinamico",
+        "ja": "動的チェックアウトボタンを表示する",
+        "ko": "동적 결제 버튼 표시",
+        "nb": "Vis dynamisk knapp for å gå til kassen",
+        "nl": "Dynamische checkoutknop weergeven",
+        "pl": "Pokaż dynamiczny przycisk realizacji zakupu",
+        "pt-BR": "Exibir botão de checkout dinâmico",
+        "pt-PT": "Mostrar o botão dinâmico de finalização da compra",
+        "sv": "Visa dynamiska utcheckningsknappar",
+        "th": "แสดงปุ่มชำระเงินแบบไดนามิก",
+        "tr": "Dinamik ödeme düğmesini göster",
+        "vi": "Hiển thị nút thanh toán nhanh",
+        "zh-CN": "显示动态结账按钮",
+        "zh-TW": "顯示動態結帳按鈕"
+      },
+      "info": {
+        "cs": "Každý zákazník uvidí platební metodu, kterou ze všech metod dostupných v obchodě (například PayPal nebo Apple Pay) nejvíce preferuje. [Další informace](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "da": "Den enkelte kunde vil se sin foretrukne betalingsmetode blandt dem, der er tilgængelige i din butik, f.eks. PayPal eller Apple Pay. [Få mere at vide](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "de": "Jeder Kunde sieht seine bevorzugte Zahlungsmethode aus den in deinem Shop verfügbaren Zahlungsmethoden wie PayPal oder Apple Pay. [Mehr Informationen](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "en": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "es": "Cada cliente verá su forma de pago preferida entre las disponibles en tu tienda, como PayPal o Apple Pay. [Más información](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "fi": "Kukin asiakas näkee ensisijaisen valintansa kauppasi tarjoamista maksutavoista, esim. PayPal tai Apple Pay. [Lisätietoja](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "fr": "Chaque client verra son moyen de paiement préféré parmi ceux qui sont proposés sur votre boutique, tels que PayPal ou Apple Pay. [En savoir plus](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "it": "Ogni cliente vedrà il suo metodo di pagamento preferito tra quelli disponibili nel tuo negozio, come PayPal o Apple Pay. [Maggiori informazioni](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "ja": "PayPalやApple Payなど、ストアで利用可能なお好みの決済方法がお客様に表示されます。[詳しくはこちら](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "ko": "각 고객은 PayPal 또는 Apple Pay와 같이 스토어에서 사용 가능한 기본 결제 방법을 확인할 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "nb": "Hver enkelt kunde vil se sin foretrukne betalingsmåte blant de som er tilgjengelig i butikken din, som PayPal eller Apple Pay. [Finn ut mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "nl": "Elke klant ziet zijn of haar beschikbare voorkeursmethode om af te rekenen, zoals PayPal of Apple Pay. [Meer informatie](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "pl": "Każdy klient zobaczy swoją preferowaną metodę płatności wśród metod dostępnych w Twoim sklepie, np. PayPal lub Apple Pay. [Dowiedz się więcej ](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "pt-BR": "Cada cliente verá a forma de pagamento preferencial dentre as disponíveis na loja, como PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "pt-PT": "Cada cliente irá ver o seu método de pagamento preferido entre os disponíveis na loja, como o PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "sv": "Varje kund kommer att se den föredragna betalningsmetoden från de som finns tillgängliga i din butik, till exempel PayPal eller Apple Pay. [Läs mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "th": "ลูกค้าแต่ละรายจะเห็นวิธีการชำระเงินที่ต้องการจากวิธีที่ใช้ได้ในร้านค้าของคุณ เช่น PayPal หรือ Apple Pay [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "tr": "Her müşteri, mağazanızda sunulanlar arasından tercih ettikleri ödeme yöntemini görür (ör. PayPal veya Apple Pay). [Daha fazla bilgi edinin](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "vi": "Mỗi khách hàng sẽ thấy phương thức thanh toán ưu tiên trong những phương thức thanh toán được hỗ trợ tại cửa hàng như PayPal hoặc Apple Pay. [Tìm hiểu thêm](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "zh-CN": "每位客户都可在您商店提供的付款方式中看到他们的首选付款方式，例如 PayPal 或 Apple Pay。[了解详细信息](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "zh-TW": "每位顧客都可以在您商店內開放使用的付款方式中看見他們偏好使用的方式，如 PayPal、Apple Pay 等。[深入瞭解](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "social_sharing_products",
+      "label": {
+        "cs": "Povolit sdílení produktů",
+        "da": "Aktivér produktdeling",
+        "de": "Teilen von Produkten aktivieren",
+        "en": "Enable product sharing",
+        "es": "Habilitar compartir productos",
+        "fi": "Ota tuotejako käyttöön",
+        "fr": "Activer le partage de produits",
+        "it": "Permetti condivisione del prodotto",
+        "ja": "商品の共有を有効にする",
+        "ko": "제품 공유 활성화",
+        "nb": "Aktiver produktdeling",
+        "nl": "Delen van producten inschakelen",
+        "pl": "Włącz udostępnianie produktów",
+        "pt-BR": "Habilite o compartilhamento de produtos",
+        "pt-PT": "Ativar a partilha de produtos",
+        "sv": "Aktivera produktdelning",
+        "th": "เปิดใช้การแชร์สินค้า",
+        "tr": "Ürün paylaşımını etkinleştir",
+        "vi": "Bật chia sẻ sản phẩm",
+        "zh-CN": "启用产品分享",
+        "zh-TW": "啟用產品分享"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}
+
+
+	<div id="looxReviews" data-product-id="{{product.id}}" class="page-width">{{ product.metafields.loox.reviews }}</div>

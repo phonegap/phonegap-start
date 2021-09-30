@@ -1,0 +1,367 @@
+{
+  "general": {
+    "404": {
+      "title": "Pagina niet gevonden",
+      "subtext_html": "De pagina die je hebt opgevraagd bestaat niet.",
+      "404_link": "Terugkeren naar winkel"
+    },
+    "accessibility": {
+      "skip_to_content": "Meteen naar de content",
+      "close_modal": "Sluiten (esc)",
+      "refresh_page": "Een selectie kiezen resulteert in het geheel verversen van de pagina.",
+      "selection_help": "Druk op de spatiebalk en vervolgens op de pijltoetsen om een selectie te maken.",
+      "unit_price_separator": "per"
+    },
+    "meta": {
+      "tags": "Getagged \"{{ tags }}\"",
+      "page": "Pagina {{ page }}"
+    },
+    "password_page": {
+      "login_form_heading": "Ga winkel binnen met wachtwoord",
+      "login_form_password_label": "Wachtwoord",
+      "login_form_password_placeholder": "Je wachtwoord",
+      "login_form_submit": "Naar binnen",
+      "signup_form_email_label": "E-mail",
+      "signup_form_success": "Wij sturen je een e-mail nog voordat we opengaan!",
+      "admin_link_html": "Ben jij de winkeleigenaar? <a href=\"\/admin\" class=\"text-link\">Log hier in<\/a>",
+      "password_link": "Ga naar binnen met wachtwoord",
+      "powered_by_shopify_html": "Deze winkel wordt door {{ shopify }} aangedreven"
+    },
+    "social": {
+      "share_title": "Delen",
+      "alt_text": {
+        "share_on_facebook": "Delen op Facebook",
+        "share_on_twitter": "Twitteren op Twitter",
+        "share_on_pinterest": "Pinnen op Pinterest"
+      }
+    },
+    "newsletter_form": {
+      "newsletter_label": "Meld je aan voor het laatste nieuws, aanbiedingen en stijlen",
+      "newsletter_placeholder": "Je e-mailadres",
+      "submit": "Abonneren",
+      "confirmation": "Bedankt voor het abonneren"
+    },
+    "search": {
+      "title": "Zoekresultaten",
+      "placeholder": "Zoeken",
+      "submit": "Zoeken",
+      "read_more": "Meer lezen",
+      "results_count_html": {
+        "one": "{{ count }} overeenkomst voor <strong>{{ terms }}<\/strong>",
+        "other": "{{ count }} overeenkomsten voor <strong>{{ terms }}<\/strong>"
+      },
+      "products": "Producten",
+      "pages_and_articles": "Pagina's en artikelen"
+    },
+    "drawers": {
+      "menu": "Menu",
+      "navigation": "Sitenavigatie"
+    },
+    "payment": {
+      "method": "Betaalmethoden"
+    }
+  },
+  "blogs": {
+    "article": {
+      "tags": "Tags",
+      "view_all": "Alles lezen",
+      "all_tags": "Alle",
+      "read_more": "Meer lezen",
+      "back_to_blog": "Terug naar {{ title }}"
+    },
+    "comments": {
+      "title": "Laat een reactie achter",
+      "name": "Naam",
+      "email": "E-mail",
+      "message": "Bericht",
+      "post": "Plaats een reactie",
+      "moderated": "Opmerkingen moeten worden goedgekeurd voordat ze worden gepubliceerd",
+      "success_moderated": "Je reactie is geplaatst. Wij publiceren het zo; onze blog wordt gemodereerd.",
+      "success": "Je reactie is geplaatst! Bedankt!",
+      "with_count": {
+        "one": "{{ count }} reactie",
+        "other": "{{ count }} reacties"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Winkelwagen",
+      "remove": "Verwijderen",
+      "note": "Speciale instructies voor verkoper",
+      "taxes_and_shipping_at_checkout": "Belastingen en verzendkosten worden berekend bij de checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Belastingen en <a href=\"{{ link }}\">verzendkosten<\/a> worden berekend bij de checkout",
+      "taxes_included_but_shipping_at_checkout": "Belasting inbegrepen en verzendkosten worden berekend bij de checkout",
+      "taxes_included_and_shipping_policy_html": "Inclusief btw. <a href=\"{{ link }}\">Verzendkosten<\/a> worden berekend bij de checkout.",
+      "update": "Winkelwagen bijwerken",
+      "checkout": "Afrekenen",
+      "empty": "Je winkelwagen is leeg.",
+      "cookies_required": "Schakel cookies in om de winkelwagen te gebruiken",
+      "continue_browsing": "Doorgaan met browsen",
+      "close_notification": "Sluiten",
+      "savings_html": "Je bespaart {{ price }}"
+    },
+    "label": {
+      "product": "Product",
+      "quantity": "Aantal",
+      "decrease_quantity": "Verminder de hoeveelheid artikelen met één",
+      "increase_quantity": "Verhoog de hoeveelheid artikelen met één",
+      "total": "Totaal"
+    }
+  },
+  "collections": {
+    "general": {
+      "view_all": "Alles bekijken",
+      "all_of_collection": "Alle",
+      "no_matches": "Er zijn geen producten in deze collectie",
+      "link_title": "Blader door onze {{ title }} collectie"
+    },
+    "sorting": {
+      "title": "Sorteer op",
+      "title_tags": "Filter op",
+      "all_of_collection": "Alle"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Naam",
+      "email": "E-mail",
+      "phone": "Telefoonnummer",
+      "message": "Bericht",
+      "send": "Sturen",
+      "post_success": "Bedankt dat je contact met ons hebt opgenomen. Je hoort zo snel mogelijk van ons."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Mijn account",
+      "details": "Accountgegevens",
+      "view_addresses": "Adressen bekijken",
+      "return": "Terug naar Accountgegevens"
+    },
+    "activate_account": {
+      "title": "Account activeren",
+      "subtext": "Maak je wachtwoord aan om je account te activeren.",
+      "password": "Wachtwoord",
+      "password_confirm": "Wachtwoord bevestigen",
+      "submit": "Account activeren",
+      "cancel": "Uitnodiging afwijzen"
+    },
+    "addresses": {
+      "title": "Je adressen",
+      "default": "Standaard",
+      "add_new": "Voeg een nieuw adres toe",
+      "edit_address": "Adres bewerken",
+      "first_name": "Voornaam",
+      "last_name": "Achternaam",
+      "company": "Bedrijf",
+      "address1": "Adres 1",
+      "address2": "Adres 2",
+      "city": "Stad",
+      "country": "Land\/regio",
+      "province": "Provincie",
+      "zip": "Postcode",
+      "phone": "Telefoon",
+      "set_default": "Als standaard adres instellen",
+      "add": "Adres toevoegen",
+      "update": "Adres bijwerken",
+      "cancel": "Annuleren",
+      "edit": "Wijzigen",
+      "delete": "Verwijderen",
+      "delete_confirm": "Weet je zeker dat je dit adres wilt verwijderen?"
+    },
+    "login": {
+      "title": "Inloggegevens",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "forgot_password": "Wachtwoord vergeten?",
+      "sign_in": "Inloggen",
+      "guest_title": "Doorgaan als gast",
+      "guest_continue": "Verdergaan"
+    },
+    "orders": {
+      "title": "Besteloverzicht",
+      "order_number": "Bestelling",
+      "date": "Datum",
+      "payment_status": "Betaalstatus",
+      "fulfillment_status": "Fulfillmentstatus",
+      "total": "Totaal",
+      "none": "Je hebt nog geen bestellingen geplaatst."
+    },
+    "order": {
+      "title": "Bestelling {{ name }}",
+      "date": "Geplaatst op {{ date }}",
+      "cancelled": "Bestelling geannuleerd op {{ date }}",
+      "cancelled_reason": "Reden: {{ reason }}",
+      "billing_address": "Factuuradres",
+      "payment_status": "Betaalstatus",
+      "shipping_address": "Bezorgadres",
+      "fulfillment_status": "Fulfillmentstatus",
+      "discount": "Korting",
+      "shipping": "Verzending",
+      "tax": "Belasting",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Prijs",
+      "quantity": "Aantal",
+      "total": "Totaal",
+      "fulfilled_at": "Voldaan {{ date }}",
+      "subtotal": "Subtotaal",
+      "track_shipment": "Volg verzending"
+    },
+    "recover_password": {
+      "title": "Wachtwoord opnieuw instellen",
+      "email": "E-mail",
+      "submit": "Indienen",
+      "cancel": "Annuleren",
+      "subtext": "Wij sturen je een e-mail om je wachtwoord opnieuw in te stellen.",
+      "success": "We hebben je een e-mail gestuurd met een link om je wachtwoord opnieuw in te stellen."
+    },
+    "reset_password": {
+      "title": "Account-wachtwoord opnieuw instellen",
+      "subtext": "Voer een nieuw wachtwoord in voor {{ email }}",
+      "password": "Wachtwoord",
+      "password_confirm": "Wachtwoord bevestigen",
+      "submit": "Wachtwoord opnieuw instellen"
+    },
+    "register": {
+      "title": "Account aanmaken",
+      "first_name": "Voornaam",
+      "last_name": "Achternaam",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "submit": "Aanmaken"
+    }
+  },
+  "homepage": {
+    "hero": {
+      "next_slide": "Volgende dia",
+      "previous_slide": "Vorige dia",
+      "pause_slideshow": "Diavoorstelling pauzeren",
+      "play_slideshow": "Diavoorstelling afspelen",
+      "navigation_instructions": "Gebruik de pijlen links\/rechts om door de diavoorstelling te navigeren, of veeg links\/rechts op een mobiel apparaat",
+      "slide_number": "Dia {{ slide_number }}, huidige"
+    },
+    "onboarding": {
+      "blog_title": "De titel van je bericht",
+      "product_title": "Voorbeeld producttitel",
+      "collection_title": "Titel collectie",
+      "no_content": "Dit gedeelte heeft momenteel geen content. Voeg met de zijbalk content toe aan dit deel."
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "Winkelwagen"
+    },
+    "customer": {
+      "account": "Account",
+      "log_out": "Uitloggen",
+      "create_account": "Account aanmaken"
+    },
+    "sidebar": {
+      "featured_products": "Uitgelichte producten"
+    },
+    "footer": {
+      "social_platform": "{{ name }} op {{ platform }}"
+    }
+  },
+  "products": {
+    "product": {
+      "sold_out": "Uitverkocht",
+      "unavailable": "Niet beschikbaar",
+      "will_not_ship_until": "Wordt verzonden op {{ date }}",
+      "will_be_in_stock_after": "Is op voorraad na {{ date }}",
+      "sale_price": "Aanbiedingsprijs",
+      "regular_price": "Normale prijs",
+      "on_sale": "Aanbieding",
+      "on_sale_from_html": "Aanbieding voor {{ price }}",
+      "from_text_html": "Vanaf {{ price }}",
+      "include_taxes": "Inclusief btw.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Verzendkosten<\/a> worden berekend bij de checkout.",
+      "quantity": "Aantal",
+      "add_to_cart": "Aan winkelwagen toevoegen",
+      "full_details": "Alle details",
+      "view": "Bekijken",
+      "stock_available": {
+        "one": "{{ count }} beschikbaar",
+        "other": "{{ count }} beschikbaar"
+      },
+      "collection_return": "Terug naar",
+      "product_added_to_cart_html": "Artikel toegevoegd aan winkelwagen. <span>Winkelwagen bekijken en afrekenen<\/span>.",
+      "stock_unavailable": "Het artikel kon niet aan je winkelwagen worden toegevoegd omdat er niet genoeg op voorraad zijn.",
+      "unit_price_label": "Eenheidsprijs"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title_html": "Hier is je cadeaubon ter waarde van {{ value }} voor {{ shop }}!",
+      "subtext": "Hier is je cadeaubon!",
+      "disabled": "Uitgeschakeld",
+      "expired": "Verlopen op {{ expiry }}",
+      "active": "Verloopt op {{ expiry }}",
+      "redeem": "Gebruik deze code bij de checkout om je cadeaubon te verzilveren",
+      "shop_link": "Ga winkelen",
+      "print": "Afdrukken",
+      "remaining_html": "{{ balance }} over",
+      "add_to_apple_wallet": "Aan Apple Wallet toevoegen"
+    }
+  },
+  "sections": {
+    "map": {
+      "get_directions": "Krijg aanwijzingen",
+      "address_error": "Fout bij het opzoeken van dat adres",
+      "address_no_results": "Geen resultaten voor dat adres",
+      "address_query_limit_html": "Je hebt de gebruikslimiet van de Google API overschreden. Overweeg een upgrade naar een <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium-pakket<\/a>.",
+      "auth_error_html": "Er is een probleem opgetreden bij het verifiëren van je Google Maps API-sleutel."
+    }
+  },
+  "video": {
+    "play": "Video afspelen",
+    "close": "Stop video"
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "regular_price": "Regular price",
+        "sold_out": "Sold out",
+        "unavailable": "Unavailable",
+        "on_sale": "Sale",
+        "quantity": "Quantity",
+        "add_to_cart": "Add to cart",
+        "back_to_collection": "Back to {{ title }}",
+        "view_details": "View details"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter store using password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "password_link": "Enter using password"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{% paginate collection.products by 20 %}
+
+<div class="page-width">
+
+  <header class="grid medium-up--grid--table section-header small--text-center">
+    <div class="grid__item medium-up--one-half section-header__item">
+      <h1 class="section-header__title">
+        {{ collection.title }}
+        {% if current_tags %}
+          &ndash; {% assign title_tags = current_tags | join: ', ' %}
+          {{ title_tags }}
+        {% endif %}
+      </h1>
+      {% if collection.description != blank %}
+        <div class="section-header__subtext rte">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="grid__item medium-up--one-half medium-up--text-right section-header__item">
+      {% section 'collection-filters' %}
+    </div>
+  </header>
+
+  <div class="grid grid--no-gutters grid--uniform">
+
+    {% for product in collection.products %}
+      <div class="grid__item small--one-half medium-up--one-fifth">
+        {% include 'product-card', product: product %}
+      </div>
+    {% else %}
+      {% comment %}
+        Add default products to help with onboarding for collections/all only.
+
+        The onboarding styles and products are only loaded if the
+        store has no products.
+      {% endcomment %}
+      {% if shop.products_count == 0 %}
+        <div class="grid__item">
+          <div class="grid grid--no-gutters grid--uniform">
+            {% assign collection_index = 1 %}
+            {% for i in (1..10) %}
+              {% case i %}
+                {% when 7 %}
+                  {% assign collection_index = 1 %}
+                {% when 8 %}
+                  {% assign collection_index = 2 %}
+                {% when 9 %}
+                  {% assign collection_index = 3 %}
+                {% when 10 %}
+                  {% assign collection_index = 4 %}
+              {% endcase %}
+              <div class="grid__item small--one-half medium-up--one-fifth">
+                <a href="/admin/products" class="product-card">
+                  <div class="product-card__image-container">
+                    <div class="product-card__image-wrapper">
+                      <div class="product-card__image">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-card__info">
+                    <div class="product-card__name">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="product-card__price">
+                      $19.99
+                    </div>
+                  </div>
+                  <div class="product-card__overlay">
+                    {% assign view_string_length = 'products.product.view' | t | size %}
+                    <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{{ 'products.product.view' | t }}</span>
+                  </div>
+                </a>
+              </div>
+              {% assign collection_index = collection_index | plus: 1 %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        {% comment %}
+          If collection exists but is empty, display message
+        {% endcomment %}
+        <div class="grid__item small--text-center">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    </div>
+  {% endif %}
+
+</div>
+
+{% endpaginate %}

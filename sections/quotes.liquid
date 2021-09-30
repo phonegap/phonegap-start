@@ -1,0 +1,305 @@
+<div class="page-width">
+  <div class="section-block section-block--padding">
+    {% if section.settings.title != blank %}
+      <div class="section-block__header text-center">
+        <h4 class="h1--mini section-block__title">{{ section.settings.title | escape }}</h4>
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="quotes-wrapper">
+        <div class="quotes-slider" id="Quotes-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="quotes">
+          {% for block in section.blocks %}
+            <div class="quote__slide-wrapper quote__slide-wrapper--{{ block.id }}" {{ block.shopify_attributes }}>
+              <div class="quote__slide text-center">
+                <div class="page-width">
+                  <blockquote>
+                    <span class="quote-icon">{% include 'icon-quote' %}</span>
+                    <div class="rte-setting">{{ block.settings.quote }}</div>
+                    <cite>{{ block.settings.author | escape }}</cite>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Ohlasy",
+    "da": "Udtalelser",
+    "de": "Testimonials",
+    "en": "Testimonials",
+    "es": "Testimonios",
+    "fi": "Suositukset",
+    "fr": "Témoignages",
+    "it": "Testimonial",
+    "ja": "お客様の声",
+    "ko": "추천",
+    "nb": "Tilbakemeldinger fra kunder",
+    "nl": "Testimonials",
+    "pl": "Referencje",
+    "pt-BR": "Depoimentos",
+    "pt-PT": "Depoimentos",
+    "sv": "Kundberättelser",
+    "th": "เสียงชื่นชมจากลูกค้า",
+    "tr": "Kullanıcı görüşleri",
+    "vi": "Chứng thực",
+    "zh-CN": "感言",
+    "zh-TW": "推薦文"
+  },
+  "class": "index-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "Titre",
+        "it": "Titolo",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Ohlasy",
+        "da": "Udtalelser",
+        "de": "Testimonials",
+        "en": "Testimonials",
+        "es": "Testimonios",
+        "fi": "Suositukset",
+        "fr": "Témoignages",
+        "it": "Testimonial",
+        "ja": "お客様の声",
+        "ko": "추천",
+        "nb": "Tilbakemeldinger fra kunder",
+        "nl": "Testimonials",
+        "pl": "Referencje",
+        "pt-BR": "Depoimentos",
+        "pt-PT": "Depoimentos",
+        "sv": "Kundberättelser",
+        "th": "เสียงชื่นชมจากลูกค้า",
+        "tr": "Kullanıcı görüşleri",
+        "vi": "Chứng thực",
+        "zh-CN": "感言",
+        "zh-TW": "推薦文"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": {
+        "cs": "Citace",
+        "da": "Citer",
+        "de": "Zitat",
+        "en": "Quote",
+        "es": "Cotización",
+        "fi": "Lainaus",
+        "fr": "Citation",
+        "it": "Citazione",
+        "ja": "引用",
+        "ko": "따옴표",
+        "nb": "Pristilbud",
+        "nl": "Offerte",
+        "pl": "Cudzysłów",
+        "pt-BR": "Citação",
+        "pt-PT": "Citação",
+        "sv": "Citat",
+        "th": "อ้างอิงคำพูด",
+        "tr": "Alıntı",
+        "vi": "Trích dẫn",
+        "zh-CN": "报价",
+        "zh-TW": "引用"
+      },
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": {
+            "cs": "Text",
+            "da": "Tekst",
+            "de": "Text",
+            "en": "Text",
+            "es": "Texto",
+            "fi": "Teksti",
+            "fr": "Texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "ko": "텍스트",
+            "nb": "Tekst",
+            "nl": "Tekst",
+            "pl": "Tekst",
+            "pt-BR": "Texto",
+            "pt-PT": "Texto",
+            "sv": "Text",
+            "th": "ข้อความ",
+            "tr": "Metin",
+            "vi": "Văn bản",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          },
+          "default": {
+            "cs": "<p>Přidejte recenze a ohlasy zákazníků, které vyjadřují jejich spokojenost s vaším obchodem.</p>",
+            "da": "<p>Tilføj kundeanmeldelser og udtalelser for at fremhæve din butiks tilfredse kunder.</p>",
+            "de": "<p>Hier kannst du Bewertungen und Testimonials von zufriedenen Kunden hinzufügen.</p>",
+            "en": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "es": "<p>Agrega reseñas y testimonios de los clientes satisfechos con tu tienda para mostrarlos.</p>",
+            "fi": "<p>Lisää asiakasarviointeja ja suositteluja esimerkeiksi myymäläsi tyytyväisistä asiakkaista.</p>",
+            "fr": "<p>Ajoutez des avis et témoignages pour mettre en avant vos clients satisfaits.</p>",
+            "it": "<p>Aggiungi recensioni e testimonianze sul tuo negozio per dimostrare che i clienti sono soddisfatti.</p>",
+            "ja": "<p>あなたのストアの幸せなお客様を紹介するために、カスタマーレビューとお客様の声を追加してください。</p>",
+            "ko": "<p>고객 리뷰 및 추천을 추가하여 스토어에 만족한 고객을 보여주십시오.</p>",
+            "nb": "<p>Legg til kundeomtaler og anbefalinger for å vise frem butikkens glade kunder.</p>",
+            "nl": "<p>Voeg beoordelingen van klanten en testimonials toe om te laten zien dat je klanten tevreden zijn.</p>",
+            "pl": "<p>Dodaj opinie i referencje od klientów, aby pokazać zadowolenie klientów Twojego sklepu.</p>",
+            "pt-BR": "<p>Adicione comentários e depoimentos para dar destaque aos clientes satisfeitos com a sua loja.</p>",
+            "pt-PT": "<p>Adicione análises e testemunhos para mostrar os clientes felizes da sua loja.</p>",
+            "sv": "<p>Lägg till kundrecensioner och berättelser för att visa upp din butiks nöjda kunder.</p>",
+            "th": "<p>เพิ่มรีวิวและเสียงชื่นชมจากลูกค้าเพื่อนำเสนอลูกค้าที่ได้รับความพึงพอใจจากร้านค้า</p>",
+            "tr": "<p>Müşteri değerlendirmeleri ve kullanıcı görüşleri ekleyerek mağazanızdan memnun kalan müşterileri gösterin.</p>",
+            "vi": "<p>Thêm đánh giá và chứng thực từ khách hàng để chứng minh khách hàng hài lòng với cửa hàng.</p>",
+            "zh-CN": "<p>添加客户评论和感言，以展示对您的商店满意的客户。</p>",
+            "zh-TW": "<p>加上顧客評論及推薦文，以便展示您商店的滿意顧客。</p>"
+          }
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": {
+            "cs": "Autor",
+            "da": "Forfatter",
+            "de": "Autor",
+            "en": "Author",
+            "es": "Autor",
+            "fi": "Kirjoittaja",
+            "fr": "Auteur",
+            "it": "Autore",
+            "ja": "執筆者",
+            "ko": "작성자",
+            "nb": "Forfatter",
+            "nl": "Auteur",
+            "pl": "Autor",
+            "pt-BR": "Autoria",
+            "pt-PT": "Autoria",
+            "sv": "Upphovsman",
+            "th": "ผู้เขียน",
+            "tr": "Yazar",
+            "vi": "Tác giả",
+            "zh-CN": "作者",
+            "zh-TW": "作者"
+          },
+          "default": {
+            "cs": "Jméno autora",
+            "da": "Forfatterens navn",
+            "de": "Name des Autors",
+            "en": "Author's name",
+            "es": "Nombre del autor",
+            "fi": "Kirjoittajan nimi",
+            "fr": "Nom de l'auteur",
+            "it": "Nome dell'autore",
+            "ja": "筆者の名前",
+            "ko": "작성자 이름",
+            "nb": "Forfatterens navn",
+            "nl": "Naam auteur",
+            "pl": "Nazwisko autora",
+            "pt-BR": "Nome do autor",
+            "pt-PT": "Nome do autor",
+            "sv": "Författarens namn",
+            "th": "ชื่อผู้เขียน",
+            "tr": "Yazar adı",
+            "vi": "Tên tác giả",
+            "zh-CN": "作者姓名",
+            "zh-TW": "作者名稱"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Ohlasy",
+        "da": "Udtalelser",
+        "de": "Testimonials",
+        "en": "Testimonials",
+        "es": "Testimonios",
+        "fi": "Suositukset",
+        "fr": "Témoignages",
+        "it": "Testimonial",
+        "ja": "お客様の声",
+        "ko": "추천",
+        "nb": "Tilbakemeldinger fra kunder",
+        "nl": "Testimonials",
+        "pl": "Referencje",
+        "pt-BR": "Depoimentos",
+        "pt-PT": "Depoimentos",
+        "sv": "Kundberättelser",
+        "th": "เสียงชื่นชมจากลูกค้า",
+        "tr": "Kullanıcı görüşleri",
+        "vi": "Chứng thực",
+        "zh-CN": "感言",
+        "zh-TW": "推薦文"
+      },
+      "category": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "blocks": [
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

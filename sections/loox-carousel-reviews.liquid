@@ -1,0 +1,86 @@
+<div
+	id="looxCarousel"
+	data-show-more="{{section.settings.show_more}}"
+	data-max-width="{{section.settings.max_width}}"
+	data-arrows-color="{{section.settings.arrows_color}}"
+	data-dots-color="{{section.settings.dots_color}}"
+	data-button-color="{{section.settings.button_color}}"
+	data-text-color="{{section.settings.text_color}}"
+	data-background-color="{{section.settings.background_color}}"
+
+	{% if section.settings.product_handle %}data-product-ids="{{ all_products[section.settings.product_handle].id }}"{% endif %}
+	{% if section.settings.only_photos %}data-mode="img"{% endif %}
+    {% if section.settings.use_widget_font %}data-use-widget-font="true"{% endif %}
+
+></div>
+{% schema %}
+{
+	"name": "Loox Carousel",
+	"class": "index-section",
+	"settings": [
+		{
+			"type": "range",
+			"id": "max_width",
+			"min": 480,
+			"max": 1920,
+			"step": 40,
+			"unit": "px",
+			"label": "Maximum width",
+			"default": 1920
+		},
+		{
+			"id": "text_color",
+			"type": "color",
+			"label": "Text color"
+		},
+		{
+			"id": "background_color",
+			"type": "color",
+			"label": "Background color"
+		},
+		{
+			"id": "arrows_color",
+			"type": "color",
+			"label": "Arrows color"
+		},
+		{
+			"id": "dots_color",
+			"type": "color",
+			"label": "Dots color"
+		},
+		{
+			"id": "button_color",
+			"type": "color",
+			"label": "Button color"
+		},
+		{
+			"id": "show_more",
+			"type": "checkbox",
+			"label": "Display \"Show more\" button",
+			"default": true
+		},
+		{
+
+			"id": "only_photos",
+			"type": "checkbox",
+			"label": "Display only reviews with photos",
+			"default": false
+		},
+		{
+			"id": "use_widget_font",
+			"type": "checkbox",
+			"label": "Use widget's font",
+			"default": true
+		},
+		{
+			"type": "product",
+			"id": "product_handle",
+			"label": "Use all of this product's reviews:"
+		}
+	],
+	"presets": [{
+		"name": "Loox Carousel",
+		"category": "Loox"
+	}]
+}
+{% endschema %}

@@ -1,0 +1,278 @@
+<script>
+  var scmCustomData= (typeof scmCustomData == "undefined" || scmCustomData == null) ? `{}` : scmCustomData;
+  var scmLanguage= (typeof scmLanguage == "undefined" || scmLanguage == null) ? `
+  {
+    "box_reviews": {
+      "title_info": "{{ 'smart_aliexpress_review.box_reviews.title_info' | t}}",
+      "average_info": "{{ 'smart_aliexpress_review.box_reviews.average_info' | t}}",
+      "before_number": "{{ 'smart_aliexpress_review.box_reviews.before_number' | t}}",
+      "after_number": "{{ 'smart_aliexpress_review.box_reviews.after_number' | t}}",
+      "all_reviews": "{{ 'smart_aliexpress_review.box_reviews.all_reviews' | t}}"
+    },
+    "box_write": {
+      "title_write": "{{ 'smart_aliexpress_review.box_write.title_write' | t}}",
+      "before_star": "{{ 'smart_aliexpress_review.box_write.before_star' | t}}",
+      "input_name": "{{ 'smart_aliexpress_review.box_write.input_name' | t}}",
+      "input_email": "{{ 'smart_aliexpress_review.box_write.input_email' | t}}",
+      "input_text_area": "{{ 'smart_aliexpress_review.box_write.input_text_area' | t}}",
+      "input_photo": "{{ 'smart_aliexpress_review.box_write.input_photo' | t}}",
+      "button_write": "{{ 'smart_aliexpress_review.box_write.button_write' | t}}",
+      "write_cancel": "{{ 'smart_aliexpress_review.box_write.write_cancel' | t}}",
+      "message_error_character": "{{ 'smart_aliexpress_review.box_write.message_error_character' | t}}",
+      "message_error_file_upload": "{{ 'smart_aliexpress_review.box_write.message_error_file_upload' | t}}",
+      "message_success": "{{ 'smart_aliexpress_review.box_write.message_success' | t}}",
+      "message_fail": "{{ 'smart_aliexpress_review.box_write.message_fail' | t}}"
+    },
+    "reviews_list": {
+      "view_product": "{{ 'smart_aliexpress_review.reviews_list.view_product' | t}}",
+      "read_more": "{{ 'smart_aliexpress_review.reviews_list.read_more' | t}}",
+      "helpful": "{{ 'smart_aliexpress_review.reviews_list.helpful' | t}}",
+      "reply": "{{ 'smart_aliexpress_review.reviews_list.reply' | t}}",
+      "button_load_more": "{{ 'smart_aliexpress_review.reviews_list.button_load_more' | t}}"
+    },
+    "sort_box" : {
+        "reviews": "{{ 'smart_aliexpress_review.sort_box.reviews' | t}}",
+        "content": "{{ 'smart_aliexpress_review.sort_box.content' | t}}",
+        "pictures": "{{ 'smart_aliexpress_review.sort_box.pictures' | t}}",
+        "date": "{{ 'smart_aliexpress_review.sort_box.date' | t}}"
+    },
+    "empty_page" : {
+        "title": "{{ 'smart_aliexpress_review.empty_page.title' | t}}",
+        "des": "{{ 'smart_aliexpress_review.empty_page.des' | t}}"
+    },
+    "thank_you" : {
+        "title": "{{ 'smart_aliexpress_review.thank_you.title' | t}}",
+        "des": "{{ 'smart_aliexpress_review.thank_you.des' | t}}"
+    }
+  }` : scmLanguage;
+  var scmAccount= (typeof scmAccount == "undefined" || scmAccount == null) ? `
+    {
+      "email" : "{{customer.email}}",
+      "name"  : "{{customer.name}}",
+      "order" : "{{ customer.orders.size }}"
+    }
+` : scmAccount;
+  var htmlIframe= (typeof htmlIframe == "undefined" || htmlIframe == null) ? `
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reviews Importer</title>
+         <script>
+      var infoShop='{{ shop.metafields.scm_review_importer.shop_info_setting | json}}';
+      var dataApp= {
+        'host' : 'https://reviews.smartifyapps.com',
+        'cdn' : 'https://d1bu6z2uxfnay3.cloudfront.net',
+        'productShopifyId' : '{{ product.id }}',
+        'shopName' : '{{ shop.permanent_domain | remove: ".myshopify.com"}}',
+        'type' : 'page'
+      };
+      var reviewsInFo= {};
+      var scmCustomData= `+ scmCustomData +` ;
+      var blockReviewFirst= "{{ shop.metafields.scm_review_importer.reviews_homePage }}";
+      var language= `+ scmLanguage +` ;
+    <\/script>
+    <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-bootstrap.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+    <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-review-importer.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+    <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/photo-flags.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap" rel="stylesheet">
+    <style>
+                   {% render 'reviews-importer-css-custom' %}
+            </style>
+  <\/head>
+  <body style="" data-productidshopify="{{ product.id }}">
+      <div id="scm-review-importer-value" data-url="https://reviews.smartifyapps.com/api/load-more-home-page" data-type= "homePage" data-shopname="{{ shop.permanent_domain}}" data-productidshopify="{{ product.id }}" data-pagecurrent="1" data-rate="null"
+        data-reviewperpage="10"></div>
+  <div class="header-container"></div>
+                  <div id="reviewImporter">
+    <div class="scm-row">
+    </div>
+    <div class="parent-loader">
+        <div class="loader-load-more"></div>
+    </div>
+    <div class="scm-pagination-load-more">
+
+    </div>
+    <div class="last-element"></div>
+</div>
+
+          <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/jQuery.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+    <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/helper.min.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+        <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/classjs.min.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+    <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/reviewPage.min.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+  <\/body>
+  </html>`
+  : htmlIframe;
+</script>
+<script>
+  function writeReviews(data){
+    return `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reviews Importer</title>
+           <script>
+               var infoShop='{{ shop.metafields.scm_review_importer.shop_info_setting | json}}';
+              var reviewsInFo= ""
+                var dataApp= {};
+                 var scmCustomData= `+ scmCustomData +` ;
+               var language= `+ scmLanguage +` ;
+               var scmAccount= `+ scmAccount +`;
+            <\/script>
+        <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-bootstrap.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+    <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-review-importer.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+    <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/photo-flags.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+     <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-review-importer-popup.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+    <style>
+                   {% render 'reviews-importer-css-custom' %}
+            </style>
+  <\/head>
+ <body style="display: none;" class=" popup-write-review body-{{ shop.metafields.scm_review_importer.shop_info_setting['body_bodyQuickLayout'] }} header-{{ shop.metafields.scm_review_importer.shop_info_setting['header_headerQuickLayout'] }}">
+`+ data.content + `
+          <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/jQuery.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+    <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/helper.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+    <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/reviewPagePopup.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+    <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/writeReview.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}">
+    <\/script>
+    <\/body>
+</html>
+`;
+  };
+function createPopupHtml(content, photos) {
+    let photosAray = JSON.parse(atob(photos));
+    let contentHtml = content;
+    let photoHtml = "";
+    let photoDotHtml = "";
+    photosAray.forEach((photo, index) => {
+        let indexDot = index + 1;
+        photoHtml = photoHtml + `<div class="scm-slide"><img alt="" src="${photo}"></div>`;
+        photoDotHtml = photoDotHtml + `<div class="column scm-slide-dot cursor" onclick="currentSlide(${indexDot})">
+    <img alt="Custom text" src="${photo}">
+</div>`;
+    });
+    return `<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Reviews Importer</title>
+        <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-bootstrap.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+        <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-review-importer.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+        <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/scm-review-importer-popup.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+        <link href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-4/assets/css/photo-flags.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" rel="stylesheet">
+         <script>
+                  var infoShop='{{ shop.metafields.scm_review_importer.shop_info_setting | json}}';
+                   var dataApp= {};
+                   var scmCustomData= `+ scmCustomData +` ;
+                var language= `+ scmLanguage +` ;
+         <\/script>
+         <style>
+                     {% render 'reviews-importer-css-custom' %}
+             </style>
+ <\/head>
+ <body style="display: none;" class="body-{{ shop.metafields.scm_review_importer.shop_info_setting['body_bodyQuickLayout'] }} header-{{ shop.metafields.scm_review_importer.shop_info_setting['header_headerQuickLayout'] }}">
+     <button class="scm-close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>
+     <div class="scm-review-importer-popup">
+      <div id="scm-review-importer-value" data-url="https://reviews.smartifyapps.com/api/load-more-home-page" data-type= "homePage" data-shopname="{{ shop.permanent_domain}}" data-productidshopify="{{ product.id }}" data-pagecurrent="1" data-rate="null"
+     data-reviewperpage="10"></div>
+         <div class="scm-row">
+             <div class="scm-col-6 left">
+                 <div class="img-popup">
+${photoHtml}
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                    </div>
+                </div>
+                <div class="scm-col-6 right">
+                    <div class="content-popup">
+                        ${contentHtml}
+                        <div class="scm-slide-dot-container">
+                            ${photoDotHtml}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/jQuery.js"><\/script>
+        <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/helper.min.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}"><\/script>
+        <script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/version-4/reviewPagePopup.min.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}"><\/script>
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("scm-slide");
+                var dots = document.getElementsByClassName("scm-slide-dot");
+                if (n > slides.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+                for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active";
+            }
+        <\/script>
+    <\/body>
+</html>`;
+};
+</script>
+{{ "reviews-importer.css" | asset_url | stylesheet_tag }}
+<div class="scm-container" style="display: none;">
+    <div class="{{ section.settings.class_wrap_title | escape }}">
+        <h2 class="{% if block.settings.class_title %} {{ section.settings.class_title | escape }}{% else %}title-lai{% endif %}">{{ section.settings.title | escape }}</h2>
+    </div>
+  <div class="scm-reviews-importer">
+    <iframe class="scm-reviews-importer-iframe" width="100%"></iframe>
+  </div>
+</div>
+    {% schema %}
+    {
+        "name": "LAI homepage reviews",
+        "class": "index-section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Lai title home page reviews"
+            },
+            {
+                "type": "text",
+                "id": "class_title",
+                "label": "Class to style the title tag",
+                "info": "Example: title for theme Dawn"
+            },
+            {
+                "type": "text",
+                "id": "class_wrap_title",
+                "label": "Class to style the wrap title tag",
+                "info": "Example: page-width for theme Dawn"
+            }
+        ],
+        "presets": [{
+        "name": "LAI homepage reviews",
+        "category": "LAI Reviews"
+    }]
+    }
+    {% endschema %}
+

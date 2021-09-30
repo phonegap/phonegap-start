@@ -1,0 +1,48 @@
+<script>
+    var scmCustomCss= `{% render 'reviews-importer-css-custom' %}`;
+    var scmLanguage= (typeof scmLanguage == "undefined" || scmLanguage == null) ? `
+  {
+    "box_reviews": {
+      "title_info": "{{ 'smart_aliexpress_review.box_reviews.title_info' | t}}",
+      "average_info": "{{ 'smart_aliexpress_review.box_reviews.average_info' | t}}",
+      "before_number": "{{ 'smart_aliexpress_review.box_reviews.before_number' | t}}",
+      "after_number": "{{ 'smart_aliexpress_review.box_reviews.after_number' | t}}",
+      "all_reviews": "{{ 'smart_aliexpress_review.box_reviews.all_reviews' | t}}"
+    },
+    "box_write": {
+      "title_write": "{{ 'smart_aliexpress_review.box_write.title_write' | t}}",
+      "before_star": "{{ 'smart_aliexpress_review.box_write.before_star' | t}}",
+      "input_name": "{{ 'smart_aliexpress_review.box_write.input_name' | t}}",
+      "input_email": "{{ 'smart_aliexpress_review.box_write.input_email' | t}}",
+      "input_text_area": "{{ 'smart_aliexpress_review.box_write.input_text_area' | t}}",
+      "input_photo": "{{ 'smart_aliexpress_review.box_write.input_photo' | t}}",
+      "button_write": "{{ 'smart_aliexpress_review.box_write.button_write' | t}}",
+      "write_cancel": "{{ 'smart_aliexpress_review.box_write.write_cancel' | t}}",
+      "message_error_character": "{{ 'smart_aliexpress_review.box_write.message_error_character' | t}}",
+      "message_error_file_upload": "{{ 'smart_aliexpress_review.box_write.message_error_file_upload' | t}}",
+      "message_success": "{{ 'smart_aliexpress_review.box_write.message_success' | t}}",
+      "message_fail": "{{ 'smart_aliexpress_review.box_write.message_fail' | t}}"
+    },
+    "reviews_list": {
+      "view_product": "{{ 'smart_aliexpress_review.reviews_list.view_product' | t}}",
+      "read_more": "{{ 'smart_aliexpress_review.reviews_list.read_more' | t}}",
+      "helpful": "{{ 'smart_aliexpress_review.reviews_list.helpful' | t}}",
+      "reply": "{{ 'smart_aliexpress_review.reviews_list.reply' | t}}",
+      "button_load_more": "{{ 'smart_aliexpress_review.reviews_list.button_load_more' | t}}"
+    },
+    "sort_box" : {
+        "reviews": "{{ 'smart_aliexpress_review.sort_box.reviews' | t}}",
+        "content": "{{ 'smart_aliexpress_review.sort_box.content' | t}}",
+        "pictures": "{{ 'smart_aliexpress_review.sort_box.pictures' | t}}",
+        "date": "{{ 'smart_aliexpress_review.sort_box.date' | t}}"
+    },
+    "empty_page" : {
+        "title": "{{ 'smart_aliexpress_review.empty_page.title' | t}}",
+        "des": "{{ 'smart_aliexpress_review.empty_page.des' | t}}"
+    },
+    "thank_you" : {
+        "title": "{{ 'smart_aliexpress_review.thank_you.title' | t}}",
+        "des": "{{ 'smart_aliexpress_review.thank_you.des' | t}}"
+    }
+  }` : scmLanguage;
+</script>

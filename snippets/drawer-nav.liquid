@@ -1,0 +1,48 @@
+<div class="grid grid--no-gutters meganav__scroller meganav__scroller--has-list">
+  <div class="grid__item meganav__list">
+    {% for childlink in link.links %}
+      <li class="drawer__nav-item">
+        {% if childlink.links != blank %}
+          {% assign grandchild_list_handle = childlink.title | handleize %}
+
+          <div class="drawer__nav-has-sublist">
+            <a href="{{ childlink.url }}" 
+              class="meganav__link drawer__nav-link drawer__nav-link--split{% if childlink.active %} meganav__link--active{% endif %}" 
+              id="DrawerLabel-{{ grandchild_list_handle }}"
+              {% if childlink.active %} aria-current="page"{% endif %}
+            >
+              {{ childlink.title | escape }}
+            </a>
+            <button type="button" aria-controls="DrawerLinklist-{{ grandchild_list_handle }}" class="text-link drawer__nav-toggle-btn drawer__nav-toggle-btn--small drawer__meganav-toggle" aria-label="{{ link.title }} {{ 'general.drawers.menu' | t }}" aria-expanded="false">
+              <span class="drawer__nav-toggle--open">
+                {% include 'icon-plus' %}
+              </span>
+              <span class="drawer__nav-toggle--close">
+                {% include 'icon-minus' %}
+              </span>
+            </button>
+          </div>
+
+          <div class="meganav meganav--drawer" id="DrawerLinklist-{{ grandchild_list_handle }}" aria-labelledby="DrawerLabel-{{ grandchild_list_handle }}" role="navigation">
+            <ul class="meganav__nav meganav__nav--third-level">
+              {% for grandchildlink in childlink.links %}
+                <li>
+                  <a href="{{ grandchildlink.url }}" class="meganav__link{% if grandchildlink.active %} meganav__link--active{% endif %}"{% if grandchildlink.active %} aria-current="page"{% endif %}>
+                    {{ grandchildlink.title | escape }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% else %}
+          <a href="{{ childlink.url }}" 
+            class="drawer__nav-link meganav__link{% if childlink.active %} meganav__link--active{% endif %}"
+            {% if childlink.active %} aria-current="page"{% endif %}
+          >
+            {{ childlink.title | escape }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </div>
+</div>

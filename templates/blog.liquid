@@ -1,0 +1,99 @@
+{% paginate blog.articles by 5 %}
+
+<div class="page-width">
+
+  <h1>
+    {% if current_tags %}
+      {{ current_tags.first }}
+    {% else %}
+      {{ blog.title }}
+    {% endif %}
+    <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog__rss-link link-accent-color">
+      {% include 'icon-rss' %}
+      <span class="icon__fallback-text">RSS</span>
+    </a>
+  </h1>
+
+  <div class="grid">
+    <div class="grid__item{% if blog.all_tags.size > 0 %} medium-up--three-quarters large-up--four-fifths{% endif %}">
+      {% for article in blog.articles %}
+        <div class="content-block">
+
+          <p class="blog__meta">
+            {% if article.tags.size > 0 %}
+              {% for tag in article.tags %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="link-body-color"><strong>{{ tag }}</strong></a>{% if forloop.last %} - {% else %}, {% endif %}
+              {% endfor %}
+            {% endif %}
+            {{ article.published_at | time_tag: format: 'date' }}
+          </p>
+
+          <h2 class="blog__title-link"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+
+          {% if article.image %}
+            <div class="content-block__full-image content-block__full-image--large">
+              <a href="{{ article.url }}">
+                <noscript>
+                  {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+                </noscript>
+                <div class="article__photo-container">
+                  <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                  {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img class="lazyload"
+                      src="{{ article.image | img_url: '300x300' }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                      data-aspectratio="{{ article.image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ article.title | escape }}">
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+
+          <div class="rte rte--indented-images">
+            {% if article.excerpt.size > 0 %}
+              {{ article.excerpt }}
+            {% else %}
+              <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
+            {% endif %}
+          </div>
+
+          <p><a href="{{ article.url }}"><strong>{{ 'blogs.article.read_more' | t }}</strong></a></p>
+
+        </div>
+      {% endfor %}
+    </div>
+    {% if blog.all_tags.size > 0 %}
+      <div class="grid__item medium-up--one-quarter large-up--one-fifth small--hide">
+        <div class="content-block content-block--small">
+          <h6 class="content-block__title">{{ 'blogs.article.tags' | t }}</h6>
+          <ul class="list--no-bullets list--bold">
+            <li>
+              <a href="{{ blog.url }}">{{ 'blogs.article.all_tags' | t }}</a>
+            </li>
+            {% for tag in blog.all_tags %}
+              {% if current_tags contains tag %}
+              <li>{{ tag }}</li>
+              {% else %}
+              <li>{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% section 'featured-products-subsection' %}
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    </div>
+  {% endif %}
+
+</div>
+
+{% endpaginate %}

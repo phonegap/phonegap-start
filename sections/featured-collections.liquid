@@ -1,0 +1,230 @@
+<div class="page-width" data-section-id="{{ section.id }}" data-section-type="collections-list"{% if section.settings.stretch_collection_image %} data-stretch-image{% endif %}>
+  {% assign blocks_count = section.blocks.size %}
+
+  {% case blocks_count %}
+    {% when 1 %}
+      {% assign grid_item_width = 'medium-up--one-half' %}
+      {% assign height = 450 %}
+      {% assign number_rows = 1 %}
+    {% when 2 %}
+      {% assign grid_item_width = 'medium-up--one-half' %}
+      {% assign height = 450 %}
+      {% assign number_rows = 1 %}
+    {% when 3 %}
+      {% assign grid_item_width = 'medium-up--one-third' %}
+      {% assign height = 330 %}
+      {% assign number_rows = 1 %}
+    {% when 4 %}
+      {% assign grid_item_width = 'medium-up--one-quarter' %}
+      {% assign height = 235 %}
+      {% assign number_rows = 1 %}
+    {% when 5 %}
+      {% assign grid_item_width = 'medium-up--one-third' %}
+      {% assign height = 330 %}
+      {% assign number_rows = 2 %}
+    {% when 6 %}
+      {% assign grid_item_width = 'medium-up--one-third' %}
+      {% assign height = 330 %}
+      {% assign number_rows = 2 %}
+  {% endcase %}
+
+  <div class="grid grid--no-gutters" id="collection-list-grid" data-number-rows="{{ number_rows }}">
+    {% assign row_number = 1 %}
+
+    {% for block in section.blocks %}
+      {% if blocks_count == 5 and forloop.index > 3 %}
+        {% assign grid_item_width = 'medium-up--one-half' %}
+        {% assign height = 450 %}
+      {% endif %}
+      {% if blocks_count > 4 and forloop.index > 3 %}
+        {% assign row_number = 2 %}
+      {% endif %}
+
+      {% assign featured_collection = collections[block.settings.collection] %}
+      {% include 'collection-grid-item' with stretch_collection_image: section.settings.stretch_collection_image, height: height %}
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Seznam kolekcí",
+    "da": "Kollektionsliste",
+    "de": "Kategorieliste",
+    "en": "Collection list",
+    "es": "Lista de colecciones",
+    "fi": "Kokoelmaluettelo",
+    "fr": "Liste des collections",
+    "it": "Elenco delle collezioni",
+    "ja": "コレクションリスト",
+    "ko": "컬렉션 목록",
+    "nb": "Samlingsliste",
+    "nl": "Collectielijst",
+    "pl": "Lista kolekcji",
+    "pt-BR": "Lista de coleções",
+    "pt-PT": "Lista de coleções",
+    "sv": "Kollektionslista",
+    "th": "รายการคอลเลกชัน",
+    "tr": "Koleksiyon listesi",
+    "vi": "Danh sách bộ sưu tập",
+    "zh-CN": "产品系列列表",
+    "zh-TW": "商品系列清單"
+  },
+  "class": "index-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "stretch_collection_image",
+      "label": {
+        "cs": "Použít rozvržení sekundárního obrázku",
+        "da": "Brug sekundært billedlayout",
+        "de": "Sekundäres Bildlayout verwenden",
+        "en": "Use secondary image layout",
+        "es": "Usar el diseño de la imagen secundaria",
+        "fi": "Käytä vaihtoehtoista kuvan asettelua",
+        "fr": "Utiliser la disposition d'image secondaire",
+        "it": "Usa layout immagine secondaria",
+        "ja": "サブ画像レイアウトを使用する",
+        "ko": "보조 이미지 레이아웃 사용",
+        "nb": "Bruk sekundært bildeoppsett",
+        "nl": "Gebruik secundaire afbeelding opmaak",
+        "pl": "Użyj dodatkowego układu obrazu",
+        "pt-BR": "Use o layout de imagem secundário",
+        "pt-PT": "Utilizar esquema de imagem secundário",
+        "sv": "Använd sekundär bildlayout",
+        "th": "ใช้เลย์เอาท์รูปภาพรอง",
+        "tr": "İkincil görsel düzeni kullan",
+        "vi": "Sử dụng bố cục hình ảnh phụ",
+        "zh-CN": "使用辅助图片布局",
+        "zh-TW": "使用次要圖片版面配置"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": {
+        "cs": "Kolekce",
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pl": "Kolekcja",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "tr": "Koleksiyon",
+        "vi": "Bộ sưu tập",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      },
+      "settings": [
+        {
+          "id": "collection",
+          "type": "collection",
+          "label": {
+            "cs": "Kolekce",
+            "da": "Kollektion",
+            "de": "Kategorie",
+            "en": "Collection",
+            "es": "Colección",
+            "fi": "Kokoelma",
+            "fr": "Collection",
+            "it": "Collezione",
+            "ja": "コレクション",
+            "ko": "컬렉션",
+            "nb": "Samling",
+            "nl": "Collectie",
+            "pl": "Kolekcja",
+            "pt-BR": "Coleção",
+            "pt-PT": "Coleção",
+            "sv": "Produktserie",
+            "th": "คอลเลกชัน",
+            "tr": "Koleksiyon",
+            "vi": "Bộ sưu tập",
+            "zh-CN": "收藏",
+            "zh-TW": "商品系列"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Seznam kolekcí",
+        "da": "Kollektionsliste",
+        "de": "Kategorieliste",
+        "en": "Collection list",
+        "es": "Lista de colecciones",
+        "fi": "Kokoelmaluettelo",
+        "fr": "Liste des collections",
+        "it": "Elenco delle collezioni",
+        "ja": "コレクションリスト",
+        "ko": "컬렉션 목록",
+        "nb": "Samlingsliste",
+        "nl": "Collectielijst",
+        "pl": "Lista kolekcji",
+        "pt-BR": "Lista de coleções",
+        "pt-PT": "Lista de coleções",
+        "sv": "Kollektionslista",
+        "th": "รายการคอลเลกชัน",
+        "tr": "Koleksiyon listesi",
+        "vi": "Danh sách bộ sưu tập",
+        "zh-CN": "产品系列列表",
+        "zh-TW": "商品系列清單"
+      },
+      "category": {
+        "cs": "Kolekce",
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pl": "Kolekcja",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "tr": "Koleksiyon",
+        "vi": "Bộ sưu tập",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      },
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+.pf-article__tags,
+.pf-article__comment {
+  background-color: #fff;
+  padding: 30px 0;
+}
+.pf-article__tags ul,
+.pf-article__comment ul {
+  margin: 0;
+  padding: 0;
+}
+
+.pf-article__header {
+  text-align: center;
+  padding: 20px 15px 30px;
+}
+.pf-article__header h1 {
+  margin-bottom: 10px;
+}
+.pf-article__header .pf-article__author {
+  margin-right: 10px;
+}
+
+.pf-article__image {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.pf-comment__list {
+  margin-bottom: 30px;
+}
+
+.pf-comment__form label {
+  display: block;
+  margin-bottom: 10px;
+}
+.pf-comment__form input:not([type=submit]), .pf-comment__form textarea {
+  width: 100%;
+}
+
+.pf-article__tags li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+.pf-article__tags li a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+}
+.pf-article__tags + .pf-article__comment {
+  padding-top: 0;
+}
+
+.pf-comment__list li {
+  list-style: none;
+  margin-bottom: 30px;
+}
+.pf-comment__list li:last-child {
+  margin-bottom: 0;
+}
+
+.pf-comment__author {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ebebeb;
+}
+.pf-comment__author > span {
+  padding-right: 15px;
+  font-weight: 700;
+}

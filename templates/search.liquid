@@ -1,0 +1,86 @@
+{% paginate search.results by 20 %}
+
+<div class="page-width">
+  <header class="grid medium-up--grid--table section-header small--text-center">
+    <div class="grid__item medium-up--two-thirds section-header__item">
+      <h1 class="section-header__title">{{ 'general.search.title' | t }}</h1>
+      {% if search.performed %}
+        <p class="section-header__subtext">{{ 'general.search.results_count_html' | t: count: search.results_count, terms: search.terms }}</p>
+      {% endif %}
+    </div>
+    <div class="grid__item medium-up--one-third section-header__item">
+      <form action="{{ routes.search_url }}" method="get" class="input-group" role="search">
+        {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" class="input-group__field input--content-color">
+
+        <div class="input-group__btn">
+          <button type="submit" class="btn btn--narrow">
+            {% include 'icon-arrow-right' %}
+            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  {% if search.performed %}
+
+    {% comment %}
+      Find the number of products and pages in the search results
+    {% endcomment %}
+    {% assign product_count = 0 %}
+    {% assign page_count = 0 %}
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        {% assign product_count = product_count | plus: 1 %}
+      {% else %}
+        {% assign page_count = page_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if product_count > 0 %}
+      <h2 class="h4 small--text-center">{{ 'general.search.products' | t }}</h2>
+
+      <div class="grid grid--no-gutters grid--uniform">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {% include 'product-card', product: item %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if product_count and page_count %}
+      <hr>
+    {% endif %}
+
+    {% if page_count > 0 %}
+      <h4 class="small--text-center">{{ 'general.search.pages_and_articles' | t }}</h4>
+
+      <div class="content-block content-block--no-bottom-padding">
+        <div class="grid grid--uniform">
+        {% for item in search.results %}
+          {% unless item.object_type == 'product' %}
+            <div class="grid__item medium-up--one-third content-block__item">
+              <h5>{{ item.title | link_to: item.url }}</h5>
+              <div class="rte">{{ item.content | strip_html | truncate: 150 }}</div>
+              <p><a href="{{ item.url }}"><strong>{{ 'general.search.read_more' | t }}</strong></a></p>
+            </div>
+          {% endunless %}
+        {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+      </div>
+    {% endif %}
+
+  {% endif %}
+</div>
+
+{% endpaginate %}

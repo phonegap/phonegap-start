@@ -1,0 +1,28 @@
+<script>
+  var blockReviewPop= (typeof blockReviewPop == "undefined" || blockReviewPop == null) ? `{{ shop.metafields.scm_review_importer.review_pop }}` : blockReviewPop;
+</script>
+<div id="scm-reviews-shopSetting" data-shop='{{ shop.metafields.scm_review_importer.shop_info_setting | json}}'></div>
+
+{% if shop.metafields.scm_review_importer.shop_info_setting['popEnabled'] %}
+<link rel="stylesheet" href="https://d1bu6z2uxfnay3.cloudfront.net/css-version-3/assets/css/scm-review-importer-pop-rv.css?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" media="print" onload="this.media='all'; this.onload=null;">
+<div id="lai-reviewPop" style="display: none;" class="popup-reviews" data-template={{ template | split: '.' | first }}>
+    <button id="scm-close" class="scm-close-popup">
+    </button>
+    <div id="content-rv">
+    </div>
+</div>
+<script src="https://d1bu6z2uxfnay3.cloudfront.net/js/frontend/reviewsPopRv.min.js?version={{ shop.metafields.scm_review_importer.shop_info_setting['version'] }}" defer></script>
+{% endif %}
+{{ "reviews-importer.js" | asset_url | script_tag }}
+<div id="scm-review-importer-popup" style="display: none;">
+    <div class="scm-popup-before"></div>
+    <div class="scm-popup-content">
+        <iframe id="scm-review-importer-popup-iframe" height="700px" width="100%"></iframe>
+    </div>
+</div>
+<div id="scm-review-importer-popup-write-review" style="display: none;">
+    <div class="scm-popup-before"></div>
+    <div class="scm-popup-content">
+        <iframe id="scm-review-importer-popup-write-review-iframe" height="700px" width="100%"></iframe>
+    </div>
+</div>

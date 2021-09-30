@@ -1,0 +1,12 @@
+{%- if image != blank -%}
+  {% if image.width > 180 %}{{ image | img_url: '180x' }} 180w {{ 180 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 360 %}{{ image | img_url: '360x' }} 360w {{ 360 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 540 %}{{ image | img_url: '540x' }} 540w {{ 540 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 720 %}{{ image | img_url: '720x' }} 720w {{ 720 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 900 %}{{ image | img_url: '900x' }} 900w {{ 900 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1080 %}{{ image | img_url: '1080x' }} 1080w {{ 1080 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1296 %}{{ image | img_url: '1296x' }} 1296w {{ 1296 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1512 %}{{ image | img_url: '1512x' }} 1512w {{ 1512 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1728 %}{{ image | img_url: '1728x' }} 1728w {{ 1728 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {{ image | img_url: 'master' }} {{ image.width }}w {{ image.height }}h
+{%- endif -%}

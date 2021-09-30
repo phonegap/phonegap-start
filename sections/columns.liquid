@@ -1,0 +1,454 @@
+<div class="page-width">
+  <div class="section-block">
+    {% if section.settings.title != blank %}
+      <div class="section-block__header section-block__header--padded text-center">
+        <h4 class="h1--mini section-block__title">{{ section.settings.title | escape }}</h4>
+      </div>
+    {% endif %}
+
+    <div class="flex column-flex">
+      {% for block in section.blocks %}
+        {% if block.settings.image != blank %}
+          {% assign img_url = block.settings.image | img_url: '600x600' %}
+        {% endif %}
+        <div class="flex__item text-center" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <noscript>
+              <div class="column-flex__image" style="background-image: url({{ block.settings.image | img_url: '600x600' }}); background-position: {{ block.settings.image_align }};"></div>
+            </noscript>
+            <div class="column-flex__image lazyload"
+              style="background-position: {{ block.settings.image_align }}; background-image: url('{{ block.settings.image | img_url: '300x300' }});"
+              data-bgset="{% include 'bgset', image: block.settings.image %}"
+              data-sizes="auto"
+              data-parent-fit="cover">
+            </div>
+          {% else %}
+            <div class="column-flex__image">
+              <div class="placeholder-background">
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="column-flex__content">
+            <p class="h5">{{ block.settings.title | escape }}</p>
+            <div class="rte-setting">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Text. sloupce s obrázky",
+    "da": "Tekstkolonner med billeder",
+    "de": "Textspalten mit Fotos",
+    "en": "Text columns with images",
+    "es": "Columnas de texto con imágenes",
+    "fi": "Tekstisarakkeet kuvilla",
+    "fr": "Colonnes de texte et images",
+    "it": "Colonne di testo con foto",
+    "ja": "画像付きテキスト列",
+    "ko": "이미지 포함 텍스트 열",
+    "nb": "Tekstkolonner med bilder",
+    "nl": "Tekstkolommen met foto's",
+    "pl": "Kolumny tekstowe z obrazami",
+    "pt-BR": "Texto em coluna com imagens",
+    "pt-PT": "Colunas texto c/ imagens",
+    "sv": "Textkolumner med bilder",
+    "th": "คอลัมน์ข้อความพร้อมรูปภาพ",
+    "tr": "Görselli metin sütunları",
+    "vi": "Cột văn bản có hình ảnh",
+    "zh-CN": "带有图片的文本列",
+    "zh-TW": "附圖片的文字欄"
+  },
+  "class": "index-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "Titre",
+        "it": "Titolo",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Text. sloupce s obrázky",
+        "da": "Tekstkolonner med billeder",
+        "de": "Textspalten mit Fotos",
+        "en": "Text columns with images",
+        "es": "Columnas de texto con imágenes",
+        "fi": "Tekstisarakkeet kuvilla",
+        "fr": "Colonnes de texte et images",
+        "it": "Colonne di testo con foto",
+        "ja": "画像付きテキスト列",
+        "ko": "이미지 포함 텍스트 열",
+        "nb": "Tekstkolonner med bilder",
+        "nl": "Tekstkolommen met afbeeldingen",
+        "pl": "Kolumny tekstowe z obrazami",
+        "pt-BR": "Texto em coluna com imagens",
+        "pt-PT": "Colunas texto c/ imagens",
+        "sv": "Textkolumner med bilder",
+        "th": "คอลัมน์ข้อความพร้อมรูปภาพ",
+        "tr": "Görselli metin sütunları",
+        "vi": "Cột văn bản có hình ảnh",
+        "zh-CN": "带有图片的文本列",
+        "zh-TW": "附圖片的文字欄"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "cs": "Nadpis",
+            "da": "Overskrift",
+            "de": "Titel",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "it": "Titolo",
+            "ja": "見出し",
+            "ko": "제목",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pl": "Nagłówek",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "tr": "Başlık",
+            "vi": "Tiêu đề",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "cs": "Přidejte nadpis nebo slogan",
+            "da": "Tilføj en titel eller et slogan",
+            "de": "Titel oder Text hinzufügen",
+            "en": "Add a title or tagline",
+            "es": "Agregar un título o eslogan",
+            "fi": "Lisää otsikko tai iskulause",
+            "fr": "Ajouter un titre ou un slogan",
+            "it": "Aggiungi un titolo o una tagline",
+            "ja": "タイトルまたはキャッチコピーを追加する",
+            "ko": "제목 또는 슬로건 추가",
+            "nb": "Legg til en tittel eller er slagord",
+            "nl": "Voeg een titel of een slogan toe",
+            "pl": "Dodaj tytuł lub slogan",
+            "pt-BR": "Adicione um título ou slogan",
+            "pt-PT": "Adicionar título ou slogan",
+            "sv": "Lägg till en titel eller tagline",
+            "th": "เพิ่มชื่อเรื่องหรือสโลแกน",
+            "tr": "Başlık ve slogan ekleyin",
+            "vi": "Thêm tiêu đề hoặc câu đúc kết",
+            "zh-CN": "添加标题或标语",
+            "zh-TW": "新增標題或標語"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": {
+            "cs": "Text",
+            "da": "Tekst",
+            "de": "Text",
+            "en": "Text",
+            "es": "Texto",
+            "fi": "Teksti",
+            "fr": "Texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "ko": "텍스트",
+            "nb": "Tekst",
+            "nl": "Tekst",
+            "pl": "Tekst",
+            "pt-BR": "Texto",
+            "pt-PT": "Texto",
+            "sv": "Text",
+            "th": "ข้อความ",
+            "tr": "Metin",
+            "vi": "Văn bản",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          },
+          "default": {
+            "cs": "<p>Sdílejte se zákazníky příspěvky na blogu a informace o produktech či propagačních akcích. Prostřednictvím tohoto textu můžete popsat produkty, informovat o dostupnosti a stylu nebo vytvořit sekci pro nejnovější recenze a nejčastější dotazy.</p>",
+            "da": "<p>Del blogopslag, produkter eller reklamer med dine kunder. Brug denne tekst til at beskrive produkter, dele detaljer om tilgængelighed og stil eller som et sted til at vise dine seneste anmeldelser eller ofte stillede spørgsmål.</p>",
+            "de": "<p>Informiere deine Kunden über Blog-Beiträge, Produkte oder Werbeaktionen. Nutze diesen Text, um Produkte zu beschreiben, Details zur Verfügbarkeit und zum Stil mitzuteilen oder um neue Bewertungen oder FAQs anzuzeigen.</p>",
+            "en": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>",
+            "es": "<p>Comparte entradas de blogs, productos o promociones con tus clientes. Usa este texto para describir productos, compartir detalles sobre la disponibilidad y el estilo, o como un espacio para mostrar reseñas recientes o preguntas frecuentes.</p>",
+            "fi": "<p>Jaa blogikirjoituksia, tuotteita tai kampanjoita asiakkaidesi kanssa. Tällä tekstillä voit kuvata tuotteita, jakaa tietoja saatavuudesta ja tyylistä tai käyttää sitä tilana viimeisimmille arvosteluille tai yleisille kysymyksille.</p>",
+            "fr": "<p>Partagez des articles de blog, des produits ou des promotions avec vos clients. Utilisez ce texte pour décrire vos produits, partager des détails sur leur disponibilité ou leur style, ou encore pour afficher des FAQ et avis récents.</p>",
+            "it": "<p>Condividi articoli del blog, prodotti o promozioni con i tuoi clienti. Utilizza questo spazio per descrivere i prodotti, condividendo dettagli sulla loro disponibilità e sul loro stile, oppure per mostrare recensioni recenti o domande frequenti.</p>",
+            "ja": "<p>ブログ記事、商品、またはプロモーションをお客様に伝えます。このテキストで商品について説明し、出品状況やスタイルの詳細を共有するか、最近のレビューやFAQを表示するスペースとして使用します。</p>",
+            "ko": "<p>블로그 게시물, 제품 또는 프로모션을 고객과 공유하십시오. 이 텍스트를 사용하여 제품을 설명하고 사용 가능성 및 스타일에 대한 세부 정보를 공유하거나 최근 리뷰 또는 FAQ를 표시할 수 있는 공간으로 사용하십시오.</p>",
+            "nb": "<p>Del blogginnlegg, produkter eller kampanjer med kundene dine. Bruk denne teksten til å beskrive produkter, dele detaljer om tilgjengelighet og stil, eller som et sted for å vise de siste omtalene eller vanlige spørsmål.</p>",
+            "nl": "<p>Deel blogposts, producten of promoties met je klanten. Gebruik deze tekst om producten te beschrijven, details over beschikbaarheid en stijl te delen of als een ruimte om recente beoordelingen of veelgestelde vragen weer te geven.</p>",
+            "pl": "<p>Udostępniaj swoim klientom wpisy na blogu, produkty lub promocje. Użyj tego tekstu do opisania produktów, informowania o dostępności i stylu lub jako przestrzeni do wyświetlania ostatnich recenzji lub Często zadawanych pytań.</p>",
+            "pt-BR": "<p>Compartilhe postagens de blogs, produtos ou promoções com seus clientes. Use este texto para descrever produtos, compartilhar detalhes sobre disponibilidade e estilo ou como um espaço para exibir comentários recentes ou perguntas frequentes.</p>",
+            "pt-PT": "<p>Partilhe publicações no blogue, produtos ou promoções com os seus clientes. Utilize este texto para descrever produtos, partilhar detalhes sobre disponibilidade e estilo ou como local para mostrar FAQ ou análises recentes.</p>",
+            "sv": "<p>Dela blogginlägg, produkter eller kampanjer med dina kunder. Använd den här texten för att beskriva produkter, dela information om tillgänglighet och stil eller som ett utrymme för att visa senaste recensioner eller vanliga frågor.</p>",
+            "th": "<p>แชร์โพสต์บล็อก สินค้า หรือโปรโมชันกับลูกค้าของคุณ ใช้ข้อความนี้เพื่ออธิบายสินค้า แชร์รายละเอียดเกี่ยวกับความพร้อมจำหน่ายและสไตล์ หรือเป็นพื้นที่เพื่อจัดแสดงรีวิวล่าสุด หรือว่าคำถามที่พบบ่อย</p>",
+            "tr": "<p>Müşterilerinizle blog gönderileri, ürünler ve promosyonlar paylaşın. Ürünleri açıklamak, stok durumu ve stil ile ilgili ayrıntıları paylaşmak veya son değerlendirmeleri ya da SSS'leri göstereceğiniz bir alan olarak yararlanmak için bu metni kullanabilirsiniz.</p>",
+            "vi": "<p>Chia sẻ bài viết blog, sản phẩm, hoặc chương trình ưu đãi với khách hàng. Sử dụng văn bản này để mô tả sản phẩm, chia sẻ thông tin về tình trạng còn hàng và kiểu dáng, hoặc là nơi để hiển thị các đánh giá mới hoặc câu hỏi thường gặp.</p>",
+            "zh-CN": "<p>与您的客户分享博客文章、产品或促销信息。使用此文本描述产品、分享有关供货情况和风格的详细信息，或将此文本作为显示最近评论或常见问题解答的区域。</p>",
+            "zh-TW": "<p>與顧客分享網誌貼文、產品或宣傳活動。請使用這段文字描述商品、分享庫存和樣式的詳細資訊，或顯示近期評論及常見問題。</p>"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "cs": "Obrázek",
+            "da": "Billede",
+            "de": "Foto",
+            "en": "Image",
+            "es": "Imagen",
+            "fi": "Kuva",
+            "fr": "Image",
+            "it": "Immagine",
+            "ja": "画像",
+            "ko": "이미지",
+            "nb": "Bilde",
+            "nl": "Afbeelding",
+            "pl": "Obraz",
+            "pt-BR": "Imagem",
+            "pt-PT": "Imagem",
+            "sv": "Bild",
+            "th": "รูปภาพ",
+            "tr": "Görsel",
+            "vi": "Hình ảnh",
+            "zh-CN": "图片",
+            "zh-TW": "圖片"
+          }
+        },
+        {
+          "type": "radio",
+          "id": "image_align",
+          "label": {
+            "cs": "Zarovnání obrázku",
+            "da": "Justering af billede",
+            "de": "Fotoausrichtung",
+            "en": "Image alignment",
+            "es": "Alineación de imagen",
+            "fi": "Kuvan tasaus",
+            "fr": "Alignement de l'image",
+            "it": "Allineamento immagine",
+            "ja": "画像アラインメント",
+            "ko": "이미지 정렬",
+            "nb": "Bildejustering",
+            "nl": "Afbeelding uitlijnen",
+            "pl": "Wyrównanie obrazu",
+            "pt-BR": "Alinhamento da imagem",
+            "pt-PT": "Alinhamento da imagem",
+            "sv": "Bildjustering",
+            "th": "การจัดวางรูปภาพ",
+            "tr": "Görsel hizalaması",
+            "vi": "Căn chỉnh hình ảnh",
+            "zh-CN": "图片对齐方式",
+            "zh-TW": "圖片對齊"
+          },
+          "options": [
+            {
+              "value": "top center",
+              "label": {
+                "cs": "Nahoře na střed",
+                "da": "Øverst i midten",
+                "de": "Oben Mitte",
+                "en": "Top center",
+                "es": "Superior centrada",
+                "fi": "Keskellä ylhäällä",
+                "fr": "En haut au centre",
+                "it": "In alto al centro",
+                "ja": "中央上",
+                "ko": "맨 위 중간",
+                "nb": "Toppsentrert",
+                "nl": "Midden boven",
+                "pl": "Na górze na środku",
+                "pt-BR": "Superior centro",
+                "pt-PT": "Superior centro",
+                "sv": "Längst upp i mitten",
+                "th": "กลางบน",
+                "tr": "Üst orta",
+                "vi": "Trên cùng ở giữa",
+                "zh-CN": "顶部居中",
+                "zh-TW": "中央上方"
+              }
+            },
+            {
+              "value": "center center",
+              "label": {
+                "cs": "Na střed",
+                "da": "Centreret",
+                "de": "Mitte",
+                "en": "Center",
+                "es": "Centrar",
+                "fi": "Keskitetty",
+                "fr": "Au centre",
+                "it": "Al centro",
+                "ja": "中央",
+                "ko": "센터",
+                "nb": "Sentrer",
+                "nl": "Midden",
+                "pl": "Do środka",
+                "pt-BR": "Centro",
+                "pt-PT": "Centro",
+                "sv": "Centrera",
+                "th": "ตรงกลาง",
+                "tr": "Orta",
+                "vi": "Ở giữa",
+                "zh-CN": "居中",
+                "zh-TW": "置中"
+              }
+            },
+            {
+              "value": "bottom center",
+              "label": {
+                "cs": "Dole na střed",
+                "da": "Nederst i midten",
+                "de": "Unten mittig",
+                "en": "Bottom center",
+                "es": "Inferior centrada",
+                "fi": "Keskellä alhaalla",
+                "fr": "En bas au centre",
+                "it": "In basso al centro",
+                "ja": "中央下",
+                "ko": "맨아래 중간",
+                "nb": "Bunnsentrert",
+                "nl": "Midden onder",
+                "pl": "Na dole na środku",
+                "pt-BR": "Inferior centro",
+                "pt-PT": "Inferior centro",
+                "sv": "Längst ner i mitten",
+                "th": "กลางล่าง",
+                "tr": "Alt orta",
+                "vi": "Dưới cùng ở giữa",
+                "zh-CN": "底部居中",
+                "zh-TW": "中央下方"
+              }
+            }
+          ],
+          "default": "top center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Text. sloupce s obrázky",
+        "da": "Tekstkolonner med billeder",
+        "de": "Textspalten mit Fotos",
+        "en": "Text columns with images",
+        "es": "Columnas de texto con imágenes",
+        "fi": "Tekstisarakkeet kuvilla",
+        "fr": "Colonnes de texte et images",
+        "it": "Colonne di testo con foto",
+        "ja": "画像付きテキスト列",
+        "ko": "이미지 포함 텍스트 열",
+        "nb": "Tekstkolonner med bilder",
+        "nl": "Tekstkolommen met afbeeldingen",
+        "pl": "Kolumny tekstowe z obrazami",
+        "pt-BR": "Texto em coluna com imagens",
+        "pt-PT": "Colunas texto c/ imagens",
+        "sv": "Textkolumner med bilder",
+        "th": "คอลัมน์ข้อความพร้อมรูปภาพ",
+        "tr": "Görselli metin sütunları",
+        "vi": "Cột văn bản có hình ảnh",
+        "zh-CN": "带有图片的文本列",
+        "zh-TW": "附圖片的文字欄"
+      },
+      "category": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "blocks": [
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

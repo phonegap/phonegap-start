@@ -1,0 +1,4 @@
+
+{% if shop.metafields.pagefly.acceptTracking %}<script>window.__pagefly_analytics_settings__={acceptTracking: true};</script>{% endif %} 
+{% if shop.metafields.pagefly.globalSetting %}{{ shop.metafields.pagefly.globalSetting }}{% endif %}
+{{ 'pagefly-main.css' | asset_url | stylesheet_tag: preload: true }}

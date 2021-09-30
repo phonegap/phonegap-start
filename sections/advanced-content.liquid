@@ -1,0 +1,488 @@
+<div class="page-width">
+  <div class="custom-content section-block">
+  {% for block in section.blocks %}
+    {% case block.settings.width %}
+      {% when '25%' %}
+        {%- assign block_width = 'small--one-whole one-quarter' -%}
+      {% when '33%' %}
+        {%- assign block_width = 'small--one-whole one-third' -%}
+      {% when '50%' %}
+        {%- assign block_width = 'small--one-whole one-half' -%}
+      {% when '66%' %}
+        {%- assign block_width = 'small--one-whole two-thirds' -%}
+      {% when '75%' %}
+        {%- assign block_width = 'small--one-whole three-quarters' -%}
+      {% when '100%' %}
+        {%- assign block_width = 'one-whole' -%}
+    {% endcase %}
+    <div class="section-block--padding grid__item {{ block_width }} {% if block.settings.alignment %}align--{{ block.settings.alignment }}{% endif %}" {{ block.shopify_attributes }}>
+      <div class="grid__item-inner grid__item-inner--{{ block.type }}">
+        <div class="rte">
+          {{ block.settings.code }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Vlastní HTML",
+    "da": "Tilpasset HTML",
+    "de": "Benutzerdefiniertes HTML",
+    "en": "Custom HTML",
+    "es": "HTML personalizado",
+    "fi": "Mukautettu HTML",
+    "fr": "Code HTML personnalisé",
+    "it": "HTML personalizzato",
+    "ja": "HTMLをカスタムする",
+    "ko": "사용자 지정 HTML",
+    "nb": "Tilpasset HTML",
+    "nl": "Aangepaste HTML",
+    "pl": "Niestandardowy HTML",
+    "pt-BR": "HTML personalizado",
+    "pt-PT": "HTML personalizado",
+    "sv": "Anpassa HTML",
+    "th": "HTML แบบกำหนดเอง",
+    "tr": "Özel HTML",
+    "vi": "HTML tùy chỉnh",
+    "zh-CN": "自定义 HTML",
+    "zh-TW": "自訂 HTML"
+  },
+  "class": "index-section",
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "html",
+      "name": {
+        "cs": "Vlastní HTML",
+        "da": "Tilpasset HTML",
+        "de": "Benutzerdefiniertes HTML",
+        "en": "Custom HTML",
+        "es": "HTML personalizado",
+        "fi": "Mukautettu HTML",
+        "fr": "Code HTML personnalisé",
+        "it": "HTML personalizzato",
+        "ja": "HTMLをカスタムする",
+        "ko": "사용자 지정 HTML",
+        "nb": "Tilpasset HTML",
+        "nl": "Aangepaste HTML",
+        "pl": "Niestandardowy HTML",
+        "pt-BR": "HTML personalizado",
+        "pt-PT": "HTML personalizado",
+        "sv": "Anpassa HTML",
+        "th": "HTML แบบกำหนดเอง",
+        "tr": "Özel HTML",
+        "vi": "HTML tùy chỉnh",
+        "zh-CN": "自定义 HTML",
+        "zh-TW": "自訂 HTML"
+      },
+      "settings": [
+        {
+          "type": "html",
+          "id": "code",
+          "label": {
+            "cs": "HTML",
+            "da": "HTML",
+            "de": "HTML",
+            "en": "HTML",
+            "es": "HTML",
+            "fi": "HTML",
+            "fr": "HTML",
+            "it": "HTML",
+            "ja": "HTML",
+            "ko": "HTML",
+            "nb": "HTML",
+            "nl": "HTML",
+            "pl": "HTML",
+            "pt-BR": "HTML",
+            "pt-PT": "HTML",
+            "sv": "HTML",
+            "th": "HTML",
+            "tr": "HTML",
+            "vi": "HTML",
+            "zh-CN": "HTML",
+            "zh-TW": "HTML"
+          },
+          "default": {
+            "cs": "<div style='text-align:center;'><h2>Naformátujte svůj text pomocí HTML, aby byl přehledný a srozumitelný.</h2>Prostřednictvím takového textu pak můžete informovat zákazníky o své značce.</div>",
+            "da": "<div style='text-align:center;'><h2>Brug HTML til at formatere din tekst, så den nemt kan læses.</h2> Denne tekst kan bruges til at dele oplysninger om dit brand med dine kunder.</div>",
+            "de": "<div style='text-align:center;'><h2>Formatiere deinen Text mit HTML, damit er leichter lesbar ist.</h2>Mit diesem Text kannst du deine Kunden über deine Marke informieren.</div>",
+            "en": "<div style='text-align:center;'><h2>Use HTML to format your text so it can be easily read.</h2>This text can be used to share information about your brand with customers.</div>",
+            "es": "<div style='text-align:center;'><h2>Usa HTML para formatear tu texto para que se pueda leer fácilmente</h2>. Este texto se puede usar para compartir información sobre tu marca con los clientes.</div>",
+            "fi": "<div style='text-align:center;'><h2>HTML-muodossa voit muotoilla tekstin niin, että sitä on helppo lukea.</h2> Tätä tekstiä voidaan käyttää brändiäsi koskevien tietojen jakamiseen asiakkaille.</div>",
+            "fr": "<div style='text-align:center;'><h2>Utilisez le code HTML pour formater votre texte afin qu'il puisse être facilement lu.</h2>Vous pouvez utiliser ce texte pour partager des informations sur votre marque avec les clients.</div>",
+            "it": "<div style='text-align:center;'><h2>Utilizza l'HTML per formattare il tuo testo così che sia facilmente leggibile.</h2>Questo testo può essere usato per condividere le informazioni sul tuo brand con i clienti.</div>",
+            "ja": "<div style='text-align:center;'><h2>テキストが読みやすくなるように、HTMLを使用して書式設定します。</h2>このテキストは、あなたのブランドに関する情報をお客様と共有するために使用できます。</div>",
+            "ko": "<div style='text-align:center;'><h2>HTML을 사용하여 텍스트를 형식화하여 쉽게 읽을 수 있습니다.</h2>이 텍스트는 고객의 브랜드에 대한 정보를 공유하는데 사용할 수 있습니다.</div>",
+            "nb": "<div style='text-align:center;'><h2>Bruk HTML for å formatere teksten din så den er lettlest.</h2>Denne teksten kan brukes til å dele informasjon om merkevaren din med kundene.</div>",
+            "nl": "<div style='text-align:center;'><h2>Gebruik HTML om je tekst op te maken, zodat deze makkelijk leesbaar is.</h2>Deze tekst kan worden gebruikt om informatie over je merk met klanten te delen.</div>",
+            "pl": "<div style='text-align:center;'><h2>Użyj języka HTML do sformatowania tekstu, tak aby można go było łatwo odczytać.</h2>Tekst ten może służyć do udostępniania klientom informacji o marce.</div>",
+            "pt-BR": "<div style='text-align:center;'><h2>Use HTML para formatar seu texto, assim ele pode ser lido com facilidade.</h2> Esse texto pode ser usado para compartilhar informações sobre sua marca com os clientes.</div>",
+            "pt-PT": "<div style='text-align:center;'><h2>Use HTML para formatar o seu texto, de forma a que este possa ser lido facilmente.</h2> Este texto pode ser utilizado para partilhar informações sobre a sua marca com os clientes.</div>",
+            "sv": "<div style='text-align:center;'><h2>Använd HTML för att formatera din text så att den lätt kan läsas.</h2> Den här texten kan användas för att dela information om ditt varumärke med kunder.</div>",
+            "th": "<div style='text-align:center;'><h2>ใช้ HTML ในการจัดรูปแบบข้อความของคุณเพื่อให้สามารถอ่านได้ง่าย</h2>สามารถใช้ข้อความนี้ในการแชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้า</div>",
+            "tr": "<div style='text-align:center;'><h2>Metninizi, kolayca okunabilmesi için HTML kullanarak biçimlendirin.</h2>Bu metin, müşterilerle markanız hakkında bilgi paylaşmak için kullanılabilir.</div>",
+            "vi": "<div style='text-align:center;'><h2>Sử dụng HTML để định dạng văn bản của bạn sao cho dễ đọc.</h2>Có thể sử dụng văn bản này để chia sẻ thông tin về thương hiệu của bạn với khách hàng.</div>",
+            "zh-CN": "<div style='text-align:center;'><h2>使用 HTML 设置文本格式，以便轻松阅读。</h2>此文本可用于与客户分享有关您的品牌的信息。</div>",
+            "zh-TW": "<div style='text-align:center;'><h2>使用 HTML 來設定文字格式，使文字易於閱讀。</h2>您可以利用此段文字跟顧客分享品牌資訊。</div>"
+          }
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": {
+            "cs": "Šířka kontejneru",
+            "da": "Containerbredde",
+            "de": "Containerbreite",
+            "en": "Container width",
+            "es": "Ancho del contenedor",
+            "fi": "Sisällön leveys",
+            "fr": "Largeur du conteneur",
+            "it": "Larghezza contenitore",
+            "ja": "コンテナーの幅",
+            "ko": "컨테이너 폭",
+            "nb": "Beholderbredde",
+            "nl": "Containerbreedte",
+            "pl": "Szerokość kontenera",
+            "pt-BR": "Largura do contêiner",
+            "pt-PT": "Largura do recipiente",
+            "sv": "Container-bredd",
+            "th": "ความกว้างของความจุ",
+            "tr": "Kapsayıcı genişliği",
+            "vi": "Chiều rộng khoảng chứa",
+            "zh-CN": "容器宽度",
+            "zh-TW": "容器寬度"
+          },
+          "default": "100%",
+          "options": [
+            {
+              "value": "25%",
+              "label": {
+                "cs": "25 %",
+                "da": "25 %",
+                "de": "25 %",
+                "en": "25%",
+                "es": "25%",
+                "fi": "25 %",
+                "fr": "25 %",
+                "it": "25%",
+                "ja": "25%",
+                "ko": "25%",
+                "nb": "25 %",
+                "nl": "25%",
+                "pl": "25%",
+                "pt-BR": "25%",
+                "pt-PT": "25%",
+                "sv": "25 %",
+                "th": "25%",
+                "tr": "%25",
+                "vi": "25%",
+                "zh-CN": "25％",
+                "zh-TW": "25%"
+              }
+            },
+            {
+              "value": "33%",
+              "label": {
+                "cs": "33 %",
+                "da": "33 %",
+                "de": "33 %",
+                "en": "33%",
+                "es": "33%",
+                "fi": "33 %",
+                "fr": "33 %",
+                "it": "33%",
+                "ja": "33%",
+                "ko": "33%",
+                "nb": "33 %",
+                "nl": "33%",
+                "pl": "33%",
+                "pt-BR": "33%",
+                "pt-PT": "33%",
+                "sv": "33 %",
+                "th": "33%",
+                "tr": "%33",
+                "vi": "33%",
+                "zh-CN": "33%",
+                "zh-TW": "33%"
+              }
+            },
+            {
+              "value": "50%",
+              "label": {
+                "cs": "50 %",
+                "da": "50 %",
+                "de": "50 %",
+                "en": "50%",
+                "es": "50%",
+                "fi": "50 %",
+                "fr": "50 %",
+                "it": "50%",
+                "ja": "50%",
+                "ko": "50%",
+                "nb": "50 %",
+                "nl": "50%",
+                "pl": "50%",
+                "pt-BR": "50%",
+                "pt-PT": "50%",
+                "sv": "50 %",
+                "th": "50%",
+                "tr": "%50",
+                "vi": "50%",
+                "zh-CN": "50%",
+                "zh-TW": "50%"
+              }
+            },
+            {
+              "value": "66%",
+              "label": {
+                "cs": "66 %",
+                "da": "66 %",
+                "de": "66 %",
+                "en": "66%",
+                "es": "66%",
+                "fi": "66 %",
+                "fr": "66 %",
+                "it": "66%",
+                "ja": "66%",
+                "ko": "66%",
+                "nb": "66 %",
+                "nl": "66%",
+                "pl": "66%",
+                "pt-BR": "66%",
+                "pt-PT": "66%",
+                "sv": "66 %",
+                "th": "66%",
+                "tr": "%66",
+                "vi": "66%",
+                "zh-CN": "66%",
+                "zh-TW": "66%"
+              }
+            },
+            {
+              "value": "75%",
+              "label": {
+                "cs": "75 %",
+                "da": "75 %",
+                "de": "75 %",
+                "en": "75%",
+                "es": "75%",
+                "fi": "75 %",
+                "fr": "75 %",
+                "it": "75%",
+                "ja": "75%",
+                "ko": "75%",
+                "nb": "75 %",
+                "nl": "75%",
+                "pl": "75%",
+                "pt-BR": "75%",
+                "pt-PT": "75%",
+                "sv": "75 %",
+                "th": "75%",
+                "tr": "%75",
+                "vi": "75%",
+                "zh-CN": "75%",
+                "zh-TW": "75%"
+              }
+            },
+            {
+              "value": "100%",
+              "label": {
+                "cs": "100 %",
+                "da": "100 %",
+                "de": "100 %",
+                "en": "100%",
+                "es": "100%",
+                "fi": "100 %",
+                "fr": "100 %",
+                "it": "100%",
+                "ja": "100%",
+                "ko": "100%",
+                "nb": "100 %",
+                "nl": "100%",
+                "pl": "100%",
+                "pt-BR": "100%",
+                "pt-PT": "100%",
+                "sv": "100 %",
+                "th": "100%",
+                "tr": "%100",
+                "vi": "100%",
+                "zh-CN": "100%",
+                "zh-TW": "100%"
+              }
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "cs": "Svislé zarovnání",
+            "da": "Lodret justering",
+            "de": "Vertikale Ausrichtung",
+            "en": "Vertical alignment",
+            "es": "Alineación vertical",
+            "fi": "Pystysuuntainen tasaus",
+            "fr": "Alignement vertical",
+            "it": "Allineamento verticale",
+            "ja": "垂直アラインメント",
+            "ko": "수직 정렬",
+            "nb": "Vertikal justering",
+            "nl": "Verticaal uitlijnen",
+            "pl": "Wyrównanie w pionie",
+            "pt-BR": "Alinhamento vertical",
+            "pt-PT": "Alinhamento vertical",
+            "sv": "Vertikal justering",
+            "th": "การจัดวางแนวตั้ง",
+            "tr": "Dikey hizalama",
+            "vi": "Căn dọc",
+            "zh-CN": "垂直对齐",
+            "zh-TW": "垂直對齊"
+          },
+          "default": "top-middle",
+          "options": [
+            {
+              "value": "top-middle",
+              "label": {
+                "cs": "Nahoru",
+                "da": "Top",
+                "de": "Oben",
+                "en": "Top",
+                "es": "Superior",
+                "fi": "Ylös",
+                "fr": "En haut",
+                "it": "In alto",
+                "ja": "上",
+                "ko": "위쪽",
+                "nb": "Topp",
+                "nl": "Boven",
+                "pl": "Do góry",
+                "pt-BR": "Acima",
+                "pt-PT": "Acima",
+                "sv": "Högst upp",
+                "th": "ด้านบน",
+                "tr": "Üst",
+                "vi": "Bên trên",
+                "zh-CN": "顶部",
+                "zh-TW": "頂部"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "cs": "Na střed",
+                "da": "I midten",
+                "de": "Mittig",
+                "en": "Middle",
+                "es": "Centrada",
+                "fi": "Keskelle",
+                "fr": "Au milieu",
+                "it": "Al centro",
+                "ja": "中央",
+                "ko": "중간",
+                "nb": "Midten",
+                "nl": "Midden",
+                "pl": "Do środka",
+                "pt-BR": "Meio",
+                "pt-PT": "Centro",
+                "sv": "Mitten",
+                "th": "ตรงกลาง",
+                "tr": "Orta",
+                "vi": "Ở giữa",
+                "zh-CN": "中间",
+                "zh-TW": "中央"
+              }
+            },
+            {
+              "value": "bottom-middle",
+              "label": {
+                "cs": "Dolů",
+                "da": "Bund",
+                "de": "Unten",
+                "en": "Bottom",
+                "es": "Inferior",
+                "fi": "Alas",
+                "fr": "En bas",
+                "it": "In basso",
+                "ja": "下",
+                "ko": "아래쪽",
+                "nb": "Bunn",
+                "nl": "Onder",
+                "pl": "Do dołu",
+                "pt-BR": "Abaixo",
+                "pt-PT": "Abaixo",
+                "sv": "Längst ner",
+                "th": "ด้านล่าง",
+                "tr": "Alt",
+                "vi": "Bên dưới",
+                "zh-CN": "底部",
+                "zh-TW": "底部"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Vlastní HTML",
+        "da": "Tilpasset HTML",
+        "de": "Benutzerdefiniertes HTML",
+        "en": "Custom HTML",
+        "es": "HTML personalizado",
+        "fi": "Mukautettu HTML",
+        "fr": "Code HTML personnalisé",
+        "it": "HTML personalizzato",
+        "ja": "HTMLをカスタムする",
+        "ko": "사용자 지정 HTML",
+        "nb": "Tilpasset HTML",
+        "nl": "Aangepaste HTML",
+        "pl": "Niestandardowy HTML",
+        "pt-BR": "HTML personalizado",
+        "pt-PT": "HTML personalizado",
+        "sv": "Anpassa HTML",
+        "th": "HTML แบบกำหนดเอง",
+        "tr": "Özel HTML",
+        "vi": "HTML tùy chỉnh",
+        "zh-CN": "自定义 HTML",
+        "zh-TW": "自訂 HTML"
+      },
+      "category": {
+        "cs": "Pokročilé rozvržení",
+        "da": "Avanceret layout",
+        "de": "Erweitertes Layout",
+        "en": "Advanced layout",
+        "es": "Diseño avanzado",
+        "fi": "Monimutkaisempi layout",
+        "fr": "Mise en page avancée",
+        "it": "Layout avanzato",
+        "ja": "高度なレイアウト",
+        "ko": "고급 레이아웃",
+        "nb": "Avansert oppsett",
+        "nl": "Geavanceerde opmaak",
+        "pl": "Zaawansowany układ",
+        "pt-BR": "Layout avançado",
+        "pt-PT": "Esquema avançado",
+        "sv": "Avancerad layout",
+        "th": "เลย์เอาต์ขั้นสูง",
+        "tr": "Gelişmiş düzen",
+        "vi": "Bố cục nâng cao",
+        "zh-CN": "高级布局",
+        "zh-TW": "進階版面配置"
+      },
+      "blocks": [
+        {
+          "type": "html"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

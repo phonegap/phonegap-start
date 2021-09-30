@@ -1,0 +1,39 @@
+<div class="page-width">
+  <article itemscope itemtype="http://schema.org/Article" class="grid">
+
+    <div class="grid__item{% if blog.all_tags.size > 0 %} medium-up--three-quarters large-up--four-fifths{% endif %}">
+      {% comment %}
+        The article contents can be found in /sections/article-content.liquid
+      {% endcomment %}
+
+      {% section 'article-content' %}
+
+      {% section 'featured-products-subsection' %}
+
+      <div class="full-width full-width--return-link">
+        <a href="{{ blog.url }}" class="h1 return-link">
+          {% include 'icon-arrow-thin-left' %}
+          {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
+        </a>
+      </div>
+    </div>
+
+    {% if blog.all_tags.size > 0 %}
+      <div class="grid__item medium-up--one-quarter large-up--one-fifth small--hide">
+        <div class="content-block content-block--small">
+          <h3 class="h6 content-block__title">{{ 'blogs.article.tags' | t }}</h3>
+          <ul class="list--no-bullets list--bold">
+            {% for tag in blog.all_tags %}
+              {% if current_tags contains tag %}
+              <li>{{ tag }}</li>
+              {% else %}
+              <li>{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+
+  </article>
+</div>

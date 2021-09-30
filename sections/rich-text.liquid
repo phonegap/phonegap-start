@@ -1,0 +1,332 @@
+<div class="page-width">
+  <div class="section-block section-block--padding grid grid--no-gutters">
+    <div class="grid__item{% unless section.settings.home_page_full_width %} medium-up--two-thirds medium-up--push-one-sixth{% endunless %}">
+      {% if section.settings.section_title != blank %}
+        <h2 class="rich-text__heading--{{ section.settings.text_size }} text-center">{{ section.settings.section_title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rte text-center rich-text__text--{{ section.settings.text_size }}">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Formát RTF",
+    "da": "RTF",
+    "de": "Rich Text",
+    "en": "Rich text",
+    "es": "Texto enriquecido",
+    "fi": "Rich text",
+    "fr": "Texte enrichi",
+    "it": "Rich text",
+    "ja": "リッチテキスト",
+    "ko": "Rich text",
+    "nb": "Rich text",
+    "nl": "Tekst met opmaak",
+    "pl": "Tekst sformatowany",
+    "pt-BR": "Rich text",
+    "pt-PT": "Texto formatado",
+    "sv": "Rich text",
+    "th": "Rich Text",
+    "tr": "Zengin metin",
+    "vi": "Văn bản đa dạng thức",
+    "zh-CN": "富文本",
+    "zh-TW": "RTF 文字"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "home_page_full_width",
+      "label": {
+        "cs": "Zobrazení na šířku",
+        "da": "Bred visning",
+        "de": "Breitbild-Display",
+        "en": "Wide display",
+        "es": "Pantalla ancha",
+        "fi": "Laaja näyttö",
+        "fr": "Affichage large",
+        "it": "Visualizzazione ampia",
+        "ja": "ワイドディスプレイ",
+        "ko": "너비 표시",
+        "nb": "Bred visning",
+        "nl": "Brede weergave",
+        "pl": "Szerokie wyświetlanie",
+        "pt-BR": "Exibição ampla",
+        "pt-PT": "Exibição ampla",
+        "sv": "Breddvisning",
+        "th": "การแสดงผลแบบกว้าง",
+        "tr": "Geniş görünüm",
+        "vi": "Hiển thị rộng",
+        "zh-CN": "宽显示屏",
+        "zh-TW": "寬螢幕"
+      }
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "Titre",
+        "it": "Titolo",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Informujte o své značce",
+        "da": "Fortæl om dit brand",
+        "de": "Rede über deine Marke",
+        "en": "Talk about your brand",
+        "es": "Habla de tu marca",
+        "fi": "Kerro brändistäsi",
+        "fr": "Parlez de votre marque",
+        "it": "Parla del tuo brand",
+        "ja": "あなたのブランドについて語る",
+        "ko": "브랜드에 대해 이야기하기",
+        "nb": "Snakk om merkevaren din",
+        "nl": "Vertel over je merk",
+        "pl": "Opowiedz o swojej marce",
+        "pt-BR": "Fale sobre a sua marca",
+        "pt-PT": "Fale sobre a sua marca",
+        "sv": "Prata om ditt varumärke",
+        "th": "พูดถึงแบรนด์ของคุณ",
+        "tr": "Markanızdan bahsedin",
+        "vi": "Chia sẻ về thương hiệu của bạn",
+        "zh-CN": "介绍您的品牌",
+        "zh-TW": "描述您的品牌"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "default": {
+        "cs": "<p>Informujte zákazníky prostřednictvím tohoto textu o své značce. Zároveň můžete popsat některý z produktů, oznámit důležité informace nebo přivítat zákazníky ve svém obchodě.</p>",
+        "da": "<p>Brug denne tekst til at dele oplysninger om dit brand med dine kunder. Beskriv et produkt, del meddelelser, eller byd kunder velkommen til din butik.</p>",
+        "de": "<p>Nutze diesen Text, um Infos über deine Marke mitzuteilen. Beschreibe ein Produkt, kündige etwas an oder heiße Kunden willkommen.</p>",
+        "en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "es": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.</p>",
+        "fi": "<p>Tämän tekstin avulla voit jakaa brändiäsi koskevia tietoja asiakkaille. Kuvaile tuotetta, jaa ilmoituksia tai toivota asiakkaat tervetulleiksi kauppaasi.</p>",
+        "fr": "<p>Utilisez ce texte pour partager des informations sur votre marque. Décrivez un produit, partagez des annonces, ou souhaitez la bienvenue à vos clients.</p>",
+        "it": "<p>Utilizza questo testo per condividere le informazioni sul tuo brand con i tuoi clienti. Descrivi un prodotto, condividi gli annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
+        "ja": "<p>このテキストを使用して、あなたのブランドに関する情報をお客様と共有します。商品を説明したり、告知の共有をしたり、あるいはあなたのストアのお客様を歓迎します。</p>",
+        "ko": "<p>이 텍스트를 사용하여 고객과 브랜드에 대한 정보를 공유하십시오. 제품 설명, 공지 사항 공유 또는 고객의 스토어 방문을 환영합니다.</p>",
+        "nb": "<p>Bruk denne teksten for å dele informasjon om merkevaren med kundene dine. Beskriv et produkt, del kunngjøringer eller ønsk kunder velkommen til butikken din.</p>",
+        "nl": "<p>Gebruik deze tekst om informatie over je merk te delen met je klanten. Beschrijf een product, deel aankondigingen of verwelkom klanten in je winkel.</p>",
+        "pl": "<p>Użyj tego tekstu, aby udostępnić klientom informacje o swojej marce. Opisz produkt, udostępnij ogłoszenia lub przywitaj klientów w swoim sklepie.</p>",
+        "pt-BR": "<p>Use este texto para compartilhar informações sobre sua marca com seus clientes. Descreva um produto, compartilhe comunicado ou dê boas-vindas aos clientes em sua loja.</p>",
+        "pt-PT": "<p>Utilize este texto para partilhar informações sobre a sua marca com seus clientes. Descreva um produto, partilhe comunicados ou receba clientes na sua loja.</p>",
+        "sv": "<p>Använd den här texten för att dela information om ditt varumärke med dina kunder. Beskriv en produkt, dela meddelanden eller välkomna kunder till din butik.</p>",
+        "th": "<p>ใช้ข้อความนี้ในการแชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้าของคุณ อธิบายคุณสมบัติของสินค้า แชร์ประกาศ หรือต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>",
+        "tr": "<p>Müşterilerinizle markanız hakkında bilgi paylaşmak için bu metni kullanın. Ürün açıklaması girin, duyuru paylaşın veya mağazanıza gelen müşterileri karşılayın.</p>",
+        "vi": "<p>Sử dụng văn bản này để chia sẻ thông tin về thương hiệu của bạn với khách hàng. Mô tả sản phẩm, chia sẻ thông báo hoặc chào mừng khách hàng tới cửa hàng của bạn.</p>",
+        "zh-CN": "<p>使用此文本与您的客户分享有关您品牌的信息。描述产品、分享公告或欢迎客户访问您的商店。</p>",
+        "zh-TW": "<p>您可以用這段文字和顧客分享品牌資訊、描述產品、分享公告，或歡迎顧客光臨您的商店。</p>"
+      }
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": {
+        "cs": "Velikost",
+        "da": "Størrelse",
+        "de": "Größe",
+        "en": "Size",
+        "es": "Tamaño",
+        "fi": "Koko",
+        "fr": "Taille",
+        "it": "Misura",
+        "ja": "サイズ",
+        "ko": "사이즈",
+        "nb": "Størrelse",
+        "nl": "Grootte",
+        "pl": "Rozmiar",
+        "pt-BR": "Tamanho",
+        "pt-PT": "Tamanho",
+        "sv": "Storlek",
+        "th": "ขนาด",
+        "tr": "Boyut",
+        "vi": "Kích cỡ",
+        "zh-CN": "大小",
+        "zh-TW": "尺寸"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "cs": "Malá",
+            "da": "Lille",
+            "de": "Klein",
+            "en": "Small",
+            "es": "Pequeño",
+            "fi": "Pieni",
+            "fr": "Petite",
+            "it": "Piccolo",
+            "ja": "小",
+            "ko": "스몰",
+            "nb": "Liten",
+            "nl": "Klein",
+            "pl": "Mały",
+            "pt-BR": "Pequeno",
+            "pt-PT": "Pequeno",
+            "sv": "Liten",
+            "th": "เล็ก",
+            "tr": "Küçük",
+            "vi": "Nhỏ",
+            "zh-CN": "小",
+            "zh-TW": "小型"
+          },
+          "value": "small"
+        },
+        {
+          "label": {
+            "cs": "Střední",
+            "da": "Medium",
+            "de": "Mittel",
+            "en": "Medium",
+            "es": "Mediano",
+            "fi": "Keskisuuri",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "ko": "보통",
+            "nb": "Middels",
+            "nl": "Gemiddeld",
+            "pl": "Średni",
+            "pt-BR": "Médio",
+            "pt-PT": "Intermédio",
+            "sv": "Medium",
+            "th": "ปานกลาง",
+            "tr": "Orta",
+            "vi": "Trung bình",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "cs": "Velká",
+            "da": "Stor",
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fi": "Suuri",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "ko": "라지",
+            "nb": "Stor",
+            "nl": "Groot",
+            "pl": "Duży",
+            "pt-BR": "Grande",
+            "pt-PT": "Grande",
+            "sv": "Stor",
+            "th": "ใหญ่",
+            "tr": "Büyük",
+            "vi": "Lớn",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          },
+          "value": "large"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Formát RTF",
+        "da": "RTF",
+        "de": "Rich Text",
+        "en": "Rich text",
+        "es": "Texto enriquecido",
+        "fi": "Rich text",
+        "fr": "Texte enrichi",
+        "it": "Rich text",
+        "ja": "リッチテキスト",
+        "ko": "Rich text",
+        "nb": "Rich text",
+        "nl": "Tekst met opmaak",
+        "pl": "Tekst sformatowany",
+        "pt-BR": "Rich text",
+        "pt-PT": "Texto formatado",
+        "sv": "Rich text",
+        "th": "Rich Text",
+        "tr": "Zengin metin",
+        "vi": "Văn bản đa dạng thức",
+        "zh-CN": "富文本",
+        "zh-TW": "RTF 文字"
+      },
+      "category": {
+        "cs": "Text",
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "tr": "Metin",
+        "vi": "Văn bản",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      }
+    }
+  ]
+}
+{% endschema %}

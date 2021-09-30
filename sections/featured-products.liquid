@@ -1,0 +1,240 @@
+<div class="page-width">
+  <div class="section-block">
+    {% assign collection = collections[section.settings.collection] %}
+    {% assign rows = section.settings.rows %}
+
+    {% if collection != blank %}
+      {% assign product_limit = rows | times: 5 | minus: 1 %}
+
+      {% comment %}
+        On mobile, show a max of 3 products to fill out the 2x2 grid.
+        Turn mobile_product_limit to false to remove that limitation.
+      {% endcomment %}
+      {% assign mobile_product_limit = true %}
+      {% comment %}
+        On mobile the 5 column grid leaves a straggler when 1 or 3 rows.
+        Hide the straggler according to its index. It's one lower than
+        the number of columns because the fist column is a collection card.
+        This is only necessary when mobile_product_limit is false.
+      {% endcomment %}
+      {% case rows %}
+        {% when 1 %}
+          {% assign product_index_hide_on_mobile = 4 %}
+        {% when 3 %}
+          {% assign product_index_hide_on_mobile = 14 %}
+      {% endcase %}
+
+      <div class="grid grid--no-gutters grid--uniform collection">
+        <div class="grid__item small--one-half medium-up--one-fifth collection__cover">
+          {% if collection.image %}
+            {% assign collection_image = collection | img_url: '480x480' %}
+          {% else %}
+            {% assign collection_image = collection.products.first | img_url: '480x480' %}
+          {% endif %}
+          <a href="{{ collection.url }}" class="collection-card" style="background-image: url({{ collection_image }});">
+            <div class="collection-card__meta">
+              <p class="h1 collection-card__title">{{ collection.title }}</p>
+              <p class="collection-card__subtext">{{ 'collections.general.view_all' | t }}</p>
+            </div>
+          </a>
+        </div>
+        {% for product in collection.products limit: product_limit %}
+          <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 1 %} collection__card--first{% endif %} {% if mobile_product_limit and forloop.index > 3 %}small--hide{% elsif rows == 1 or rows == 3 %}{% if forloop.index == product_index_hide_on_mobile %}small--hide{% endif %}{% endif %}">
+            {% include 'product-card', product: product, collection: collection %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="grid grid--no-gutters grid--uniform collection">
+        <div class="grid__item small--one-half medium-up--one-fifth">
+          <a href="{{ collection_object.url }}" class="collection-card">
+            <div class="collection-card__meta">
+              <p class="h1 collection-card__title">{{ 'homepage.onboarding.collection_title' | t }}</p>
+              <p class="collection-card__subtext">{{ 'collections.general.view_all' | t }}</p>
+            </div>
+          </a>
+        </div>
+        {% assign product_limit = rows | times: 5 | minus: 1 %}
+        {% assign mobile_product_limit = true %}
+        {% for i in (1..product_limit) %}
+          {% case i %}
+            {% when 7 %}
+              {% assign index = 1 %}
+            {% when 8 %}
+              {% assign index = 2 %}
+            {% when 9 %}
+              {% assign index = 3 %}
+            {% else %}
+              {% assign index = i %}
+          {% endcase %}
+          <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 1 %} collection__card--first{% endif %} {% if mobile_product_limit and forloop.index > 3 %}small--hide{% elsif rows == 1 or rows == 3 %}{% if forloop.index == product_index_hide_on_mobile %}small--hide{% endif %}{% endif %}">
+            {% comment %}
+              Replica of snippets/product-card.liquid
+            {% endcomment %}
+            <a href="#" class="product-card">
+              <div class="product-card__image-container">
+                <div class="product-card__image-wrapper">
+                  <div class="product-card__image">
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                </div>
+              </div>
+              <div class="product-card__info">
+                <div class="product-card__name">{{ 'homepage.onboarding.product_title' | t }}</div>
+                <div class="product-card__price">
+                  $19.99
+                </div>
+              </div>
+              <div class="product-card__overlay">
+                {% assign view_string_length = 'products.product.view' | t | size %}
+                <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{{ 'products.product.view' | t }}</span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Propagovaná kolekce",
+    "da": "Udvalgt kollektion",
+    "de": "Vorgestellte Kategorie",
+    "en": "Featured collection",
+    "es": "Colección destacada",
+    "fi": "Esittelyssä oleva kokoelma",
+    "fr": "Collection en vedette",
+    "it": "Collezione in evidenza",
+    "ja": "特集コレクション",
+    "ko": "추천 컬렉션",
+    "nb": "Utvalgt samling",
+    "nl": "Uitgelichte collectie",
+    "pl": "Polecana kolekcja",
+    "pt-BR": "Coleção em destaque",
+    "pt-PT": "Coleção em destaque",
+    "sv": "Utvald kollektion",
+    "th": "คอลเลกชันแนะนำ",
+    "tr": "Öne çıkan koleksiyon",
+    "vi": "Bộ sưu tập nổi bật",
+    "zh-CN": "特色产品系列",
+    "zh-TW": "精選商品系列"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": {
+        "cs": "Kolekce",
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pl": "Kolekcja",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "tr": "Koleksiyon",
+        "vi": "Bộ sưu tập",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      }
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": {
+        "cs": "Řádky",
+        "da": "Rækker",
+        "de": "Reihen",
+        "en": "Rows",
+        "es": "Filas",
+        "fi": "Rivit",
+        "fr": "Rangées",
+        "it": "Righe",
+        "ja": "行",
+        "ko": "열",
+        "nb": "Rader",
+        "nl": "Rijen",
+        "pl": "Wiersze",
+        "pt-BR": "Linhas",
+        "pt-PT": "Linhas",
+        "sv": "Rader",
+        "th": "แถว",
+        "tr": "Satırlar",
+        "vi": "Hàng",
+        "zh-CN": "行数",
+        "zh-TW": "列"
+      },
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Propagovaná kolekce",
+        "da": "Udvalgt kollektion",
+        "de": "Vorgestellte Kategorie",
+        "en": "Featured collection",
+        "es": "Colección destacada",
+        "fi": "Esittelyssä oleva kokoelma",
+        "fr": "Collection en vedette",
+        "it": "Collezione in evidenza",
+        "ja": "特集コレクション",
+        "ko": "추천 컬렉션",
+        "nb": "Utvalgt samling",
+        "nl": "Uitgelichte collectie",
+        "pl": "Polecana kolekcja",
+        "pt-BR": "Coleção em destaque",
+        "pt-PT": "Coleção em destaque",
+        "sv": "Utvald kollektion",
+        "th": "คอลเลกชันแนะนำ",
+        "tr": "Öne çıkan koleksiyon",
+        "vi": "Bộ sưu tập nổi bật",
+        "zh-CN": "特色产品系列",
+        "zh-TW": "精選商品系列"
+      },
+      "category": {
+        "cs": "Kolekce",
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pl": "Kolekcja",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "tr": "Koleksiyon",
+        "vi": "Bộ sưu tập",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      }
+    }
+  ]
+}
+{% endschema %}

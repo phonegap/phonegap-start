@@ -1,0 +1,17 @@
+{%- unless image == blank -%}
+  {%- if image.aspect_ratio < 1.0 -%}
+    {%- assign maximum_width = width | times: image.aspect_ratio -%}
+    {%- if image.height <= width -%}
+      {%- assign maximum_width = image.width -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- if image.width <= width -%}
+      {%- assign maximum_width = image.width -%}
+    {%- else -%}
+      {%- assign maximum_width = width -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign maximum_width = width -%}
+{%- endunless -%}
+{{- maximum_width -}}

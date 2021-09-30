@@ -1,0 +1,23 @@
+<div class="grid grid--no-gutters grid--uniform collection">
+  <div class="grid__item small--one-half medium-up--one-fifth">
+    {% if featured_collection.image %}
+      {% assign collection_image = featured_collection | img_url: '235x235', scale:2 %}
+    {% else %}
+      {% assign collection_image = featured_collection.products.first | img_url: '235x235', scale:2 %}
+    {% endif %}
+    <a href="{{ featured_collection.url }}" class="collection-card" style="background-image: url({{ collection_image }});">
+      <div class="collection-card__meta">
+        <p class="h1 collection-card__title">{{ featured_collection.title }}</p>
+        <p class="collection-card__subtext">{{ 'collections.general.view_all' | t }}</p>
+      </div>
+    </a>
+  </div>
+  {% for product in featured_collection.products limit: 4 %}
+    {% comment %}
+      Hide the last product for a better mobile view
+    {% endcomment %}
+    <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 4 %} small--hide{% endif %}">
+      {% include 'product-card', product: product, collection: featured_collection %}
+    </div>
+  {% endfor %}
+</div>

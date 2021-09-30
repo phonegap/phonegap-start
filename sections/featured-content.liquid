@@ -1,0 +1,434 @@
+<div class="page-width">
+  {% if section.settings.image != blank %}
+    {% assign img_url = section.settings.image | img_url: '1024x' | format: 'jpg' %}
+  {% endif %}
+
+  <div class="section-block">
+    {% if section.settings.image == blank %}
+      <div class="placeholder-background">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+    <noscript>
+      <div class="featured-content" {% if section.settings.image != blank %}style="background-image: url({{ img_url }}); background-position: {{ section.settings.image_align }}"{% endif %}>
+        <div class="emphasized-title-wrapper">
+          {% if section.settings.link != blank %}
+            <a href="{{ section.settings.link }}" class="emphasized-title emphasized-title--link emphasized-title--large h1">
+              {{ section.settings.title | escape }}
+            </a>
+          {% else %}
+            <h4 class="emphasized-title emphasized-title--large h1">
+              {{ section.settings.title | escape }}
+            </h4>
+          {% endif %}
+        </div>
+        {% if section.settings.link != blank %}
+          <a href="{{ section.settings.link }}" class="emphasized-subtitle">
+            {{ section.settings.subtext | escape }}
+          </a>
+        {% else %}
+          <span class="emphasized-subtitle">
+            {{ section.settings.subtext | escape }}
+          </span>
+        {% endif %}
+      </div>
+    </noscript>
+    <div class="featured-content lazyload"
+      {% if section.settings.image != blank %}
+        style="background-position: {{ section.settings.image_align }};
+               background-image: url('{{ section.settings.image | img_url: '300x300' }});"
+      {% endif %}
+      data-bgset="{% include 'bgset', image: section.settings.image %}"
+      data-sizes="auto"
+      data-parent-fit="cover">
+      <div class="emphasized-title-wrapper">
+        {% if section.settings.link != blank %}
+          <a href="{{ section.settings.link }}" class="emphasized-title emphasized-title--link emphasized-title--large h1">
+            {{ section.settings.title | escape }}
+          </a>
+        {% else %}
+          <h4 class="emphasized-title emphasized-title--large h1">
+            {{ section.settings.title | escape }}
+          </h4>
+        {% endif %}
+      </div>
+      {% if section.settings.link != blank %}
+        <a href="{{ section.settings.link }}" class="emphasized-subtitle">
+          {{ section.settings.subtext | escape }}
+        </a>
+      {% else %}
+        <span class="emphasized-subtitle">
+          {{ section.settings.subtext | escape }}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "cs": "Obrázek s textovým odkazem",
+    "da": "Billede med tekstlink",
+    "de": "Bild mit Textlink",
+    "en": "Image with text link",
+    "es": "Imagen con enlace",
+    "fi": "Kuva tekstilinkillä",
+    "fr": "Image avec lien texte",
+    "it": "Immagine con text link",
+    "ja": "テキストリンク付き画像",
+    "ko": "텍스트 링크 포함 이미지",
+    "nb": "Bilde med tekstkobling",
+    "nl": "Afbeelding met tekstlink",
+    "pl": "Obraz z linkiem tekstowym",
+    "pt-BR": "Imagem com link de texto",
+    "pt-PT": "Imagem com ligação de texto",
+    "sv": "Bild med textlänk",
+    "th": "รูปภาพพร้อมลิงก์ข้อความ",
+    "tr": "Metin bağlantısı içeren görsel",
+    "vi": "Liên kết hình ảnh có chữ",
+    "zh-CN": "包含文本链接的图片",
+    "zh-TW": "附文字的圖片連結"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "Titre",
+        "it": "Titolo",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "cs": "Obrázek s textovým odkazem",
+        "da": "Billede med tekstlink",
+        "de": "Bild mit Textlink",
+        "en": "Image with text link",
+        "es": "Imagen con enlace",
+        "fi": "Kuva tekstilinkillä",
+        "fr": "Image avec lien texte",
+        "it": "Immagine con text link",
+        "ja": "テキストリンク付き画像",
+        "ko": "텍스트 링크 포함 이미지",
+        "nb": "Bilde med tekstkobling",
+        "nl": "Afbeelding met tekstlink",
+        "pl": "Obraz z linkiem tekstowym",
+        "pt-BR": "Imagem com link de texto",
+        "pt-PT": "Imagem com ligação de texto",
+        "sv": "Bild med textlänk",
+        "th": "รูปภาพพร้อมลิงก์ข้อความ",
+        "tr": "Metin bağlantısı içeren görsel",
+        "vi": "Liên kết hình ảnh có chữ",
+        "zh-CN": "包含文本链接的图片",
+        "zh-TW": "附文字的圖片連結"
+      }
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": {
+        "cs": "Podnadpis",
+        "da": "Underoverskrift",
+        "de": "Unter-Überschrift",
+        "en": "Subheading",
+        "es": "Subtítulo",
+        "fi": "Alaotsikko",
+        "fr": "Sous-titre",
+        "it": "Sottotitolo",
+        "ja": "小見出し",
+        "ko": "소제목",
+        "nb": "Underoverskrift",
+        "nl": "Subkop",
+        "pl": "Nagłówek podrzędny",
+        "pt-BR": "Subtítulo",
+        "pt-PT": "Subtítulo",
+        "sv": "Underrubrik",
+        "th": "หัวเรื่องย่อย",
+        "tr": "Alt başlık",
+        "vi": "Tiêu đề phụ",
+        "zh-CN": "副标题",
+        "zh-TW": "子標題"
+      },
+      "default": {
+        "cs": "Koupit nyní",
+        "da": "Shop nu",
+        "de": "Jetzt shoppen",
+        "en": "Shop now",
+        "es": "Comprar ahora",
+        "fi": "Tee nyt ostoksia",
+        "fr": "Acheter maintenant",
+        "it": "Acquista ora",
+        "ja": "今すぐ購入",
+        "ko": "지금 쇼핑하기",
+        "nb": "Handle nå",
+        "nl": "Koop nu",
+        "pl": "Kup teraz",
+        "pt-BR": "Compre agora",
+        "pt-PT": "Comprar agora",
+        "sv": "Handla nu",
+        "th": "ช้อปเลย",
+        "tr": "Şimdi satın al",
+        "vi": "Mua sắm ngay",
+        "zh-CN": "立即购买",
+        "zh-TW": "立即購物"
+      }
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": {
+        "cs": "Odkaz",
+        "da": "Link",
+        "de": "Link",
+        "en": "Link",
+        "es": "Enlace",
+        "fi": "Linkki",
+        "fr": "Lien",
+        "it": "Link",
+        "ja": "リンク",
+        "ko": "링크",
+        "nb": "Kobling",
+        "nl": "Link",
+        "pl": "Link",
+        "pt-BR": "Link",
+        "pt-PT": "Ligação",
+        "sv": "Länk",
+        "th": "ลิงก์",
+        "tr": "Bağlantı",
+        "vi": "Liên kết",
+        "zh-CN": "链接",
+        "zh-TW": "連結"
+      },
+      "info": {
+        "cs": "Volitelné",
+        "da": "Valgfri",
+        "de": "Optional",
+        "en": "Optional",
+        "es": "Opcional",
+        "fi": "Valinnainen",
+        "fr": "Facultatif",
+        "it": "Facoltativo",
+        "ja": "オプション",
+        "ko": "선택 사항",
+        "nb": "Valgfritt",
+        "nl": "Optioneel",
+        "pl": "Opcjonalnie",
+        "pt-BR": "Opcional",
+        "pt-PT": "Opcional",
+        "sv": "Valfritt",
+        "th": "ไม่จำเป็น",
+        "tr": "İsteğe bağlı",
+        "vi": "Không bắt buộc",
+        "zh-CN": "可选",
+        "zh-TW": "(選填)"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "cs": "Obrázek na pozadí",
+        "da": "Baggrundsbillede",
+        "de": "Hintergrundbild",
+        "en": "Background image",
+        "es": "Imagen de fondo",
+        "fi": "Taustakuva",
+        "fr": "Image de fond",
+        "it": "Immagine di sfondo",
+        "ja": "背景画像",
+        "ko": "배경 이미지",
+        "nb": "Bakgrunnsbilde",
+        "nl": "Achtergrondafbeelding",
+        "pl": "Obraz tła",
+        "pt-BR": "Imagem de fundo",
+        "pt-PT": "Imagem de fundo",
+        "sv": "Bakgrundsbild",
+        "th": "รูปภาพพื้นหลัง",
+        "tr": "Arka plan resmi",
+        "vi": "Ảnh nền",
+        "zh-CN": "背景图片",
+        "zh-TW": "背景圖片"
+      }
+    },
+    {
+      "type": "radio",
+      "id": "image_align",
+      "label": {
+        "cs": "Zarovnání obrázku",
+        "da": "Justering af billede",
+        "de": "Fotoausrichtung",
+        "en": "Image alignment",
+        "es": "Alineación de imagen",
+        "fi": "Kuvan tasaus",
+        "fr": "Alignement de l'image",
+        "it": "Allineamento immagine",
+        "ja": "画像アラインメント",
+        "ko": "이미지 정렬",
+        "nb": "Bildejustering",
+        "nl": "Afbeelding uitlijnen",
+        "pl": "Wyrównanie obrazu",
+        "pt-BR": "Alinhamento da imagem",
+        "pt-PT": "Alinhamento da imagem",
+        "sv": "Bildjustering",
+        "th": "การจัดวางรูปภาพ",
+        "tr": "Görsel hizalaması",
+        "vi": "Căn chỉnh hình ảnh",
+        "zh-CN": "图片对齐方式",
+        "zh-TW": "圖片對齊"
+      },
+      "options": [
+        {
+          "value": "top center",
+          "label": {
+            "cs": "Nahoře na střed",
+            "da": "Øverst i midten",
+            "de": "Oben Mitte",
+            "en": "Top center",
+            "es": "Superior centrada",
+            "fi": "Keskellä ylhäällä",
+            "fr": "En haut au centre",
+            "it": "In alto al centro",
+            "ja": "中央上",
+            "ko": "맨 위 중간",
+            "nb": "Toppsentrert",
+            "nl": "Midden boven",
+            "pl": "Na górze na środku",
+            "pt-BR": "Superior centro",
+            "pt-PT": "Superior centro",
+            "sv": "Längst upp i mitten",
+            "th": "กลางบน",
+            "tr": "Üst orta",
+            "vi": "Trên cùng ở giữa",
+            "zh-CN": "顶部居中",
+            "zh-TW": "中央上方"
+          }
+        },
+        {
+          "value": "center center",
+          "label": {
+            "cs": "Na střed",
+            "da": "Centreret",
+            "de": "Mitte",
+            "en": "Center",
+            "es": "Centrar",
+            "fi": "Keskitetty",
+            "fr": "Centre",
+            "it": "Al centro",
+            "ja": "中央",
+            "ko": "센터",
+            "nb": "Sentrer",
+            "nl": "Midden",
+            "pl": "Do środka",
+            "pt-BR": "Centro",
+            "pt-PT": "Centro",
+            "sv": "Centrera",
+            "th": "ตรงกลาง",
+            "tr": "Orta",
+            "vi": "Ở giữa",
+            "zh-CN": "居中",
+            "zh-TW": "置中"
+          }
+        },
+        {
+          "value": "bottom center",
+          "label": {
+            "cs": "Dole na střed",
+            "da": "Nederst i midten",
+            "de": "Unten mittig",
+            "en": "Bottom center",
+            "es": "Inferior centrada",
+            "fi": "Keskellä alhaalla",
+            "fr": "En bas au centre",
+            "it": "In basso al centro",
+            "ja": "中央下",
+            "ko": "맨아래 중간",
+            "nb": "Bunnsentrert",
+            "nl": "Midden onder",
+            "pl": "Na dole na środku",
+            "pt-BR": "Inferior centro",
+            "pt-PT": "Inferior centro",
+            "sv": "Längst ner i mitten",
+            "th": "กลางล่าง",
+            "tr": "Alt orta",
+            "vi": "Dưới cùng ở giữa",
+            "zh-CN": "底部居中",
+            "zh-TW": "中央下方"
+          }
+        }
+      ],
+      "default": "top center"
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Obrázek s textovým odkazem",
+        "da": "Billede med tekstlink",
+        "de": "Bild mit Textlink",
+        "en": "Image with text link",
+        "es": "Imagen con enlace",
+        "fi": "Kuva tekstilinkillä",
+        "fr": "Image avec lien texte",
+        "it": "Immagine con text link",
+        "ja": "テキストリンク付き画像",
+        "ko": "텍스트 링크 포함 이미지",
+        "nb": "Bilde med tekstkobling",
+        "nl": "Afbeelding met tekstlink",
+        "pl": "Obraz z linkiem tekstowym",
+        "pt-BR": "Imagem com link de texto",
+        "pt-PT": "Imagem com ligação de texto",
+        "sv": "Bild med textlänk",
+        "th": "รูปภาพพร้อมลิงก์ข้อความ",
+        "tr": "Metin bağlantısı içeren görsel",
+        "vi": "Liên kết hình ảnh có chữ",
+        "zh-CN": "包含文本链接的图片",
+        "zh-TW": "附文字的圖片連結"
+      },
+      "category": {
+        "cs": "Obrázek",
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pl": "Obraz",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+}
+{% endschema %}
