@@ -55,8 +55,3 @@ Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 #### 5. Tag
 
     $ git tag x.x.x
-
-[phonegap-cli-url]: http://github.com/phonegap/phonegap-cli
-[cordova-app]: http://github.com/apache/cordova-app-hello-world
-[bithound-img]: https://www.bithound.io/github/phonegap/phonegap-start/badges/score.svg
-[bithound-url]: https://www.bithound.io/github/phonegap/phonegap-start
