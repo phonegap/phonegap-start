@@ -1,6 +1,6 @@
 # Hello World PhoneGap Application [![bitHound Score][bithound-img]][bithound-url]
 
-> A Hello World application built with PhoneGap
+> A Hello World application built with Phone Gap with user-scalable enabled
 
 ## Getting Help with PhoneGap
 
