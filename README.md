@@ -55,6 +55,8 @@ Replace `<h1>Apache Cordova</h1>` with `<h1>PhoneGap</h1>`.
 #### 5. Tag
 
     $ git tag x.x.x
+### 6. new
+         new
 
 [phonegap-cli-url]: http://github.com/phonegap/phonegap-cli
 [cordova-app]: http://github.com/apache/cordova-app-hello-world
